@@ -1,0 +1,94 @@
+/* Component: Announcement Bar (faixa de novidades acima do hero)
+   Marquee contínuo: a pista contém dois grupos idênticos e desloca-se -50%;
+   quando o primeiro grupo sai, o segundo está exatamente no seu lugar. */
+.announcement-bar {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-neutral-1100);
+    text-decoration: none;
+    padding: 12px 0;
+    transition: background-color 0.25s ease;
+}
+
+.announcement-bar:hover {
+    background-color: var(--color-primary-400-main);
+}
+
+.announcement-bar-track {
+    display: flex;
+    width: max-content;
+    animation: announcement-marquee 40s linear infinite;
+}
+
+.announcement-bar:hover .announcement-bar-track {
+    animation-play-state: paused;
+}
+
+.announcement-bar-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.announcement-bar-text,
+.announcement-bar-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-neutral-100);
+    white-space: nowrap;
+}
+
+.announcement-bar-cta {
+    margin-left: 16px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.announcement-bar-star {
+    color: var(--color-primary-300);
+    font-size: 13px;
+    margin: 0 24px;
+    flex-shrink: 0;
+}
+
+/* Logo Le Maillot (PNG colorido) forçado a branco sobre o fundo escuro */
+.announcement-bar-logo {
+    height: 20px;
+    width: auto;
+    margin-left: 12px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+}
+
+@keyframes announcement-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* Acessibilidade: sem animação para quem prefere movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .announcement-bar-track {
+        animation: none;
+    }
+}
+
+/* Mobile — mais altura para facilitar o toque */
+@media (max-width: 767px) {
+    .announcement-bar {
+        padding: 18px 0;
+    }
+
+    .announcement-bar-text,
+    .announcement-bar-cta,
+    .announcement-bar-star {
+        font-size: 11px;
+    }
+
+    .announcement-bar-logo {
+        height: 16px;
+    }
+}

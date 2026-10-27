@@ -1,0 +1,34 @@
+/* Component: Menu Item (Figma 154:198) */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 32px;
+    height: 60px;
+    /* Default height matching active to prevent layout shift, or use min-height */
+    background-color: var(--color-neutral-100);
+    border: none;
+    /* Removed redundant border that caused offset inside .menu */
+    color: var(--color-neutral-1100);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    /* Bold */
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.menu-item:hover,
+.menu-item-hover {
+    background-color: var(--color-neutral-1100);
+    color: var(--color-neutral-100);
+}
+
+.menu-item.active {
+    background-color: var(--color-neutral-1100);
+    color: var(--color-neutral-100);
+    font-size: 32px;
+}

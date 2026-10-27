@@ -1,0 +1,168 @@
+.dates-page-light {
+    position: relative;
+    padding: 100px 40px;
+    background-color: var(--color-neutral-100);
+}
+
+.dates-page-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Header Section */
+.dates-page-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.dates-page-title {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: baseline;
+    font-family: 'Inter', sans-serif;
+}
+
+.dates-page-title-text {
+    font-size: 64px;
+    font-weight: 700;
+    color: #020612;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.dates-page-title-year {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--color-primary-400-main);
+    line-height: 1.1;
+}
+
+/* Layout for Sidebar + Grid */
+.dates-page-content {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+}
+
+/* Sidebar Rotated Text Container */
+.dates-page-sidebar {
+    position: relative;
+    flex-shrink: 0;
+    width: 100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* The exact wrapping and font for BILLETTERIE OFFICIELLE seen in the image */
+.dates-sidebar-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #020612;
+    text-transform: uppercase;
+    line-height: 1.1;
+    display: block;
+    white-space: pre-wrap;
+    text-align: right;
+}
+
+/* Grid System */
+.dates-page-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    flex: 1;
+}
+
+/* --- CardCalendar specific CSS --- */
+.card-calendar {
+    width: 100%;
+    background-color: #F1F3F5;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-calendar-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.card-calendar-image svg {
+    display: block;
+}
+
+.card-calendar-content {
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-calendar-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #020612;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: normal;
+}
+
+.card-calendar-city {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #526078;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: normal;
+}
+
+@media (max-width: 1024px) {
+    .dates-page-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dates-page-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dates-page-sidebar {
+        display: none;
+    }
+
+    .dates-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .dates-page-title {
+        flex-wrap: wrap;
+        gap: 8px;
+        row-gap: 4px;
+    }
+
+    .dates-page-title-text,
+    .dates-page-title-year {
+        font-size: clamp(28px, 8vw, 40px);
+        line-height: 1.05;
+    }
+
+    .dates-page-container {
+        padding: 0 20px;
+    }
+}

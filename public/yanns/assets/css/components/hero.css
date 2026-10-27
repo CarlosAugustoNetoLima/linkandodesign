@@ -1,0 +1,130 @@
+/* Hero Section Styles */
+.hero {
+    position: relative;
+    width: 100%;
+    /* To match Figma's 1440x608 proportionately or fix to a height, let's use a reasonable viewport relative or fixed max height */
+    height: 608px;
+    /* Based on Figma's hero height */
+    overflow: hidden;
+    background-color: var(--color-neutral-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 1037px;
+    /* Based on Figma container height */
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-filter-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* Let clicks pass through to controls if any overlap */
+    z-index: 2;
+}
+
+.hero-filter-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: overlay;
+}
+
+/* Left controls */
+.hero-apps-sound {
+    position: absolute;
+    left: 80px;
+    bottom: 40px;
+    /* From top: 508px on 608px height = 100px from bottom, or exactly bottom: 40px based on sizes */
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 10;
+}
+
+/* Right controls */
+.hero-control-players {
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 10;
+}
+
+/* Scroll Icon */
+.hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0.7;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .hero {
+        height: calc(100vh - 80px); /* Account for 80px mobile header */
+        min-height: 500px;
+    }
+
+    .hero-video-container {
+        height: 100%;
+    }
+
+    /* Top Row: Play/Pause and Mute/Unmute */
+    .hero-control-players {
+        position: absolute;
+        left: 50%;
+        bottom: 160px;
+        transform: translateX(-50%);
+        right: auto;
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    /* Bottom Row: Music Service Buttons */
+    .hero-apps-sound {
+        position: absolute;
+        left: 50%;
+        bottom: 80px;
+        transform: translateX(-50%);
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .hero-scroll {
+        bottom: 24px;
+    }
+
+    .hero-apps-sound .music-service-button {
+        transform: scale(0.85);
+    }
+
+    .hero-control-players .video-control, 
+    .hero-control-players .sound-control {
+        transform: scale(0.9);
+    }
+}

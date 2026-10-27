@@ -1,0 +1,90 @@
+/* Component: Scroll Icon (Figma 104:381 & 280:762) */
+.scroll-icon {
+    position: relative;
+    opacity: 0.7;
+    box-sizing: border-box;
+    /* Mobile Defaults (Figma 280:762) */
+    width: 16px;
+    height: 30px;
+    border: 2px solid var(--color-neutral-0);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.scroll-icon-wheel {
+    position: absolute;
+    background-color: var(--color-neutral-0);
+    border-radius: 1px;
+    /* Mobile Wheel */
+    width: 2px;
+    height: 2px;
+    /* Initial size seems small in Figma, maybe it grows or moves? Using a dot for now or small pill */
+    top: 6px;
+    /* Positioned slightly down */
+    animation: scroll-wheel 1.5s infinite;
+}
+
+/* Animation for the wheel */
+@keyframes scroll-wheel {
+    0% {
+        opacity: 1;
+        top: 6px;
+        height: 2px;
+    }
+
+    50% {
+        opacity: 1;
+        top: 6px;
+        height: 10px;
+        /* Stretch down */
+    }
+
+    100% {
+        opacity: 0;
+        top: 18px;
+        /* Move down while disappearing */
+        height: 10px;
+    }
+}
+
+/* Desktop Styles (Figma 104:381) */
+@media (min-width: 768px) {
+    .scroll-icon {
+        width: 22px;
+        height: 40px;
+        border: 2px solid var(--color-neutral-0);
+        border-radius: 11px;
+    }
+
+    .scroll-icon-wheel {
+        width: 4px;
+        /* Slightly larger maybe? Figma check: 104:413 -> center div */
+        height: 4px;
+        /* Figma has it as a dot or small pill usually */
+        top: 8px;
+        border-radius: 2px;
+    }
+
+    @keyframes scroll-wheel {
+        0% {
+            opacity: 1;
+            top: 8px;
+            height: 4px;
+        }
+
+        50% {
+            opacity: 1;
+            top: 8px;
+            height: 16px;
+            /* Stretch down into a line */
+        }
+
+        100% {
+            opacity: 0;
+            top: 24px;
+            /* Fade out at the bottom */
+            height: 16px;
+        }
+    }
+}

@@ -1,0 +1,133 @@
+{
+  "source": "hardcoded em public/index.php ($eventsArray)",
+  "captured_at": "2026-06-23T02:10:44.088Z",
+  "count": 14,
+  "dates": [
+    {
+      "id": 1,
+      "date_start": "2026-06-12 20:00:00",
+      "date_opening": "2026-06-12 19:00:00",
+      "city": "TOURCOING",
+      "country": "France",
+      "place": "À définir",
+      "ticketUrl": ""
+    },
+    {
+      "id": 2,
+      "date_start": "2026-07-11 20:00:00",
+      "date_opening": "2026-07-11 19:00:00",
+      "city": "SAINT-AYGULF / FRÉJUS",
+      "country": "France",
+      "place": "Bambusa Plage",
+      "ticketUrl": ""
+    },
+    {
+      "id": 3,
+      "date_start": "2026-07-20 21:00:00",
+      "date_opening": "2026-07-20 20:00:00",
+      "city": "CAP D'AGDE",
+      "country": "France",
+      "place": "Les Arènes du Cap d'Agde",
+      "ticketUrl": "https://my.weezevent.com/yanns-phenomenal-retour-1"
+    },
+    {
+      "id": 4,
+      "date_start": "2026-08-05 20:00:00",
+      "date_opening": "2026-08-05 19:00:00",
+      "city": "VALRAS-PLAGE",
+      "country": "France",
+      "place": "À définir",
+      "ticketUrl": ""
+    },
+    {
+      "id": 5,
+      "date_start": "2026-08-09 21:30:00",
+      "date_opening": "2026-08-09 20:30:00",
+      "city": "PALAVAS-LES-FLOTS",
+      "country": "France",
+      "place": "Festival Côté Mer / Les Arènes",
+      "ticketUrl": "https://shotgun.live/events/festival-cote-mer-yanns"
+    },
+    {
+      "id": 6,
+      "date_start": "2026-08-21 20:00:00",
+      "date_opening": "2026-08-21 19:00:00",
+      "city": "MONT-DE-MARSAN",
+      "country": "France",
+      "place": "Les Arènes (avec Kenn'V)",
+      "ticketUrl": ""
+    },
+    {
+      "id": 7,
+      "date_start": "2026-09-11 20:30:00",
+      "date_opening": "2026-09-11 19:30:00",
+      "city": "BOURGES",
+      "country": "France",
+      "place": "Palais d'Auron",
+      "ticketUrl": "https://my.weezevent.com/yanns-phenomenal-retour"
+    },
+    {
+      "id": 8,
+      "date_start": "2026-09-12 20:00:00",
+      "date_opening": "2026-09-12 19:00:00",
+      "city": "CALUIRE-ET-CUIRE (LYON)",
+      "country": "France",
+      "place": "Radiant-Bellevue",
+      "ticketUrl": "https://billetterie.radiant-bellevue.fr/fr/product/1205/radiant_bellevue/yanns"
+    },
+    {
+      "id": 9,
+      "date_start": "2026-09-13 17:00:00",
+      "date_opening": "2026-09-13 16:00:00",
+      "city": "REIMS",
+      "country": "France",
+      "place": "LE K",
+      "ticketUrl": "https://my.weezevent.com/yanns-phenomenal-retour-2"
+    },
+    {
+      "id": 10,
+      "date_start": "2026-10-03 20:30:00",
+      "date_opening": "2026-10-03 19:30:00",
+      "city": "ANDRIMONT",
+      "country": "Belgique",
+      "place": "Espace 58",
+      "ticketUrl": "https://sales.resevents.be/event/2362/yanns"
+    },
+    {
+      "id": 11,
+      "date_start": "2026-10-24 20:00:00",
+      "date_opening": "2026-10-24 19:00:00",
+      "city": "CASABLANCA",
+      "country": "Maroc",
+      "place": "Megarama",
+      "ticketUrl": ""
+    },
+    {
+      "id": 12,
+      "date_start": "2026-10-25 20:00:00",
+      "date_opening": "2026-10-25 19:00:00",
+      "city": "RABAT",
+      "country": "Maroc",
+      "place": "Date à confirmer",
+      "ticketUrl": ""
+    },
+    {
+      "id": 13,
+      "date_start": "2026-10-25 20:00:00",
+      "date_opening": "2026-10-25 19:00:00",
+      "city": "MARRAKECH",
+      "country": "Maroc",
+      "place": "Palais des Congrès (Date à confirmer)",
+      "ticketUrl": ""
+    },
+    {
+      "id": 14,
+      "date_start": "2026-12-06 17:00:00",
+      "date_opening": "2026-12-06 16:00:00",
+      "city": "CLERMONT-FERRAND",
+      "country": "France",
+      "place": "La Coopérative de Mai",
+      "ticketUrl": "https://billetterie-lesdernierscouches.tickandlive.com/reserver/yanns/158022"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+/* Component: Card Calendar */
+/* Matches Figma design Dimensions: 280px x 300px */
+
+.card-calendar {
+    position: relative;
+    width: 280px;
+    height: 300px;
+    background-color: var(--color-neutral-200, #EEF2F7);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Container fills its parent grid cell while keeping aspect ratio or sizing. 
+       In the dates grid, it'll stretch. So let's ensure it can scale or we lock it.
+       The grid will pass width: 100%, height will scale. 
+       Let's design it flexibly but targeting the 280x300 ratio. 
+       For strict compliance, let's use flex so it adapts. */
+}
+
+/* 
+ * The Default State 
+ */
+.card-calendar-default {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 150ms ease-in-out;
+    z-index: 10;
+}
+
+.card-calendar:hover .card-calendar-default {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card-calendar-image {
+    width: 100%;
+    height: 183px;
+    /* As per Figma spec */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    margin-top: 24px;
+}
+
+.card-calendar-image svg {
+    width: 100%;
+    height: 100%;
+}
+
+.card-calendar-content-default {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 24px 16px;
+    margin-bottom: 24px;
+}
+
+.card-calendar-date-default {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    /* Regular */
+    color: var(--color-neutral-1100, #020612);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: normal;
+}
+
+.card-calendar-city-default {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    /* Regular */
+    color: var(--color-neutral-600, #526078);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: normal;
+}
+
+/* 
+ * The Hover State 
+ */
+.card-calendar-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px 24px 24px;
+    background-color: var(--color-neutral-200, #EEF2F7);
+    /* Same background */
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+    z-index: 5;
+    box-sizing: border-box;
+}
+
+.card-calendar:hover .card-calendar-hover {
+    opacity: 1;
+    z-index: 20;
+}
+
+.card-calendar-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.card-calendar-details p {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    /* Regular */
+    color: var(--color-neutral-600, #526078);
+    margin: 0;
+    line-height: normal;
+}
+
+.card-calendar-button-wrap {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.card-calendar-button-wrap .btn {
+    width: 100%;
+    /* Button component normally handles this, but ensuring full width */
+}
+
+.card-calendar-status {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-primary-400-main, #930C2E);
+    margin: 0;
+}
+
+/* Overriding grid behaviour to allow flexible size if necessary 
+   while maintaining the 280x300 aspect visually */
+.dates-page-grid .card-calendar {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 280 / 300;
+}
+
+.dates-page-grid .card-calendar-image {
+    height: 61%;
+    /* 183 / 300 roughly */
+}
+
+/* ─── Mobile / touch: já mostra a versão "hover" do card ─────── */
+@media (hover: none), (max-width: 768px) {
+    /* Card sem aspect-ratio fixo — altura flui pelo conteúdo,
+       grid `align-items: stretch` (padrão) deixa todos da mesma fila iguais */
+    .dates-page-grid .card-calendar {
+        aspect-ratio: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-calendar-default {
+        display: none;
+    }
+
+    .card-calendar-hover {
+        position: relative;
+        opacity: 1;
+        z-index: 20;
+        flex: 1 1 auto;
+        height: auto;
+        padding: 20px 16px;
+        justify-content: space-between;
+    }
+
+    .card-calendar-details {
+        margin-bottom: 16px;
+        gap: 6px;
+    }
+    .card-calendar-details p {
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .card-calendar-button-wrap {
+        margin-bottom: 0;
+    }
+    .card-calendar-button-wrap .btn {
+        white-space: normal;
+        padding: 10px 12px;
+        height: auto;
+        min-height: 48px;
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .card-calendar-status {
+        font-size: 14px;
+    }
+}
+
+/* Garante igualdade de altura por linha no grid de datas */
+.dates-page-grid {
+    align-items: stretch;
+}

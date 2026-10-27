@@ -1,0 +1,87 @@
+/* Component: Store Card (Figma 310:2013 & 412:2264) */
+.store-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-neutral-200);
+    /* Updated padding per Figma 310:2013/412:2264 */
+    /* Top: 8px, Horizontal: 8px, Bottom: 24px */
+    padding: 8px 8px 24px 8px;
+    gap: 16px;
+    position: relative;
+    box-sizing: border-box;
+    /* Default to Mobile size (Figma 412:2264) */
+    width: 156px;
+}
+
+.store-card-image {
+    width: 100%;
+    /* Mobile image height */
+    height: 140px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.store-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
+    width: 100%;
+}
+
+.store-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--color-neutral-1100);
+    margin: 0;
+    line-height: normal;
+}
+
+.store-card-title p {
+    margin: 0;
+}
+
+.store-card-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--color-neutral-600);
+    margin: 0;
+    line-height: normal;
+}
+
+/* Desktop Styles (Figma 310:2013) */
+@media (min-width: 768px) {
+    .store-card {
+        width: 308px;
+    }
+
+    .store-card-image {
+        height: 184px;
+    }
+}
+.store-card-no-image {
+    width: 100%;
+    height: 100%;
+    min-height: 184px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;
+    color: #888;
+    font-size: 13px;
+    text-align: center;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+}

@@ -1,0 +1,73 @@
+{
+  "source": "fallback hardcoded (sem API key)",
+  "channel_id": "UCpbRjfY2hvgKJBJkOsvzuMw",
+  "captured_at": "2026-06-23T02:10:44.087Z",
+  "most_viewed": [
+    {
+      "videoId": "MmQa-lLy38o",
+      "title": "Yanns - Clic clic pan pan (Clip Officiel)",
+      "views_count": 176365394,
+      "time_value": 4,
+      "time_unit": "year",
+      "imageUrl": "https://img.youtube.com/vi/MmQa-lLy38o/maxresdefault.jpg"
+    },
+    {
+      "videoId": "OUhlSwULEBE",
+      "title": "Yanns - Mains en L'air (Clip Officiel)",
+      "views_count": 32458131,
+      "time_value": 3,
+      "time_unit": "year",
+      "imageUrl": "https://img.youtube.com/vi/OUhlSwULEBE/maxresdefault.jpg"
+    },
+    {
+      "videoId": "LzEwOWyvW68",
+      "title": "Yanns - En détresse (Clip Officiel)",
+      "views_count": 29757941,
+      "time_value": 4,
+      "time_unit": "year",
+      "imageUrl": "https://img.youtube.com/vi/LzEwOWyvW68/maxresdefault.jpg"
+    },
+    {
+      "videoId": "E6rYfBcVxUw",
+      "title": "Yanns - Soleil et nanas (Clip Officiel)",
+      "views_count": 26385648,
+      "time_value": 3,
+      "time_unit": "year",
+      "imageUrl": "https://img.youtube.com/vi/E6rYfBcVxUw/maxresdefault.jpg"
+    }
+  ],
+  "recent": [
+    {
+      "videoId": "Uy-L1wnHy7U",
+      "title": "OLYMPIA 2026",
+      "views_count": 6200,
+      "time_value": 11,
+      "time_unit": "day",
+      "imageUrl": "https://img.youtube.com/vi/Uy-L1wnHy7U/maxresdefault.jpg"
+    },
+    {
+      "videoId": "8fxLKm-mgb4",
+      "title": "YANNS - MYTHO (Clip officiel)",
+      "views_count": 578000,
+      "time_value": 1,
+      "time_unit": "month",
+      "imageUrl": "https://img.youtube.com/vi/8fxLKm-mgb4/sddefault.jpg"
+    },
+    {
+      "videoId": "mwoHkRVOu7g",
+      "title": "YANNS - TOKÉ TOKÉ (Clip officiel)",
+      "views_count": 1600000,
+      "time_value": 2,
+      "time_unit": "month",
+      "imageUrl": "https://img.youtube.com/vi/mwoHkRVOu7g/maxresdefault.jpg"
+    },
+    {
+      "videoId": "NVPeityE_bY",
+      "title": "YANNS - TOKÉ TOKÉ (Lyrics Vidéo)",
+      "views_count": 187000,
+      "time_value": 2,
+      "time_unit": "month",
+      "imageUrl": "https://img.youtube.com/vi/NVPeityE_bY/maxresdefault.jpg"
+    }
+  ]
+}

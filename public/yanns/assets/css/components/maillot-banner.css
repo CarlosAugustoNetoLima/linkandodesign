@@ -1,0 +1,153 @@
+/* Component: Maillot Banner (Nova Coleção) */
+.maillot-banner {
+    width: 100%;
+    background-color: var(--color-neutral-900);
+    display: flex;
+    justify-content: center;
+}
+
+.maillot-banner-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1440px;
+    height: 300px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+/* Colagem: 3 imagens lado a lado, central maior */
+.maillot-banner-collage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.maillot-banner-img {
+    height: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.maillot-banner-img.is-center {
+    flex-grow: 1.15;
+    z-index: 1;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Overlay escurecido para legibilidade do texto */
+.maillot-banner-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+        rgba(13, 17, 32, 0.78) 0%,
+        rgba(13, 17, 32, 0.45) 40%,
+        rgba(13, 17, 32, 0.45) 60%,
+        rgba(13, 17, 32, 0.78) 100%);
+    z-index: 2;
+}
+
+/* Conteúdo de texto centralizado por cima da colagem */
+.maillot-banner-content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 0 24px;
+    pointer-events: none;
+}
+
+.maillot-banner-label {
+    color: var(--color-neutral-100);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.maillot-banner-title {
+    color: var(--color-neutral-100);
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+.maillot-banner-title-logo {
+    display: block;
+    max-height: 110px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55));
+}
+
+.maillot-banner-cta {
+    margin-top: 6px;
+    color: var(--color-neutral-100);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: 1.5px solid var(--color-neutral-100);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.maillot-banner-link:hover .maillot-banner-cta {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-1000);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .maillot-banner-title {
+        font-size: 44px;
+    }
+}
+
+/* Mobile: reduz altura e esconde as imagens laterais */
+@media (max-width: 767px) {
+    .maillot-banner-link {
+        height: 200px;
+    }
+
+    .maillot-banner-img {
+        display: none;
+    }
+
+    .maillot-banner-img.is-center {
+        display: block;
+        width: 100%;
+    }
+
+    .maillot-banner-title {
+        font-size: 34px;
+    }
+
+    .maillot-banner-title-logo {
+        max-height: 68px;
+    }
+
+    .maillot-banner-label {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+}

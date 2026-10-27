@@ -1,0 +1,465 @@
+.boutique-section {
+    background-color: var(--color-neutral-200);
+    padding: 80px 40px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.boutique-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-40);
+    width: 100%;
+    max-width: 1312px;
+    margin: 0 auto;
+}
+
+.boutique-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-32, 32px);
+    flex-shrink: 0;
+    max-width: 460px;
+}
+
+.boutique-heading {
+    color: var(--color-neutral-1100);
+    font-size: clamp(40px, 4.5vw, 72px);
+    line-height: 0.95;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+}
+
+.boutique-logos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: nowrap; /* os 3 logos sempre lado a lado */
+    width: 100%; /* largura definida p/ os max-width % dos filhos resolverem */
+}
+
+.boutique-logo {
+    height: auto;
+    max-height: 110px;
+    max-width: 30%; /* escala para caberem os 3 na mesma linha */
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.boutique-logo-toke {
+    max-height: 96px;
+}
+
+/* Logo Le Maillot (PNG colorido) forçado a preto, como o do Toké Toké */
+.boutique-logo-maillot {
+    filter: brightness(0);
+}
+
+/* ─── Carousel — tabs + loader + (thumbs + main image) ─────────── */
+.boutique-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1 1 0;
+    min-width: 0;
+    height: calc(100vh - 120px);
+    max-height: calc(100vh - 120px);
+}
+
+/* Tabs das coleções */
+.boutique-carousel-tabs {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.boutique-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 12px 8px;
+    background: var(--color-neutral-100);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--color-neutral-1100, #111);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.boutique-tab:hover {
+    border-color: var(--color-neutral-1100);
+    color: var(--color-neutral-1100);
+}
+
+.boutique-tab.active {
+    background: var(--color-neutral-1100);
+    border-color: var(--color-neutral-1100);
+    color: #fff;
+}
+
+.boutique-tab:focus-visible {
+    outline: 2px solid var(--color-neutral-1100);
+    outline-offset: 2px;
+}
+
+/* Loader / barra de progresso */
+.boutique-carousel-loader {
+    flex-shrink: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+}
+
+.boutique-carousel-loader-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--color-neutral-1100);
+}
+
+/* Corpo: thumbs verticais + imagem principal */
+.boutique-carousel-body {
+    display: flex;
+    gap: 12px;
+    flex: 1 1 0;
+    min-height: 0;
+    align-items: stretch;
+}
+
+.boutique-carousel-thumbs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+    height: 100%;
+    min-height: 0;
+}
+
+.boutique-carousel-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2px;
+    scrollbar-width: none;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.boutique-carousel-thumbs::-webkit-scrollbar {
+    display: none;
+}
+
+.boutique-carousel-thumbs-arrow {
+    flex-shrink: 0;
+    width: 72px;
+    height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-1100, #111);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.boutique-carousel-thumbs-arrow:hover {
+    background: var(--color-primary-400-main, #c8111f);
+    color: #fff;
+    border-color: var(--color-primary-400-main, #c8111f);
+}
+
+.boutique-carousel-thumbs-arrow:focus-visible {
+    outline: 2px solid var(--color-primary-400-main, #c8111f);
+    outline-offset: 2px;
+}
+
+.boutique-carousel-thumbs-arrow[hidden] {
+    display: none;
+}
+
+.boutique-carousel-thumb {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    padding: 0;
+    border: 2px solid transparent;
+    background: var(--color-neutral-300, #ececec);
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.boutique-carousel-thumb[hidden],
+.boutique-carousel-image[hidden] {
+    display: none !important;
+}
+
+.boutique-carousel-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.boutique-carousel-thumb:hover {
+    opacity: 0.85;
+}
+
+.boutique-carousel-thumb.active {
+    opacity: 1;
+    border-color: var(--color-primary-400-main, #c8111f);
+}
+
+.boutique-carousel-thumb:focus-visible {
+    outline: 2px solid var(--color-primary-400-main, #c8111f);
+    outline-offset: 2px;
+}
+
+.boutique-carousel-main {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-neutral-300, #ececec);
+}
+
+.boutique-carousel-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.boutique-carousel-image.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Background blur — mesma imagem em cover, desfocada e ampliada
+   para esconder bordas do blur. Cria um "letterbox" cinematográfico. */
+.boutique-carousel-bg {
+    position: absolute;
+    top: -8%;
+    left: -8%;
+    width: 116%;
+    height: 116%;
+    object-fit: cover;
+    object-position: center center;
+    filter: blur(40px) saturate(1.2) brightness(0.85);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Foreground — imagem completa sem corte, centralizada sobre o blur */
+.boutique-carousel-fg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+}
+
+/* Link wrapper — ocupa o mesmo espaço que o fg quando há produto */
+.boutique-carousel-fg-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+    text-decoration: none;
+}
+
+.boutique-carousel-fg-link .boutique-carousel-fg {
+    transition: transform 0.4s ease;
+}
+
+.boutique-carousel-fg-link:hover .boutique-carousel-fg,
+.boutique-carousel-fg-link:focus-visible .boutique-carousel-fg {
+    transform: scale(1.02);
+}
+
+.boutique-carousel-shop-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-neutral-1100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.boutique-carousel-fg-link:hover .boutique-carousel-shop-icon,
+.boutique-carousel-fg-link:focus-visible .boutique-carousel-shop-icon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Tablet (≤ 991px) ────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .boutique-container {
+        flex-direction: column;
+        gap: var(--spacing-40);
+    }
+
+    .boutique-text {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: none;
+    }
+
+    .boutique-heading {
+        font-size: 64px;
+    }
+
+    .boutique-action {
+        width: 100%;
+    }
+
+    .boutique-logos {
+        justify-content: center;
+    }
+
+    .boutique-carousel {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        max-height: none;
+    }
+
+    .boutique-carousel-body {
+        flex: none;
+        height: auto;
+    }
+
+    .boutique-carousel-main {
+        height: auto;
+        max-height: none;
+        aspect-ratio: 2 / 3;
+    }
+}
+
+/* ─── Mobile (≤ 767px) ────────────────────────────────────────── */
+@media (max-width: 767px) {
+    .boutique-section {
+        padding: 60px 20px;
+    }
+
+    .boutique-heading {
+        font-size: 48px;
+    }
+
+    .boutique-logo {
+        max-height: 88px;
+    }
+
+    .boutique-logo-toke {
+        max-height: 76px;
+    }
+
+    .boutique-carousel {
+        height: auto;
+        gap: 10px;
+    }
+
+    .boutique-carousel-tabs {
+        gap: 6px;
+    }
+
+    .boutique-tab {
+        padding: 10px 4px;
+        font-size: 11px;
+        letter-spacing: 0.02em;
+    }
+
+    .boutique-carousel-body {
+        flex: none;
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .boutique-carousel-thumbs-wrapper {
+        flex-direction: row;
+        height: auto;
+        width: 100%;
+    }
+
+    .boutique-carousel-thumbs {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        padding-bottom: 4px;
+    }
+
+    .boutique-carousel-thumbs-arrow {
+        display: none !important;
+    }
+
+    .boutique-carousel-thumb {
+        width: 64px;
+        height: 64px;
+    }
+
+    .boutique-carousel-main {
+        aspect-ratio: 2 / 3;
+        height: auto;
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* ─── Small mobile (≤ 480px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+    .boutique-heading {
+        font-size: 40px;
+    }
+
+    .boutique-logo {
+        max-height: 72px;
+    }
+
+    .boutique-logo-toke {
+        max-height: 64px;
+    }
+
+    .boutique-carousel-thumb {
+        width: 54px;
+        height: 54px;
+    }
+}

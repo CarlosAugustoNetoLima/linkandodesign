@@ -1,0 +1,66 @@
+/* Component: Mobile Menu (Figma 296:1500) */
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    flex: 1;
+    /* Take available space */
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+    background-color: transparent;
+    color: var(--color-neutral-1100);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.mobile-menu-item.active {
+    background-color: transparent;
+    color: var(--color-primary-400-main);
+    font-size: 32px;
+    z-index: 2;
+}
+
+.mobile-menu-actions,
+.mobile-menu-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    height: 60px;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.mobile-menu-actions a,
+.mobile-menu-socials a {
+    display: block;
+    width: 24px;
+    height: 24px;
+    color: var(--color-neutral-1100);
+    /* Inherit color for SVGs */
+}
+
+/* Ensure icons scale correctly */
+.mobile-menu-actions svg,
+.mobile-menu-socials svg {
+    width: 100%;
+    height: 100%;
+}

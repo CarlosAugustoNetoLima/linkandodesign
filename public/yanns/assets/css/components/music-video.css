@@ -1,0 +1,319 @@
+/* ─── Music & Video page ─────────────────────────────────────── */
+
+.music-page {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.music-hero {
+    position: relative;
+    padding: 100px 40px;
+    background: var(--color-neutral-200, #f4f4f4);
+    overflow: hidden;
+}
+
+.music-hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.music-bg-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    color: var(--color-neutral-1100, #111);
+    opacity: 0.05;
+    line-height: 0;
+    pointer-events: none;
+}
+
+.music-bg-logo svg {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.music-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1312px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.music-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    font-weight: 700;
+    color: var(--color-primary-400-main, #c8111f);
+    margin-bottom: 16px;
+}
+
+.music-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(56px, 8vw, 120px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--color-neutral-1100, #111);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.music-hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-neutral-900, #333);
+    margin: 16px 0 32px;
+    max-width: 680px;
+}
+
+.music-hero-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* Botões no hero — variante DARK sobre fundo claro (começa colapsado, expande no hover) */
+.music-hero-platforms .music-service-button {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.03) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.music-hero-platforms .music-service-button:hover {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+    border-color: rgba(0, 0, 0, 0.28);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+.music-hero-platforms .music-service-button svg path,
+.music-hero-platforms .music-service-button svg rect,
+.music-hero-platforms .music-service-button svg circle,
+.music-hero-platforms .music-service-button svg polygon {
+    fill: var(--color-neutral-1100) !important;
+}
+.music-hero-platforms .music-service-label,
+.music-hero-platforms .music-service-name {
+    color: var(--color-neutral-1100);
+}
+
+/* ─── DERNIER CLIP (featured) ────────────────────────────────── */
+.music-featured {
+    padding: 100px 40px;
+    background: var(--color-neutral-100, #fcfcfc);
+}
+
+.music-featured-inner {
+    max-width: 1312px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 64px;
+    align-items: stretch;
+    min-height: 60vh;
+}
+
+.music-featured-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.music-featured-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-neutral-1100, #111);
+    margin: 16px 0 12px;
+    text-transform: uppercase;
+}
+
+.music-featured-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--color-neutral-700, #666);
+    margin: 0 0 32px;
+    letter-spacing: 0.04em;
+}
+
+.music-featured-cta button {
+    cursor: pointer;
+}
+
+.music-featured-thumb {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.music-featured-thumb .card-youtube,
+.music-featured-thumb .card-youtube-body,
+.music-featured-thumb .card-youtube-thumb,
+.music-featured-thumb .card-youtube-image {
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+.music-featured-thumb .card-youtube {
+    transition: transform 0.3s ease;
+}
+.music-featured-thumb .card-youtube:hover {
+    transform: translateY(-2px);
+}
+
+.music-featured-thumb .card-youtube-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Esconde título/meta abaixo da thumb — já estão exibidos do lado esquerdo */
+.music-featured-thumb .card-youtube-info {
+    display: none;
+}
+
+/* ─── TOUS LES CLIPS OFFICIELS ────────────────────────────────── */
+.music-clips {
+    padding: 100px 40px;
+    background: var(--color-neutral-200, #f4f4f4);
+}
+
+.music-clips-inner {
+    max-width: 1312px;
+    margin: 0 auto;
+}
+
+.music-clips-grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.music-clips-grid .card-youtube {
+    width: 100%;
+    min-width: 0;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+.music-clips-grid .card-youtube:hover {
+    transform: translateY(-3px);
+}
+
+/* ─── STREAMING CTA (full-bleed dark) ────────────────────────── */
+.music-streaming {
+    padding: 120px 40px;
+    background: var(--color-neutral-1100, #111);
+    color: #fff;
+}
+
+.music-streaming-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.music-streaming-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 16px 0 12px;
+    text-transform: uppercase;
+}
+
+.music-streaming-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 40px;
+    max-width: 560px;
+}
+
+.music-streaming-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+
+/* ─── Tablet (≤ 991px) ───────────────────────────────────────── */
+@media (max-width: 991px) {
+    .music-hero,
+    .music-featured,
+    .music-clips,
+    .music-streaming {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .music-featured-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        min-height: 0;
+        align-items: start;
+    }
+
+    .music-featured-thumb {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        width: 100%;
+    }
+
+    .music-clips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ─── Mobile (≤ 767px) ───────────────────────────────────────── */
+@media (max-width: 767px) {
+    .music-hero {
+        padding: 60px 20px;
+    }
+
+    .music-featured,
+    .music-clips,
+    .music-streaming {
+        padding: 64px 20px;
+    }
+
+    .music-hero-subtitle {
+        font-size: 16px;
+    }
+
+    .music-hero-platforms,
+    .music-streaming-platforms {
+        gap: 10px;
+    }
+
+    .music-clips-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}

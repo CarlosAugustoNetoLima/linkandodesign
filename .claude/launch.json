@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3010"],
+      "port": 3010,
+      "autoPort": false
+    },
+    {
+      "name": "yanns",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["-S", "127.0.0.1:8010", "-t", "/Users/carloslima/yanns/public"],
+      "port": 8010
+    }
+  ]
+}

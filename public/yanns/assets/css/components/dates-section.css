@@ -1,0 +1,110 @@
+.dates-section {
+    background-color: var(--color-neutral-200);
+    /* #eef2f7 */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    gap: 24px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.dates-bg-wrapper {
+    position: absolute;
+    top: 21.67%;
+    bottom: 21.49%;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dates-bg-logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: var(--color-neutral-1100);
+    opacity: 0.05;
+    line-height: 0;
+}
+
+.dates-bg-logo svg {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.dates-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: normal;
+    /* According to figma span leading */
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    text-align: center;
+}
+
+.dates-title-text {
+    color: var(--color-neutral-1100);
+}
+
+.dates-title-year {
+    color: var(--color-primary-400-main);
+}
+
+.dates-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    gap: 0;
+    /* Figma gap-[var(--10,0px)] */
+}
+
+.dates-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 1040px;
+    /* 3 * 328px + 2 * 16px roughly, ensures centered layout matching figma */
+}
+
+.dates-action {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dates-section {
+        padding: 60px 20px;
+        gap: 32px;
+    }
+
+    .dates-title {
+        font-size: 40px;
+    }
+
+    .dates-action {
+        width: 100%;
+    }
+}

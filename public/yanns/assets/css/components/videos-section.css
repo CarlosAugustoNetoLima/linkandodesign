@@ -1,0 +1,114 @@
+.videos-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-40) 0;
+}
+
+.videos-row {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--spacing-16);
+    padding: var(--spacing-40) var(--spacing-80);
+}
+
+.videos-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 213px;
+    gap: var(--spacing-8);
+}
+
+.videos-title-left {
+    align-items: flex-end;
+    padding: 0 var(--spacing-20) 0 var(--spacing-40);
+}
+
+.videos-title-right {
+    align-items: flex-start;
+    padding: 0 var(--spacing-40) 0 var(--spacing-20);
+}
+
+.videos-title-image {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.videos-title-image img {
+    position: absolute;
+    display: block;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+}
+
+.img-les {
+    aspect-ratio: 110.818 / 47.841;
+}
+
+.img-plus {
+    aspect-ratio: 159.756 / 47.841;
+}
+
+.img-vus {
+    aspect-ratio: 132.403 / 47.841;
+}
+
+.img-recents {
+    aspect-ratio: 183.519 / 38.778;
+}
+
+.videos-cards {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex: 1 1 0;
+    gap: var(--spacing-16);
+}
+
+/* Ensure the cards stretch and flex properly */
+.videos-cards .card-youtube {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+/* Responsive (assuming mobile takes generic flex-col) */
+@media (max-width: 1024px) {
+    .videos-row {
+        flex-direction: column;
+        padding: var(--spacing-40) var(--spacing-20);
+    }
+
+    /* Título sempre acima dos vídeos no mobile */
+    .videos-recents-row {
+        flex-direction: column;
+    }
+
+    .videos-vus-row {
+        flex-direction: column-reverse;
+    }
+
+    .videos-title {
+        width: 100%;
+        max-width: 280px;
+        align-items: center;
+        padding: var(--spacing-20);
+    }
+
+    .videos-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .videos-cards .card-youtube {
+        flex: 0 1 calc(50% - var(--spacing-16));
+        min-width: 140px;
+    }
+}

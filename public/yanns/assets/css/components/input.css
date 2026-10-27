@@ -1,0 +1,317 @@
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    width: 250px;
+    /* Default width based on Figma */
+}
+
+/* Label Container */
+.input-label-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    width: 100%;
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: 600;
+    /* Inter SemiBold */
+    color: var(--color-neutral-1100);
+    line-height: normal;
+}
+
+.input-optional {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-neutral-500);
+    line-height: normal;
+}
+
+.input-required {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-error-500-main);
+    line-height: normal;
+}
+
+/* Info Icon and Tooltip */
+.input-info-icon {
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-info-200);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.input-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 10;
+    width: max-content;
+    max-width: 200px;
+}
+
+.input-info-icon:hover .input-tooltip,
+.input-info-icon:focus .input-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.input-tooltip-content {
+    background-color: var(--color-neutral-1000);
+    color: var(--color-neutral-0);
+    font-size: 12px;
+    padding: var(--spacing-8) var(--spacing-12);
+    border-radius: var(--spacing-4);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-tooltip-arrow {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--color-neutral-1000);
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Input Group (for Select-Button) */
+.input-group {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.input-select-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4) var(--spacing-8);
+    background: transparent;
+    border: 1px solid var(--color-neutral-300);
+    border-right: none;
+    color: var(--color-neutral-400);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.input-select-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.input-select-icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-neutral-300);
+    background-color: transparent;
+    transition: all 0.2s;
+    overflow: hidden;
+    gap: var(--spacing-8);
+    flex: 1;
+}
+
+.input-field {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--color-neutral-900);
+    width: 100%;
+    min-width: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* Regular */
+    font-size: 14px;
+    line-height: normal;
+    text-overflow: ellipsis;
+}
+
+.input-field::placeholder {
+    color: var(--color-neutral-400);
+}
+
+.input-icon-left,
+.input-icon-right {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-neutral-400);
+}
+
+/* Sizes */
+.input-small {
+    min-height: 28px;
+    padding: var(--spacing-4) var(--spacing-12);
+}
+
+.input-small .input-field {
+    font-size: 12px;
+}
+
+.input-small.input-select-button {
+    min-height: 28px;
+}
+
+.input-small .input-icon-left,
+.input-small .input-icon-right {
+    width: 16px;
+    height: 16px;
+}
+
+.input-small .input-icon-left svg,
+.input-small .input-icon-right svg {
+    width: 16px;
+    height: 16px;
+}
+
+.input-medium {
+    min-height: 48px;
+    padding: var(--spacing-8) var(--spacing-16);
+}
+
+.input-medium .input-field {
+    font-size: 12px;
+}
+
+.input-medium .input-icon-left,
+.input-medium .input-icon-right {
+    width: 24px;
+    height: 24px;
+}
+
+.input-medium .input-icon-left svg,
+.input-medium .input-icon-right svg {
+    width: 24px;
+    height: 24px;
+}
+
+.input-large {
+    min-height: 60px;
+    padding: var(--spacing-8) var(--spacing-16);
+}
+
+.input-large .input-icon-left,
+.input-large .input-icon-right {
+    width: 24px;
+    height: 24px;
+}
+
+.input-large .input-icon-left svg,
+.input-large .input-icon-right svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* States via wrapper data-status */
+/* Active / Focus */
+.input-wrapper[data-status="active"] .input-container,
+.input-container:focus-within {
+    border-color: var(--color-primary-400-main);
+}
+
+.input-wrapper[data-status="active"] .input-select-button {
+    border-color: var(--color-primary-400-main);
+}
+
+/* Filled */
+.input-wrapper[data-status="filled"] .input-field {
+    color: var(--color-neutral-1000);
+}
+
+.input-wrapper[data-status="filled"] .input-select-button {
+    color: var(--color-neutral-600);
+}
+
+
+/* Error */
+.input-wrapper[data-status="error"] .input-container,
+.input-error {
+    border-color: var(--color-error-500-main);
+}
+
+.input-wrapper[data-status="error"] .input-select-button {
+    border-color: var(--color-error-500-main);
+}
+
+.input-wrapper[data-status="error"] .input-label {
+    color: var(--color-error-500-main);
+}
+
+.input-wrapper[data-status="error"] .input-optional {
+    color: var(--color-error-400);
+}
+
+
+/* Disabled */
+.input-wrapper[data-status="disabled"] .input-container,
+.input-disabled,
+.input-select-button:disabled {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: var(--color-neutral-300);
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.input-wrapper[data-status="disabled"] .input-field,
+.input-disabled .input-field {
+    cursor: not-allowed;
+}
+
+
+/* Dark Mode */
+.input-dark .input-container {
+    backdrop-filter: blur(5px);
+    border-color: var(--color-neutral-300);
+    /* Keep it light based on figma or inherit */
+}
+
+/* Helper Text */
+.input-helper-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.input-helper-text {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-neutral-500);
+    line-height: normal;
+    white-space: pre-wrap;
+}
+
+.input-helper-text.is-error {
+    color: var(--color-error-500-main);
+}

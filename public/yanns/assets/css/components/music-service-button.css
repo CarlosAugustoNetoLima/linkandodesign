@@ -1,0 +1,110 @@
+/* Component: MusicServiceButton (Figma 104:114) */
+.music-service-button {
+    --msb-h: 60px;
+    /* Base height for proportional scaling */
+    height: var(--msb-h);
+    /* Default collapsed width for icon only */
+    width: var(--msb-h);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 calc(var(--msb-h) * 0.25);
+    gap: calc(var(--msb-h) * 0.133);
+    /* Reset padding */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    /* Ensure only icon is visible initially */
+    justify-content: flex-start;
+    text-decoration: none;
+}
+
+.music-service-button:hover,
+.music-service-button:focus,
+.music-service-button:active,
+.music-service-button .music-service-label,
+.music-service-button .music-service-name {
+    text-decoration: none;
+}
+
+.music-service-button:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.music-service-icon {
+    width: calc(var(--msb-h) * 0.5);
+    /* 30px when h=60 */
+    height: calc(var(--msb-h) * 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Prevent icon shrinking */
+}
+
+/* Ensure SVG icon scales within its container */
+.music-service-icon span,
+.music-service-icon svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.music-service-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease 0.1s;
+    /* Delay fade in */
+    padding: 0;
+}
+
+
+.music-service-button:hover .music-service-content {
+    opacity: 1;
+}
+
+.music-service-label {
+    font-family: 'Inter', sans-serif;
+    font-size: calc(var(--msb-h) * 0.166);
+    color: var(--color-neutral-100);
+    margin: 0;
+    line-height: 1;
+}
+
+.music-service-name {
+    font-family: 'Inter', sans-serif;
+    font-size: calc(var(--msb-h) * 0.3);
+    font-weight: 500;
+    color: var(--color-neutral-100);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Specific Widths on Hover based on Figma */
+/* Ratios based on 60px height */
+
+.music-service-button[data-service="deezer"]:hover,
+.music-service-button[data-service="spotify"]:hover {
+    width: calc(var(--msb-h) * 2.333);
+}
+
+.music-service-button[data-service="apple"]:hover {
+    width: calc(var(--msb-h) * 3.083);
+}
+
+.music-service-button[data-service="youtube"]:hover,
+.music-service-button[data-service="amazon"]:hover {
+    width: calc(var(--msb-h) * 3.5);
+}

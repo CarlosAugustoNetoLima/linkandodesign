@@ -1,0 +1,28 @@
+{
+  "project": "yanns",
+  "site": "yannsmusic.com",
+  "captured_at": "2026-06-23T02:10:44.088Z",
+  "language_captured": "fr",
+  "datasets": {
+    "store": {
+      "file": "store.json",
+      "count": 17,
+      "dynamic_source": "API LeBillet (loja)"
+    },
+    "videos": {
+      "file": "videos.json",
+      "note": "fallback hardcoded (sem API key)",
+      "dynamic_source": "API YouTube"
+    },
+    "dates": {
+      "file": "dates.json",
+      "count": 14,
+      "dynamic_source": "estático no index.php"
+    }
+  },
+  "shots": {
+    "desktop": "shots/desktop/*.png (6 rotas, full-page)",
+    "mobile": "shots/mobile/*.png (6 rotas, full-page)",
+    "states": "shots/states/*.png (menu mobile, carrinho, modal vídeo, lang switcher)"
+  }
+}

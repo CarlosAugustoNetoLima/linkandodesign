@@ -1,0 +1,121 @@
+.card-youtube {
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    padding: var(--spacing-8);
+    width: 250.75px;
+}
+
+.card-youtube-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    gap: var(--spacing-0);
+    width: 100%;
+}
+
+.card-youtube-thumb {
+    position: relative;
+    width: 100%;
+    height: 145px;
+    overflow: clip;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-youtube-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.card-youtube-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.card-youtube:hover .card-youtube-image img {
+    transform: scale(1.05);
+}
+
+.card-youtube-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.card-youtube-play {
+    /* Glassmorphism base from VideoControl */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--spacing-0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    width: 50px;
+    height: 50px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.card-youtube:hover .card-youtube-play {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.card-youtube:active .card-youtube-play {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%);
+}
+
+.card-youtube-play img {
+    width: 33.33px;
+    height: 23.33px;
+    display: block;
+}
+
+.card-youtube-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-24) var(--spacing-8);
+    width: 100%;
+}
+
+.card-youtube-title {
+    color: var(--color-neutral-1100);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.card-youtube-meta {
+    color: var(--color-neutral-600);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}

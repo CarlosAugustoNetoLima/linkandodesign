@@ -1,0 +1,94 @@
+.modal-youtube-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-youtube-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-youtube-container {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    aspect-ratio: 16/9;
+    background-color: transparent;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-youtube-iframe-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--spacing-8);
+    overflow: hidden;
+    background-color: #000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-youtube-overlay.active .modal-youtube-container {
+    transform: scale(1);
+}
+
+.modal-youtube-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+
+    /* Glassmorphism base from VideoControl */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--spacing-0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+    color: var(--color-neutral-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.modal-youtube-close svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.modal-youtube-close:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--color-neutral-0);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.modal-youtube-close:active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%);
+    transform: scale(0.98);
+}
+
+.modal-youtube-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

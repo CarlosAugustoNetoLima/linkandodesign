@@ -1,0 +1,155 @@
+/* Component: Card Date (Figma 263:100) */
+.card-date {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--color-neutral-300);
+    box-sizing: border-box;
+    width: 328px;
+    height: 95px;
+    padding: 16px 24px;
+    position: relative;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.7);
+    gap: 24px;
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    /* Ensure overlay doesn't spill out */
+}
+
+/* Hover Background / Border */
+.card-date.hover,
+.card-date:hover {
+    background-color: var(--color-neutral-1100);
+    border-color: var(--color-neutral-1100);
+}
+
+/* BILLETTERIE Hover Text Overlay */
+.card-date-hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    /* Regular */
+    color: var(--color-neutral-0, white);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    pointer-events: none;
+    /* Let clicks pass through if needed */
+}
+
+.card-date.hover .card-date-hover-text,
+.card-date:hover .card-date-hover-text {
+    opacity: 1;
+}
+
+/* Base Content Wrapping */
+.card-date-left,
+.card-date-right {
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+/* Fade out original content on hover */
+.card-date.hover .card-date-left,
+.card-date:hover .card-date-left,
+.card-date.hover .card-date-right,
+.card-date:hover .card-date-right {
+    opacity: 0;
+}
+
+/* Left Section containing Date */
+.card-date-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Day Name text */
+.card-date-day-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    /* Regular */
+    color: var(--color-neutral-600);
+    margin: 0;
+    line-height: normal;
+    flex-shrink: 0;
+}
+
+/* Day Number (e.g., 14) */
+.card-date-day-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    /* Bold */
+    color: var(--color-neutral-1100);
+    margin: 0;
+    line-height: 1;
+    /* Match design sizing better */
+    flex-shrink: 0;
+}
+
+.card-date.default:hover .card-date-day-number {
+    display: none;
+}
+
+/* Right Section containing Location and Time */
+.card-date-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+    height: 100%;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* Regular */
+}
+
+.card-date.default:hover .card-date-right {
+    display: none;
+}
+
+.card-date-event {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary-400-main);
+    margin: 0;
+    line-height: normal;
+    width: 100%;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.card-date-location {
+    font-size: 14px;
+    color: var(--color-neutral-1100);
+    margin: 0;
+    line-height: normal;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.card-date-time-venue {
+    font-size: 12px;
+    color: var(--color-neutral-600);
+    margin: 0;
+    line-height: normal;
+    width: 100%;
+    flex-shrink: 0;
+}
