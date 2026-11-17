@@ -1,0 +1,122 @@
+{
+  "site": "yanns",
+  "files": [
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "file": "hero-top-desktop.mp4",
+      "poster": "hero-top-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 7,
+      "bytes": 1072550,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 40.51
+    },
+    {
+      "name": "hero-desktop",
+      "device": "desktop",
+      "file": "hero-desktop.mp4",
+      "poster": "hero-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 14.2,
+      "bytes": 2262452,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 41.03
+    },
+    {
+      "name": "videos-desktop",
+      "device": "desktop",
+      "file": "videos-desktop.mp4",
+      "poster": "videos-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 15.53,
+      "bytes": 671525,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 16.72
+    },
+    {
+      "name": "colecao-desktop",
+      "device": "desktop",
+      "file": "colecao-desktop.mp4",
+      "poster": "colecao-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 19.2,
+      "bytes": 788778,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 32.96
+    },
+    {
+      "name": "biografia-desktop",
+      "device": "desktop",
+      "file": "biografia-desktop.mp4",
+      "poster": "biografia-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 16.77,
+      "bytes": 1453220,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 25.44
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "file": "hero-mobile.mp4",
+      "poster": "hero-mobile.jpg",
+      "width": 520,
+      "height": 1126,
+      "seconds": 17,
+      "bytes": 1616013,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 52.8
+    },
+    {
+      "name": "datas-desktop",
+      "device": "desktop",
+      "file": "datas-desktop.mp4",
+      "poster": "datas-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 14.93,
+      "bytes": 246656,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 14.06
+    },
+    {
+      "name": "loja-desktop",
+      "device": "desktop",
+      "file": "loja-desktop.mp4",
+      "poster": "loja-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 25.6,
+      "bytes": 723902,
+      "crf": 26,
+      "modo": "gpu+concat",
+      "fps": 30
+    },
+    {
+      "name": "idioma-desktop",
+      "device": "desktop",
+      "file": "idioma-desktop.mp4",
+      "poster": "idioma-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 25.4,
+      "bytes": 2224614,
+      "crf": 31,
+      "modo": "gpu+concat",
+      "fps": 30
+    }
+  ]
+}

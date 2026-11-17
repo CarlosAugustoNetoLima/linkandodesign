@@ -9,6 +9,13 @@
       "autoPort": false
     },
     {
+      "name": "dev-decks",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3011"],
+      "port": 3011,
+      "autoPort": false
+    },
+    {
       "name": "yanns",
       "runtimeExecutable": "php",
       "runtimeArgs": ["-S", "127.0.0.1:8010", "-t", "/Users/carloslima/yanns/public"],

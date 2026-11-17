@@ -1,0 +1,94 @@
+/* Motor de decks: estilos globais. Importado só por app/apresentacoes/layout.tsx.
+   O palco (.deck) recebe cores e fonte do site apresentado pelas variáveis --d-*
+   definidas no DeckPlayer. A moldura usa a marca Linkando (Tailwind). */
+
+/* o deck controla o scroll (teclado e rail), então sem o smooth nativo */
+html:has(.deck) {
+  scroll-behavior: auto;
+}
+
+.deck {
+  position: relative;
+  background: var(--d-bg);
+  color: var(--d-fg);
+  font-family: var(--d-font);
+  min-height: 100vh;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck ::selection {
+  background: var(--d-accent);
+  color: var(--d-accent-ink);
+}
+
+.deck-container {
+  max-width: 1720px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 64px);
+}
+
+/* Toda tela é centralizada na vertical, na área abaixo da barra fixa, com o mesmo respiro.
+   .deck-screen é a mesma régua para as telas pinadas (sticky, altura de 100svh).
+   Os seletores ficam em :where() (especificidade zero): assim as utilitárias do Tailwind
+   (hidden, lg:hidden, relative...) sempre vencem, sem depender da ordem do CSS. */
+:where(.deck-chapter, .deck-screen) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block-start: calc(var(--deck-bar-h) + clamp(24px, 5vh, 64px));
+  padding-block-end: clamp(48px, 8vh, 96px);
+}
+
+:where(.deck-chapter) {
+  position: relative;
+  min-height: 100svh;
+  /* o rail leva o capítulo ao topo; o padding de cima já inclui a barra */
+  scroll-margin-top: 0;
+}
+
+/* filho direto de tela flex: o auto margin do .deck-container impede o esticamento */
+:where(.deck-chapter > .deck-container, .deck-screen > .deck-container) {
+  width: 100%;
+}
+
+.deck-h1,
+.deck-h2 {
+  font-weight: var(--d-display-weight);
+  font-family: var(--d-font-display, var(--d-font));
+  font-stretch: var(--d-display-stretch, 100%);
+  letter-spacing: -0.01em;
+  line-height: 1.06;
+  font-size: clamp(2rem, 4.6vw, 4.2rem);
+}
+
+.deck-body {
+  color: var(--d-fg-muted);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  max-width: 68ch;
+}
+
+.deck-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Indicador "Role" da capa: a barra desce e sobe em loop */
+@keyframes deck-role-slide {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.deck-role-bar {
+  animation: deck-role-slide 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-role-bar {
+    animation: none;
+  }
+}

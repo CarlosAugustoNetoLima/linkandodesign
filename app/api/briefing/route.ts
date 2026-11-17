@@ -74,7 +74,7 @@ export async function POST(req: Request) {
   const text =
     rows.map(([k, v]) => `${k}: ${v}`).join("\n") + `\n\nO que está travando:\n${details}\n`;
   const html = `<div style="font-family:Arial,sans-serif;color:#17171a;max-width:560px">
-<h2 style="margin:0 0 16px">Novo briefing pelo site</h2>
+<h2 style="margin:0 0 16px">Novo pedido de diagnóstico pelo site</h2>
 <table style="border-collapse:collapse;width:100%">${rows
     .map(
       ([k, v]) =>
@@ -88,7 +88,7 @@ export async function POST(req: Request) {
 
   try {
     await sendSiteMail({
-      subject: `Novo briefing — ${oneLine(name)} · ${serviceNames.join(" + ")}`,
+      subject: `Novo pedido de diagnóstico — ${oneLine(name)} · ${serviceNames.join(" + ")}`,
       text,
       html,
       replyTo: { name: oneLine(name), address: email },

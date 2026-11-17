@@ -77,7 +77,7 @@ const data: ProjectBase[] = [
       { desktop: "/projects/details/yanns-d4.png", mobile: "/projects/details/yanns-mob5.png" },
     ],
     fonts: { display: "Inter", body: "Inter" },
-    year: "2024",
+    year: "2026",
     t: {
       pt: {
         type: "Site completo",
@@ -215,7 +215,7 @@ const data: ProjectBase[] = [
       { desktop: "/projects/details/festivalcrato-camp-d.png", mobile: "/projects/details/festivalcrato-camp-m.png" },
     ],
     fonts: { display: "Bebas Neue", body: "Inter", google: "Bebas+Neue" },
-    year: "2025",
+    year: "2026",
     t: {
       pt: {
         type: "Site com metodologia UX",
@@ -346,7 +346,7 @@ const data: ProjectBase[] = [
       { desktop: "/projects/details/wauw-cta-d.png", mobile: "/projects/details/wauw-cta-m.png" },
     ],
     fonts: { display: "Inter", body: "Inter" },
-    year: "2025",
+    year: "2026",
     t: {
       pt: {
         type: "Site com metodologia UX",
@@ -485,7 +485,7 @@ const data: ProjectBase[] = [
       { desktop: "/projects/details/jsynq-pricing-d.png", mobile: "/projects/details/jsynq-pricing-m.png" },
     ],
     fonts: { display: "Inter", body: "Inter" },
-    year: "2025",
+    year: "2026",
     t: {
       pt: {
         type: "Site",

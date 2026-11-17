@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import ProjectMotionCard from "@/components/ui/ProjectMotionCard";
+import ProjectCoverCard from "@/components/ui/ProjectCoverCard";
 import Reveal from "@/components/motion/Reveal";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import type { Project } from "@/lib/projects";
@@ -37,6 +37,14 @@ export default function PortfolioGrid({
     uiux: t.filters.system,
   };
 
+  const coverFor = (slug: string) => {
+    if (slug === "yanns") return "/projects/yanns-cover.webp";
+    if (slug === "festival-crato") return "/projects/festivalcrato-cover.webp";
+    if (slug === "jsynq") return "/projects/jsynq-cover.webp";
+    if (slug === "wauw") return "/projects/wauw-cover.webp";
+    return `/projects/${slug}-cover.webp`;
+  };
+
   return (
     <section className="mx-auto max-w-7xl px-5 pb-24">
       {categories.length > 0 && (
@@ -62,17 +70,16 @@ export default function PortfolioGrid({
       <div className="mt-10 grid gap-10">
         {shown.map((p, i) => (
           <Reveal key={p.slug} delay={i * 0.05}>
-            <ProjectMotionCard
-              slug={p.motion.base}
+            <ProjectCoverCard
+              slug={p.slug}
               name={p.name}
-              url={p.url.replace(/^https?:\/\//, "")}
+              href={`/projeto/${p.slug}`}
+              cover={coverFor(p.slug)}
               year={p.year}
               flag={p.flag}
               summary={p.context}
               tags={p.tags}
-              href={`/projeto/${p.slug}`}
               caseLabel={dict.home.featured.case}
-              devices={dict.project}
             />
           </Reveal>
         ))}

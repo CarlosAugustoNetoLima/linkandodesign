@@ -1,0 +1,621 @@
+{
+  "site": "cinnamon",
+  "url": "https://cinnamonstudio-linkando.vercel.app/",
+  "outDir": "public/decks/cinnamon",
+  "scenes": [
+    {
+      "name": "hero-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#hero",
+            "at": "bottom",
+            "offsetVh": -0.2
+          },
+          "ms": 8000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 3000
+        }
+      ]
+    },
+    {
+      "name": "preloader-desktop",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [],
+      "record": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ]
+    },
+    {
+      "name": "menu-1",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": "[data-menu-toggle]",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": "#menu-overlay .menu-list a[href=\"/o-ativo\"]",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": "#menu-overlay .menu-list a[href=\"/palmas\"]",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "#menu-overlay .menu-overlay__bar [data-menu-close]"
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ]
+    },
+    {
+      "name": "studio-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#studio",
+            "at": "top",
+            "offsetVh": -0.15
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#galeria",
+            "at": "bottom"
+          },
+          "ms": 11000
+        }
+      ]
+    },
+    {
+      "name": "tour-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#tour",
+            "at": "top",
+            "offsetVh": -0.12
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": "[data-tour-canvas]"
+          },
+          "by": {
+            "dx": -420,
+            "dy": 0
+          },
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "drag",
+          "by": {
+            "dx": 260,
+            "dy": -90
+          },
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": ".tour__room",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "drag",
+          "by": {
+            "dx": -300,
+            "dy": 0
+          },
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "fachada-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#fachada",
+            "at": "top",
+            "offsetVh": -0.12
+          },
+          "ms": 0
+        },
+        {
+          "op": "waitFor",
+          "selector": "[data-fachada].is-live",
+          "timeout": 40000
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": "[data-fachada-canvas]"
+          },
+          "by": {
+            "dx": -360,
+            "dy": 0
+          },
+          "ms": 2500
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "drag",
+          "by": {
+            "dx": 200,
+            "dy": -50
+          },
+          "ms": 1600
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "seekHit",
+          "as": "torre",
+          "selector": "[data-fachada-canvas]",
+          "hitClass": "is-hit",
+          "offsets": [
+            [
+              0,
+              0
+            ],
+            [
+              -80,
+              0
+            ],
+            [
+              80,
+              0
+            ],
+            [
+              0,
+              -80
+            ],
+            [
+              0,
+              80
+            ],
+            [
+              -80,
+              80
+            ]
+          ]
+        },
+        {
+          "op": "click",
+          "var": "torre"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ]
+    },
+    {
+      "name": "finale-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#contato",
+            "at": "top",
+            "offsetVh": -1.2
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#contato",
+            "at": "bottom"
+          },
+          "ms": 4000
+        },
+        {
+          "op": "move",
+          "to": {
+            "selector": ".cta-major"
+          },
+          "ms": 900
+        },
+        {
+          "op": "orbit",
+          "selector": ".cta-major",
+          "ms": 2500
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#hero",
+            "at": "bottom",
+            "offsetVh": -0.2
+          },
+          "ms": 6500
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        }
+      ]
+    },
+    {
+      "name": "tour-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#tour",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": "[data-tour-canvas]"
+          },
+          "by": {
+            "dx": -260,
+            "dy": 0
+          },
+          "ms": 2600,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": "[data-tour-canvas]"
+          },
+          "by": {
+            "dx": 260,
+            "dy": 0
+          },
+          "ms": 2600,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 380
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 560
+          },
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 760,
+            "y": 250
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "paginas-2",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://cinnamonstudio-linkando.vercel.app/palmas"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#s-01",
+            "at": "top",
+            "offsetVh": -0.12
+          },
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#s-04",
+            "at": "top",
+            "offsetVh": -0.05
+          },
+          "ms": 3000
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#s-06",
+            "at": "top",
+            "offsetVh": -0.3
+          },
+          "ms": 2800
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#s-08",
+            "at": "top",
+            "offsetVh": -0.2
+          },
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": ".faq-list details summary",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": ".faq-list details summary",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    }
+  ]
+}

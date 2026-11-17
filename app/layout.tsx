@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ChatAgent from "@/components/agent/ChatAgent";
+import SiteChrome from "@/components/layout/SiteChrome";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import { getDictionary } from "@/lib/i18n";
 import { getLocale } from "@/lib/locale";
@@ -43,11 +44,14 @@ export default function RootLayout({
   return (
     <html lang={dict.htmlLang}>
       <body className={`${bricolage.variable} ${inter.variable} font-sans`}>
-        <ScrollProgress />
-        <Header locale={locale} />
-        <main>{children}</main>
-        <Footer locale={locale} />
-        <ChatAgent locale={locale} />
+        <SiteChrome
+          progress={<ScrollProgress />}
+          header={<Header locale={locale} />}
+          footer={<Footer locale={locale} />}
+          agent={<ChatAgent locale={locale} />}
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+> **Modelo antigo.** Vale só para os projetos legados de `lib/projects.ts`. Todo projeto novo entra como deck, pela skill `add-portfolio-project` (`.claude/skills/add-portfolio-project/SKILL.md`).
+
 # Playbook — Portfólio detalhado de projetos (estilo Behance)
 
 Processo reutilizável para transformar cada site entregue pelo estúdio em um case

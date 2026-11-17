@@ -55,7 +55,7 @@ export default function SobrePage() {
           </Reveal>
         </div>
 
-        <Link href="/portfolio" className="btn-brut mt-14">
+        <Link href="/apresentacoes" className="btn-brut mt-14">
           {dict.home.featured.all} →
         </Link>
       </section>

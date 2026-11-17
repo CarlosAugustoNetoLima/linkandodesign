@@ -10,17 +10,20 @@ import {
 
 export const runtime = "nodejs";
 
-// Envia a conversa do chat para o time quando o visitante informa um contato
-// (e-mail ou telefone) NA PRÓPRIA CONVERSA. O aviso de que isso acontece fica
-// visível no painel do chat (ver ChatAgent). Nada é guardado no servidor: a
-// conversa só sai por e-mail para a caixa do estúdio (pasta "Site").
+// Envia a conversa do chat para o time quando há um contato (e-mail ou telefone)
+// dito pelo visitante NA PRÓPRIA CONVERSA. O campo `status` diz em que ponto ela
+// está: "complete" = a IA concluiu o diagnóstico; "partial" = o visitante fechou
+// o chat ou saiu da página antes disso (qualquer outro valor vira "partial").
+// O aviso de que isso acontece fica visível no painel do chat (ver ChatAgent).
+// Nada é guardado no servidor: a conversa só sai por e-mail para a caixa do
+// estúdio (pasta "Site").
 
 type Turn = { role: "user" | "assistant"; content: string };
 
 const tooMany = makeLimiter(5, 60 * 60 * 1000); // 5 envios por hora por IP
 
 export async function POST(req: Request) {
-  let body: { contact?: string; locale?: string; messages?: Turn[] };
+  let body: { contact?: string; locale?: string; status?: string; messages?: Turn[] };
   try {
     body = await req.json();
   } catch {
@@ -36,7 +39,7 @@ export async function POST(req: Request) {
       (m): m is Turn =>
         !!m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string",
     )
-    .slice(-40)
+    .slice(-80) // um diagnóstico completo passa de 25 mensagens: o contato não pode ficar de fora
     .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
 
   // só envia se o contato realmente foi dito pelo visitante na conversa:
@@ -49,13 +52,17 @@ export async function POST(req: Request) {
     return Response.json({ error: "not_configured" }, { status: 503 });
   }
 
+  const complete = body.status === "complete";
+  const title = complete
+    ? "Diagnóstico pelo chat (completo)"
+    : "Diagnóstico pelo chat (incompleto: a conversa foi interrompida)";
   const lang = body.locale === "en" ? "English" : "Português";
   const transcript = turns
     .map((m) => `${m.role === "user" ? "Visitante" : "Assistente"}: ${m.content}`)
     .join("\n\n");
-  const text = `Contato informado: ${contact}\nIdioma do site: ${lang}\n\n--- Conversa ---\n\n${transcript}\n`;
+  const text = `${title}\nContato informado: ${contact}\nIdioma do site: ${lang}\n\n--- Conversa ---\n\n${transcript}\n`;
   const html = `<div style="font-family:Arial,sans-serif;color:#17171a;max-width:560px">
-<h2 style="margin:0 0 8px">Conversa do chat com contato</h2>
+<h2 style="margin:0 0 8px">${title}</h2>
 <p style="margin:0 0 16px">Contato informado: <strong>${esc(contact)}</strong> · ${esc(lang)}</p>
 ${turns
   .map(
@@ -70,7 +77,7 @@ ${isEmail(contact) ? `<p style="margin-top:20px;color:#666;font-size:13px">Respo
 
   try {
     await sendSiteMail({
-      subject: `Conversa do chat — ${oneLine(contact)}`,
+      subject: `${complete ? "Diagnóstico completo" : "Diagnóstico incompleto"} — ${oneLine(contact)}`,
       text,
       html,
       replyTo: isEmail(contact) ? { address: contact } : undefined,

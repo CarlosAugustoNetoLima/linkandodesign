@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MessageCircle, X, ArrowUp } from "lucide-react";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { EMAIL } from "@/lib/contact";
+import { OPEN_CHAT_EVENT } from "@/components/agent/OpenChatLink";
 
 type Message = { from: "agent" | "user"; text: string };
 
@@ -14,7 +15,7 @@ const fallback = {
   pt: {
     pricing: {
       brand:
-        "Desenvolvimento de marca a partir de R$ 8.000 (Brasil) ou €2.000 (Europa/EUA). O valor final depende da complexidade do projeto.",
+        "Desenvolvimento de marca a partir de R$ 8.000. O valor final depende da complexidade do projeto.",
       site: "Sites completos a partir de R$ 6.000. Landing pages a partir de R$ 3.500. Quer me contar mais sobre o seu projeto?",
       redesign:
         "Redesigns de identidade a partir de R$ 5.000. Redesigns de site a partir de R$ 6.000.",
@@ -22,34 +23,38 @@ const fallback = {
         "Os valores variam conforme o escopo. Me conta o que você precisa e consigo dar uma estimativa mais precisa.",
     },
     deadline:
-      "Depende do serviço: landing pages em 1–2 semanas, sites completos em 4–8 semanas, branding completo em 3–6 semanas. Tem uma data específica em mente?",
-    process:
-      "Nosso processo tem 7 etapas: Briefing → Pesquisa → Estratégia → Design → Prototipação → Desenvolvimento → Entrega. Cada etapa é validada com o cliente antes de avançar.",
+      "Depende do serviço: landing pages em 1–2 semanas, sites completos em 4–8 semanas, branding completo em 3–6 semanas. São estimativas, contadas a partir do início efetivo do projeto.",
+    process: (n: number, titles: string) =>
+      `Nosso processo tem ${n} etapas: ${titles}. Cada etapa é validada com você antes de avançar.`,
     services:
-      "Trabalhamos com: Desenvolvimento de Marca, Redesign de Identidade, Criação de Site, Landing Page e Redesign de Site. Qual desses faz mais sentido para você agora?",
+      "Trabalhamos com: Desenvolvimento de Marca, Redesign de Identidade, Criação de Site, Landing Page, Redesign de Site e sistemas internos. Qual desses faz mais sentido para você agora?",
     portfolio:
-      "Nosso portfólio inclui projetos em França, Portugal, Cabo Verde e outros países. Você pode ver os cases completos aqui mesmo no site. Quer que eu te conte sobre algum projeto específico?",
-    cta: "Quer dar o próximo passo? Preencha o briefing em /briefing, leva poucos minutos, e respondemos em até 24h.",
+      "Temos 8 sites recentes no portfólio, do imobiliário à música ao vivo, com clientes no Brasil, EUA, Portugal e França. Veja as apresentações em /apresentacoes. Quer que eu indique a mais parecida com o seu caso?",
+    diagnosis:
+      "Eu conduzo o diagnóstico por aqui, mas estou com instabilidade agora. Para não perder tempo, preencha o diagnóstico em /briefing (leva poucos minutos): o time analisa e envia a proposta por e-mail, com prazos e valores.",
+    cta: "Estou com instabilidade agora. Para seguir, preencha o diagnóstico em /briefing (poucos minutos): o time responde em até 24h.",
   },
   en: {
     pricing: {
       brand:
-        "Brand development starts at €2,000 (Europe/US) or R$ 8,000 (Brazil). The final price depends on the project's complexity.",
-      site: "Full websites start at R$ 6,000. Landing pages start at R$ 3,500. Want to tell me more about your project?",
+        "Pricing depends on the scope. The proposal the team sends by email, within 24 hours of your diagnosis, includes the values in US dollars. Request your diagnosis here in the chat or at /briefing.",
+      site: "Pricing depends on the scope. The proposal the team sends by email, within 24 hours of your diagnosis, includes the values in US dollars. Request your diagnosis here in the chat or at /briefing.",
       redesign:
-        "Identity redesigns start at R$ 5,000. Website redesigns start at R$ 6,000.",
+        "Pricing depends on the scope. The proposal the team sends by email, within 24 hours of your diagnosis, includes the values in US dollars. Request your diagnosis here in the chat or at /briefing.",
       general:
-        "Pricing varies with scope. Tell me what you need and I can give you a more precise estimate.",
+        "Pricing depends on the scope. The proposal the team sends by email, within 24 hours of your diagnosis, includes the values in US dollars. Request your diagnosis here in the chat or at /briefing.",
     },
     deadline:
-      "It depends on the service: landing pages in 1–2 weeks, full websites in 4–8 weeks, full branding in 3–6 weeks. Do you have a specific date in mind?",
-    process:
-      "Our process has 7 steps: Briefing → Research → Strategy → Design → Prototyping → Development → Delivery. Each step is validated with the client before moving on.",
+      "It depends on the service: landing pages in 1–2 weeks, full websites in 4–8 weeks, full branding in 3–6 weeks. These are estimates, counted from the actual start of the project.",
+    process: (n: number, titles: string) =>
+      `Our process has ${n} steps: ${titles}. Each step is validated with you before moving on.`,
     services:
-      "We work with: Brand Development, Identity Redesign, Website Creation, Landing Pages and Website Redesign. Which of these makes the most sense for you right now?",
+      "We work with: Brand Development, Identity Redesign, Website Creation, Landing Pages, Website Redesign and internal systems. Which of these makes the most sense for you right now?",
     portfolio:
-      "Our portfolio includes projects in France, Portugal, Cape Verde and other countries. You can see the full cases right here on the site. Want me to tell you about a specific project?",
-    cta: "Ready for the next step? Fill in the briefing at /briefing, it takes a few minutes, and we reply within 24 hours.",
+      "We have 8 recent websites in the portfolio, from real estate to live music, with clients in Brazil, the US, Portugal and France. See the presentations at /apresentacoes. Want me to point out the one closest to your case?",
+    diagnosis:
+      "I run the diagnosis here, but I'm having connection trouble right now. To save you time, fill in the diagnosis at /briefing (it takes a few minutes): the team reviews it and sends the proposal by email, with timelines and values.",
+    cta: "I'm having connection trouble right now. To continue, fill in the diagnosis at /briefing (a few minutes): the team replies within 24 hours.",
   },
 } as const;
 
@@ -61,7 +66,7 @@ const privacy = {
     short: "Atendimento por IA. Se você informar e-mail ou telefone aqui, enviamos esta conversa ao nosso time.",
     toggle: "Privacidade",
     items: [
-      "Quem responde: um assistente de IA (Google Gemini). Suas mensagens são processadas pelo Google. No plano gratuito, o Google pode usar o conteúdo para melhorar os produtos dele. Por isso, não envie dados sensíveis aqui.",
+      "Quem responde: um assistente de IA (Google Gemini). Suas mensagens, inclusive nome e e-mail que você digitar aqui, são processadas pelo Google. No plano gratuito, o Google pode usar o conteúdo para melhorar os produtos dele. Por isso, não envie dados sensíveis aqui.",
       "O que guardamos: nada fica salvo no site. Só se você informar e-mail ou telefone, a conversa é enviada por e-mail ao time da Linkando Design, para respondermos a você.",
       `Responsável: Linkando Design, ${EMAIL}. Para acessar, corrigir ou apagar seus dados (LGPD, art. 18), escreva para esse e-mail.`,
     ],
@@ -70,7 +75,7 @@ const privacy = {
     short: "AI-assisted chat. If you share an email or phone here, we send this conversation to our team.",
     toggle: "Privacy",
     items: [
-      "Who replies: an AI assistant (Google Gemini). Your messages are processed by Google. On the free plan, Google may use content to improve its products, so please don't share sensitive data here.",
+      "Who replies: an AI assistant (Google Gemini). Your messages, including any name and email you type here, are processed by Google. On the free plan, Google may use content to improve its products, so please don't share sensitive data here.",
       "What we keep: nothing is stored on the site. Only if you share an email or phone is the conversation emailed to the Linkando Design team so we can reply.",
       `Controller: Linkando Design, ${EMAIL}. To access, correct or delete your data, write to that address.`,
     ],
@@ -80,10 +85,40 @@ const privacy = {
 const EMAIL_RE = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/;
 const PHONE_RE = /\+?\d[\d\s().-]{7,}\d/;
 
-// Transforma caminhos do site (/briefing, /portfolio, /projeto/x), URLs e
+// Telefone só com 10 a 13 dígitos e que não seja data (2026-12-01): sem isso, um
+// número qualquer da conversa (data, orçamento) viraria o "contato" do visitante.
+function findPhone(text: string): string | null {
+  const m = text.match(PHONE_RE)?.[0].trim();
+  if (!m) return null;
+  const digits = m.replace(/\D/g, "").length;
+  return digits >= 10 && digits <= 13 && !/^\d{4}-\d{2}-\d{2}$/.test(m) ? m : null;
+}
+
+// Marcador que a IA escreve ao concluir o diagnóstico. Não aparece na tela nem
+// vai para o histórico: só diz ao código que a conversa terminou.
+const DONE_RE = /\[\[\s*diagnostico-completo\s*\]\]/i;
+
+// Tira os marcadores [[...]] do texto, inclusive um "[[" ainda incompleto no fim
+// (enquanto o stream chega).
+function stripMarkers(text: string): string {
+  return text.replace(/\[\[[^\]]*\]\]/g, "").replace(/\[\[[^\]]*\]?$/, "").trimEnd();
+}
+
+type LeadState = "none" | "partial" | "complete";
+
+function leadBody(locale: Locale, contact: string, status: "partial" | "complete", msgs: Message[]): string {
+  return JSON.stringify({
+    locale,
+    contact,
+    status,
+    messages: msgs.map((m) => ({ role: m.from === "user" ? "user" : "assistant", content: m.text })),
+  });
+}
+
+// Transforma caminhos do site (/briefing, /apresentacoes, /projeto/x), URLs e
 // e-mails do texto do assistente em links clicáveis. Só texto: nada de HTML
-// vindo do modelo é interpretado.
-const LINKABLE = /(\/(?:briefing|portfolio|sobre|projeto\/[a-z0-9-]+)\b|https?:\/\/[^\s)]+|[\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g;
+// vindo do modelo é interpretado. /portfolio continua aceito: redireciona.
+const LINKABLE = /(\/(?:briefing|apresentacoes(?:\/[a-z0-9-]+)?|portfolio|sobre|projeto\/[a-z0-9-]+)\b|https?:\/\/[^\s)]+|[\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g;
 function renderText(text: string) {
   return text.split(LINKABLE).map((part, i) => {
     if (i % 2 === 0) return part;
@@ -111,6 +146,8 @@ function renderText(text: string) {
 function fallbackReply(locale: Locale, input: string, greeting: string): string {
   const f = fallback[locale];
   const t = input.toLowerCase();
+  if (/diagn[oó]stic|diagnos/.test(t)) return f.diagnosis;
+  if (/or[cç]amento|proposta|\bquote\b|proposal|come[cç]ar|\bstart\b|contratar|\bhire\b/.test(t)) return f.cta;
   if (/quanto custa|preço|preco|valor|investimento|custo|how much|price|pricing|cost/.test(t)) {
     if (/marca|branding|identidade|brand|identity/.test(t)) return f.pricing.brand;
     if (/redesign/.test(t)) return f.pricing.redesign;
@@ -119,12 +156,16 @@ function fallbackReply(locale: Locale, input: string, greeting: string): string 
   }
   if (/prazo|tempo|quanto tempo|demora|data|entrega|timeline|how long|deadline|delivery/.test(t))
     return f.deadline;
-  if (/como funciona|processo|etapas|metodologia|process|how does|method/.test(t))
-    return f.process;
+  if (/como funciona|processo|etapas|metodologia|process|how does|method/.test(t)) {
+    const steps = getDictionary(locale).home.method.steps;
+    return f.process(steps.length, steps.map((s) => s.title).join(" → "));
+  }
   if (/serviço|servico|o que voc|fazem|oferec|service|what do you/.test(t)) return f.services;
   if (/portfolio|portfólio|trabalhos anteriores|cases|projetos|projects|work/.test(t))
     return f.portfolio;
-  if (/oi|olá|ola|bom dia|boa tarde|boa noite|hey|hi|hello/.test(t)) return greeting;
+  // saudação só como palavra inteira: "oi" dentro de "pois" ou "hi" dentro de "this" não conta
+  const isGreeting = t.split(/[^a-zà-ÿ]+/).some((w) => ["oi", "olá", "ola", "hey", "hi", "hello"].includes(w));
+  if (isGreeting || /bom dia|boa tarde|boa noite/.test(t)) return greeting;
   return f.cta;
 }
 
@@ -136,7 +177,9 @@ export default function ChatAgent({ locale }: { locale: Locale }) {
   const [typing, setTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const busyRef = useRef(false);
-  const leadRef = useRef<string | null>(null); // contato já enviado ao time nesta conversa
+  const contactRef = useRef<string | null>(null); // contato mais recente dito pelo visitante
+  const leadStateRef = useRef<LeadState>("none"); // o que já foi enviado ao time nesta conversa
+  const messagesRef = useRef<Message[]>([]); // espelho de messages para o handler de pagehide
   const [showPrivacy, setShowPrivacy] = useState(false);
 
   useEffect(() => {
@@ -150,14 +193,68 @@ export default function ChatAgent({ locale }: { locale: Locale }) {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
 
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
+
+  // abre pelo botão "Solicitar diagnóstico" (ver OpenChatLink)
+  useEffect(() => {
+    const onOpenChat = () => setOpen(true);
+    window.addEventListener(OPEN_CHAT_EVENT, onOpenChat);
+    return () => window.removeEventListener(OPEN_CHAT_EVENT, onOpenChat);
+  }, []);
+
+  // saiu da página antes do fim: sendBeacon continua valendo durante o unload
+  useEffect(() => {
+    function onPageHide() {
+      const contact = contactRef.current;
+      if (!contact || leadStateRef.current !== "none") return;
+      leadStateRef.current = "partial";
+      navigator.sendBeacon(
+        "/api/chat/lead",
+        new Blob([leadBody(locale, contact, "partial", messagesRef.current)], { type: "application/json" }),
+      );
+    }
+    window.addEventListener("pagehide", onPageHide);
+    return () => window.removeEventListener("pagehide", onPageHide);
+  }, [locale]);
+
+  // envia a conversa ao time; se a rede falhar, volta ao estado anterior para tentar de novo
+  function postLead(status: "partial" | "complete", msgs: Message[]) {
+    const contact = contactRef.current;
+    if (!contact) return;
+    const prev = leadStateRef.current;
+    leadStateRef.current = status;
+    fetch("/api/chat/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: leadBody(locale, contact, status, msgs),
+    }).catch(() => {
+      leadStateRef.current = prev;
+    });
+  }
+
+  function toggleChat() {
+    if (!open) {
+      setOpen(true);
+      return;
+    }
+    setOpen(false);
+    // fechou antes do fim do diagnóstico: manda a conversa se o visitante já deixou contato
+    if (leadStateRef.current === "none") postLead("partial", messages);
+  }
+
   async function send(text: string) {
     const trimmed = text.trim();
     if (!trimmed || busyRef.current) return;
     busyRef.current = true;
 
     const nextMessages: Message[] = [...messages, { from: "user", text: trimmed }];
-    // contato dito pelo visitante: ao fim da resposta, a conversa vai ao time
-    const contact = (trimmed.match(EMAIL_RE) ?? trimmed.match(PHONE_RE))?.[0].trim();
+    // e-mail sempre vence telefone (a proposta vai por e-mail); o telefone só vale
+    // enquanto não houver e-mail
+    const email = trimmed.match(EMAIL_RE)?.[0];
+    if (email) contactRef.current = email;
+    else if (!contactRef.current) contactRef.current = findPhone(trimmed);
     let reply = "";
     setMessages(nextMessages);
     setInput("");
@@ -193,7 +290,7 @@ export default function ChatAgent({ locale }: { locale: Locale }) {
           setTyping(false);
           setMessages((m) => [...m, { from: "agent", text: "" }]);
         }
-        const current = acc;
+        const current = stripMarkers(acc);
         setMessages((m) => {
           const copy = [...m];
           copy[copy.length - 1] = { from: "agent", text: current };
@@ -212,23 +309,9 @@ export default function ChatAgent({ locale }: { locale: Locale }) {
     } finally {
       busyRef.current = false;
       setTyping(false);
-      if (contact && leadRef.current !== contact) {
-        leadRef.current = contact;
-        const transcript = [...nextMessages, ...(reply ? [{ from: "agent" as const, text: reply }] : [])];
-        fetch("/api/chat/lead", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            locale,
-            contact,
-            messages: transcript.map((m) => ({
-              role: m.from === "user" ? "user" : "assistant",
-              content: m.text,
-            })),
-          }),
-        }).catch(() => {
-          leadRef.current = null; // tenta de novo na próxima mensagem
-        });
+      // a IA marcou o fim do diagnóstico: a conversa vai ao time como completa
+      if (DONE_RE.test(reply) && leadStateRef.current !== "complete") {
+        postLead("complete", [...nextMessages, { from: "agent", text: stripMarkers(reply) }]);
       }
     }
   }
@@ -236,7 +319,7 @@ export default function ChatAgent({ locale }: { locale: Locale }) {
   return (
     <>
       <button
-        onClick={() => setOpen(!open)}
+        onClick={toggleChat}
         aria-label={open ? t.closeAria : t.openAria}
         className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-lg bg-ink text-lime shadow-btn transition-all duration-150 hover:-translate-y-0.5 hover:shadow-btn-hover"
       >

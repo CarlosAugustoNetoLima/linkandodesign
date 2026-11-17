@@ -1,0 +1,712 @@
+{
+  "site": "viva-o-samba",
+  "url": "https://vivaosamba-linkando.vercel.app/",
+  "outDir": "public/decks/viva-o-samba",
+  "scenes": [
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        }
+      ]
+    },
+    {
+      "name": "hero-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 690,
+            "y": 440
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 440
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1110,
+            "y": 440
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1225,
+            "y": 440
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "agenda-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 320
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 480
+          },
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 520,
+            "y": 640
+          },
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "rolagem-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 1500,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 2300,
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 3200,
+          "ms": 2800
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 4100,
+          "ms": 2800
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        }
+      ]
+    },
+    {
+      "name": "evento-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/roda-do-viva-o-samba-no-lata-15-nov-2026"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 900,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 330,
+            "y": 640
+          },
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 1800,
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "checkout-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/roda-do-viva-o-samba-no-lata-15-nov-2026"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "[data-checkout]",
+          "nth": 0
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 430
+          },
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 620,
+            "y": 300
+          },
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 210
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 659,
+            "y": 261
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 659,
+          "y": 261
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 659,
+            "y": 261
+          },
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "x": 659,
+          "y": 261
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 550,
+            "y": 261
+          },
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "x": 550,
+          "y": 261
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 550,
+            "y": 261
+          },
+          "ms": 10
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1197,
+            "y": 37
+          },
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "x": 1197,
+          "y": 37
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "ajuda-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/ajuda"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "[data-help-search] input[name=\"q\"]"
+        },
+        {
+          "op": "type",
+          "text": "idade",
+          "delay": 140
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "type",
+          "text": "bilhete",
+          "delay": 120
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 420,
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1600
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "idioma-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "css",
+          "text": "body > *:not(.site-header){visibility:hidden!important}.site-header{position:fixed!important;inset:0!important;height:100vh!important;background:var(--paper)!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.site-header__in > *:not(.site-header__end),.site-header__end > *:not(.lang){visibility:hidden!important}.lang{position:fixed!important;left:76%;top:24%;transform:translate(-50%,-50%) scale(3.4);transform-origin:center}"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 973,
+            "y": 192
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1005,
+            "y": 176
+          },
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 940,
+            "y": 210
+          },
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 973,
+            "y": 192
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 330
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        }
+      ]
+    }
+  ]
+}

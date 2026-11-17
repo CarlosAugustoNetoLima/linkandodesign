@@ -5,10 +5,11 @@ import { isLocale } from "@/lib/i18n";
 // grava a escolha no cookie NEXT_LOCALE. Aqui só tratamos URLs antigas com
 // prefixo (/pt, /en, /en/trabalhos…) para não quebrar links e SEO existentes:
 // gravamos o cookie e redirecionamos para o caminho plano.
-// Renomeamos as rotas: /trabalhos → /portfolio, /trabalhos/x → /projeto/x,
-// /contato → /#contato (o contato agora vive no rodapé).
+// Renomeamos as rotas: /trabalhos/x → /projeto/x, /contato → /#contato (o
+// contato agora vive no rodapé). O portfólio é a página de apresentações:
+// /portfolio e /trabalhos vão para /apresentacoes.
 function renameLegacyPath(pathname: string): string | null {
-  if (pathname === "/trabalhos") return "/portfolio";
+  if (pathname === "/trabalhos" || pathname === "/portfolio") return "/apresentacoes";
   const m = pathname.match(/^\/trabalhos\/(.+)$/);
   if (m) return `/projeto/${m[1]}`;
   if (pathname === "/contato") return "/#contato";

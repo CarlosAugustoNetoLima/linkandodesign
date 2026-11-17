@@ -1,3 +1,4 @@
+import OpenChatLink from "@/components/agent/OpenChatLink";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 // Acordeão em <details>/<summary>: acessível por teclado e leitor de tela sem
@@ -6,12 +7,21 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 export default function Faq({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).home.faq;
 
+  // Pergunta fora da lista: abre o chat. Mesmo bloco em dois lugares, um por breakpoint.
+  const ask = (
+    <>
+      <p className="text-sm text-muted">{t.more}</p>
+      <OpenChatLink className="btn-brut-ghost mt-3">{t.cta} →</OpenChatLink>
+    </>
+  );
+
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 md:py-24">
       <div className="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
         <div>
           <p className="label">[{t.label}]</p>
           <h2 className="mt-4 font-display text-h2 font-extrabold uppercase">{t.title}</h2>
+          <div className="mt-8 hidden md:block">{ask}</div>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -32,6 +42,7 @@ export default function Faq({ locale }: { locale: Locale }) {
               </p>
             </details>
           ))}
+          <div className="mt-4 md:hidden">{ask}</div>
         </div>
       </div>
     </section>

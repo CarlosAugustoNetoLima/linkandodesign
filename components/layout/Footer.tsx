@@ -34,7 +34,7 @@ export default function Footer({ locale }: { locale: Locale }) {
 
           <nav aria-label={t.nav} className="flex flex-wrap gap-x-6 gap-y-2">
             <Link
-              href="/portfolio"
+              href="/apresentacoes"
               className="link-brut font-mono text-xs uppercase tracking-widest text-white/60 hover:text-lime"
             >
               {dict.nav.portfolio}

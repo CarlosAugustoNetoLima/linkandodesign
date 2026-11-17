@@ -1,0 +1,723 @@
+{
+  "site": "stationone",
+  "url": "http://127.0.0.1:8020/?_now=2026-10-01",
+  "outDir": "public/decks/stationone",
+  "scenes": [
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 13500
+        }
+      ]
+    },
+    {
+      "name": "hero-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1016,
+            "y": 437
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "click",
+          "x": 884,
+          "y": 731
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "x": 884,
+          "y": 731
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "x": 833,
+          "y": 731
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "x": 1198,
+          "y": 731
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "x": 1198,
+          "y": 731
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        }
+      ]
+    },
+    {
+      "name": "agenda-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 330
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 470
+          },
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 520,
+            "y": 610
+          },
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "cartazes-hd",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetVh": -0.7
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1420,
+            "y": 450
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetPx": 380
+          },
+          "ms": 4800
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetVh": -0.7
+          },
+          "ms": 3200
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "manifesto-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#manifesto",
+            "at": "top",
+            "offsetVh": -0.95
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#manifesto",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 5200
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#industria",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "compra-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/eventos/the-calling-tour-portugal-2027?_now=2026-10-01"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#datas",
+            "at": "top",
+            "offsetPx": 300
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".date-cards [data-checkout]",
+          "nth": 0
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 780
+          },
+          "ms": 1400
+        },
+        {
+          "op": "wait",
+          "ms": 4600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 373,
+            "y": 440
+          },
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 200,
+            "y": 450
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 330,
+            "y": 560
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 420
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 373,
+            "y": 440
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 373,
+          "y": 440
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1197,
+            "y": 37
+          },
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "x": 1197,
+          "y": 37
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 420
+          },
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "sobre-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/sobre?_now=2026-10-01"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 760
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5200
+        },
+        {
+          "op": "scroll",
+          "to": 700,
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "scroll",
+          "to": 1500,
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        }
+      ]
+    },
+    {
+      "name": "404-desktop",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/nao-existe?_now=2026-10-01"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 220
+          },
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 520
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 600
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 240,
+            "y": 560
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 640,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 420,
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": "[data-deck-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "scroll",
+          "to": 1500,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ProjectMotionCard from "@/components/ui/ProjectMotionCard";
+import ProjectCoverCard from "@/components/ui/ProjectCoverCard";
 import MotionPair from "@/components/ui/MotionPair";
 import Reveal from "@/components/motion/Reveal";
 import { getDictionary } from "@/lib/i18n";
@@ -37,7 +37,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
     <>
       {/* Cabeçalho do projeto */}
       <section className="mx-auto max-w-7xl px-5 pb-12 pt-10 md:pt-16">
-        <Link href="/portfolio" className="link-brut font-mono text-xs uppercase tracking-widest">
+        <Link href="/apresentacoes" className="link-brut font-mono text-xs uppercase tracking-widest">
           ← {t.back}
         </Link>
 
@@ -241,9 +241,9 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
       {/* CTA de fechamento */}
       <section className="mx-auto max-w-7xl px-5 py-14 md:py-20">
         <div className="flex flex-wrap items-center gap-5">
-          {/* prefere o mirror local (subpasta em public/) quando existir */}
+          {/* Link para ver o projeto ao vivo/real em nova guia */}
           <a
-            href={p.liveLocal ?? p.url}
+            href={p.url}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-brut"
@@ -265,17 +265,26 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
       <section className="mx-auto max-w-7xl px-5 pb-16">
         <p className="label">[{t.next}]</p>
         <div className="mt-8">
-          <ProjectMotionCard
-            slug={next.motion.base}
+          <ProjectCoverCard
+            slug={next.slug}
             name={next.name}
-            url={next.url.replace(/^https?:\/\//, "")}
+            href={`/projeto/${next.slug}`}
+            cover={
+              next.slug === "yanns"
+                ? "/projects/yanns-cover.webp"
+                : next.slug === "festival-crato"
+                ? "/projects/festivalcrato-cover.webp"
+                : next.slug === "wauw"
+                ? "/projects/wauw-cover.webp"
+                : next.slug === "jsynq"
+                ? "/projects/jsynq-cover.webp"
+                : `/projects/${next.slug}-cover.webp`
+            }
             year={next.year}
             flag={next.flag}
             summary={next.context}
             tags={next.tags}
-            href={`/projeto/${next.slug}`}
             caseLabel={dict.home.featured.case}
-            devices={dict.project}
           />
         </div>
       </section>

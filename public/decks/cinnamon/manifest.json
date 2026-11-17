@@ -1,0 +1,122 @@
+{
+  "site": "cinnamon",
+  "files": [
+    {
+      "name": "hero-desktop",
+      "device": "desktop",
+      "file": "hero-desktop.mp4",
+      "poster": "hero-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 12.33,
+      "bytes": 1649923,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 28.49
+    },
+    {
+      "name": "preloader-desktop",
+      "device": "desktop",
+      "file": "preloader-desktop.mp4",
+      "poster": "preloader-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 8.37,
+      "bytes": 165877,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 38.12
+    },
+    {
+      "name": "studio-desktop",
+      "device": "desktop",
+      "file": "studio-desktop.mp4",
+      "poster": "studio-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 11.03,
+      "bytes": 1486098,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 45.82
+    },
+    {
+      "name": "tour-desktop",
+      "device": "desktop",
+      "file": "tour-desktop.mp4",
+      "poster": "tour-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 13.5,
+      "bytes": 1354664,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 17.18
+    },
+    {
+      "name": "fachada-desktop",
+      "device": "desktop",
+      "file": "fachada-desktop.mp4",
+      "poster": "fachada-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 10.7,
+      "bytes": 1148832,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 32.85
+    },
+    {
+      "name": "finale-desktop",
+      "device": "desktop",
+      "file": "finale-desktop.mp4",
+      "poster": "finale-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 9,
+      "bytes": 533653,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 39.82
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "file": "hero-mobile.mp4",
+      "poster": "hero-mobile.jpg",
+      "width": 520,
+      "height": 1126,
+      "seconds": 10.17,
+      "bytes": 935187,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 55.79
+    },
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "file": "hero-top-desktop.mp4",
+      "poster": "hero-top-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 7.7,
+      "bytes": 84874,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 45.34
+    },
+    {
+      "name": "menu-paginas-desktop",
+      "device": "desktop",
+      "file": "menu-paginas-desktop.mp4",
+      "poster": "menu-paginas-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 35.4,
+      "bytes": 2046151,
+      "crf": 28,
+      "modo": "gpu+concat",
+      "fps": 30
+    }
+  ]
+}

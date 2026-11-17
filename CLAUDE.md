@@ -38,6 +38,21 @@ Arquivo: `public/logo.svg`
 
 ---
 
+## Fluxo de design
+
+Ao criar, redesenhar ou ajustar o visual de qualquer interface, siga a skill **`linkando-design-flow`** (`.claude/skills/linkando-design-flow/`): brief → marca → estilo de referência → taste-skill → `copywriting` (texto novo ou reescrito) → `executor` → verificação.
+
+Quando duas fontes discordam, vence a de cima:
+1. Este `CLAUDE.md` (cores, tipografia, logo, conteúdo, i18n)
+2. Skills do projeto: `add-portfolio-project`, `build-site-deck`
+3. `taste-skill:design-taste-frontend` e `copywriting` (texto de página; o texto fixado neste arquivo só muda se o Carlos pedir)
+4. Estilos Awesome Design — só referência de grid, hierarquia, escala tipográfica e estados; nunca de paleta ou fonte
+5. Verificadores: `web-design-guidelines`, `design:accessibility-review`
+
+Estilos ativos no automático: `editorial`, `bold`, `power`, `premium`, `minimal`, `neobrutalism`. Os outros 61 só rodam se o Carlos chamar com `/nome`.
+
+---
+
 ## Stack Técnica
 
 ```
@@ -164,6 +179,10 @@ CTA: `Iniciar projeto →`
 - **Contexto:** Site desenvolvido pelo estúdio.
 - **Tags:** Site · UI/UX
 
+### Novo projeto no portfólio
+
+Todo projeto novo entra como deck (`lib/decks/`), pela skill **`add-portfolio-project`**: o card ganha a **vitrine** (o site em ação: efeitos, interações e a página rolando), a apresentação completa em `/apresentacoes/<slug>`, o registro em `lib/decks/index.ts` e a verificação com `node scripts/deck/check-standard.mjs <slug> --net`. Não use `lib/projects.ts` para projetos novos.
+
 ### Processo de Trabalho
 
 ```
@@ -198,9 +217,9 @@ Cor do texto: `#EEFB6E` sobre `#27272B`. Velocidade moderada, pausa no hover.
 
 ### Agente Comercial IA
 
-Chat flutuante no canto inferior direito. Conversa de verdade via **API da Claude** (`app/api/chat/route.ts`, modelo `claude-opus-4-8`, streaming) com system prompt comercial: qualifica o lead (tipo de projeto, prazo, orçamento), cita cases relevantes e conduz ao WhatsApp/formulário. Conhece a tabela de preços/prazos e não inventa valores.
+Chat flutuante no canto inferior direito, aberto pelos botões "Solicitar diagnóstico". A IA conduz o **diagnóstico** inteiro (`app/api/chat/route.ts` + prompt em `lib/chat-context.ts`): entende o projeto, pede nome e e-mail no meio da conversa, resume, confirma e fecha avisando que a proposta chega por e-mail em até 24h; a conversa vai ao time por `/api/chat/lead`. Cita os cases (os 8 decks de `/apresentacoes`), conhece a tabela de preços/prazos, não inventa valores nem fatos do estúdio, não promete resultado, data ou desconto e tem piso de R$ 1.500. O formulário `/briefing` é a alternativa. Fluxo, regras, travas e como testar: `docs/chat-diagnostico.md`.
 
-Requer `ANTHROPIC_API_KEY` em `.env.local` (ver `.env.local.example`). **Fallback:** sem chave (ou com a API fora do ar), o chat usa as respostas roteirizadas abaixo em JavaScript puro — o site nunca quebra.
+Provedores (ver `.env.local.example`): **Gemini no plano gratuito** primeiro (`GEMINI_API_KEY`), **Claude** opcional (`ANTHROPIC_API_KEY`, modelo em `ANTHROPIC_MODEL`, padrão `claude-sonnet-5-5`; `CHAT_PROVIDER=claude` o coloca como primeiro). **Fallback:** sem chave (ou com as APIs fora do ar), o chat usa as respostas roteirizadas abaixo em JavaScript puro — o site nunca quebra.
 
 **Fluxo do agente:**
 ```

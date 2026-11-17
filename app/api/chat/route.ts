@@ -1,15 +1,29 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { buildSystemPrompt } from "@/lib/chat-context";
+import {
+  buildSystemPrompt,
+  conversationState,
+  repairReply,
+  validateReply,
+  type ReplyIssue,
+} from "@/lib/chat-context";
 import { isLocale, type Locale } from "@/lib/i18n";
 
 export const runtime = "nodejs";
+// o diagnóstico pode precisar de até 3 tentativas (ver POST): mais que os 10s padrão
+export const maxDuration = 40;
 
-// Assistente comercial do site. Ordem de provedores (ver .env.local.example):
+// Assistente do site (conduz o diagnóstico). A resposta é gerada INTEIRA antes de
+// ser enviada: se o modelo gratuito cortar no meio (MAX_TOKENS, timeout, sem
+// STOP), tenta de novo em vez de mostrar uma frase pela metade. Isso importa na
+// mensagem de fechamento, onde está o marcador que dispara o envio ao time.
+// Ordem de provedores (ver .env.local.example):
 //   1. Gemini no plano gratuito do Google AI Studio (GEMINI_API_KEY)
 //      modelo principal  GEMINI_MODEL  (padrão gemini-3.5-flash-lite)
 //      se demorar, esgotar a cota (429) ou falhar → gemini-3.6-flash
 //      (cada modelo tem cota própria: o reserva dobra a cota gratuita)
-//   2. Claude (ANTHROPIC_API_KEY), opcional, só se existir a chave
+//   2. Claude (ANTHROPIC_API_KEY), opcional, só se existir a chave; modelo em
+//      ANTHROPIC_MODEL (padrão claude-sonnet-5-5). Com CHAT_PROVIDER=claude ele
+//      passa a ser o PRIMEIRO e o Gemini vira reserva.
 //   3. nada configurado/disponível → 503, e o ChatAgent usa o script offline
 //
 // Escolha do modelo: latência manda em chat. Medido no plano gratuito, com
@@ -29,7 +43,14 @@ const GEMINI_BASE = process.env.GEMINI_BASE_URL || "https://generativelanguage.g
 const GEMINI_MODELS = [process.env.GEMINI_MODEL || "gemini-3.5-flash-lite", "gemini-3.6-flash"].filter(
   (m, i, all) => all.indexOf(m) === i,
 );
-const MAX_TOKENS = 1024; // com folga: tokens de raciocínio contam neste limite
+// Tempo máximo até o 1º trecho: o principal costuma responder em 0,7–2s, mas
+// no plano gratuito já passou de 9s; o reserva é mais lento e ganha mais folga.
+const GEMINI_TIMEOUTS_MS = [8_000, 14_000];
+const CLAUDE_MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
+// Com folga: os tokens de raciocínio contam neste limite. Com 1024, o flash-lite
+// chegou a gastar quase tudo pensando e cortar a resposta em ~150 caracteres
+// (finishReason MAX_TOKENS), por isso o limite é alto: só o teto, não a duração.
+const MAX_TOKENS = 3072;
 
 // anti-abuso simples, por instância: 30 mensagens por 10 min por IP.
 // Protege a cota gratuita (que é por projeto, não por visitante).
@@ -44,7 +65,13 @@ function tooMany(ip: string) {
 
 // Abre o stream do Gemini. Devolve a Response só se estiver ok, para o chamador
 // poder cair no próximo modelo antes de começar a responder ao visitante.
-async function openGemini(model: string, system: string, history: Turn[], apiKey: string) {
+async function openGemini(
+  model: string,
+  system: string,
+  history: Turn[],
+  apiKey: string,
+  timeoutMs: number,
+) {
   const body = (withThinking: boolean) =>
     JSON.stringify({
       systemInstruction: { parts: [{ text: system }] },
@@ -69,20 +96,30 @@ async function openGemini(model: string, system: string, history: Turn[], apiKey
       body: body(withThinking),
       // o stream só abre quando o modelo começa a responder: se demorar, passa
       // para o próximo modelo em vez de deixar o visitante olhando o "digitando…"
-      signal: AbortSignal.timeout(7_000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
 
   let res = await call(true);
   // alguns modelos não aceitam thinkingLevel: tenta de novo sem o campo
   if (res.status === 400) res = await call(false);
+  // 503 = modelo sobrecarregado, quase sempre passa na segunda tentativa
+  if (res.status === 503) {
+    await new Promise((r) => setTimeout(r, 500));
+    res = await call(true);
+  }
+  if (!res.ok) console.warn(`[chat] ${model} respondeu ${res.status}`);
   return res.ok && res.body ? res : null;
 }
 
-// SSE do Gemini → só os pedaços de texto (ignora partes de "thought")
+// SSE do Gemini → só os pedaços de texto (ignora partes de "thought").
+// O último trecho traz finishReason "STOP". Se o stream acabar sem ele (corte no
+// meio da frase, limite de tokens, filtro), lança erro: o POST então avisa o
+// visitante em vez de deixar uma frase pela metade parecer resposta completa.
 async function* geminiText(res: Response): AsyncGenerator<string> {
   const reader = res.body!.getReader();
   const decoder = new TextDecoder();
   let buf = "";
+  let finish: string | null = null;
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
@@ -94,7 +131,9 @@ async function* geminiText(res: Response): AsyncGenerator<string> {
       if (!line.startsWith("data:")) continue;
       try {
         const json = JSON.parse(line.slice(5).trim());
-        for (const part of json.candidates?.[0]?.content?.parts ?? []) {
+        const cand = json.candidates?.[0];
+        if (typeof cand?.finishReason === "string") finish = cand.finishReason;
+        for (const part of cand?.content?.parts ?? []) {
           if (typeof part.text === "string" && !part.thought) yield part.text;
         }
       } catch {
@@ -102,12 +141,13 @@ async function* geminiText(res: Response): AsyncGenerator<string> {
       }
     }
   }
+  if (finish !== "STOP") throw new Error(`gemini terminou sem STOP (${finish ?? "sem finishReason"})`);
 }
 
 async function* claudeText(system: string, history: Turn[]): AsyncGenerator<string> {
-  const stream = new Anthropic().messages.stream({
-    model: "claude-opus-4-8",
-    max_tokens: 600,
+  const stream = new Anthropic({ timeout: 15_000, maxRetries: 1 }).messages.stream({
+    model: CLAUDE_MODEL,
+    max_tokens: 1024,
     system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],
     messages: history,
   });
@@ -116,6 +156,13 @@ async function* claudeText(system: string, history: Turn[]): AsyncGenerator<stri
       yield event.delta.text;
     }
   }
+}
+
+// Consome o gerador até o fim: devolve a resposta completa ou lança se o stream morrer.
+async function collect(gen: AsyncGenerator<string>): Promise<string> {
+  let out = "";
+  for await (const part of gen) out += part;
+  return out;
 }
 
 export async function POST(req: Request) {
@@ -131,7 +178,7 @@ export async function POST(req: Request) {
 
   const locale: Locale = typeof body.locale === "string" && isLocale(body.locale) ? body.locale : "pt";
 
-  const history: Turn[] = (Array.isArray(body.messages) ? body.messages : [])
+  const cleaned: Turn[] = (Array.isArray(body.messages) ? body.messages : [])
     .filter(
       (m): m is IncomingMessage =>
         !!m &&
@@ -139,8 +186,9 @@ export async function POST(req: Request) {
         typeof m.content === "string" &&
         m.content.trim().length > 0,
     )
-    .slice(-24)
     .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
+  // o modelo vê só as últimas 24 mensagens, mas o estado da conversa conta todas
+  const history = cleaned.slice(-24);
 
   // A conversa precisa começar com uma mensagem do visitante
   while (history.length > 0 && history[0].role !== "user") history.shift();
@@ -148,56 +196,75 @@ export async function POST(req: Request) {
     return new Response("Nenhuma mensagem do usuário", { status: 400 });
   }
 
-  const system = buildSystemPrompt(locale);
-  let source: AsyncGenerator<string> | null = null;
+  const state = conversationState(cleaned);
+  const visitorText = cleaned
+    .filter((m) => m.role === "user")
+    .map((m) => m.content)
+    .join("\n");
+  const system = buildSystemPrompt(locale, state);
+  const apiKey = process.env.GEMINI_API_KEY;
+  const claudeFirst = Boolean(process.env.ANTHROPIC_API_KEY) && process.env.CHAT_PROVIDER === "claude";
+  const claudeLast = Boolean(process.env.ANTHROPIC_API_KEY) && !claudeFirst;
 
-  if (process.env.GEMINI_API_KEY) {
-    for (const model of GEMINI_MODELS) {
-      try {
-        const res = await openGemini(model, system, history, process.env.GEMINI_API_KEY);
-        if (res) {
-          source = geminiText(res);
-          break;
-        }
-        console.warn(`[chat] ${model} indisponível, tentando o próximo`);
-      } catch (err) {
-        console.warn(`[chat] ${model} falhou:`, err);
-      }
-    }
-  }
-  if (!source && process.env.ANTHROPIC_API_KEY) source = claudeText(system, history);
-  if (!source) return new Response("Agente IA indisponível", { status: 503 });
-
-  const gen = source;
-  const encoder = new TextEncoder();
-  const apology =
-    locale === "en"
-      ? "\n\nI had a connection problem just now. You can reach us through the briefing page (/briefing) instead."
-      : "\n\nTive um problema de conexão agora. Pode seguir pela página de briefing (/briefing) que a gente responde em até 24h.";
-
-  let sent = 0;
-  const readable = new ReadableStream({
-    async start(controller) {
-      try {
-        for await (const text of gen) {
-          sent += text.length;
-          controller.enqueue(encoder.encode(text));
-        }
-        // resposta vazia (ex.: raciocínio estourou o limite): erro para o
-        // cliente cair no script offline em vez de mostrar balão vazio
-        if (sent === 0) controller.error(new Error("empty"));
-        else controller.close();
-      } catch {
-        if (sent === 0) controller.error(new Error("failed"));
-        else {
-          controller.enqueue(encoder.encode(apology));
-          controller.close();
-        }
-      }
+  // Candidatos em ordem. Cada um devolve a resposta COMPLETA ou lança.
+  const attempts: { name: string; run: (sys: string) => Promise<string> }[] = [];
+  const claude = { name: "claude", run: (sys: string) => collect(claudeText(sys, history)) };
+  const gemini = (i: number) => ({
+    name: GEMINI_MODELS[i],
+    run: async (sys: string) => {
+      const res = await openGemini(
+        GEMINI_MODELS[i],
+        sys,
+        history,
+        apiKey!,
+        GEMINI_TIMEOUTS_MS[i] ?? GEMINI_TIMEOUTS_MS[GEMINI_TIMEOUTS_MS.length - 1],
+      );
+      if (!res) throw new Error("indisponível");
+      return collect(geminiText(res));
     },
   });
+  if (claudeFirst) attempts.push(claude);
+  if (apiKey) {
+    for (let i = 0; i < GEMINI_MODELS.length; i++) attempts.push(gemini(i));
+    // a falha mais comum no plano gratuito é um corte aleatório, que quase sempre
+    // passa na repetição: o principal ganha uma segunda chance no fim da fila
+    attempts.push(gemini(0));
+  }
+  if (claudeLast) attempts.push(claude);
 
-  return new Response(readable, {
+  // limite de tempo total: o visitante não espera para sempre (maxDuration = 40s)
+  const deadline = Date.now() + 32_000;
+  let text = "";
+  let rejected: { text: string; issue: ReplyIssue } | null = null; // última resposta reprovada pela trava
+  let correction = "";
+  for (const attempt of attempts) {
+    if (Date.now() > deadline) break;
+    try {
+      const out = (await attempt.run(system + correction)).trim();
+      if (!out) {
+        console.warn(`[chat] ${attempt.name} devolveu resposta vazia`);
+        continue;
+      }
+      // trava de qualidade: reprovou, o próximo candidato refaz com a razão no prompt
+      const problem = validateReply(out, locale, state, visitorText);
+      if (!problem) {
+        text = out;
+        break;
+      }
+      console.warn(`[chat] ${attempt.name} reprovada (${problem.code})`);
+      rejected = { text: out, issue: problem };
+      correction = `\n\n## CORREÇÃO OBRIGATÓRIA (sua resposta anterior foi rejeitada)\n${problem.message}`;
+    } catch (err) {
+      console.warn(`[chat] ${attempt.name} falhou:`, err instanceof Error ? err.message : err);
+    }
+  }
+  // reprovada em todas as tentativas: o servidor conserta a resposta (ver repairReply)
+  if (!text && rejected) text = repairReply(rejected.text, rejected.issue, locale, state);
+
+  // tudo falhou: 503, e o ChatAgent responde com o script offline
+  if (!text) return new Response("Agente IA indisponível", { status: 503 });
+
+  return new Response(text, {
     headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
   });
 }

@@ -1,0 +1,818 @@
+{
+ "site": "tickett",
+ "url": "https://tickett-linkando.vercel.app/pt-PT",
+ "outDir": "public/decks/tickett",
+ "cookies": [
+  {
+   "name": "tkt_consent",
+   "value": "essential",
+   "url": "https://tickett-linkando.vercel.app"
+  },
+  {
+   "name": "tkt_consent",
+   "value": "essential",
+   "url": "http://localhost:3000"
+  }
+ ],
+ "scenes": [
+  {
+   "name": "hero-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 2500
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 13500
+    }
+   ]
+  },
+  {
+   "name": "carousel-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 2500
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 2800
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Pausar destaques\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 1800
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Seguinte\"]",
+     "nth": 0
+    },
+    {
+     "op": "wait",
+     "ms": 1400
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Seguinte\"]",
+     "nth": 0
+    },
+    {
+     "op": "wait",
+     "ms": 1400
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Anterior\"]",
+     "nth": 0
+    },
+    {
+     "op": "wait",
+     "ms": 1200
+    },
+    {
+     "op": "click",
+     "x": 1027,
+     "y": 419
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 640,
+      "y": 700
+     },
+     "ms": 700
+    },
+    {
+     "op": "wait",
+     "ms": 3000
+    }
+   ]
+  },
+  {
+   "name": "top10-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 2500
+    },
+    {
+     "op": "scroll",
+     "to": 440,
+     "ms": 0
+    },
+    {
+     "op": "wait",
+     "ms": 900
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "a[href*=\"/event/\"]",
+     "ms": 1100
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Seguinte\"]",
+     "nth": 1
+    },
+    {
+     "op": "wait",
+     "ms": 1000
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Seguinte\"]",
+     "nth": 1
+    },
+    {
+     "op": "wait",
+     "ms": 1000
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Seguinte\"]",
+     "nth": 1
+    },
+    {
+     "op": "wait",
+     "ms": 1100
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Anterior\"]",
+     "nth": 1
+    },
+    {
+     "op": "wait",
+     "ms": 1000
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-label=\"Anterior\"]",
+     "nth": 1
+    },
+    {
+     "op": "wait",
+     "ms": 1200
+    }
+   ]
+  },
+  {
+   "name": "bento-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 2500
+    },
+    {
+     "op": "scroll",
+     "to": 1000,
+     "ms": 0
+    },
+    {
+     "op": "wait",
+     "ms": 800
+    }
+   ],
+   "record": [
+    {
+     "op": "scroll",
+     "to": 1400,
+     "ms": 2200
+    },
+    {
+     "op": "wait",
+     "ms": 1200
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 330,
+      "y": 460
+     },
+     "ms": 900
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 940,
+      "y": 470
+     },
+     "ms": 1400
+    },
+    {
+     "op": "scroll",
+     "to": 2050,
+     "ms": 2600
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 420,
+      "y": 400
+     },
+     "ms": 1000
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 900,
+      "y": 520
+     },
+     "ms": 1300
+    },
+    {
+     "op": "scroll",
+     "to": 2800,
+     "ms": 2600
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 640,
+      "y": 420
+     },
+     "ms": 1000
+    },
+    {
+     "op": "wait",
+     "ms": 600
+    }
+   ]
+  },
+  {
+   "name": "venda-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto",
+     "url": "http://localhost:3000/pt-PT/venda"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}"
+    },
+    {
+     "op": "waitFor",
+     "selector": "#promotor-nome",
+     "timeout": 30000
+    },
+    {
+     "op": "wait",
+     "ms": 1200
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 700
+    },
+    {
+     "op": "click",
+     "selector": "button[class*=\"Button_button\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 1600
+    },
+    {
+     "op": "click",
+     "selector": "#promotor-nome"
+    },
+    {
+     "op": "type",
+     "text": "Teste Tickett",
+     "delay": 55
+    },
+    {
+     "op": "click",
+     "selector": "#promotor-entidade"
+    },
+    {
+     "op": "type",
+     "text": "Empresa Teste",
+     "delay": 55
+    },
+    {
+     "op": "click",
+     "selector": "#promotor-nif"
+    },
+    {
+     "op": "type",
+     "text": "123456789",
+     "delay": 55
+    },
+    {
+     "op": "click",
+     "selector": "#promotor-email"
+    },
+    {
+     "op": "type",
+     "text": "teste@exemplo.pt",
+     "delay": 50
+    },
+    {
+     "op": "click",
+     "selector": "#promotor-telefone"
+    },
+    {
+     "op": "type",
+     "text": "912345678",
+     "delay": 55
+    },
+    {
+     "op": "wait",
+     "ms": 500
+    },
+    {
+     "op": "click",
+     "selector": "button[class*=\"Button_button\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 2200
+    },
+    {
+     "op": "scroll",
+     "to": 380,
+     "ms": 1600
+    },
+    {
+     "op": "wait",
+     "ms": 1000
+    }
+   ]
+  },
+  {
+   "name": "hero-mobile",
+   "device": "mobile",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 2500
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 6800
+    },
+    {
+     "op": "scroll",
+     "to": 520,
+     "ms": 2200
+    },
+    {
+     "op": "wait",
+     "ms": 600
+    },
+    {
+     "op": "scroll",
+     "to": 0,
+     "ms": 2000
+    },
+    {
+     "op": "wait",
+     "ms": 1200
+    }
+   ]
+  },
+  {
+   "name": "idioma-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "css",
+     "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 3500
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 640,
+      "y": 600
+     },
+     "ms": 0
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "click",
+     "selector": "header button[aria-expanded][aria-controls]"
+    },
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "button[lang=\"en-GB\"]",
+     "ms": 700
+    },
+    {
+     "op": "click",
+     "selector": "button[lang=\"en-GB\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 2600
+    },
+    {
+     "op": "click",
+     "selector": "header button[aria-expanded][aria-controls]"
+    },
+    {
+     "op": "wait",
+     "ms": 700
+    },
+    {
+     "op": "hover",
+     "selector": "button[lang=\"es\"]",
+     "ms": 600
+    },
+    {
+     "op": "click",
+     "selector": "button[lang=\"es\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 2300
+    },
+    {
+     "op": "click",
+     "selector": "header button[aria-expanded][aria-controls]"
+    },
+    {
+     "op": "wait",
+     "ms": 700
+    },
+    {
+     "op": "hover",
+     "selector": "button[lang=\"fr\"]",
+     "ms": 600
+    },
+    {
+     "op": "click",
+     "selector": "button[lang=\"fr\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 2300
+    },
+    {
+     "op": "click",
+     "selector": "header button[aria-expanded][aria-controls]"
+    },
+    {
+     "op": "wait",
+     "ms": 700
+    },
+    {
+     "op": "hover",
+     "selector": "button[lang=\"pt-PT\"]",
+     "ms": 600
+    },
+    {
+     "op": "click",
+     "selector": "button[lang=\"pt-PT\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 2000
+    }
+   ]
+  },
+  {
+   "name": "cookies-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 3500
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 300,
+      "y": 300
+     },
+     "ms": 0
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 1600
+    },
+    {
+     "op": "hover",
+     "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
+     "nth": 0,
+     "ms": 1100
+    },
+    {
+     "op": "hover",
+     "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
+     "nth": 1,
+     "ms": 1100
+    },
+    {
+     "op": "click",
+     "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
+     "nth": 0
+    },
+    {
+     "op": "wait",
+     "ms": 1500
+    },
+    {
+     "op": "scroll",
+     "to": {
+      "selector": "footer",
+      "at": "top",
+      "offsetVh": -0.35
+     },
+     "ms": 2200
+    },
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "button:has-text(\"Definições de cookies\")",
+     "ms": 700
+    },
+    {
+     "op": "click",
+     "selector": "button:has-text(\"Definições de cookies\")"
+    },
+    {
+     "op": "wait",
+     "ms": 2400
+    }
+   ],
+   "noCookies": true
+  },
+  {
+   "name": "alertas-desktop",
+   "device": "desktop",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "css",
+     "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 3500
+    },
+    {
+     "op": "scroll",
+     "to": {
+      "selector": "[class*=\"AlertasWhatsapp-module\"][class*=\"__section\"]",
+      "at": "top",
+      "offsetVh": -0.28
+     },
+     "ms": 0
+    },
+    {
+     "op": "wait",
+     "ms": 1500
+    },
+    {
+     "op": "move",
+     "to": {
+      "x": 120,
+      "y": 740
+     },
+     "ms": 0
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 1200
+    },
+    {
+     "op": "click",
+     "selector": "section[class*=\"AlertasWhatsapp-module\"] input"
+    },
+    {
+     "op": "type",
+     "text": "pedro@",
+     "delay": 120
+    },
+    {
+     "op": "wait",
+     "ms": 700
+    },
+    {
+     "op": "click",
+     "selector": "section[class*=\"AlertasWhatsapp-module\"] button[type=\"submit\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 2000
+    },
+    {
+     "op": "scroll",
+     "to": {
+      "selector": "[class*=\"Promotor-module\"][class*=\"__section\"]",
+      "at": "top",
+      "offsetVh": -0.2
+     },
+     "ms": 1700
+    },
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+     "nth": 0,
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+     "nth": 1,
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+     "nth": 2,
+     "ms": 900
+    },
+    {
+     "op": "hover",
+     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+     "nth": 3,
+     "ms": 900
+    },
+    {
+     "op": "wait",
+     "ms": 600
+    }
+   ]
+  },
+  {
+   "name": "menu-mobile",
+   "device": "mobile",
+   "setup": [
+    {
+     "op": "goto"
+    },
+    {
+     "op": "css",
+     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+    },
+    {
+     "op": "css",
+     "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+    },
+    {
+     "op": "wait",
+     "ms": 3500
+    }
+   ],
+   "record": [
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-controls=\"mobile-menu\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 1800
+    },
+    {
+     "op": "click",
+     "selector": "#mobile-menu button[aria-expanded]"
+    },
+    {
+     "op": "wait",
+     "ms": 1800
+    },
+    {
+     "op": "press",
+     "key": "Escape"
+    },
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-controls=\"mobile-search\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 900
+    },
+    {
+     "op": "type",
+     "text": "rock",
+     "delay": 150
+    },
+    {
+     "op": "wait",
+     "ms": 1700
+    },
+    {
+     "op": "click",
+     "selector": "button[aria-controls=\"mobile-search\"]"
+    },
+    {
+     "op": "wait",
+     "ms": 1200
+    }
+   ]
+  }
+ ]
+}

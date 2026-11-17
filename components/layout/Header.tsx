@@ -6,6 +6,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import OpenChatLink from "@/components/agent/OpenChatLink";
 
 // Header glass: translúcido com blur sobre o conteúdo que passa por baixo.
 export default function Header({ locale }: { locale: Locale }) {
@@ -14,8 +15,10 @@ export default function Header({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
 
   const links = [
-    { href: "/portfolio", label: dict.nav.portfolio },
+    { href: "/", label: dict.nav.home },
+    { href: "/apresentacoes", label: dict.nav.portfolio },
     { href: "/sobre", label: dict.nav.about },
+    { href: "/briefing", label: (dict.nav as any).briefing || "Briefing" },
   ];
 
   return (
@@ -40,7 +43,10 @@ export default function Header({ locale }: { locale: Locale }) {
                 key={l.href}
                 href={l.href}
                 className={`label link-brut transition-opacity ${
-                  pathname.startsWith(l.href) ? "" : "opacity-60 hover:opacity-100"
+                  // "/" é prefixo de toda rota: o início só fica ativo na própria home
+                  (l.href === "/" ? pathname === "/" : pathname.startsWith(l.href))
+                    ? ""
+                    : "opacity-60 hover:opacity-100"
                 }`}
               >
                 {l.label}
@@ -51,9 +57,9 @@ export default function Header({ locale }: { locale: Locale }) {
           <div className="flex items-center gap-4">
             <LanguageSwitcher locale={locale} />
 
-            <Link href="/briefing" className="btn-brut px-5 py-2.5 text-sm">
+            <OpenChatLink className="btn-brut px-5 py-2.5 text-sm">
               {dict.nav.cta}
-            </Link>
+            </OpenChatLink>
           </div>
         </nav>
 
@@ -101,13 +107,12 @@ export default function Header({ locale }: { locale: Locale }) {
             <div className="py-4">
               <LanguageSwitcher locale={locale} />
             </div>
-            <Link
-              href="/briefing"
-              onClick={() => setOpen(false)}
+            <OpenChatLink
+              onOpen={() => setOpen(false)}
               className="btn-brut mb-2 text-center"
             >
               {dict.nav.cta}
-            </Link>
+            </OpenChatLink>
           </div>
         </nav>
       )}

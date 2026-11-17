@@ -1,0 +1,57 @@
+{
+  "_nota": "Modelo das gravações da vitrine (skill add-portfolio-project). Copie para scripts/deck/scenes/<site>.json, troque os <PLACEHOLDERS> e apague os campos _nota. Formato das ops: scripts/deck/README.md.",
+  "site": "<site>",
+  "url": "https://<site>-linkando.vercel.app/",
+  "outDir": "public/decks/<site>",
+  "cookies": [],
+  "scenes": [
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "_nota": "16-30 s. Atos: 1 abertura, 2 rolagem guiada (esperar 1,5 s em cada efeito), 3 interações (3-5, resultado >= 1,2 s), 4 volta ao topo. Os 7 primeiros segundos mostram o melhor.",
+      "setup": [
+        { "op": "goto" },
+        { "op": "css", "text": "<ESCONDER chat e banner de cookies, ex.: #chat-bubble{display:none!important}>" },
+        { "op": "wait", "ms": 3500 },
+        { "op": "move", "to": { "x": 640, "y": 420 }, "ms": 0 }
+      ],
+      "record": [
+        { "_nota": "ATO 1 · abertura: a animação de entrada do site", "op": "wait", "ms": 2500 },
+        { "op": "move", "to": { "x": 700, "y": 380 }, "ms": 700 },
+
+        { "_nota": "ATO 2 · rolagem guiada: uma linha scroll + wait por seção/efeito, na ordem do site", "op": "scroll", "to": { "selector": "<SECAO-2>", "at": "top", "offsetVh": -0.12 }, "ms": 2200 },
+        { "op": "wait", "ms": 1500 },
+        { "op": "scroll", "to": { "selector": "<SECAO-3>", "at": "top", "offsetVh": -0.12 }, "ms": 2200 },
+        { "op": "wait", "ms": 1500 },
+
+        { "_nota": "ATO 3 · interações: hover, clique, digitação, arrasto. Role o alvo para a vista antes (o clique é por coordenadas)", "op": "hover", "selector": "<CARD-OU-BOTAO>", "ms": 1300 },
+        { "op": "click", "selector": "<MENU-OU-ABA>" },
+        { "op": "wait", "ms": 1400 },
+        { "op": "press", "key": "Escape" },
+
+        { "_nota": "ATO 4 · volta ao topo: o último quadro deve parecer com o primeiro", "op": "scroll", "to": 0, "ms": 2600 },
+        { "op": "wait", "ms": 800 }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "_nota": "10-20 s. Mesmo roteiro, curto: abertura, rolagem pelas seções, menu aberto e fechado, 1 interação por toque. Nome fixo (hero-mobile): getShowcase() e o capítulo Celular procuram esse arquivo.",
+      "setup": [
+        { "op": "goto" },
+        { "op": "css", "text": "<ESCONDER chat e banner de cookies>" },
+        { "op": "wait", "ms": 3500 }
+      ],
+      "record": [
+        { "op": "wait", "ms": 2500 },
+        { "op": "scroll", "to": { "selector": "<SECAO-2>", "at": "top", "offsetVh": -0.1 }, "ms": 2000 },
+        { "op": "wait", "ms": 1200 },
+        { "op": "click", "selector": "<BOTAO-DO-MENU>" },
+        { "op": "wait", "ms": 1500 },
+        { "op": "click", "selector": "<BOTAO-DO-MENU>" },
+        { "op": "scroll", "to": 0, "ms": 2200 },
+        { "op": "wait", "ms": 800 }
+      ]
+    }
+  ]
+}

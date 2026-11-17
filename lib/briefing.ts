@@ -49,8 +49,8 @@ export const briefingCopy: Record<Locale, BriefingCopy> = {
   pt: {
     metaTitle: "Briefing — Linkando Design",
     label: "Briefing",
-    title: "Vamos criar o seu projeto juntos.",
-    text: "Conte o que você precisa em poucos minutos. Não precisa ter tudo definido: a gente responde em até 24h e desenha o melhor caminho com você.",
+    title: "Solicite o seu diagnóstico.",
+    text: "Responda em poucos minutos. Não precisa ter tudo definido: a gente analisa o seu caso e devolve o nosso retorno em até 24h, com o melhor caminho para o seu projeto.",
     services: {
       title: "O que você quer criar?",
       hint: "Pode escolher mais de um.",
@@ -96,7 +96,7 @@ export const briefingCopy: Record<Locale, BriefingCopy> = {
     },
     privacy: `Usamos estes dados só para responder ao seu pedido e preparar a proposta. Eles chegam por e-mail ao time da Linkando Design (${EMAIL}). Para corrigir ou apagar, escreva para esse endereço.`,
     steps: { next: "Continuar", back: "Voltar", step: "Etapa", of: "de" },
-    submit: "Enviar briefing",
+    submit: "Solicitar diagnóstico",
     sending: "Enviando…",
     errors: {
       services: "Escolha pelo menos um serviço.",
@@ -105,16 +105,16 @@ export const briefingCopy: Record<Locale, BriefingCopy> = {
       generic: `Não consegui enviar agora. Tente de novo em instantes ou escreva direto para ${EMAIL}.`,
     },
     success: {
-      title: "Briefing recebido.",
-      text: "Obrigado! Já avisamos o estúdio e você recebe nossa resposta em até 24h, no e-mail que informou.",
+      title: "Pedido recebido.",
+      text: "Obrigado! Já avisamos o estúdio e você recebe o nosso retorno em até 24h, no e-mail que informou.",
       home: "Voltar para o início",
     },
   },
   en: {
     metaTitle: "Briefing — Linkando Design",
     label: "Briefing",
-    title: "Let's create your project together.",
-    text: "Tell us what you need in a few minutes. You don't need everything figured out: we reply within 24 hours and shape the best path with you.",
+    title: "Request your diagnosis.",
+    text: "Answer a few questions, it takes a few minutes. You don't need everything figured out: we review your case and send our feedback within 24 hours, with the best path forward.",
     services: {
       title: "What do you want to create?",
       hint: "Pick as many as you like.",
@@ -160,7 +160,7 @@ export const briefingCopy: Record<Locale, BriefingCopy> = {
     },
     privacy: `We use this information only to reply to your request and prepare the proposal. It reaches the Linkando Design team by email (${EMAIL}). To correct or delete it, write to that address.`,
     steps: { next: "Continue", back: "Back", step: "Step", of: "of" },
-    submit: "Send briefing",
+    submit: "Request diagnosis",
     sending: "Sending…",
     errors: {
       services: "Pick at least one service.",
@@ -169,8 +169,8 @@ export const briefingCopy: Record<Locale, BriefingCopy> = {
       generic: `We couldn't send it right now. Please try again shortly or write to ${EMAIL}.`,
     },
     success: {
-      title: "Briefing received.",
-      text: "Thank you! The studio has been notified and you'll hear back within 24 hours, at the email you provided.",
+      title: "Request received.",
+      text: "Thank you! The studio has been notified and you'll get our feedback within 24 hours, at the email you provided.",
       home: "Back to home",
     },
   },

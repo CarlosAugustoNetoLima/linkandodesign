@@ -1,0 +1,918 @@
+{
+  "site": "yanns",
+  "url": "https://yanns-linkando.vercel.app/",
+  "outDir": "public/decks/yanns",
+  "scenes": [
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 7000
+        }
+      ]
+    },
+    {
+      "name": "hero-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 100,
+            "y": 700
+          },
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 700
+          },
+          "ms": 4200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1085,
+            "y": 700
+          },
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "x": 1085,
+          "y": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "click",
+          "x": 1085,
+          "y": 700
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1170,
+            "y": 700
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "videos-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top",
+            "offsetPx": -40
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 354,
+            "y": 254
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 621,
+            "y": 254
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 888,
+          "y": 254
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 392,
+            "y": 602
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "colecao-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".boutique-section",
+            "at": "top",
+            "offsetPx": -70
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1067,
+            "y": 171
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 1067,
+          "y": 171
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 578,
+            "y": 300
+          },
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "x": 578,
+          "y": 300
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 578,
+            "y": 464
+          },
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "x": 578,
+          "y": 464
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 4200
+        }
+      ]
+    },
+    {
+      "name": "biografia-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/biographie"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": 950,
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 1900,
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 2900,
+          "ms": 2800
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 3500,
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": ".header-menu-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "click",
+          "selector": ".header-menu-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 620,
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 1500,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "datas-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/dates"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 313,
+            "y": 467
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 575,
+            "y": 467
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 837,
+            "y": 467
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1099,
+            "y": 467
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 313,
+            "y": 707
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 837,
+            "y": 707
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "colecoes-desktop",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/collections"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 236,
+            "y": 380
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 380
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 340,
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1300
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        }
+      ]
+    },
+    {
+      "name": "produto-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/produto?id=10944"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 970,
+            "y": 595
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 970,
+          "y": 595
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 1106,
+          "y": 595
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 903,
+          "y": 595
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".qty-btn",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": ".qty-btn",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".qty-btn",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": 520,
+          "ms": 1600
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1400
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "idioma-1",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 792
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1166,
+            "y": 51
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "x": 1166,
+          "y": 51
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "hover",
+          "selector": "a.lang-switcher-item[href*=\"lang=pt\"]",
+          "ms": 1100
+        },
+        {
+          "op": "hover",
+          "selector": "a.lang-switcher-item[href*=\"lang=en\"]",
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ]
+    },
+    {
+      "name": "idioma-2",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/?lang=pt"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".dates-section",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top",
+            "offsetPx": -40
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        }
+      ]
+    },
+    {
+      "name": "idioma-3",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/?lang=en"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".dates-section",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top",
+            "offsetPx": -40
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        }
+      ]
+    }
+  ]
+}

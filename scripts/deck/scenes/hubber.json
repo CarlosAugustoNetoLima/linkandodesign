@@ -1,0 +1,960 @@
+{
+  "site": "hubber",
+  "url": "https://hubber-linkando.vercel.app/",
+  "outDir": "public/decks/hubber",
+  "scenes": [
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 500
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 640
+          },
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 420
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "pixels-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 300
+          },
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1080,
+            "y": 520
+          },
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 960,
+            "y": 420
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 380
+          },
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1020,
+            "y": 560
+          },
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 500
+          },
+          "ms": 1400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "cover-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".hdr,.hero__in,.hero__signal,[data-intro]{visibility:hidden !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 300
+          },
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1080,
+            "y": 520
+          },
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 960,
+            "y": 420
+          },
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 380
+          },
+          "ms": 2600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1020,
+            "y": 560
+          },
+          "ms": 2600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 500
+          },
+          "ms": 2800
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        }
+      ]
+    },
+    {
+      "name": "film-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-film]",
+            "at": "top",
+            "offsetVh": -0.9
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-film-track]",
+            "at": "bottom"
+          },
+          "ms": 8000
+        },
+        {
+          "op": "click",
+          "selector": "[data-film-play]"
+        },
+        {
+          "op": "wait",
+          "ms": 7000
+        }
+      ]
+    },
+    {
+      "name": "door-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-door-track]",
+            "at": "top",
+            "offsetVh": -0.7
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-door-track]",
+            "at": "bottom",
+            "offsetVh": 0.1
+          },
+          "ms": 11500
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "fold-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-fold-track]",
+            "at": "top",
+            "offsetVh": -0.6
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-fold-track]",
+            "at": "bottom",
+            "offsetVh": 0.1
+          },
+          "ms": 10000
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "deck-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-deck-track]",
+            "at": "top",
+            "offsetVh": -0.6
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-deck-track]",
+            "at": "bottom",
+            "offsetVh": 0.1
+          },
+          "ms": 12000
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "depth-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".ftr",
+            "at": "bottom"
+          },
+          "ms": 15500
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "reels-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://hubber-linkando.vercel.app/reels"
+        },
+        {
+          "op": "wait",
+          "ms": 5000
+        },
+        {
+          "op": "click",
+          "selector": "[data-consent-ok]"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#book",
+            "at": "top"
+          },
+          "ms": 13000
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-film]",
+            "at": "top"
+          },
+          "ms": 7000
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        }
+      ]
+    },
+    {
+      "name": "reels-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://hubber-linkando.vercel.app/reels"
+        },
+        {
+          "op": "wait",
+          "ms": 5000
+        },
+        {
+          "op": "click",
+          "selector": "[data-consent-ok]"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#work",
+            "at": "top"
+          },
+          "ms": 8500
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ]
+    },
+    {
+      "name": "diagnostico-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://hubber-linkando.vercel.app/diagnostico"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-diagnostic]",
+            "at": "top",
+            "offsetPx": -150
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1268,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".step:not([hidden]) [data-next]",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": ".step:not([hidden]) [data-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#empresa",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "#empresa"
+        },
+        {
+          "op": "type",
+          "text": "Empresa Teste",
+          "delay": 55
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#fat-3)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#fat-3)"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#setor",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "#setor"
+        },
+        {
+          "op": "type",
+          "text": "Serviços",
+          "delay": 55
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#mer-1)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#mer-1)"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".step:not([hidden]) [data-next]",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": ".step:not([hidden]) [data-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 1700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#gar-1)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#gar-1)"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#tentou",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "#tentou"
+        },
+        {
+          "op": "type",
+          "text": "Agências e freelancers, sem resultado.",
+          "delay": 36
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#depende",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "#depende"
+        },
+        {
+          "op": "type",
+          "text": "Aprovar tudo e decidir.",
+          "delay": 45
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".step:not([hidden]) [data-next]",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": ".step:not([hidden]) [data-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 1700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#tim-4)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#tim-4)"
+        },
+        {
+          "op": "wait",
+          "ms": 450
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#est-1)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#est-1)"
+        },
+        {
+          "op": "wait",
+          "ms": 450
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#ver-1)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#ver-1)"
+        },
+        {
+          "op": "wait",
+          "ms": 450
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "label.opt:has(#pap-1)",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "label.opt:has(#pap-1)"
+        },
+        {
+          "op": "wait",
+          "ms": 450
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".step:not([hidden]) [data-next]",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": ".step:not([hidden]) [data-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 1700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#objetivo",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": "#objetivo"
+        },
+        {
+          "op": "type",
+          "text": "Ter um time de marketing próprio.",
+          "delay": 45
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".step:not([hidden]) [data-next]",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": ".step:not([hidden]) [data-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".step:not([hidden]) [data-prev]",
+            "at": "top",
+            "offsetVh": -0.42
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 350
+        },
+        {
+          "op": "click",
+          "selector": ".step:not([hidden]) [data-prev]"
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        }
+      ]
+    }
+  ]
+}
