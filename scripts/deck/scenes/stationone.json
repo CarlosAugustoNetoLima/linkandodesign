@@ -28,7 +28,8 @@
           "op": "wait",
           "ms": 13500
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "hero-desktop",
@@ -120,7 +121,8 @@
           "op": "wait",
           "ms": 2400
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "agenda-desktop",
@@ -208,7 +210,8 @@
           "op": "wait",
           "ms": 800
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "cartazes-hd",
@@ -287,7 +290,8 @@
           "op": "wait",
           "ms": 700
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "manifesto-desktop",
@@ -353,7 +357,8 @@
           "op": "wait",
           "ms": 1200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "compra-desktop",
@@ -513,7 +518,8 @@
           },
           "ms": 600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "sobre-desktop",
@@ -568,7 +574,8 @@
           "op": "wait",
           "ms": 1600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "404-desktop",
@@ -647,7 +654,8 @@
           "op": "wait",
           "ms": 600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "hero-mobile",
@@ -716,6 +724,1329 @@
         {
           "op": "wait",
           "ms": 800
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-menu",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/eventos?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 450
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 450
+          },
+          "ms": 300
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__list li:nth-child(2) a",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__list li:nth-child(3) a",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__list li:nth-child(1) a",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 450
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-botoes",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 850
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 830
+          },
+          "ms": 100
+        },
+        {
+          "op": "hover",
+          "selector": ".hero__text .btn--primary",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 650,
+            "y": 830
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 200
+        },
+        {
+          "op": "hover",
+          "selector": ".hero__text .btn--ghost",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 650,
+            "y": 830
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-seta",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 800,
+            "y": 110
+          },
+          "ms": 0
+        },
+        {
+          "op": "scroll",
+          "to": 970,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 800,
+            "y": 110
+          },
+          "ms": 100
+        },
+        {
+          "op": "hover",
+          "selector": ".link-arrow",
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 110
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".link-arrow",
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 110
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-logo",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 300
+          },
+          "ms": 100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 82,
+            "y": 24
+          },
+          "ms": 350
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 300
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 82,
+            "y": 24
+          },
+          "ms": 350
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 300
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-cartao",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/eventos/the-calling-tour-portugal-2027?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 3480,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 100
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 300
+          },
+          "ms": 300
+        },
+        {
+          "op": "hover",
+          "selector": ".tour-grid li:nth-child(1) .tour-card",
+          "ms": 1400
+        },
+        {
+          "op": "hover",
+          "selector": ".tour-grid li:nth-child(2) .tour-card",
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 300
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-busca",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/ajuda?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "css",
+          "text": "html{zoom:.72}"
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 165,
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 500
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 400,
+            "y": 110
+          },
+          "ms": 250
+        },
+        {
+          "op": "click",
+          "selector": ".help-search input"
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "type",
+          "text": "bilhete",
+          "delay": 120
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        },
+        {
+          "op": "click",
+          "selector": ".help-search__clear"
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-perguntas",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/ajuda?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": 250,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 100
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 100
+          },
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-aovivo",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/?_now=2026-10-01"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "click",
+          "selector": "[data-deck-toggle]"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 800
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5000
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "http://127.0.0.1:8020/?_now=2026-10-01",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/?_now=2026-10-01"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,.status--available{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.next__price,.board__price,.status--available{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "http://127.0.0.1:8020/?_now=2026-10-01",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/?_now=2026-10-01"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,.status--available{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.next__price,.board__price,.status--available{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "sobre-pagina-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "http://127.0.0.1:8020/sobre?_now=2026-10-01",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/sobre?_now=2026-10-01"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "sobre-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "http://127.0.0.1:8020/sobre?_now=2026-10-01",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8020/sobre?_now=2026-10-01"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 0,
+          "moveMs": 400,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 1,
+          "moveMs": 400,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 2,
+          "moveMs": 400,
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "baralho-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".deck",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".deck"
+          },
+          "by": {
+            "dx": -200,
+            "dy": 0
+          },
+          "ms": 700,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".deck"
+          },
+          "by": {
+            "dx": -200,
+            "dy": 0
+          },
+          "ms": 700,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".deck"
+          },
+          "by": {
+            "dx": -200,
+            "dy": 0
+          },
+          "ms": 700,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "[data-deck-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "click",
+          "selector": "[data-deck-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "espetaculos-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".tours__viewport"
+          },
+          "by": {
+            "dx": -240,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".tours__viewport"
+          },
+          "by": {
+            "dx": -240,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".tours__viewport"
+          },
+          "by": {
+            "dx": -240,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".tours__viewport"
+          },
+          "by": {
+            "dx": 600,
+            "dy": 0
+          },
+          "ms": 1300,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "maxBytes": 4000000,
+      "endFade": 900,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".next__price,.board__price,.status--available{display:none !important}"
+        },
+        {
+          "op": "css",
+          "text": "[class*=cookie],[class*=consent],[class*=chat],[id*=cookie],[id*=consent]{display:none !important}"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 420
+          },
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 3200
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 600,
+            "y": 470
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 430
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 150
+          },
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetVh": -0.1,
+            "offsetPx": 380
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 700
+          },
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#manifesto",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1900
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#espetaculos",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".tour-card",
+          "nth": 1,
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 1,
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": ".lang__btn"
+        },
+        {
+          "op": "hover",
+          "selector": ".lang__item",
+          "nth": 1,
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": ".lang__btn"
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 420
+          },
+          "ms": 400
         }
       ]
     }

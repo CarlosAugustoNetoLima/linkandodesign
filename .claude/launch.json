@@ -4,22 +4,59 @@
     {
       "name": "dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "-p", "3010"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3010"
+      ],
       "port": 3010,
       "autoPort": false
     },
     {
       "name": "dev-decks",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "-p", "3011"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3011"
+      ],
       "port": 3011,
       "autoPort": false
     },
     {
-      "name": "yanns",
-      "runtimeExecutable": "php",
-      "runtimeArgs": ["-S", "127.0.0.1:8010", "-t", "/Users/carloslima/yanns/public"],
-      "port": 8010
+      "name": "jsynq-local",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/private/tmp/claude-501/-Users-carloslima--claude-spares-spare-bpVzXQ/35c8c639-c95d-46cd-90f8-3901fa84e344/scratchpad/jl",
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3030"
+      ],
+      "port": 3030,
+      "autoPort": false
+    },
+    {
+      "name": "perguntas",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/carloslima/perguntas",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3040",
+        "--strictPort"
+      ],
+      "port": 3040,
+      "autoPort": false
     }
   ]
 }

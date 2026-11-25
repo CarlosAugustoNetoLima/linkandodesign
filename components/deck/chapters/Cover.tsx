@@ -70,7 +70,7 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
 
   return (
     <div ref={ref}>
-      <Chapter id={chapter.id} className="deck-container gap-10">
+      <Chapter id={chapter.id} className="deck-container deck-cover gap-10">
         {/* miolo: texto e moldura do vídeo no mesmo eixo central */}
         <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-y-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-x-16">
           <motion.div
@@ -112,11 +112,11 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
                                 key={k}
                                 aria-hidden="true"
                                 className="inline-block overflow-hidden align-top"
-                                style={{ padding: "0.08em 0", margin: "-0.08em 0" }}
+                                style={{ padding: "0.14em 0 0.3em", margin: "-0.14em 0 -0.3em" }}
                               >
                                 <motion.span
                                   className="inline-block"
-                                  initial={reduced ? false : { y: "105%" }}
+                                  initial={reduced ? false : { y: "160%" }}
                                   animate={{ y: 0 }}
                                   transition={{ duration: 1.2, ease: EASE, delay: 0.25 + k * 0.035 }}
                                 >

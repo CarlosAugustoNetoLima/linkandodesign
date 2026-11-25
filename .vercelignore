@@ -1,0 +1,12 @@
+# O que não sobe no deploy pela CLI (o build não usa e parte é interno).
+# scripts/chat/build-playbook.mjs e docs/playbook-diagnostico.md sobem: o prebuild usa.
+.env*
+!.env.local.example
+docs/privado/
+scripts/deck/
+.mockup-tmp/
+.agents/
+.claude/
+*.tsbuildinfo
+exports/
+scripts/reels/

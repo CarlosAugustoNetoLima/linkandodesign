@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import OpenChatLink from "@/components/agent/OpenChatLink";
 import Chapter from "@/components/deck/primitives/Chapter";
 import MagneticButton from "@/components/deck/primitives/MagneticButton";
 import WordReveal from "@/components/deck/primitives/WordReveal";
@@ -77,7 +78,7 @@ export default function Cta({
           <p className="deck-body mx-auto">{chapter.body}</p>
         </Fade>
 
-        <Fade delay={0.5} className="mt-12">
+        <Fade delay={0.5} className="mt-[var(--sp-3)]">
           <MagneticButton href={deck.liveUrl} external variant="ink" className="px-10 py-6 text-lg">
             {chapter.button} ↗
           </MagneticButton>
@@ -107,9 +108,63 @@ export default function Cta({
           </Fade>
         ))}
 
+        <Fade delay={0.74} className="mt-[var(--sp-3)] flex flex-col items-center gap-4">
+          <p className="text-[18px] font-medium sm:text-[20px]" style={{ color: "var(--d-fg)" }}>
+            Quer um projeto assim para a sua empresa?
+          </p>
+          <OpenChatLink
+            className={`inline-flex min-h-[44px] items-center justify-center rounded-[10px] border border-[color:var(--d-line)] px-7 py-4 font-semibold text-[color:var(--d-fg)] transition-[transform,border-color] duration-200 hover:border-[color:var(--d-accent)] focus-visible:border-[color:var(--d-accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--d-accent)] ${reduced ? "" : "hover:-translate-y-0.5 focus-visible:-translate-y-0.5"}`}
+          >
+            Solicitar diagnóstico →
+          </OpenChatLink>
+          <p className="text-[13px]" style={{ color: "var(--d-fg-muted)" }}>
+            Gratuito. A proposta chega por e-mail em até 24h.
+          </p>
+        </Fade>
+
+        {deck.credits.length > 0 && (
+          <Fade delay={0.82} className="mt-[var(--sp-2)] w-full">
+            <section aria-labelledby={`${chapter.id}-ficha`}>
+              <h3
+                id={`${chapter.id}-ficha`}
+                className="deck-mono text-[11px] uppercase tracking-[0.14em]"
+                style={{ color: "var(--d-fg-muted)" }}
+              >
+                Ficha técnica
+              </h3>
+              <ul className="mt-5 flex flex-wrap justify-center gap-x-12 gap-y-5">
+                {deck.credits.map((c) => (
+                  <li key={c.name} className="flex flex-col items-center gap-1">
+                    <p className="text-[15px] font-medium" style={{ color: "var(--d-fg)" }}>
+                      {c.href ? (
+                        <a href={c.href} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+                          {c.name}
+                          <span className="sr-only"> (abre em nova aba)</span>
+                        </a>
+                      ) : (
+                        c.name
+                      )}
+                    </p>
+                    {c.role && (
+                      <p className="text-[13px]" style={{ color: "var(--d-fg-muted)" }}>
+                        {c.role}
+                      </p>
+                    )}
+                    {c.handle && (
+                      <p className="deck-mono text-[11px]" style={{ color: "var(--d-fg-muted)" }}>
+                        {c.handle}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </Fade>
+        )}
+
         <Fade
-          delay={0.8}
-          className="mt-20 flex flex-wrap items-center justify-center gap-8 text-[13px] uppercase tracking-[0.14em]"
+          delay={0.88}
+          className="mt-[var(--sp-3)] flex flex-wrap items-center justify-center gap-8 text-[13px] uppercase tracking-[0.14em]"
         >
           <Link href="/apresentacoes" className="opacity-70 transition-opacity hover:opacity-100">
             ← Voltar ao portfólio

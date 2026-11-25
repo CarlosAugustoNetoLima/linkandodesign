@@ -1,11 +1,8 @@
-"use client";
-
+import Link from "next/link";
 import type { ReactNode } from "react";
 
-// Botão de "Solicitar diagnóstico": abre o chat da IA (ChatAgent escuta este evento).
-// O href é só fallback sem JavaScript: leva ao formulário /briefing.
-export const OPEN_CHAT_EVENT = "linkando:open-chat";
-
+// Botão de "Solicitar diagnóstico": leva à página /diagnostico, onde a IA conduz
+// o diagnóstico gratuito em tela cheia.
 export default function OpenChatLink({
   className,
   children,
@@ -16,16 +13,8 @@ export default function OpenChatLink({
   onOpen?: () => void;
 }) {
   return (
-    <a
-      href="/briefing"
-      className={className}
-      onClick={(e) => {
-        e.preventDefault();
-        window.dispatchEvent(new Event(OPEN_CHAT_EVENT));
-        onOpen?.();
-      }}
-    >
+    <Link href="/diagnostico" className={className} onClick={onOpen}>
       {children}
-    </a>
+    </Link>
   );
 }

@@ -1,0 +1,122 @@
+{
+  "site": "in-the-level",
+  "files": [
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "file": "vitrine-desktop.mp4",
+      "poster": "vitrine-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 25.23,
+      "bytes": 702922,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 55.36
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "file": "hero-mobile.mp4",
+      "poster": "hero-mobile.jpg",
+      "width": 520,
+      "height": 1126,
+      "seconds": 17.2,
+      "bytes": 306531,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 47.01
+    },
+    {
+      "name": "simbolo-desktop",
+      "device": "desktop",
+      "file": "simbolo-desktop.mp4",
+      "poster": "simbolo-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 7.83,
+      "bytes": 86542,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 59.66
+    },
+    {
+      "name": "versoes-desktop",
+      "device": "desktop",
+      "file": "versoes-desktop.mp4",
+      "poster": "versoes-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 12.23,
+      "bytes": 576929,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 55.28
+    },
+    {
+      "name": "sistema-desktop",
+      "device": "desktop",
+      "file": "sistema-desktop.mp4",
+      "poster": "sistema-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 16,
+      "bytes": 1534775,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 59.96
+    },
+    {
+      "name": "papelaria-desktop",
+      "device": "desktop",
+      "file": "papelaria-desktop.mp4",
+      "poster": "papelaria-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 12.4,
+      "bytes": 780660,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 59.94
+    },
+    {
+      "name": "digital-desktop",
+      "device": "desktop",
+      "file": "digital-desktop.mp4",
+      "poster": "digital-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 12.4,
+      "bytes": 792241,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 58.56
+    },
+    {
+      "name": "ambiente-desktop",
+      "device": "desktop",
+      "file": "ambiente-desktop.mp4",
+      "poster": "ambiente-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 12.4,
+      "bytes": 556988,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 59.54
+    },
+    {
+      "name": "apresentacao-desktop",
+      "device": "desktop",
+      "file": "apresentacao-desktop.mp4",
+      "poster": "apresentacao-desktop.jpg",
+      "width": 1280,
+      "height": 800,
+      "seconds": 16,
+      "bytes": 970767,
+      "crf": 26,
+      "modo": "gpu",
+      "fps": 59.96
+    }
+  ]
+}

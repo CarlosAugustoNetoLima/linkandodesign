@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500&family=Montserrat:wght@200;300&display=block" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #F4F3EE; }
+  #stage { position: relative; width: 1080px; height: 1350px; overflow: hidden; color: #17171A; background: #F4F3EE; }
+  /* um slide por vez: window.show(i) mostra só o escolhido, em 0,0 */
+  .slide { position: absolute; inset: 0; display: none; overflow: hidden; background: #F4F3EE; font-family: Inter, sans-serif; font-weight: 400; }
+  .slide.on { display: block; }
+  /* prancheta do site: papel com grade de pontos */
+  .board { position: absolute; inset: 0; background-image: radial-gradient(rgba(23,23,26,.12) 1.6px, transparent 2.2px); background-size: 22px 22px; }
+  .glow { position: absolute; inset: 0; pointer-events: none; }
+  .mono { font-family: "JetBrains Mono", monospace; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
+  .shadow { box-shadow: 0 50px 90px -34px rgba(23,23,26,.34), 0 14px 34px -18px rgba(23,23,26,.2), 0 0 0 1px rgba(23,23,26,.08); }
+  .fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .browser { position: absolute; border-radius: 20px; overflow: hidden; background: #fff; }
+  .bar { height: 40px; display: flex; align-items: center; gap: 9px; padding: 0 16px; background: #fff; border-bottom: 1px solid rgba(23,23,26,.07); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(23,23,26,.15); }
+  .content { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
+  .card { position: relative; border-radius: 22px; overflow: hidden; background: #fff; }
+
+  .phone { position: absolute; border-radius: 34px; background: #0c0c0d; padding: 9px; }
+  .phone .screen { position: relative; width: 100%; aspect-ratio: 520 / 1126; border-radius: 26px; overflow: hidden; background: #fff; }
+
+  .persp { position: absolute; inset: 0; perspective: 2400px; }
+  .grp { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-style: preserve-3d; }
+  .mos { position: absolute; width: 1236px; height: 1317px; }
+
+  /* textos */
+  .col { position: absolute; left: 64px; top: 150px; }
+  .label { position: absolute; left: 64px; top: 150px; font-size: 16px; color: rgba(23,23,26,.55); }
+  .title { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -.035em; line-height: .98; color: #17171A; }
+  .lead { font-size: 30px; line-height: 1.4; color: rgba(23,23,26,.68); }
+  .tags { margin-top: 28px; font-size: 16px; color: rgba(23,23,26,.55); white-space: pre; }
+
+  /* marcas do topo e do rodapé */
+  .band { position: absolute; left: 64px; right: 64px; display: flex; justify-content: space-between; align-items: center; z-index: 3; }
+  .band.top { top: 56px; }
+  .band.bot { bottom: 52px; }
+  .band .mono { font-size: 15px; }
+  .client { font-family: Montserrat, sans-serif; font-weight: 200; font-size: 24px; letter-spacing: .28em; text-transform: uppercase; color: #17171A; }
+  .kind { color: rgba(23,23,26,.5); }
+  .url { color: rgba(23,23,26,.45); }
+  .pg-wrap { display: flex; align-items: center; gap: 16px; }
+  .pg { color: rgba(23,23,26,.5); }
+  .arrow { font-size: 28px; line-height: 1; color: #17171A; }
+
+  /* mosaico: faixas de papel para os textos das bordas */
+  .fade { position: absolute; left: 0; right: 0; height: 140px; z-index: 2; pointer-events: none; }
+  .fade.top { top: 0; background: linear-gradient(#F4F3EE, rgba(244,243,238,0)); }
+  .fade.bot { bottom: 0; background: linear-gradient(rgba(244,243,238,0), #F4F3EE); }
+
+  /* paleta e tipografia */
+  .swrow { position: absolute; left: 64px; right: 64px; top: 200px; height: 430px; display: flex; gap: 14px; }
+  .swatch { position: relative; flex: 1; height: 430px; border-radius: 22px; box-shadow: 0 0 0 1px rgba(23,23,26,.08); }
+  .sw-txt { position: absolute; left: 0; right: 0; bottom: 26px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  .sw-name { font-family: Inter, sans-serif; font-weight: 600; font-size: 18px; }
+  .sw-hex { font-size: 15px; }
+  .fontblock { position: absolute; left: 64px; top: 690px; display: flex; align-items: flex-start; gap: 56px; }
+  .aa { font-size: 230px; line-height: 1; }
+  .ico-row { position: absolute; left: 0; right: 0; top: 1010px; display: flex; justify-content: center; gap: 18px; }
+  .ico { width: 88px; height: 88px; flex: none; border-radius: 18px; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .ico svg { width: 46%; height: 46%; fill: none; stroke: #17171A; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* números */
+  .nums { position: absolute; left: 64px; right: 64px; top: 250px; }
+  .num-row { display: flex; justify-content: space-between; align-items: center; padding: 46px 0; }
+  .num-row + .num-row { border-top: 1px solid rgba(23,23,26,.15); }
+  .num-val { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 170px; letter-spacing: -.04em; line-height: .9; color: #17171A; }
+  .num-text { width: 440px; font-size: 32px; line-height: 1.3; color: rgba(23,23,26,.7); }
+
+  /* assinatura */
+  .endcol { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .endlogo { width: 460px; }
+  .endlogo svg { width: 100%; height: auto; display: block; }
+  .credits { margin-top: 56px; font-size: 24px; line-height: 1.6; color: rgba(23,23,26,.6); }
+  .cta { margin-top: 56px; font-family: Inter, sans-serif; font-weight: 600; font-size: 32px; color: #EEFB6E; background: #17171A; padding: 24px 44px; border-radius: 16px; }
+  .note { margin-top: 28px; font-size: 15px; color: rgba(23,23,26,.45); }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<script>
+// Carrossel 1080×1350 (4:5): cada slide é montado a partir de projects/<slug>.json.
+// window.build(data, logoSvg) monta tudo e espera fontes e imagens; window.show(i) mostra só o slide i.
+const $ = (s, r = document) => r.querySelector(s);
+const FACES = ['800 60px "Bricolage Grotesque"', '400 20px Inter', '600 20px Inter', '500 16px "JetBrains Mono"', '200 40px Montserrat', '300 40px Montserrat'];
+const IMGS = [];
+let LOGO = "";
+
+function el(tag, cls, css, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (css) e.style.cssText = css;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function img(src, cls = "fill") {
+  const i = new Image();
+  i.className = cls; i.alt = ""; i.src = src;
+  IMGS.push(i);
+  return i;
+}
+function browser(src, w) {
+  const b = el("div", "browser shadow", `width:${w}px`);
+  const bar = el("div", "bar");
+  for (let k = 0; k < 3; k++) bar.appendChild(el("span", "dot"));
+  const c = el("div", "content");
+  c.appendChild(img(src));
+  b.append(bar, c);
+  return b;
+}
+function phone(src, w) {
+  const p = el("div", "phone shadow", `width:${w}px`);
+  const s = el("div", "screen");
+  s.appendChild(img(src));
+  p.appendChild(s);
+  return p;
+}
+// coloca o centro do nó em (x, y); no grupo 3D, x/y são relativos ao grupo
+function place(node, x, y, o = {}) {
+  node.style.left = "0px";
+  node.style.top = "0px";
+  node.style.transform = `translate(-50%,-50%) translate3d(${x}px,${y}px,${o.z || 0}px) rotate(${o.r || 0}deg) scale(${o.s || 1})`;
+  return node;
+}
+function label(t) {
+  return el("p", "mono label", null, `[ ${t} ]`);
+}
+function bands(i, N, d) {
+  const top = el("div", "band top");
+  top.append(el("span", "client", null, d.client), el("span", "mono kind", null, d.kind));
+  const bot = el("div", "band bot");
+  const right = el("div", "pg-wrap");
+  right.append(el("span", "mono pg", null, `${String(i + 1).padStart(2, "0")} / ${String(N).padStart(2, "0")}`));
+  if (i < N - 1) right.append(el("span", "arrow", null, "→"));
+  bot.append(el("span", "mono url", null, "linkandodesign.com"), right);
+  return [top, bot];
+}
+
+const TYPES = {
+  // 1 · capa: cascata de três navegadores com o celular sobre o canto
+  cover(s) {
+    const p = el("div", "persp", "perspective-origin:540px 860px");
+    const g = el("div", "grp", "left:540px;top:860px;transform:rotateX(10deg) rotateY(-12deg)");
+    g.append(
+      place(browser(s.back[0], 760), -170, -170, { z: -80, s: 0.9 }),
+      place(browser(s.back[1], 760), 170, -170, { z: -80, s: 0.9 }),
+      place(browser(s.front, 880), 0, 40, { z: 0 }),
+      place(phone(s.phone, 250), 360, 110, { z: 80, r: 4 })
+    );
+    p.append(g);
+    const col = el("div", "col", "width:900px");
+    col.append(el("h1", "title", "font-size:92px", s.title), el("p", "mono tags", null, s.tags.map((t) => `[ ${t} ]`).join("  ")));
+    return [p, col];
+  },
+
+  // 2 · contexto: texto e dois celulares lado a lado
+  context(s) {
+    const col = el("div", "col", "width:860px");
+    col.append(el("h1", "title", "font-size:72px;width:860px", s.title), el("p", "lead", "margin-top:28px;max-width:820px", s.text));
+    return [
+      col,
+      place(phone(s.phones[0], 300), 370, 904, { r: -4 }),
+      place(phone(s.phones[1], 300), 710, 874, { r: 4 }),
+    ];
+  },
+
+  // 3 · sequência: três navegadores empilhados, cada um 300px mais abaixo
+  sequence(s) {
+    const W = 780, xs = [-70, 0, 70], tops = [210, 450, 690];
+    const out = [label(s.label)];
+    s.shots.forEach((src, k) => out.push(place(browser(src, W), 540 + xs[k], tops[k] + (W * 0.625 + 40) / 2)));
+    return out;
+  },
+
+  // 4 · mosaico inclinado: seis navegadores em grade 2×3, sangrando pelas bordas
+  mosaic(s, d) {
+    const persp = el("div", "persp", "perspective:2600px");
+    const grid = el("div", "mos", "left:-78px;top:16.5px;transform:rotateX(30deg) rotateZ(-14deg) scale(1.15)");
+    s.shots.forEach((src, k) => {
+      const b = browser(src, 600);
+      b.style.left = `${(k % 2) * 636}px`;
+      b.style.top = `${Math.floor(k / 2) * 451}px`;
+      grid.append(b);
+    });
+    persp.append(grid);
+    return [persp, el("div", "fade top"), el("div", "fade bot")];
+  },
+
+  // 5 · style guide: paleta, tipografia e ícones
+  style(s) {
+    const out = [label(s.label)];
+    const row = el("div", "swrow");
+    s.swatches.forEach((k) => {
+      const n = parseInt(k.hex.slice(1, 7), 16);
+      const L = (0.2126 * ((n >> 16) & 255) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255;
+      const sw = el("div", "swatch", `background:${k.hex}`);
+      const t = el("div", "sw-txt", `color:${L > 0.6 ? "rgba(23,23,26,.6)" : "rgba(255,255,255,.75)"}`);
+      t.append(el("span", "sw-name", null, k.name), el("span", "mono sw-hex", null, k.hex.toUpperCase()));
+      sw.append(t);
+      row.append(sw);
+    });
+    out.push(row);
+
+    const f = s.font;
+    const fb = el("div", "fontblock");
+    const info = el("div", "fontinfo");
+    info.append(
+      el("p", null, `font-family:"${f.family}";font-weight:${f.weight};font-size:50px;line-height:1.15;max-width:620px`, f.sample),
+      el("p", null, `font-family:"${f.family}";font-weight:${f.weight};font-size:34px;letter-spacing:.28em;text-transform:uppercase;margin-top:28px`, f.brand),
+      el("p", "mono", "font-size:15px;color:rgba(23,23,26,.5);margin-top:18px", f.note)
+    );
+    fb.append(el("p", "aa", `font-family:"${f.family}";font-weight:${f.weight}`, "Aa"), info);
+    out.push(fb);
+
+    const ico = el("div", "ico-row");
+    s.icons.forEach((p) => {
+      const t = el("div", "ico shadow");
+      t.innerHTML = `<svg viewBox="0 0 24 24" style="stroke-width:${s.iconStroke}">${p}</svg>`;
+      ico.append(t);
+    });
+    out.push(ico);
+    return out;
+  },
+
+  // 6 · detalhe: uma imagem 4:3 com o texto acima
+  detail(s) {
+    const col = el("div", "col", "width:952px");
+    col.append(el("p", "mono", "font-size:16px;color:rgba(23,23,26,.55)", `[ ${s.label} ]`));
+    col.append(el("h2", "title", "font-size:52px;width:900px;margin-top:18px", s.title));
+    const card = el("div", "card shadow", "margin-top:40px;width:952px;height:714px");
+    card.appendChild(img(s.shot));
+    col.append(card);
+    return [col];
+  },
+
+  // 7 · celulares em leque
+  phones(s) {
+    const [a, b, c] = s.phones;
+    return [
+      label(s.label),
+      place(phone(a, 300), 210, 740, { r: 8 }),
+      place(phone(c, 300), 870, 740, { r: -8 }),
+      place(phone(b, 300), 540, 690, { z: 40 }),
+    ];
+  },
+
+  // 8 · números em três linhas
+  numbers(s) {
+    const box = el("div", "nums");
+    s.items.forEach((it) => {
+      const r = el("div", "num-row");
+      r.append(el("span", "num-val", null, it.value), el("p", "num-text", null, it.text));
+      box.append(r);
+    });
+    return [label(s.label), box];
+  },
+
+  // 9 · assinatura
+  end(s) {
+    const col = el("div", "endcol");
+    const logo = el("div", "endlogo");
+    logo.innerHTML = LOGO;
+    const cr = el("div", "credits");
+    s.credits.forEach((t) => cr.append(el("p", null, null, t)));
+    col.append(logo, cr, el("p", "cta", null, s.cta), el("p", "mono note", null, s.note));
+    return [col];
+  },
+};
+
+window.build = async (d, logoSvg) => {
+  LOGO = logoSvg;
+  const stage = $("#stage");
+  const N = d.slides.length;
+  d.slides.forEach((s, i) => {
+    const sl = el("section", "slide");
+    sl.dataset.i = String(i);
+    sl.append(el("div", "board"), el("div", "glow", ["numbers", "end"].includes(s.type) ? "" : `background:radial-gradient(40% 32% at 50% 55%, ${d.accent}22, transparent 72%)`));
+    sl.append(...TYPES[s.type](s, d));
+    sl.append(...bands(i, N, d));
+    stage.append(sl);
+  });
+
+  await document.fonts.ready;
+  await Promise.all(FACES.map((f) => document.fonts.load(f)));
+  const bad = [];
+  await Promise.all(IMGS.map((i) => i.decode().catch(() => bad.push(i.src))));
+  if (bad.length) throw new Error("imagens sem carregar: " + bad.join(", "));
+  return N;
+};
+
+window.show = (i) => {
+  document.querySelectorAll(".slide").forEach((s, k) => s.classList.toggle("on", k === i));
+};
+</script>
+</body>
+</html>

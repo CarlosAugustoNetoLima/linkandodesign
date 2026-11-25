@@ -6,10 +6,13 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { cx } from "@/components/deck/cx";
 import Anatomy from "@/components/deck/chapters/Anatomy";
 import Cover from "@/components/deck/chapters/Cover";
+import Compare from "@/components/deck/chapters/Compare";
 import Cta from "@/components/deck/chapters/Cta";
 import Feature from "@/components/deck/chapters/Feature";
 import Identity from "@/components/deck/chapters/Identity";
 import Motion from "@/components/deck/chapters/Motion";
+import Details from "@/components/deck/chapters/Details";
+import Phones from "@/components/deck/chapters/Phones";
 import Process from "@/components/deck/chapters/Process";
 import Responsive from "@/components/deck/chapters/Responsive";
 import Sequence from "@/components/deck/chapters/Sequence";
@@ -26,6 +29,17 @@ const pad = (n: number) => String(n).padStart(2, "0");
 // Leva o capítulo ao topo. Com reduced motion o salto é imediato.
 function scrollToChapter(id: string, reduced: boolean | null) {
   document.getElementById(id)?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+}
+
+// Seções lado a lado (efeitos e computador + celular) alternam a mídia: direita, esquerda, direita…
+// O `side` do dado é ignorado para duas seções seguidas nunca ficarem na mesma posição.
+function withAlternatingSides(chapters: Chapter[]): Chapter[] {
+  let n = 0;
+  return chapters.map((c) => {
+    if (c.type === "feature" && c.layout !== "full") return { ...c, side: n++ % 2 === 0 ? "right" : "left" };
+    if (c.type === "responsive") return { ...c, side: n++ % 2 === 0 ? "right" : "left" };
+    return c;
+  });
 }
 
 function renderChapter(c: Chapter, deck: Deck, next?: { slug: string; name: string }) {
@@ -46,10 +60,16 @@ function renderChapter(c: Chapter, deck: Deck, next?: { slug: string; name: stri
       return <Motion key={c.id} chapter={c} deck={deck} />;
     case "process":
       return <Process key={c.id} chapter={c} deck={deck} />;
+    case "details":
+      return <Details key={c.id} chapter={c} deck={deck} />;
     case "topics":
       return <Topics key={c.id} chapter={c} deck={deck} />;
     case "responsive":
       return <Responsive key={c.id} chapter={c} deck={deck} />;
+    case "compare":
+      return <Compare key={c.id} chapter={c} deck={deck} />;
+    case "phones":
+      return <Phones key={c.id} chapter={c} deck={deck} />;
     case "cta":
       return <Cta key={c.id} chapter={c} deck={deck} next={next} />;
   }
@@ -167,7 +187,7 @@ function DeckPlayerInner({ deck, next }: Props) {
           </Link>
         </div>
         <p className="hidden flex-1 text-center text-[12px] opacity-60 md:block">
-          {pad(deck.index)} · {deck.name} · {deck.year}
+          {deck.name} · {deck.year}
         </p>
         <div className="flex flex-1 justify-end">
           <a
@@ -194,9 +214,10 @@ function DeckPlayerInner({ deck, next }: Props) {
               type="button"
               onClick={() => scrollToChapter(c.id, reduced)}
               aria-current={active ? "true" : undefined}
-              className="group flex h-5 items-center"
+              className="group relative flex h-5 items-center"
             >
-              <span className="pointer-events-none mr-3 whitespace-nowrap rounded-[6px] bg-[rgba(39,39,43,0.9)] px-2 py-1 font-sans text-[11px] uppercase tracking-[0.16em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+              {/* o rótulo fica fora do fluxo: a área clicável do botão é só o traço, e não cobre os controles dos capítulos */}
+              <span className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap rounded-[6px] bg-[rgba(39,39,43,0.9)] px-2 py-1 font-sans text-[11px] uppercase tracking-[0.16em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                 {pad(i + 1)} · {c.label}
               </span>
               <span
@@ -211,7 +232,7 @@ function DeckPlayerInner({ deck, next }: Props) {
         })}
       </nav>
 
-      {deck.chapters.map((c) => renderChapter(c, deck, next))}
+      {withAlternatingSides(deck.chapters).map((c) => renderChapter(c, deck, next))}
     </div>
   );
 }

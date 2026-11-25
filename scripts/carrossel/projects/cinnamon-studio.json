@@ -1,0 +1,82 @@
+{
+  "slug": "cinnamon-studio",
+  "client": "Cinnamon",
+  "kind": "Site · 2026",
+  "accent": "#7d6650",
+  "frames": "exports/carrossel/cinnamon-studio/frames",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Site de lançamento do Cinnamon Studio",
+      "tags": ["Design", "Desenvolvimento", "Torre 3D", "Tour 360°"],
+      "back": ["tour.jpg", "torre.jpg"],
+      "front": "home.jpg",
+      "phone": "m-home.jpg"
+    },
+    {
+      "type": "context",
+      "title": "Condomínio-hotel na Orla de Palmas (TO)",
+      "text": "Studios de 29,92 m². O site apresenta o empreendimento com animações controladas pela rolagem: o visitante vê a torre, entra no studio e conhece cada ambiente.",
+      "phones": ["m-studio.jpg", "m-planta.jpg"]
+    },
+    {
+      "type": "sequence",
+      "label": "Abertura controlada pela rolagem",
+      "shots": ["home.jpg", "arquitetura.jpg", "interior.jpg"]
+    },
+    {
+      "type": "mosaic",
+      "shots": ["fachada.jpg", "planta.jpg", "metro.jpg", "tour.jpg", "torre.jpg", "arquitetura.jpg"]
+    },
+    {
+      "type": "style",
+      "label": "Style guide",
+      "swatches": [
+        { "hex": "#22231f", "name": "Dark" },
+        { "hex": "#171816", "name": "Dark 2" },
+        { "hex": "#2c2d28", "name": "Dark 3" },
+        { "hex": "#f3eee5", "name": "Cream" },
+        { "hex": "#f0eadc", "name": "Cream 2" },
+        { "hex": "#b7a48e", "name": "Tan" }
+      ],
+      "font": { "family": "Montserrat", "weight": 200, "sample": "Seu espaço. Seu ritmo.", "brand": "Cinnamon", "note": "Montserrat · Extra Light" },
+      "iconStroke": 1,
+      "icons": [
+        "<path d=\"M12 5v14M5 12h14\" />",
+        "<path d=\"M6 9l6 6 6-6\" />",
+        "<path d=\"M6 6l12 12M18 6L6 18\" />",
+        "<path d=\"M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5\" />",
+        "<path d=\"M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5\" />",
+        "<path d=\"M9 5l7 7-7 7\" />",
+        "<circle cx=\"12\" cy=\"12\" r=\"11.5\" /><ellipse cx=\"12\" cy=\"12\" rx=\"11.5\" ry=\"4.6\" />",
+        "<path d=\"M2 6.5h20\" /><path d=\"M2 12h20\" /><path d=\"M2 17.5h20\" />"
+      ]
+    },
+    {
+      "type": "detail",
+      "label": "Torre 3D",
+      "title": "Toque num studio da torre e o painel abre com o pavimento, as metragens e a planta.",
+      "shot": "detalhe-torre.jpg"
+    },
+    {
+      "type": "phones",
+      "label": "No celular",
+      "phones": ["m-tour.jpg", "m-home.jpg", "m-torre.jpg"]
+    },
+    {
+      "type": "numbers",
+      "label": "O site em números",
+      "items": [
+        { "value": "102", "text": "imagens na animação de abertura" },
+        { "value": "360°", "text": "tour pelas áreas comuns" },
+        { "value": "3D", "text": "torre que o visitante gira e toca" }
+      ]
+    },
+    {
+      "type": "end",
+      "credits": ["Direção, design e desenvolvimento: Linkando Design", "Renderização 3D do tour 360°: Elton de Abreu (@abreu3dfx)"],
+      "cta": "linkandodesign.com →",
+      "note": "Salve para ver depois"
+    }
+  ]
+}

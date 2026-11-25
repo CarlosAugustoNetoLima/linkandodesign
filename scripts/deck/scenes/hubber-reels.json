@@ -1,0 +1,1167 @@
+{
+  "site": "hubber-reels",
+  "url": "https://hubber-linkando.vercel.app/reels/",
+  "outDir": "public/decks/hubber-reels",
+  "_nota": "O CSS comum esconde a tarja de medição e tira o preço da tela (regra do dono: preço nunca aparece). O cartão da oferta fica só com 'One-time content shoot / a month of content' e a opção com valor some do formulário. Nunca clicar em 'Request the call'.",
+  "scenes": [
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 760,
+            "y": 460
+          },
+          "ms": 1200
+        },
+        {
+          "op": "orbit",
+          "selector": ".lp-hero .btn--primary",
+          "ms": 1500,
+          "pad": 18
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 980,
+            "y": 330
+          },
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=problem-title]",
+            "at": "top",
+            "offsetPx": -40
+          },
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=included-title]",
+            "at": "top",
+            "offsetPx": 40
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".bento .card",
+          "nth": 0,
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": ".bento .card",
+          "nth": 2,
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=how-title]",
+            "at": "top",
+            "offsetPx": 40
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".steps li",
+          "nth": 1,
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=camera-title]",
+            "at": "top",
+            "offsetVh": -0.3
+          },
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 820,
+            "y": 440
+          },
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#work",
+            "at": "top",
+            "offsetPx": 60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": ".wall__play",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 760,
+            "y": 520
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".wall__expandir",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 400
+          },
+          "ms": 1300
+        },
+        {
+          "op": "click",
+          "selector": "[data-wall-fechar]"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#book",
+            "at": "top",
+            "offsetPx": 60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": "#nome"
+        },
+        {
+          "op": "type",
+          "text": "Ana Souza",
+          "delay": 70
+        },
+        {
+          "op": "hover",
+          "selector": ".lp-lang__btn",
+          "ms": 200
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 120
+          },
+          "ms": 1000
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 300
+          },
+          "ms": 300
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 30,
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=problem-title]",
+            "at": "top",
+            "offsetPx": 40
+          },
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=included-title]",
+            "at": "top",
+            "offsetPx": 60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=camera-title]",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".wall__item",
+            "at": "top",
+            "offsetPx": -110
+          },
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": ".wall__play",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1080,
+            "y": 600
+          },
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "fundo-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 820,
+            "y": 470
+          },
+          "ms": 900
+        },
+        {
+          "op": "orbit",
+          "selector": ".lp-hero .btn--primary",
+          "ms": 1800,
+          "pad": 22
+        },
+        {
+          "op": "hover",
+          "selector": ".lp-hero .btn--primary",
+          "ms": 900
+        },
+        {
+          "op": "orbit",
+          "selector": ".lp-hero .btn--primary",
+          "ms": 1600,
+          "pad": 14
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1080,
+            "y": 520
+          },
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "secoes-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=included-title]",
+            "at": "top",
+            "offsetVh": -0.55
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 700
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=included-title]",
+            "at": "top",
+            "offsetPx": 0
+          },
+          "ms": 2200
+        },
+        {
+          "op": "hover",
+          "selector": ".bento .card",
+          "nth": 0,
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "selector": ".bento .card",
+            "nth": 0
+          },
+          "ms": 300
+        },
+        {
+          "op": "hover",
+          "selector": ".bento .card",
+          "nth": 1,
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".bento .card",
+          "nth": 2,
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=included-title]",
+            "at": "top",
+            "offsetPx": 380
+          },
+          "ms": 2000
+        },
+        {
+          "op": "hover",
+          "selector": ".bento .card",
+          "nth": 5,
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 700
+          },
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=how-title]",
+            "at": "top",
+            "offsetPx": 120
+          },
+          "ms": 2000
+        },
+        {
+          "op": "hover",
+          "selector": ".steps li",
+          "nth": 0,
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": ".steps li",
+          "nth": 1,
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": ".steps li",
+          "nth": 2,
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 700
+          },
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[aria-labelledby=included-title]",
+            "at": "top",
+            "offsetVh": -0.55
+          },
+          "ms": 2400
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "parede-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#work",
+            "at": "top",
+            "offsetPx": 60
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": ".wall__play",
+          "nth": 0,
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": ".wall__play",
+          "nth": 1,
+          "ms": 300
+        },
+        {
+          "op": "click",
+          "selector": ".wall__play",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 1200
+        },
+        {
+          "op": "hover",
+          "selector": ".wall__seek",
+          "nth": 1,
+          "ms": 400
+        },
+        {
+          "op": "drag",
+          "by": {
+            "dx": 45,
+            "dy": 0
+          },
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".wall__expandir",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 450
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 120
+          },
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": "[data-wall-fechar]"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": ".wall__play",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 700
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "formulario-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}.plans__price small{font-size:.82rem!important;line-height:1.4!important;margin-top:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#book",
+            "at": "top",
+            "offsetPx": 40
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 700
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": "#nome",
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": "#nome"
+        },
+        {
+          "op": "type",
+          "text": "Ana Souza",
+          "delay": 80
+        },
+        {
+          "op": "click",
+          "selector": "#empresa"
+        },
+        {
+          "op": "type",
+          "text": "Bloom Dental",
+          "delay": 70
+        },
+        {
+          "op": "hover",
+          "selector": "#email",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 700
+          },
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#book",
+            "at": "top",
+            "offsetPx": 520
+          },
+          "ms": 2000
+        },
+        {
+          "op": "hover",
+          "selector": ".escolha",
+          "nth": 1,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".field__check",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".book__form [type=submit]",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 700
+          },
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#book",
+            "at": "top",
+            "offsetPx": 40
+          },
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://hubber-linkando.vercel.app/reels/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://hubber-linkando.vercel.app/reels/"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": "#plan-once{font-size:0!important;line-height:0!important} #book .escolhas:nth-child(3) label.escolha:nth-child(1){display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='#plan-once{font-size:0!important;line-height:0!important} #book .escolhas:nth-child(3) label.escolha:nth-child(1){display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://hubber-linkando.vercel.app/reels/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://hubber-linkando.vercel.app/reels/"
+        },
+        {
+          "op": "css",
+          "text": ".consent{display:none!important}.plans__price{font-size:0!important;line-height:0!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": "#plan-once{font-size:0!important;line-height:0!important} #book .escolhas:nth-child(3) label.escolha:nth-child(1){display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='#plan-once{font-size:0!important;line-height:0!important} #book .escolhas:nth-child(3) label.escolha:nth-child(1){display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".lp-lang__btn",
+          "ms": 300
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "hover",
+          "selector": ".lp-lang__menu a",
+          "nth": 0,
+          "moveMs": 350,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".lp-lang__menu a",
+          "nth": 1,
+          "moveMs": 350,
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": ".lp-lang__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "formulario-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "form",
+            "at": "top",
+            "offsetPx": -160
+          },
+          "ms": 3500
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "initScript": "(()=>{const re=/(US\\$\\s?\\d[\\d.,]*(?!\\s?(mil|M|k|K|bi)\\b)|\\$\\s?\\d[\\d.,]*(?![\\d.,]*\\s?(M\\+?|mil|k|K)\\b))/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    }
+  ]
+}

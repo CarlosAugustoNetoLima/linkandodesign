@@ -5,7 +5,7 @@
   "scenes": [
     {
       "name": "hero-top-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -28,11 +28,12 @@
           "op": "wait",
           "ms": 7000
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "hero-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -125,11 +126,12 @@
           "op": "wait",
           "ms": 800
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "videos-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -230,11 +232,12 @@
           "op": "wait",
           "ms": 600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "colecao-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -333,11 +336,12 @@
           "op": "wait",
           "ms": 4200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "biografia-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
@@ -397,7 +401,8 @@
           "op": "wait",
           "ms": 1200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "hero-mobile",
@@ -459,11 +464,12 @@
           "op": "wait",
           "ms": 800
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "datas-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
@@ -571,11 +577,12 @@
           "op": "wait",
           "ms": 600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "colecoes-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "recordFromStart": true,
       "setup": [
         {
@@ -638,11 +645,12 @@
           "op": "wait",
           "ms": 400
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "produto-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
@@ -746,11 +754,12 @@
           "op": "wait",
           "ms": 600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "idioma-1",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -804,11 +813,12 @@
           "op": "wait",
           "ms": 500
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "idioma-2",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
@@ -858,11 +868,12 @@
           "op": "wait",
           "ms": 1800
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "idioma-3",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
@@ -912,7 +923,1692 @@
           "op": "wait",
           "ms": 1800
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-plataformas",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 450
+          },
+          "ms": 200
+        },
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"apple\"]",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"spotify\"]",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"amazon\"]",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"deezer\"]",
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-som",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "hover",
+          "selector": ".sound-control",
+          "ms": 400,
+          "moveMs": 350
+        },
+        {
+          "op": "click",
+          "selector": ".sound-control"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 600
+          },
+          "ms": 250
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".sound-control",
+          "ms": 200,
+          "moveMs": 300
+        },
+        {
+          "op": "click",
+          "selector": ".sound-control"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 600
+          },
+          "ms": 250
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-rolar",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5000
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-menu",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 520,
+            "y": 250
+          },
+          "ms": 200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 562,
+            "y": 157
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 750
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 747,
+            "y": 157
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 750
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 914,
+            "y": 157
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 750
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 300
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-clipes",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": 1400,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 260,
+            "y": 700
+          },
+          "ms": 200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 470
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 390,
+            "y": 470
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 340,
+            "y": 740
+          },
+          "ms": 400
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-tamanhos",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/produto?id=10947"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 5000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 330
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 905,
+            "y": 350
+          },
+          "ms": 100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 970,
+            "y": 427
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "x": 970,
+          "y": 427
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1106,
+            "y": 427
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "x": 1106,
+          "y": 427
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 600
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-camisola",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/produto?id=10947"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 5000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 126,
+            "y": 400
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": ".product-details-thumbnails .thumbnail:nth-child(2)",
+          "ms": 900,
+          "moveMs": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".product-details-thumbnails .thumbnail:nth-child(3)",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".product-details-thumbnails .thumbnail:nth-child(4)",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".product-details-thumbnails .thumbnail:nth-child(5)",
+          "ms": 500
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-botoes",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/musique"
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price,[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": 800,
+          "ms": 0
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 480
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 215,
+            "y": 330
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 480
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 215,
+            "y": 330
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 480
+          },
+          "ms": 400
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "page-musique-desktop",
+      "device": "desktop-hd",
+      "url": "https://yanns-linkando.vercel.app/musique",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/musique"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 880,
+            "y": 420
+          },
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 2065,
+          "ms": 8000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "musique-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/musique",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/musique"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "musique-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/musique",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/musique"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "datas-pagina-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/dates",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/dates"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "datas-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/dates",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/dates"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "loja-pagina-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/collections",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/collections"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.store-card-price{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "loja-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/collections",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/collections"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": ".store-card-price{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.store-card-price{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "biografia-pagina-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/biographie",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/biographie"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "biografia-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://yanns-linkando.vercel.app/biographie",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/biographie"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-desktop",
+      "device": "desktop-hd",
+      "cursor": true,
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".lang-switcher-toggle",
+          "ms": 300
+        },
+        {
+          "op": "click",
+          "selector": ".lang-switcher-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "hover",
+          "selector": ".lang-switcher-item",
+          "nth": 1,
+          "moveMs": 350,
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".lang-switcher-item",
+          "nth": 2,
+          "moveMs": 350,
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": ".lang-switcher-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": ".header-menu-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": ".header-menu-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "videos-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "bottom"
+          },
+          "ms": 8000
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top"
+          },
+          "ms": 2500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "colecao-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://yanns-linkando.vercel.app/collections"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".collections-grid",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".collections-grid",
+            "at": "bottom"
+          },
+          "ms": 8000,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".collections-grid",
+            "at": "top"
+          },
+          "ms": 2500,
+          "ease": "soft"
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab,#chat-bubble,[class*=\"cookie\"],[id*=\"cookie\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 700
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"apple\"]",
+          "moveMs": 400,
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"spotify\"]",
+          "moveMs": 300,
+          "ms": 450
+        },
+        {
+          "op": "hover",
+          "selector": ".music-service-button[data-service=\"deezer\"]",
+          "moveMs": 300,
+          "ms": 450
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".dates-section",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".card-date",
+          "moveMs": 450,
+          "ms": 700,
+          "nth": 1
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top",
+            "offsetPx": -40
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".card-youtube",
+          "moveMs": 450,
+          "ms": 650,
+          "nth": 1
+        },
+        {
+          "op": "hover",
+          "selector": ".card-youtube",
+          "moveMs": 400,
+          "ms": 650,
+          "nth": 3
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".boutique-section",
+            "at": "top",
+            "offsetPx": -20
+          },
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 240,
+            "y": 380
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": ".boutique-tab",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".boutique-carousel-thumb[data-boutique-col=\"1\"][data-boutique-index=\"2\"]",
+          "moveMs": 400,
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": ".boutique-carousel-thumb[data-boutique-col=\"1\"][data-boutique-index=\"2\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".videos-section",
+            "at": "top",
+            "offsetPx": -40
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".card-youtube",
+          "moveMs": 400,
+          "ms": 550,
+          "nth": 2
+        },
+        {
+          "op": "hover",
+          "selector": ".card-youtube",
+          "moveMs": 400,
+          "ms": 450,
+          "nth": 0
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2000
+        },
+        {
+          "op": "click",
+          "selector": ".lang-switcher-toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".lang-switcher-item",
+          "moveMs": 300,
+          "ms": 500,
+          "nth": 1
+        },
+        {
+          "op": "click",
+          "selector": ".lang-switcher-toggle"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 700
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "endFade": 600
     }
   ]
 }

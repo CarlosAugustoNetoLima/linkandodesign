@@ -16,8 +16,17 @@ const rows = await page.evaluate(() => {
     const media = sec.querySelector('video, canvas');
     const h = sec.querySelector('h1, h2');
     if (!media || !h) return;
-    const col = h.closest('div');
-    const mr = media.getBoundingClientRect(), tr = col.getBoundingClientRect();
+    // coluna inteira de texto: sobe do div do título até o último que ainda não contém a mídia (título + botão/tour)
+    let col = h.closest('div');
+    while (col.parentElement && !col.parentElement.contains(media)) col = col.parentElement;
+    // mídia = todas as gravações da mesma coluna (a composição desktop + celular do responsivo conta como uma só)
+    let mcol = media;
+    while (mcol.parentElement && !mcol.parentElement.contains(h)) mcol = mcol.parentElement;
+    const rects = (mcol.matches('video, canvas') ? [mcol] : [...mcol.querySelectorAll('video, canvas')]).map((e) => e.getBoundingClientRect());
+    const mTop = Math.min(...rects.map((r) => r.top)), mBottom = Math.max(...rects.map((r) => r.bottom));
+    const mLeft = Math.min(...rects.map((r) => r.left)), mRight = Math.max(...rects.map((r) => r.right));
+    const mr = { top: mTop, left: mLeft, width: mRight - mLeft, height: mBottom - mTop };
+    const tr = col.getBoundingClientRect();
     if (mr.width < 200 || tr.width < 200) return;
     const side = Math.abs(mr.left - tr.left) > 100 && Math.abs(mr.top + mr.height / 2 - (tr.top + tr.height / 2)) < 2000;
     out.push({ id: sec.id, mediaH: Math.round(mr.height), textH: Math.round(tr.height), dy: Math.round((mr.top + mr.height / 2) - (tr.top + tr.height / 2)) });

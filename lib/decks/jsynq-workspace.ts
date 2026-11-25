@@ -1,0 +1,821 @@
+import type { Deck, Media } from "./types";
+
+// Dossiê do deck do JSYNQ Workspace, o SISTEMA da JSYNQ (marca do grupo In The Level).
+// O site da JSYNQ e a marca têm cases próprios. Fatos conferidos no código do sistema
+// (js_workspace_frontend, branch staging, só leitura): documentação do produto, design
+// system (biblioteca no Figma, tokens, plano do tema escuro, taxonomia dos arquivos de
+// módulo), especificações e planos, textos da interface nos três idiomas, testes e
+// histórico de commits.
+//
+// TELAS: capturas reais do sistema em teste (staging, 1440×732), com os dados de
+// clientes mascarados antes de chegar aqui (nomes fictícios, fotos desfocadas). O
+// movimento (zoom, deslocamento, fusões entre telas e entre claro e escuro) é montado a
+// partir das capturas por scripts/deck/workspace-motion.py. Não citar no texto: nomes de
+// contatos, pessoas ou projetos que aparecem nas telas, preços, planos, IDs do Figma.
+const BASE = "/decks/jsynq-workspace";
+
+const desktop = (name: string, alt: string): Media => ({
+  src: `${BASE}/${name}.mp4`,
+  poster: `${BASE}/${name}.jpg`,
+  width: 1280,
+  height: 800,
+  alt,
+});
+
+const mobile = (name: string, alt: string): Media => ({
+  src: `${BASE}/${name}.mp4`,
+  poster: `${BASE}/${name}.jpg`,
+  width: 520,
+  height: 1126,
+  alt,
+});
+
+export const jsynqWorkspace: Deck = {
+  slug: "jsynq-workspace",
+  index: 11,
+  name: "JSYNQ Workspace",
+  client: "JSYNQ · grupo In The Level",
+  year: 2026,
+  sector: "Sistema interno · gestão, vendas e atendimento com IA",
+  location: "Uso internacional · português, inglês e espanhol",
+  flags: ["🌍"],
+  tagline: "Um sistema só para projetos, conversas com clientes, reuniões e agentes de IA.",
+  liveUrl: "https://jsynq-linkando.vercel.app/pt",
+  credits: [{ name: "Carlos Lima", role: "Direção criativa e design" }, { name: "Sandrele Carvalho", role: "Design" }],
+  frameHost: "app.jsynq.com",
+  mediaFramed: true,
+  largeMedia: true,
+  stack: ["TypeScript", "CSS", "Figma"],
+  theme: {
+    // verde escuro do sistema: o verde de botão não tem contraste sobre o papel claro
+    accent: "#29684C",
+    accentInk: "#ffffff",
+    fontKey: "inter",
+    displayWeight: 700,
+    displayTracking: "-0.02em",
+    displayUppercase: false,
+    radius: "8px",
+    coverWeight: 800,
+  },
+  cover: desktop(
+    "vitrine-desktop",
+    "O JSYNQ Workspace em uso: o cursor abre o menu de mais módulos, entra no calendário e pula o aviso de novidades, vai ao quadro do projeto, arrasta um cartão para outra coluna e volta ao início",
+  ),
+  summary:
+    "O sistema da JSYNQ reúne num só lugar o que costuma ficar espalhado: projetos e tarefas, quadro de vendas, conversas de WhatsApp e Instagram, reuniões, biblioteca de documentos e agentes de IA que trabalham junto com o time.",
+  seo: {
+    title: "JSYNQ Workspace — Apresentação | Linkando Design",
+    description:
+      "Como foi desenhado o JSYNQ Workspace: o problema, os módulos, as telas reais do sistema, o tema claro e escuro, o design system, o celular e a qualidade.",
+  },
+  chapters: [
+    {
+      type: "cover",
+      id: "capa",
+      label: "Capa",
+      kicker: "Portfólio 2026 · Sistema interno · Uso internacional",
+      title: "JSYNQ Workspace",
+      subtitle:
+        "O sistema da JSYNQ: projetos, vendas, mensagens, reuniões, documentos e agentes de IA no mesmo lugar, com a marca de cada empresa que o usa.",
+      chips: ["Design de produto", "Design system", "Tema claro e escuro", "Celular"],
+      credit: "Linkando Design · 2026 · design do sistema e do design system",
+      backdrop: desktop(
+        "tema-inicio-desktop",
+        "A tela inicial do sistema passando do tema claro para o escuro, com a câmera se aproximando das tarefas, e voltando",
+      ),
+    },
+    {
+      type: "statement",
+      id: "resumo",
+      label: "Resumo",
+      eyebrow: "O sistema",
+      text: "Empresas atendem no WhatsApp, vendem numa planilha, combinam em reunião e esquecem no dia seguinte. O JSYNQ Workspace reúne essas partes num sistema só, com agentes de IA dentro de cada módulo e um design system que deixa todas as telas com o mesmo visual e o mesmo comportamento.",
+      emphasis: ["sistema", "agentes", "design"],
+    },
+    {
+      type: "topics",
+      id: "problema",
+      label: "O problema",
+      eyebrow: "O problema",
+      title: "O problema.",
+      body: "O que o sistema resolve, nas palavras da própria JSYNQ ao apresentar cada módulo.",
+      items: [
+        {
+          title: "Conversas no celular de cada um",
+          text: "Quando a conversa fica no celular de um vendedor, ninguém mais vê, o cliente espera e o histórico se perde.",
+        },
+        {
+          title: "Clientes sem um lugar único",
+          text: "Sem um quadro de vendas, ninguém sabe em que etapa cada cliente está nem quantos estão parados.",
+        },
+        {
+          title: "O que foi decidido na reunião",
+          text: "Depois de uma reunião, sempre alguém pergunta o que ficou combinado. Sem registro, os combinados não se tornam tarefas.",
+        },
+        {
+          title: "Tarefas sem dono e sem prazo",
+          text: "Muita coisa se perde no “depois a gente vê”. Cada tarefa precisa de um responsável, de um prazo e de um aviso quando está atrasando.",
+        },
+        {
+          title: "Trabalho que se repete",
+          text: "Responder a mesma dúvida, cobrar uma fatura, lembrar alguém de responder: tarefas que ocupam o time e que um agente de IA pode fazer.",
+        },
+        {
+          title: "Uma ferramenta para cada coisa",
+          text: "Mensagens, vendas, projetos, documentos, agenda e controle de horas em sistemas separados, que não conversam entre si.",
+        },
+      ],
+    },
+    {
+      type: "process",
+      id: "processo",
+      label: "Processo",
+      eyebrow: "Como foi feito",
+      title: "Processo.",
+      body: "Todo o sistema foi projetado no Figma: um design system com as cores, os textos e os componentes, e todas as telas desenhadas lá antes do código. Depois, cada mudança grande recebe uma especificação por escrito e a construção é feita com agentes de IA, com revisão a cada etapa.",
+      steps: [
+        {
+          n: "01",
+          name: "Biblioteca no Figma",
+          output: "A fonte das cores, textos e componentes",
+          note: "O design system do sistema inteiro: um arquivo central reúne as cores, a tipografia, os espaçamentos e os componentes base, com os modos claro e escuro.",
+        },
+        {
+          n: "02",
+          name: "Um arquivo por módulo",
+          output: "Telas, fluxos e estados",
+          note: "Todas as telas são desenhadas no Figma, montadas com as peças da biblioteca. Cada módulo tem o seu arquivo, com as telas, os fluxos e os estados: vazio, carregando, erro e sem permissão.",
+        },
+        {
+          n: "03",
+          name: "Especificação escrita",
+          output: "Decisões numeradas",
+          note: "Cada mudança grande começa por um documento com as decisões, os critérios de pronto e o plano em tarefas. Desde agosto de 2026 são 34 especificações e 62 planos.",
+        },
+        {
+          n: "04",
+          name: "Construção com IA",
+          output: "Uma entrega por tarefa",
+          note: "Agentes de IA executam o plano tarefa por tarefa. Em 2026, 2.160 alterações do código foram feitas com agentes de IA.",
+        },
+        {
+          n: "05",
+          name: "Conferência",
+          output: "Testes e revisão",
+          note: "Antes de cada envio, o código passa pela conferência de tipos e pelos testes do que mudou.",
+        },
+      ],
+    },
+    {
+      type: "topics",
+      id: "modulos",
+      label: "Módulos",
+      eyebrow: "Os módulos",
+      title: "Módulos.",
+      body: "A barra lateral mostra os módulos principais, como Início, JSYNQ IA, Projetos, Biblioteca, Reuniões e Mensagens. O ícone de mais, no fim da barra, abre os outros: Calendário, Dashboard, Apps, Tarefas, Contatos e Produtos.",
+      items: [
+        {
+          title: "Início",
+          text: "As prioridades do dia: o que vence hoje, nesta semana e o que já atrasou, agrupado por projeto, mais os eventos e os insights escritos pela IA.",
+        },
+        {
+          title: "Tarefas",
+          text: "Todas as tarefas da pessoa, de todos os projetos, num lugar só, com ordem por prazo, prioridade ou atualização.",
+        },
+        {
+          title: "Projetos",
+          text: "Quadros em colunas de três tipos: fluxo contínuo, ciclos com data (sprints) e quadro de vendas, com formulários que criam cartões.",
+          stat: { value: "3", label: "tipos de quadro em colunas, com formulários que criam cartões" },
+        },
+        {
+          title: "Mensagens",
+          text: "WhatsApp, Instagram e SMS numa caixa só, com o estágio de cada conversa, quem está atendendo e o cliente ao lado.",
+          chips: ["WhatsApp", "Instagram", "SMS"],
+        },
+        {
+          title: "Reuniões e Calendário",
+          text: "Videochamadas com gravação e transcrição, uma agenda única e páginas de agendamento para o cliente escolher o horário.",
+        },
+        {
+          title: "Biblioteca",
+          text: "Documentos com edição em conjunto, pastas, arquivos e as gravações e transcrições das reuniões.",
+        },
+        {
+          title: "Contatos e Produtos",
+          text: "Pessoas e empresas com o histórico de negociações, e o catálogo de produtos usado nos cartões de venda.",
+        },
+        {
+          title: "JSYNQ IA e Agentes",
+          text: "Um assistente de conversa e agentes configuráveis, com habilidades, conectores e uma vitrine de agentes prontos.",
+        },
+        {
+          title: "Dashboards e tempo",
+          text: "Indicadores do time, gráficos de situação e prioridade, atividade recente e controle de horas, com horas faturáveis.",
+        },
+      ],
+    },
+    {
+      type: "feature",
+      id: "inicio",
+      label: "Início",
+      eyebrow: "Início",
+      title: "Tela inicial.",
+      body: "A tela inicial começa pelo que exige ação: um aviso de atraso, os contadores de tarefas e as tarefas agrupadas por projeto. Ao lado, os eventos do dia e os insights da IA.",
+      media: desktop(
+        "inicio-desktop",
+        "A tela inicial real: a câmera se aproxima do aviso de tarefa atrasada e dos contadores; depois o cursor abre o menu de etapa de uma tarefa, com a câmera perto do menu, e fecha",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Aviso", v: "“Precisa da sua atenção” no topo quando há atrasos" },
+        { k: "Contadores", v: "atrasadas, em andamento e concluídas, cada um abre a lista" },
+        { k: "Insights de IA", v: "um alerta e uma oportunidade, escritos a partir das tarefas" },
+      ],
+      decision: {
+        title: "A tela inicial mostra primeiro o que está em risco",
+        text: "A primeira tela mostra só o que exige ação. Atrasos e bloqueios vêm antes da lista completa, porque é isso que a pessoa precisa resolver ao abrir o sistema.",
+      },
+    },
+    {
+      type: "feature",
+      id: "quadro",
+      label: "Quadro",
+      eyebrow: "Projetos · quadro e tarefa",
+      title: "Quadro de projetos.",
+      body: "O projeto abre no quadro, com colunas por etapa e cartões com código, responsável e botão de tempo. Para mudar a etapa, o cartão é arrastado para outra coluna.",
+      media: desktop(
+        "quadro-desktop",
+        "O quadro real de um projeto: o cursor pega um cartão da coluna To do, arrasta até In Progress e devolve",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Vistas", v: "quadro, épicos e backlog, com o filtro do sprint atual" },
+        { k: "Tarefa", v: "etapa, responsáveis, prioridade, datas e etiquetas" },
+      ],
+    },
+    {
+      type: "feature",
+      id: "mensagens",
+      label: "Mensagens",
+      eyebrow: "Mensagens",
+      title: "Mensagens.",
+      body: "WhatsApp, Instagram e SMS chegam na mesma caixa. Cada conversa mostra o canal, a última mensagem e quem está atendendo.",
+      media: desktop(
+        "mensagens-desktop",
+        "A caixa de mensagens real no tema escuro: a câmera se aproxima da lista de conversas com o selo de IA atendendo e depois da resposta do agente de vendas",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Atendimento", v: "o selo “IA atendendo” em cada conversa cuidada por um agente" },
+        { k: "Assumir", v: "um botão passa a conversa do agente para a pessoa" },
+        { k: "Estágios", v: "novo, qualificando, negociando, ganho, perdido e outros, em cores" },
+      ],
+      decision: {
+        title: "O sistema mostra quem está respondendo",
+        text: "Com um agente de IA atendendo, o maior risco é ninguém saber quem cuida do cliente. Por isso o selo aparece na lista, o nome do agente aparece em cada mensagem e assumir a conversa é um único botão.",
+      },
+    },
+    {
+      type: "feature",
+      id: "ia",
+      label: "JSYNQ IA",
+      eyebrow: "JSYNQ IA e agentes",
+      title: "Agentes de IA.",
+      body: "A JSYNQ IA é a tela de conversa com os agentes. À esquerda ficam a vitrine, os agentes e os conectores; no centro, um campo só para pedir.",
+      media: desktop(
+        "ia-desktop",
+        "A tela real da JSYNQ IA: a câmera se aproxima do campo de pedido e depois do menu com vitrine, agentes e conectores",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Agentes", v: "vendas, projetos, operações, sucesso do cliente e marketing" },
+        { k: "Escolha", v: "o agente da conversa é trocado no topo, a qualquer momento" },
+        { k: "Pedido", v: "texto, anexo, voz e busca na internet no mesmo campo" },
+      ],
+    },
+    {
+      type: "feature",
+      id: "biblioteca",
+      label: "Biblioteca",
+      eyebrow: "Biblioteca",
+      title: "Biblioteca.",
+      body: "A Biblioteca guarda pastas, documentos e arquivos. Cada linha mostra quem criou e quando mudou pela última vez.",
+      media: desktop(
+        "biblioteca-desktop",
+        "A Biblioteca real: a câmera se aproxima do menu lateral com as pastas e depois da lista de pastas",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Atalhos", v: "pesquisar, chamadas, projetos, reuniões e favoritos" },
+        { k: "Pastas", v: "árvore à esquerda e lista à direita, em linhas ou em grade" },
+      ],
+    },
+    {
+      type: "feature",
+      id: "reunioes",
+      label: "Reuniões",
+      eyebrow: "Reuniões",
+      title: "Reuniões.",
+      body: "As videochamadas acontecem dentro do sistema. A tela de entrada tem uma ação principal, criar a reunião, e um campo para entrar com código ou link.",
+      media: desktop(
+        "reunioes-desktop",
+        "A tela real de Reuniões: a câmera se aproxima do título e depois do botão de nova reunião, do campo de código e da opção de criptografia",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Segurança", v: "opção de criptografia ponta a ponta antes de começar" },
+        { k: "Registro", v: "gravação e transcrição durante a reunião" },
+      ],
+      decision: {
+        title: "A transcrição gera tarefas no mesmo sistema",
+        text: "A transcrição não fica solta: ela segue para tarefas no mesmo sistema em que o time trabalha.",
+      },
+    },
+    {
+      type: "feature",
+      id: "tarefas",
+      label: "Tarefas",
+      eyebrow: "Tarefas",
+      title: "Tarefas.",
+      body: "A tela de tarefas junta o que está espalhado pelos projetos. A pessoa escolhe ver todas, só as dela ou só as que criou.",
+      media: desktop(
+        "tarefas-desktop",
+        "A tela real de tarefas: a câmera se aproxima dos filtros e depois dos controles de agrupar e ordenar",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Agrupar", v: "por projeto e pela aba de cada projeto" },
+        { k: "Ordenar", v: "prazo mais próximo, prioridade ou atualização" },
+      ],
+      decision: {
+        title: "Uma lista com as tarefas de todos os projetos",
+        text: "Quem participa de vários projetos não precisa abrir um por um. A lista junta tudo e mantém o projeto visível em cada grupo, para não perder o contexto.",
+      },
+    },
+    {
+      type: "feature",
+      id: "dashboard",
+      label: "Dashboard",
+      eyebrow: "Dashboards",
+      title: "Dashboard.",
+      body: "O dashboard abre com os insights da IA e seis indicadores. Abaixo, gráficos de situação e prioridade e a atividade recente.",
+      media: desktop(
+        "dashboard-desktop",
+        "O dashboard real: a câmera se aproxima do gráfico de situação e depois da atividade recente",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Indicadores", v: "seis números; os de tarefas com a variação do período anterior" },
+        { k: "Gráficos", v: "situação das tarefas, prioridades, progresso de épicos e carga do time" },
+        { k: "Atividade", v: "quem mudou o quê, em ordem, com link para o item" },
+      ],
+      decision: {
+        title: "Os indicadores de tarefas mostram a variação",
+        text: "Sem comparação, um número não indica se o resultado é bom ou ruim. Os indicadores de tarefas vêm com a variação e uma cor, para a leitura ser rápida.",
+      },
+    },
+    {
+      type: "feature",
+      id: "contatos",
+      label: "Contatos",
+      eyebrow: "Contatos · CRM",
+      title: "Contatos.",
+      body: "Os contatos ficam numa tabela com abas para todos, pessoas e empresas. Cada linha mostra o tipo, os canais, a empresa e o responsável.",
+      media: desktop(
+        "contatos-desktop",
+        "A tela real de contatos, com nomes fictícios: a câmera se aproxima das abas e depois do botão de adicionar contato",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Canais", v: "telefone, e-mail e Instagram em ícones na própria linha" },
+        { k: "CRM", v: "um selo indica o contato que está no quadro de vendas" },
+      ],
+      decision: {
+        title: "Os canais aparecem como ícones",
+        text: "Telefone, e-mail e rede social ficam como ícones na mesma coluna. A tabela continua legível com muitas colunas, e quem procura um canal encontra rápido.",
+      },
+    },
+    {
+      type: "feature",
+      id: "calendario",
+      label: "Calendário",
+      eyebrow: "Calendário",
+      title: "Calendário.",
+      body: "O calendário mostra tudo em uma tela: calendários à esquerda, a semana no centro e as próximas reuniões à direita. Dá para trocar entre dia, semana e mês.",
+      media: desktop(
+        "tema-calendario-desktop",
+        "O calendário real na visão de semana, passando do tema claro para o escuro, com a câmera se aproximando da semana, e voltando",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Lateral", v: "minicalendário com o número da semana, jornada do dia e busca por reunião" },
+        { k: "Reuniões", v: "painel das próximas reuniões, reunião instantânea e novo evento" },
+      ],
+      decision: {
+        title: "A semana inteira aparece numa tela só",
+        text: "Quem agenda precisa ver ao mesmo tempo os dias livres, as reuniões que vêm e os outros calendários. As três partes ficam lado a lado, e o tema escuro mantém a mesma divisão.",
+      },
+    },
+    {
+      type: "feature",
+      id: "novidades",
+      label: "Novidades",
+      eyebrow: "Calendário · novidades",
+      title: "Avisos de novidades.",
+      body: "Uma janela de novidades explica a mudança do calendário em passos curtos, com a imagem da tela e uma frase por passo. A pessoa avança ou pula.",
+      media: desktop(
+        "calendario-desktop",
+        "A janela de novidades do calendário no primeiro de oito passos; o cursor clica em Pular, a câmera se aproxima da semana e a janela volta a aparecer ao abrir a página",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Passos", v: "oito passos, com a posição atual mostrada em pontos" },
+        { k: "Controle", v: "botões Próximo e Pular, sem prender a pessoa" },
+      ],
+      decision: {
+        title: "O tour apresenta a nova divisão do calendário",
+        text: "Num sistema em uso, mudar uma tela de lugar confunde quem já sabia usar. O tour mostra a nova divisão antes que a pessoa precise procurar alguma coisa.",
+      },
+    },
+    {
+      type: "feature",
+      id: "produtos",
+      label: "Produtos",
+      eyebrow: "Produtos",
+      title: "Produtos.",
+      body: "Produtos reúne serviços, itens para vender, itens para alugar e produtos digitais, cada um ligado aos projetos em que está disponível.",
+      media: desktop(
+        "produtos-desktop",
+        "A tela real de produtos, com os valores escondidos: a câmera se aproxima dos tipos de produto e depois da lista",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Projetos", v: "cada produto diz em que projetos está disponível, com filtro por projeto" },
+        { k: "Estoque", v: "estoque e unidades na tabela, com aviso quando está acabando" },
+      ],
+      decision: {
+        title: "Um catálogo único atende todos os projetos",
+        text: "O mesmo produto pode ser vendido em mais de um funil. Em vez de copiar o item em cada quadro, o catálogo é um só e cada produto indica onde está disponível.",
+      },
+    },
+    {
+      type: "feature",
+      id: "tema",
+      label: "Claro e escuro",
+      eyebrow: "Tema claro e escuro",
+      title: "Tema claro e escuro.",
+      body: "Cada pessoa escolhe o tema no perfil: claro, escuro ou seguir o aparelho. No quadro, as colunas, os cartões e o verde da ação principal ficam no mesmo lugar.",
+      media: desktop(
+        "tema-quadro-desktop",
+        "O quadro real de um projeto passando do tema claro para o escuro, com a câmera se aproximando das colunas, e voltando",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Leitura", v: "texto e fundo usam tons diferentes para manter o contraste" },
+      ],
+      decision: {
+        title: "Só as cores mudam no tema escuro",
+        text: "O tema escuro mantém a mesma interface. As posições, os tamanhos e a hierarquia são os mesmos, então quem troca de tema não precisa reaprender nada.",
+      },
+    },
+    {
+      type: "feature",
+      id: "tema-ia",
+      label: "Escuro na IA",
+      eyebrow: "Tema claro e escuro · JSYNQ IA",
+      title: "Tema escuro: JSYNQ IA.",
+      body: "Na tela da JSYNQ IA, o fundo escurece e a borda colorida do campo de pedido continua igual nos dois temas. O botão verde também não muda.",
+      media: desktop(
+        "tema-ia-desktop",
+        "A tela real da JSYNQ IA passando do tema claro para o escuro, com a câmera se aproximando do campo de pedido",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Borda da IA", v: "o mesmo degradê nos dois temas, nos campos e nos cartões de insights" },
+      ],
+      decision: {
+        title: "A IA usa a mesma borda colorida nos dois temas",
+        text: "Tudo o que vem da IA tem a mesma borda colorida, em qualquer tela e em qualquer tema. A pessoa aprende uma vez a reconhecer o que vem da IA.",
+      },
+    },
+    {
+      type: "feature",
+      id: "tema-graficos",
+      label: "Escuro nos gráficos",
+      eyebrow: "Tema claro e escuro · Dashboards",
+      title: "Tema escuro: gráficos.",
+      body: "No dashboard, o verde das barras clareia no escuro e os cartões ganham um fundo um tom mais claro que o da página.",
+      media: desktop(
+        "tema-dashboard-desktop",
+        "O dashboard real passando do tema claro para o escuro, com a câmera se aproximando dos gráficos, e voltando",
+      ),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Cartões", v: "um tom mais claro que o fundo, para separar os blocos sem linhas fortes" },
+        { k: "Variação", v: "vermelho e verde de queda e alta nos dois temas" },
+      ],
+      decision: {
+        title: "O valor de cada cor depende da função",
+        text: "Uma cor que funciona sobre branco perde contraste sobre cinza escuro. Por isso cada cor tem um valor para cada tema, escolhido pela função: fundo, texto, borda, ação ou situação.",
+      },
+    },
+    {
+      type: "feature",
+      id: "tema-tabelas",
+      label: "Escuro nas tabelas",
+      eyebrow: "Tema claro e escuro · Produtos",
+      title: "Tema escuro: tabelas.",
+      body: "Na lista de produtos, as linhas, as miniaturas e os avisos trocam de tom juntos.",
+      media: desktop(
+        "tema-produtos-desktop",
+        "A tela real de produtos passando do tema claro para o escuro, com a câmera se aproximando da lista, e voltando, com os valores escondidos",
+      ),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Linhas", v: "separadas por uma linha fina, sem fundo alternado" },
+        { k: "Avisos", v: "o amarelo de estoque acabando muda de tom e continua visível" },
+        { k: "Seleção", v: "o filtro ativo fica em verde nos dois temas" },
+      ],
+      decision: {
+        title: "Cada cor de situação tem um sentido fixo",
+        text: "O amarelo indica aviso e o verde indica seleção, em qualquer tema. A pessoa lê a situação pela cor sem precisar reaprender o significado no escuro.",
+      },
+    },
+    {
+      type: "topics",
+      id: "tema-escuro",
+      label: "Tema escuro",
+      eyebrow: "Como o tema escuro entrou",
+      title: "Tema escuro.",
+      body: "O desafio era ligar o escuro num sistema grande e em uso, sem que quem continua no claro note qualquer diferença.",
+      items: [
+        {
+          title: "O claro idêntico",
+          text: "Cada cor passou a ter um valor de reserva igual ao de antes. A folha de estilo do tema claro foi comparada linha a linha, 23.788 linhas, e saiu igual.",
+          stat: { value: "23.788", label: "linhas do tema claro comparadas, e saiu igual" },
+        },
+        {
+          title: "Cobertura medida",
+          text: "Dos 19.347 usos de cor no sistema, 79,5% ganharam um valor escuro e 17,5% ficam iguais de propósito. O restante foi listado para as próximas etapas.",
+          stat: { value: "79,5%", label: "dos 19.347 usos de cor ganharam um valor escuro" },
+        },
+        {
+          title: "Os mesmos tons do Figma",
+          text: "O escuro usa a mesma escala de cinzas do modo escuro da biblioteca. Texto e fundo usam tons diferentes para manter a leitura.",
+        },
+        {
+          title: "Liberação por etapas",
+          text: "O tema escuro é ligado por uma chave: primeiro o time interno, depois grupos de teste e só então todos. Desligar a chave volta tudo ao normal, sem publicar de novo.",
+        },
+        {
+          title: "Onde o escuro não entra",
+          text: "As telas de chamada de vídeo ficam fora da troca, e o formulário público que o cliente preenche fica sempre claro.",
+        },
+        {
+          title: "Escolha da pessoa",
+          text: "Claro, escuro ou seguir o aparelho, no perfil de cada pessoa. A escolha é aplicada antes da primeira pintura, para a tela não piscar.",
+        },
+      ],
+    },
+    {
+      type: "identity",
+      id: "identidade",
+      label: "Style guide",
+      eyebrow: "Style guide",
+      title: "Cores e tipografia.",
+      swatches: [
+        { name: "Fundo", hex: "#F6F6FA", role: "Fundo das áreas de trabalho" },
+        { name: "Linha", hex: "#E4E4E9", role: "Bordas e áreas rebaixadas" },
+        { name: "Texto", hex: "#040405", role: "Texto principal" },
+        { name: "Texto suave", hex: "#4D4B5C", role: "Textos de apoio" },
+        { name: "Verde", hex: "#45AD7E", role: "Botões e ações principais" },
+        { name: "Verde escuro", hex: "#29684C", role: "Ação ao passar o mouse" },
+        { name: "Verde profundo", hex: "#153426", role: "Ação pressionada" },
+        { name: "Verde claro", hex: "#EEF7F3", role: "Fundo de itens selecionados" },
+      ],
+      fonts: [
+        {
+          name: "Inter",
+          role: "Títulos de tela",
+          sample: "Precisa da sua atenção",
+          weight: 600,
+          tracking: "-0.01em",
+          size: "xl",
+          note: "Uma família só em todo o sistema, nos pesos 400, 500 e 600.",
+        },
+        {
+          name: "Inter",
+          role: "Interface",
+          sample: "IA atendendo · Assumir conversa · Em andamento",
+          weight: 500,
+          size: "md",
+          note: "Rótulos, selos e nomes em peso médio, para ler rápido em listas densas.",
+        },
+        {
+          name: "Inter",
+          role: "Texto",
+          sample: "Cada tarefa tem um dono e um prazo, e o time sabe o que está parado.",
+          weight: 400,
+          size: "sm",
+          note: "Corpo de texto em peso normal, com tamanhos definidos em pixels na biblioteca.",
+        },
+      ],
+      icons: {
+        title: "Ícones",
+        note: "Ícones da biblioteca Lucide, na versão usada pelo app.",
+        animated: false,
+        items: [
+          { label: "Mensagem", shapes: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />' },
+          { label: "Buscar", shapes: '<circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />' },
+          { label: "Adicionar", shapes: '<path d="M5 12h14" /><path d="M12 5v14" />' },
+          { label: "Configurações", shapes: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" />' },
+          { label: "Tocar", shapes: '<polyline points="6 3 20 12 6 21 6 3" />' },
+          { label: "Pausar", shapes: '<rect x="14" y="4" width="4" height="16" rx="1" /><rect x="6" y="4" width="4" height="16" rx="1" />' },
+          { label: "Microfone", shapes: '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" />' },
+          { label: "Telefone", shapes: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />' },
+          { label: "Pessoas", shapes: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />' },
+          { label: "Agente IA", shapes: '<path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" />' },
+          { label: "Baixar", shapes: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" />' },
+          { label: "Link", shapes: '<path d="M9 17H7A5 5 0 0 1 7 7h2" /><path d="M15 7h2a5 5 0 1 1 0 10h-2" /><line x1="8" x2="16" y1="12" y2="12" />' },
+        ],
+      },
+    },
+    {
+      type: "topics",
+      id: "design-system",
+      label: "Biblioteca de design",
+      eyebrow: "Como o design system funciona",
+      title: "Design system.",
+      body: "Todo o sistema foi projetado com este design system no Figma, e todas as telas foram desenhadas lá. As decisões de cor, texto e componente têm o mesmo nome no Figma e no código.",
+      items: [
+        {
+          title: "Três camadas de cor",
+          text: "Valores puros embaixo, papéis no meio (fundo, texto, borda, ação, situação) e componentes em cima. O designer escolhe a cor pela função.",
+          stat: { value: "3", label: "camadas de cor: valores puros, papéis e componentes" },
+        },
+        {
+          title: "Nomes iguais nos dois lados",
+          text: "O nome de cada espaçamento e raio no Figma é o mesmo usado no código, sem tradução entre design e desenvolvimento.",
+        },
+        {
+          title: "Níveis de componente",
+          text: "Elementos, componentes, padrões, layouts e telas, mais fluxos e estados, que é onde o trabalho de experiência acontece.",
+        },
+        {
+          title: "A marca de cada empresa",
+          text: "Cada espaço de trabalho pode ter as próprias cores. O sistema calcula as variações a partir da cor escolhida, e a tela de entrada pode vir com a marca de quem revende o sistema.",
+        },
+        {
+          title: "Promoção de peças",
+          text: "Quando uma peça de um módulo passa a ser usada em dois ou mais, ela vira proposta na biblioteca e só sai do módulo depois de aprovada.",
+          stat: { value: "2+", label: "módulos usando a peça para ela virar proposta na biblioteca" },
+        },
+        {
+          title: "Contraste conferido",
+          text: "Os pares de texto e fundo dos modos claro e escuro são conferidos pela regra de contraste mínimo de leitura, inclusive com cores de marca de exemplo.",
+        },
+      ],
+    },
+    {
+      type: "feature",
+      id: "celular-layout",
+      label: "Celular",
+      eyebrow: "No celular",
+      title: "Layout no celular.",
+      body: "No celular, a barra lateral do computador dá lugar a uma barra inferior com Início, Projetos, Mensagens e Tarefas. Os outros módulos ficam no menu, em grade.",
+      media: mobile(
+        "navegacao-mobile",
+        "O sistema real no celular: a tela inicial passa para o tema escuro, um toque no menu abre a grade de módulos, outro abre as mensagens, o tema volta ao claro e um toque em Início fecha o percurso",
+      ),
+      mediaKind: "mobile",
+      side: "left",
+      specs: [
+        { k: "Ação rápida", v: "o botão de mais no centro da barra cria o item daquele módulo" },
+        { k: "Menu", v: "todos os módulos em grade, com aviso de mensagens não lidas no cartão" },
+      ],
+      decision: {
+        title: "A barra inferior reúne os módulos do dia a dia",
+        text: "No celular, a mão alcança a parte de baixo da tela. Os quatro módulos do dia a dia ficam ali, e o resto vai para uma grade que cada equipe organiza, em vez de uma lista longa para rolar.",
+      },
+    },
+    {
+      type: "topics",
+      id: "celular",
+      label: "Navegação",
+      eyebrow: "Navegação no celular",
+      title: "Navegação no celular.",
+      body: "Em outubro de 2026 a navegação do celular foi redesenhada por inteiro, a partir de um protótipo aprovado. O computador não mudou.",
+      items: [
+        {
+          title: "Cabeçalho que se recolhe",
+          text: "Mostra o projeto ou módulo atual e as ações gerais, e se recolhe ao rolar para dar espaço ao conteúdo.",
+        },
+        {
+          title: "Filtros, Ordenação e Exibição",
+          text: "Três botões sempre na mesma ordem, em todos os módulos. Os três abrem o mesmo painel, e nada muda até tocar em Aplicar.",
+          stat: { value: "3", label: "botões na mesma ordem, em todos os módulos" },
+        },
+        {
+          title: "Barra fixa embaixo",
+          text: "Quatro atalhos que a pessoa escolhe e, no centro, o botão da JSYNQ IA com as ações de criar daquele módulo.",
+          stat: { value: "4", label: "atalhos que a pessoa escolhe" },
+        },
+        {
+          title: "Menu em grade",
+          text: "Os módulos em grade, com edição ali mesmo: tocar em Editar, arrastar e concluir.",
+        },
+        {
+          title: "Cor da pessoa",
+          text: "A cor segue a marca do espaço de trabalho, e cada pessoa pode trocar só para si e voltar depois.",
+        },
+        {
+          title: "Tamanho dos alvos de toque",
+          text: "Todo alvo de toque tem pelo menos 44 px e nenhuma parte fixa rola para o lado.",
+          stat: { value: "44 px", label: "tamanho mínimo de todo alvo de toque" },
+        },
+      ],
+    },
+    {
+      type: "responsive",
+      id: "responsivo",
+      label: "Computador e celular",
+      eyebrow: "Computador e celular",
+      title: "Layout por tamanho de tela.",
+      body: "À esquerda, o percurso pelos módulos no computador. À direita, o sistema aberto no celular.",
+      desktop: desktop(
+        "vitrine-desktop",
+        "O sistema real no computador: o cursor abre o menu de mais módulos, entra no calendário, pula o aviso de novidades, vai ao quadro e arrasta um cartão",
+      ),
+      mobile: mobile(
+        "hero-mobile",
+        "O sistema real no celular, só com toques: menu em grade, JSYNQ IA, agenda do dia, quadro pela barra inferior, mensagens, uma conversa com o agente de vendas e a volta ao início",
+      ),
+      notes: [
+        { k: "Celular", v: "layout próprio, com barra inferior e menu em grade", device: "mobile" },
+        { k: "Tema", v: "o dashboard aparece no claro e no escuro no computador", device: "desktop" },
+      ],
+    },
+    {
+      type: "topics",
+      id: "qualidade",
+      label: "Qualidade",
+      eyebrow: "Qualidade",
+      title: "Testes e verificações.",
+      body: "Testes automáticos, conferência de tipos e regras escritas para quem mexe no código.",
+      items: [
+        {
+          title: "Testes automáticos",
+          text: "978 arquivos de teste no código, que rodam só sobre o que mudou para não travar a máquina de quem desenvolve.",
+          stat: { value: "978", label: "arquivos de teste no código" },
+        },
+        {
+          title: "Conferência antes de enviar",
+          text: "Nenhuma alteração vai para revisão sem passar pela conferência de tipos, regra escrita para pessoas e para os agentes de IA.",
+          stat: { value: "0", label: "alterações vão para revisão sem a conferência de tipos" },
+        },
+        {
+          title: "Tema claro protegido",
+          text: "Uma comparação automática da folha de estilo do tema claro falha se qualquer linha mudar ao mexer no escuro.",
+        },
+        {
+          title: "Componentes documentados",
+          text: "181 arquivos de exemplos de componentes, onde cada peça pode ser vista e testada sozinha.",
+          stat: { value: "181", label: "arquivos de exemplos de componentes" },
+        },
+        {
+          title: "Testes no navegador",
+          text: "Os testes de navegador da navegação do celular estão escritos, mas aguardam um ambiente de teste com login para rodar.",
+        },
+        {
+          title: "O que não existe",
+          text: "A publicação automática monta e publica o sistema, mas não roda os testes: eles são executados por comando, antes de cada envio.",
+        },
+      ],
+    },
+    {
+      type: "cta",
+      id: "projeto-real",
+      label: "Ver projeto",
+      title: "Sistema em uso.",
+      body: "O sistema é usado com login, então o link abre o site da JSYNQ, onde cada módulo é apresentado.",
+      button: "Ver projeto real",
+      note: "Abre em uma nova aba",
+    },
+  ],
+};

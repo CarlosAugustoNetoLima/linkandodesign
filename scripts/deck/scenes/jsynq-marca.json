@@ -1,0 +1,248 @@
+{
+  "site": "jsynq-marca",
+  "url": "http://127.0.0.1:8030/jsynq-marca/brand.html",
+  "outDir": "public/decks/jsynq-marca",
+  "_nota": "Marca não tem site: as cenas gravam páginas HTML montadas com os arquivos da marca (scripts/deck/brand/jsynq-marca). Antes de gravar: cd scripts/deck/brand && python3 -m http.server 8030 --bind 127.0.0.1",
+  "scenes": [
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/brand.html"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 25000
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/brand.html?short=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 17200
+        }
+      ]
+    },
+    {
+      "name": "simbolo-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/brand.html?end=8.6&light=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 8600
+        }
+      ]
+    },
+    {
+      "name": "versoes-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/mockups.html?s=versions,colors&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "regras-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/mockups.html?s=safezone,rules&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "papelaria-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/mockups.html?s=cards,badge&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "app-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/phone.html"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 10000
+        }
+      ]
+    },
+    {
+      "name": "web-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/mockups.html?s=browser,slide&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "redes-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/mockups.html?s=insta,linkedin&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "sinalizacao-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/jsynq-marca/mockups.html?s=wall&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 16000
+        }
+      ]
+    }
+  ]
+}

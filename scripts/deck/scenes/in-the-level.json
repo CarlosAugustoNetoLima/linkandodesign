@@ -1,0 +1,224 @@
+{
+  "site": "in-the-level",
+  "url": "http://127.0.0.1:8030/in-the-level/brand.html",
+  "outDir": "public/decks/in-the-level",
+  "_nota": "Marca não tem site: as cenas gravam páginas HTML montadas com os arquivos da marca (scripts/deck/brand/in-the-level). Antes de gravar: cd scripts/deck/brand && python3 -m http.server 8030 --bind 127.0.0.1",
+  "scenes": [
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/brand.html"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 25200
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/brand.html?short=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 17200
+        }
+      ]
+    },
+    {
+      "name": "simbolo-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/brand.html?end=8&light=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 8000
+        }
+      ]
+    },
+    {
+      "name": "versoes-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/mockups.html?s=versions,versionsdark&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "sistema-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/mockups.html?s=system&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 16000
+        }
+      ]
+    },
+    {
+      "name": "papelaria-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/mockups.html?s=cards,stationery&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "digital-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/mockups.html?s=browser,email&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "ambiente-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/mockups.html?s=glass,laptop&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 12400
+        }
+      ]
+    },
+    {
+      "name": "apresentacao-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://127.0.0.1:8030/in-the-level/mockups.html?s=slide&anim=1"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "css",
+          "text": ":root{--run:running}"
+        },
+        {
+          "op": "wait",
+          "ms": 16000
+        }
+      ]
+    }
+  ]
+}

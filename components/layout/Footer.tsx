@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { contactHref, hasWhatsapp, EMAIL, SOCIAL } from "@/lib/contact";
+import OpenChatLink from "@/components/agent/OpenChatLink";
 
 // Bloco escuro de fechamento com topo arredondado: concentra a conversão.
 // É o alvo do CTA do header (#contato).
@@ -15,13 +16,16 @@ export default function Footer({ locale }: { locale: Locale }) {
       className="mt-8 scroll-mt-20 rounded-t-[2rem] bg-charcoal text-white md:rounded-t-[3rem]"
     >
       <div className="mx-auto max-w-7xl px-5 py-20 md:py-28">
-        <h2 className="max-w-3xl font-display text-h1 font-extrabold uppercase">{t.title}</h2>
-        <p className="mt-5 max-w-xl text-white/60">{t.text}</p>
+        <h2 className="max-w-3xl font-display text-h1 font-extrabold uppercase">{dict.home.finalCta.title}</h2>
+        <p className="mt-5 max-w-xl text-white/60">{dict.home.finalCta.text}</p>
 
-        <a href={contactHref(locale)} className="btn-brut btn-brut--dark mt-10">
-          {/* sem número de WhatsApp configurado, o CTA fala a verdade e abre o e-mail */}
-          {hasWhatsapp ? t.cta : EMAIL}
-        </a>
+        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+          <OpenChatLink className="btn-brut btn-brut--dark text-center">{dict.home.finalCta.cta} →</OpenChatLink>
+          {/* contato direto fica como alternativa; sem WhatsApp configurado, mostra o e-mail */}
+          <a href={contactHref(locale)} className="link-brut text-sm text-white/60 hover:text-lime">
+            {hasWhatsapp ? t.cta : EMAIL}
+          </a>
+        </div>
 
         <div className="mt-20 flex flex-col gap-8 border-t border-white/15 pt-8 md:flex-row md:items-center md:justify-between">
           <Image

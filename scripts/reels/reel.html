@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #F4F3EE; }
+  #stage { position: relative; width: 1080px; height: 1350px; overflow: hidden; color: #17171A; background: #F4F3EE; }
+  /* prancheta do site: papel com grade de pontos */
+  #board { position: absolute; inset: 0; background-image: radial-gradient(rgba(23,23,26,.12) 1.6px, transparent 2.2px); background-size: 22px 22px; }
+  #glow { position: absolute; inset: -10%; pointer-events: none; }
+  .scene { position: absolute; inset: 0; opacity: 0; }
+  .persp { position: absolute; inset: 0; perspective: 2600px; perspective-origin: 50% 46%; }
+  .center { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+  .mono { font-family: "JetBrains Mono", monospace; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
+  video { display: block; width: 100%; height: 100%; object-fit: cover; background: #e9e8e3; }
+  .shadow { box-shadow: 0 50px 90px -34px rgba(23,23,26,.34), 0 14px 34px -18px rgba(23,23,26,.2), 0 0 0 1px rgba(23,23,26,.08); }
+
+  .browser { border-radius: 20px; overflow: hidden; background: #fff; }
+  .bar { height: 40px; display: flex; align-items: center; gap: 9px; padding: 0 16px; background: #fff; border-bottom: 1px solid rgba(23,23,26,.07); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(23,23,26,.15); }
+  .card { border-radius: 22px; overflow: hidden; background: #fff; }
+  .content { position: relative; width: 100%; overflow: hidden; background: #fff; }
+  .content > * { position: absolute; inset: 0; }
+  .tile { position: absolute; background-repeat: no-repeat; backface-visibility: hidden; }
+  .wire rect { fill: none; stroke: rgba(23,23,26,.28); stroke-width: 1.4; }
+
+  .phone { position: absolute; width: 336px; border-radius: 34px; background: #0c0c0d; padding: 9px; }
+  .phone .screen { width: 100%; aspect-ratio: 520 / 1126; border-radius: 26px; overflow: hidden; background: #fff; }
+
+  #name { position: absolute; left: 70px; bottom: 96px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 96px;
+    letter-spacing: -.04em; line-height: .9; text-transform: uppercase; }
+  #cover-logo { position: absolute; left: 70px; top: 74px; width: 250px; }
+  #cover-logo svg, #e-logo svg { width: 100%; height: auto; display: block; }
+
+  /* style guide */
+  #sw { position: absolute; left: 60px; right: 60px; top: 150px; bottom: 150px; display: flex; gap: 14px; }
+  .swatch { flex: 1; border-radius: 22px; transform-origin: bottom; position: relative; box-shadow: 0 0 0 1px rgba(23,23,26,.08); }
+  .swatch span { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; font-size: 17px; }
+  #ty { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 90px; opacity: 0; }
+  #ty-aa { font-size: 400px; line-height: .9; }
+  #ty-mask { overflow: hidden; padding-bottom: 20px; }
+  #ty-s { margin-top: 26px; font-size: 62px; line-height: 1.05; max-width: 900px; }
+  #ty-n { margin-top: 34px; font-size: 20px; color: rgba(23,23,26,.5); }
+  #ic { position: absolute; left: 90px; right: 90px; top: 50%; transform: translateY(-50%); display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; opacity: 0; }
+  .ico { aspect-ratio: 1; border-radius: 26px; background: #fff; display: grid; place-items: center; }
+  .ico svg { width: 46%; height: 46%; fill: none; stroke: #17171A; stroke-linecap: round; stroke-linejoin: round; }
+
+  #wm { position: absolute; left: 0; right: 0; bottom: 34px; text-align: center; font-size: 17px; color: rgba(23,23,26,.42); }
+  #end { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #e-logo { width: 560px; }
+  #e-url { margin-top: 64px; font-family: Inter, sans-serif; font-weight: 600; font-size: 32px; color: #EEFB6E; background: #17171A; padding: 24px 44px; border-radius: 16px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="board"></div>
+  <div id="glow"></div>
+
+  <!-- capa + construção + página inicial: o mesmo navegador -->
+  <section class="scene" id="hero">
+    <div class="persp"><div class="center" id="h-obj"></div><div id="h-phone-wrap"></div></div>
+    <div id="cover-logo"></div>
+    <h1 id="name"></h1>
+  </section>
+
+  <section class="scene" id="build"><div class="persp"><div class="center" id="b-obj"></div></div></section>
+  <section class="scene" id="details"><div class="persp" id="d-wrap"></div></section>
+  <section class="scene" id="style">
+    <div id="sw"></div>
+    <div id="ty"><div id="ty-mask"><p id="ty-aa">Aa</p></div><p id="ty-s"></p><p class="mono" id="ty-n"></p></div>
+    <div id="ic"></div>
+  </section>
+  <section class="scene" id="page"><div class="persp"><div class="center" id="p-obj"></div></div></section>
+  <section class="scene" id="phones"><div class="persp"><div class="center" id="ph-obj"></div></div></section>
+  <section class="scene" id="end"><div id="e-logo"></div><p id="e-url">linkandodesign.com →</p></section>
+
+  <p class="mono" id="wm">linkandodesign.com</p>
+</div>
+
+<script>
+// Reel 1080×1350 (4:5) renderizado quadro a quadro: tudo é função do tempo t (segundos).
+// window.setup(cfg, logoSvg) monta; window.frame(t) posiciona e sincroniza os vídeos.
+const $ = (s) => document.querySelector(s);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, p) => a + (b - a) * p;
+const outExpo = (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+const outQuint = (x) => 1 - Math.pow(1 - x, 5);
+const inOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const COLS = 5, ROWS = 4, DP = 1.4;
+
+let CFG, T, videos = [];
+
+function mkVideo(src) {
+  const v = document.createElement("video");
+  v.src = src; v.muted = true; v.preload = "auto"; v.playsInline = true; v.dataset.dur = "0";
+  videos.push(v);
+  return v;
+}
+
+// quadro nítido de um vídeo (para a capa e os blocos da construção)
+async function still(src, at) {
+  const v = document.createElement("video");
+  v.src = src; v.muted = true; v.preload = "auto";
+  await new Promise((r) => { v.addEventListener("loadeddata", r, { once: true }); setTimeout(r, 15000); });
+  await new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.currentTime = Math.min(at, (v.duration || 2) - 0.1); setTimeout(r, 5000); });
+  const c = document.createElement("canvas"); c.width = v.videoWidth; c.height = v.videoHeight;
+  c.getContext("2d").drawImage(v, 0, 0);
+  return c.toDataURL("image/jpeg", 0.95);
+}
+
+function frameEl(clip, width) {
+  const el = document.createElement("div");
+  el.className = (CFG.frame === "browser" ? "browser" : "card") + " shadow";
+  el.style.width = width + "px";
+  if (CFG.frame === "browser") el.innerHTML = '<div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>';
+  const box = document.createElement("div");
+  box.className = "content";
+  box.style.aspectRatio = `${clip.w} / ${clip.h}`;
+  el.appendChild(box);
+  return { el, box };
+}
+
+function phoneEl(src) {
+  const p = document.createElement("div"); p.className = "phone shadow";
+  const s = document.createElement("div"); s.className = "screen";
+  if (src) s.appendChild(mkVideo(src));
+  p.appendChild(s);
+  return p;
+}
+
+window.setup = async (cfg, logoSvg) => {
+  CFG = cfg;
+  const a = cfg.accent;
+  const S = []; let t = 0;
+  const add = (id, dur, overlap = 0.45) => { S.push({ id, a: t, b: t + dur }); t += dur - overlap; };
+  const brand = cfg.kind === "brand";
+  // capa (parada) → construção → página inicial em ação, tudo no mesmo objeto
+  if (brand) { add("hero", 2.0); if (cfg.build) add("build", 4.6); }
+  else add("hero", 8.8);
+  if (cfg.details.length) add("details", 0.3 + cfg.details.length * DP + 0.5);
+  if (cfg.style) add("style", (cfg.style.icons ? 6.4 : 4.6));
+  if (cfg.page) add("page", 4.0);
+  if (cfg.phones.length) add("phones", 4.0);
+  add("end", 2.8, 0);
+  CFG.S = S; T = t;
+  for (const id of ["build", "details", "style", "page", "phones"]) if (!S.find((s) => s.id === id)) $("#" + id).remove();
+
+  $("#glow").style.background = `radial-gradient(38% 30% at 50% 48%, ${a}26, transparent 72%)`;
+  $("#name").textContent = cfg.name;
+  if (cfg.name.length > 12) { $("#name").style.fontSize = "80px"; $("#name").style.maxWidth = "560px"; }
+  $("#cover-logo").innerHTML = logoSvg; $("#e-logo").innerHTML = logoSvg;
+
+  // navegador da página inicial: blocos (capa/construção) + linhas-guia + vídeo
+  const { el, box } = frameEl(cfg.coverClip || cfg.hero, 1000);
+  el.style.transform = "translate(-50%,-50%)";
+  $("#h-obj").appendChild(el);
+  const img = await still(cfg.coverClip ? cfg.coverClip.src : cfg.hero.src, brand ? 2.0 : 1.2);
+  const wire = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  wire.setAttribute("class", "wire"); wire.setAttribute("viewBox", `0 0 ${COLS} ${ROWS}`); wire.setAttribute("preserveAspectRatio", "none");
+  const tiles = document.createElement("div");
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+    const tl = document.createElement("div"); tl.className = "tile";
+    tl.style.cssText = `left:${(c / COLS) * 100}%;top:${(r / ROWS) * 100}%;width:${100 / COLS + 0.2}%;height:${100 / ROWS + 0.2}%;` +
+      `background-image:url(${img});background-size:${COLS * 100}% ${ROWS * 100}%;background-position:${(c / (COLS - 1)) * 100}% ${(r / (ROWS - 1)) * 100}%`;
+    // ordem de montagem: do topo para baixo, com um leve desencontro entre colunas
+    tl.dataset.o = String(r * 0.55 + ((c * 7) % COLS) * 0.16);
+    tiles.appendChild(tl);
+    const rc = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rc.setAttribute("x", c + 0.06); rc.setAttribute("y", r + 0.08); rc.setAttribute("width", 0.88); rc.setAttribute("height", 0.84); rc.setAttribute("rx", 0.05);
+    rc.setAttribute("vector-effect", "non-scaling-stroke"); rc.setAttribute("pathLength", "1");
+    rc.style.strokeDasharray = "1"; wire.appendChild(rc);
+  }
+  tiles.id = "tiles"; wire.id = "wire";
+  const hv = mkVideo(cfg.hero.src); hv.id = "h-video"; hv.style.opacity = 0;
+  box.append(wire, tiles, hv);
+  if (cfg.heroMobile) {
+    const hp = phoneEl(cfg.heroMobile); hp.id = "h-phone";
+    $("#h-phone-wrap").appendChild(hp);
+  }
+
+  if (cfg.build) {
+    const f = frameEl(cfg.build, 1000); f.el.style.transform = "translate(-50%,-50%)";
+    f.box.appendChild(mkVideo(cfg.build.src)); $("#b-obj").appendChild(f.el);
+  }
+
+  cfg.details.forEach((c, i) => {
+    const w = document.createElement("div"); w.className = "center"; w.dataset.i = i;
+    const card = document.createElement("div"); card.className = "card shadow";
+    const wd = c.w / c.h > 1.45 ? 1000 : 960;
+    card.style.cssText = `width:${wd}px;aspect-ratio:${c.w}/${c.h};transform:translate(-50%,-50%)`;
+    card.appendChild(mkVideo(c.src)); w.appendChild(card);
+    $("#d-wrap").appendChild(w);
+  });
+
+  if (cfg.style) {
+    const st = cfg.style;
+    st.swatches.forEach((s) => {
+      const d = document.createElement("div"); d.className = "swatch"; d.style.background = s.hex;
+      const n = parseInt(s.hex.slice(1, 7), 16); const L = (0.2126 * ((n >> 16) & 255) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255;
+      d.innerHTML = `<span class="mono" style="color:${L > 0.6 ? "rgba(23,23,26,.6)" : "rgba(255,255,255,.75)"}">${s.hex.toUpperCase()}</span>`;
+      $("#sw").appendChild(d);
+    });
+    const f = st.fonts[0];
+    const fams = [...new Set(st.fonts.map((x) => x.family))];
+    const link = document.createElement("link"); link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?" + fams.map((x) => `family=${x.replace(/ /g, "+")}:wght@300;400;500;600;700;800`).join("&") + "&display=block";
+    document.head.appendChild(link);
+    await new Promise((r) => { link.onload = r; link.onerror = r; setTimeout(r, 8000); });
+    $("#ty-aa").style.fontFamily = `"${f.family}"`; $("#ty-aa").style.fontWeight = f.weight;
+    const s2 = st.fonts[1] || f;
+    $("#ty-s").textContent = s2.sample; $("#ty-s").style.fontFamily = `"${s2.family}"`; $("#ty-s").style.fontWeight = Math.min(s2.weight, 700);
+    if (s2.uppercase) $("#ty-s").style.textTransform = "uppercase";
+    $("#ty-n").textContent = fams.join(" · ");
+    await Promise.all(fams.map((x) => document.fonts.load(`700 60px "${x}"`).catch(() => {})));
+    if (st.icons) st.icons.items.forEach((sh) => {
+      const d = document.createElement("div"); d.className = "ico shadow";
+      d.innerHTML = `<svg viewBox="0 0 24 24" style="stroke-width:${st.icons.stroke}">${sh}</svg>`;
+      d.querySelectorAll("path,circle,rect,line,polyline,polygon,ellipse").forEach((p) => { p.setAttribute("pathLength", "1"); p.style.strokeDasharray = "1"; });
+      $("#ic").appendChild(d);
+    });
+  }
+
+  if (cfg.page) {
+    const f = frameEl(cfg.page, 1180); f.el.style.transform = "translate(-50%,-50%)";
+    f.box.appendChild(mkVideo(cfg.page.src)); $("#p-obj").appendChild(f.el);
+  }
+
+  cfg.phones.forEach((c, i) => { const p = phoneEl(c.src); p.dataset.i = i; $("#ph-obj").appendChild(p); });
+
+  await document.fonts.ready;
+  await Promise.all(videos.map((v) => new Promise((res) => {
+    const ok = () => { v.dataset.dur = String(v.duration); res(); };
+    if (v.readyState >= 3) ok(); else { v.addEventListener("canplaythrough", ok, { once: true }); v.addEventListener("error", () => res(), { once: true }); setTimeout(res, 20000); }
+  })));
+  return { duration: T, scenes: S, missing: videos.filter((v) => !(Number(v.dataset.dur) > 0)).map((v) => v.src) };
+};
+
+async function seek(v, time) {
+  const d = Number(v.dataset.dur) || 0;
+  if (!d) return;
+  const target = Math.max(0, time) % Math.max(d - 0.05, 0.1);
+  if (Math.abs(v.currentTime - target) < 0.004) return;
+  await new Promise((res) => {
+    const to = setTimeout(res, 1500);
+    v.requestVideoFrameCallback(() => { clearTimeout(to); res(); });
+    v.currentTime = target;
+  });
+}
+
+const scene = (id) => CFG.S.find((s) => s.id === id);
+const on = (id, t) => { const s = scene(id); const el = $("#" + id); const v = !!s && t >= s.a && t <= s.b; if (el) el.style.opacity = v ? 1 : 0; return v ? s : null; };
+
+window.frame = async (t) => {
+  const seeks = [];
+  $("#glow").style.transform = `translate(${Math.sin(t * 0.3) * 24}px, ${Math.cos(t * 0.24) * 30}px)`;
+
+  // 1 · capa → construção → página inicial em ação (mesmo navegador)
+  { const s = on("hero", t);
+    if (s) { const l = t - s.a; const brand = CFG.kind === "brand"; const o = inOut(prog(t, s.b - 0.55, s.b));
+      // câmera: capa levemente inclinada, depois de frente, depois órbita lenta
+      const flat = brand ? 0.5 : inOut(prog(l, 1.3, 2.4));
+      const orbit = brand ? 0 : inOut(prog(l, 6.0, s.b - s.a));
+      const rx = lerp(14, 0, flat) + lerp(0, 6, orbit), ry = lerp(-16, 0, flat) + lerp(0, -10, orbit);
+      const sc = lerp(0.96, 1.06, flat) * (1 + 0.04 * orbit) * (brand ? 1 + 0.04 * prog(l, 0, s.b - s.a) : 1);
+      $("#h-obj").style.transform = `translate3d(${lerp(-40, 0, flat)}px, ${lerp(-20, 10, flat) - 700 * o}px, 0) rotateX(${rx}deg) rotateY(${ry}deg) scale(${sc})`;
+      // nome e logo só na capa
+      const cov = 1 - prog(l, 1.0, 1.5);
+      $("#name").style.opacity = cov; $("#cover-logo").style.opacity = cov;
+      $("#name").style.transform = `translateY(${(1 - cov) * 30}px)`;
+      // construção: blocos saem para as linhas-guia e voltam um a um
+      const tiles = document.querySelectorAll("#tiles .tile");
+      const wire = $("#wire");
+      if (brand) { wire.style.opacity = 0; }
+      else {
+        wire.style.opacity = prog(l, 1.5, 1.9) * (1 - prog(l, 5.0, 5.6));
+        const draw = outQuint(prog(l, 1.5, 2.6));
+        wire.querySelectorAll("rect").forEach((r) => (r.style.strokeDashoffset = String(1 - draw)));
+        tiles.forEach((tl) => {
+          const od = Number(tl.dataset.o);
+          const outP = inOut(prog(l, 1.4 + od * 0.15, 1.9 + od * 0.15)); // sai
+          const inP = outExpo(prog(l, 2.6 + od * 0.55, 3.5 + od * 0.55)); // volta
+          if (l < 1.4) { tl.style.opacity = 1; tl.style.transform = "none"; return; }
+          if (inP > 0) {
+            tl.style.opacity = Math.min(1, inP * 1.6);
+            tl.style.transform = `translate3d(0, ${lerp(60, 0, inP)}px, ${lerp(380, 0, inP)}px) scale(${lerp(1.08, 1, inP)})`;
+          } else {
+            tl.style.opacity = 1 - outP;
+            tl.style.transform = `translate3d(0, 0, ${-120 * outP}px) scale(${1 - 0.1 * outP})`;
+          }
+        });
+        $("#h-video").style.opacity = prog(l, 5.4, 6.0);
+        seeks.push(seek($("#h-video"), Math.max(0, l - 5.4)));
+      }
+      const hp = $("#h-phone");
+      if (hp) {
+        const coverIn = 1 - inOut(prog(l, 1.0, 1.4));
+        const q = outExpo(prog(l, 6.0, 7.4));
+        const vis = Math.max(coverIn, q);
+        hp.style.transform = `translate3d(${lerp(790, 700, vis)}px, ${lerp(1500, 560, vis) - 700 * o}px, 140px) rotateY(${lerp(-24, -12, vis)}deg) rotateZ(${lerp(6, 2, vis)}deg)`;
+        hp.style.opacity = vis * (1 - o);
+        if (l > 5.8) seeks.push(seek(hp.querySelector("video"), l - 5.8));
+      }
+    } }
+
+  // 2 · marca: a construção do símbolo, em tela grande
+  { const s = on("build", t);
+    if (s) { const l = t - s.a; const p = outExpo(prog(l, 0, 1.0)); const o = inOut(prog(t, s.b - 0.55, s.b));
+      $("#b-obj").style.transform = `translate3d(0, ${lerp(120, 0, p) - 600 * o}px, ${lerp(-300, 0, p)}px) rotateX(${lerp(18, 0, p)}deg) scale(${1 + 0.05 * prog(l, 0.8, s.b - s.a)})`;
+      $("#build").style.opacity = Math.min(1, prog(l, 0, 0.3)) * (1 - o);
+      seeks.push(seek($("#b-obj video"), (CFG.build.from || 0) + l));
+    } }
+
+  // 3 · detalhes: um a um, cada um no instante do efeito, entrando e saindo em leque 3D
+  { const s = on("details", t);
+    if (s) { const l = t - s.a;
+      document.querySelectorAll("#d-wrap > .center").forEach((w) => {
+        const i = Number(w.dataset.i); const li = l - (0.3 + i * DP);
+        if (li < 0 || li > DP + 0.5) { w.style.opacity = 0; return; }
+        const p = outExpo(prog(li, 0, 0.65)); const o = inOut(prog(li, DP, DP + 0.5));
+        const x = lerp(1050, 0, p) + lerp(0, -1050, o), ry = lerp(-42, 0, p) + lerp(0, 42, o), z = lerp(-420, 0, p) + lerp(0, -420, o);
+        w.style.opacity = Math.min(prog(li, 0, 0.2), 1 - prog(li, DP + 0.3, DP + 0.5));
+        w.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${ry}deg) scale(${1.0 + 0.035 * prog(li, 0.4, DP)})`;
+        seeks.push(seek(w.querySelector("video"), (CFG.details[i].from || 0) + li));
+      });
+    } }
+
+  // 4 · style guide: paleta → tipografia → ícones
+  { const s = on("style", t);
+    if (s) { const l = t - s.a; const has = !!CFG.style.icons;
+      const swO = inOut(prog(l, 1.9, 2.3));
+      document.querySelectorAll(".swatch").forEach((d, i) => {
+        const p = outQuint(prog(l, 0.05 + i * 0.08, 0.95 + i * 0.08));
+        d.style.transform = `scaleY(${p * (1 - swO)})`; d.style.opacity = 1 - swO;
+        d.firstChild.style.opacity = prog(l, 0.8 + i * 0.08, 1.1 + i * 0.08);
+      });
+      const tyA = 2.1, tyB = has ? 4.2 : s.b - s.a - 0.3;
+      const tin = outExpo(prog(l, tyA, tyA + 0.9)); const tout = inOut(prog(l, tyB - 0.35, tyB));
+      $("#ty").style.opacity = (l >= tyA ? 1 : 0) * (1 - tout);
+      $("#ty-aa").style.transform = `translateY(${(1 - tin) * 105}%)`;
+      $("#ty-s").style.opacity = prog(l, tyA + 0.4, tyA + 0.9); $("#ty-s").style.transform = `translateY(${(1 - outQuint(prog(l, tyA + 0.4, tyA + 1.1))) * 26}px)`;
+      $("#ty-n").style.opacity = prog(l, tyA + 0.7, tyA + 1.1);
+      if (has) {
+        const ia = 4.15; const icOut = inOut(prog(t, s.b - 0.45, s.b));
+        $("#ic").style.opacity = (l >= ia ? 1 : 0) * (1 - icOut);
+        $("#ic").querySelectorAll(".ico").forEach((d, i) => {
+          const p = outExpo(prog(l, ia + i * 0.06, ia + 0.6 + i * 0.06));
+          d.style.transform = `translateY(${(1 - p) * 60}px) scale(${lerp(0.9, 1, p)})`; d.style.opacity = p;
+          const dr = inOut(prog(l, ia + 0.3 + i * 0.06, ia + 1.3 + i * 0.06));
+          d.querySelectorAll("path,circle,rect,line,polyline,polygon,ellipse").forEach((q) => (q.style.strokeDashoffset = String(1 - dr)));
+        });
+      }
+    } }
+
+  // 5 · página completa, inclinada como mesa de luz
+  { const s = on("page", t);
+    if (s) { const l = t - s.a; const p = outExpo(prog(l, 0, 1.3)); const o = inOut(prog(t, s.b - 0.55, s.b));
+      const drift = inOut(prog(l, 0.5, s.b - s.a));
+      $("#p-obj").style.transform = `translate3d(0, ${lerp(1200, -20, p) - 110 * drift - 800 * o}px, 0) rotateX(${lerp(38, 24, p)}deg) rotateZ(${lerp(-4, -11, p) + 2 * drift}deg) scale(1.2)`;
+      const v = $("#p-obj video"); const d = Number(v.dataset.dur) || 1;
+      seeks.push(seek(v, l * Math.min(3, Math.max(1, d / (s.b - s.a)))));
+    } }
+
+  // 6 · celulares em leque, cada um numa página diferente, câmera girando devagar
+  { const s = on("phones", t);
+    if (s) { const l = t - s.a; const o = inOut(prog(t, s.b - 0.5, s.b)); const n = CFG.phones.length;
+      $("#ph-obj").style.transform = `rotateY(${lerp(-8, 8, inOut(prog(l, 0, s.b - s.a)))}deg) scale(${1 - 0.06 * o})`;
+      document.querySelectorAll("#ph-obj .phone").forEach((ph) => {
+        const i = Number(ph.dataset.i); const slot = n === 1 ? 0 : n === 2 ? [-0.5, 0.5][i] : [0, -1, 1][i];
+        const p = outExpo(prog(l, 0.08 + 0.12 * i, 1.3 + 0.12 * i));
+        const x = slot * 340, z = slot === 0 ? 90 : -170, ry = -slot * 22;
+        ph.style.transform = `translate3d(${x - 168}px, ${lerp(1150, -372, p)}px, ${z}px) rotateY(${ry}deg) rotateX(${lerp(30, 0, p)}deg)`;
+        ph.style.opacity = 1 - o; ph.style.zIndex = slot === 0 ? 3 : 1;
+        seeks.push(seek(ph.querySelector("video"), (CFG.phones[i].from || 0) + l));
+      });
+    } }
+
+  // 7 · assinatura
+  { const s = scene("end"); const l = t - s.a; const v = t >= s.a;
+    $("#end").style.opacity = v ? 1 : 0;
+    if (v) {
+      $("#e-logo").style.opacity = prog(l, 0, 0.6);
+      $("#e-logo").style.transform = `scale(${lerp(0.94, 1, outExpo(prog(l, 0, 1.2)))})`;
+      $("#e-url").style.opacity = prog(l, 0.5, 1.0);
+      $("#e-url").style.transform = `translateY(${(1 - outQuint(prog(l, 0.5, 1.2))) * 24}px)`;
+    }
+    $("#wm").style.opacity = (t < 1.5 ? 0 : 1) * (1 - prog(t, s.a, s.a + 0.4));
+  }
+
+  await Promise.all(seeks);
+};
+</script>
+</body>
+</html>

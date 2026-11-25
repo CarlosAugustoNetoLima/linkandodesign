@@ -1,8 +1,7 @@
-import Reveal from "@/components/motion/Reveal";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-// Metodologia em linha do tempo horizontal: um passo por coluna, com número
-// vazado e régua no topo que escurece no hover.
+// Metodologia em lista: uma linha por etapa, com número, título e texto. No celular o
+// texto fica embaixo do título; no desktop, ao lado.
 export default function Method({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).home.method;
 
@@ -12,18 +11,15 @@ export default function Method({ locale }: { locale: Locale }) {
       <h2 className="mt-4 max-w-2xl font-display text-h2 font-extrabold uppercase">{t.title}</h2>
       <p className="mt-5 max-w-2xl leading-relaxed text-muted">{t.text}</p>
 
-      <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-        {t.steps.map((s, i) => (
-          <li key={s.n}>
-            <Reveal delay={i * 0.08}>
-              <div className="group border-t-2 border-ink/15 pt-6 transition-colors duration-300 hover:border-ink">
-                <span className="num-hollow font-display text-5xl font-extrabold transition-colors group-hover:text-ink">
-                  {s.n}
-                </span>
-                <h3 className="mt-6 font-display text-lg font-extrabold uppercase">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{s.text}</p>
-              </div>
-            </Reveal>
+      <ol className="mt-10 border-t border-line">
+        {t.steps.map((s) => (
+          <li
+            key={s.n}
+            className="grid grid-cols-[3rem_1fr] gap-x-6 border-b border-line py-5 md:grid-cols-[4rem_minmax(0,1fr)_minmax(0,1.4fr)]"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-widest text-muted">{s.n}</span>
+            <h3 className="font-display text-lg font-extrabold uppercase md:text-xl">{s.title}</h3>
+            <p className="col-start-2 mt-2 leading-relaxed text-muted md:col-start-3 md:row-start-1 md:mt-0">{s.text}</p>
           </li>
         ))}
       </ol>

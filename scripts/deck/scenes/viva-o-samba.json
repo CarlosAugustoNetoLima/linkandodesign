@@ -5,7 +5,7 @@
   "scenes": [
     {
       "name": "hero-top-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -34,11 +34,12 @@
           "op": "wait",
           "ms": 1600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "hero-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -121,11 +122,12 @@
           "op": "wait",
           "ms": 1200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "agenda-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -209,11 +211,12 @@
           "op": "wait",
           "ms": 800
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "rolagem-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto"
@@ -272,15 +275,16 @@
           "op": "wait",
           "ms": 1600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "evento-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
-          "url": "https://vivaosamba-linkando.vercel.app/eventos/roda-do-viva-o-samba-no-lata-15-nov-2026"
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026"
         },
         {
           "op": "wait",
@@ -339,15 +343,16 @@
           "op": "wait",
           "ms": 1200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "checkout-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
-          "url": "https://vivaosamba-linkando.vercel.app/eventos/roda-do-viva-o-samba-no-lata-15-nov-2026"
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026"
         },
         {
           "op": "wait",
@@ -496,11 +501,12 @@
           },
           "ms": 600
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "ajuda-desktop",
-      "device": "desktop",
+      "device": "desktop-hd",
       "setup": [
         {
           "op": "goto",
@@ -554,7 +560,8 @@
           "op": "wait",
           "ms": 1200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "hero-mobile",
@@ -607,11 +614,12 @@
           "op": "wait",
           "ms": 1200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     },
     {
       "name": "idioma-desktop",
-      "device": "desktop",
+      "device": "desktop-hd2",
       "setup": [
         {
           "op": "goto"
@@ -621,14 +629,10 @@
           "ms": 2500
         },
         {
-          "op": "css",
-          "text": "body > *:not(.site-header){visibility:hidden!important}.site-header{position:fixed!important;inset:0!important;height:100vh!important;background:var(--paper)!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.site-header__in > *:not(.site-header__end),.site-header__end > *:not(.lang){visibility:hidden!important}.lang{position:fixed!important;left:76%;top:24%;transform:translate(-50%,-50%) scale(3.4);transform-origin:center}"
-        },
-        {
           "op": "move",
           "to": {
-            "x": 1268,
-            "y": 780
+            "x": 700,
+            "y": 400
           },
           "ms": 0
         },
@@ -640,73 +644,1986 @@
       "record": [
         {
           "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".lang",
           "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1600
         },
         {
           "op": "move",
           "to": {
-            "x": 973,
-            "y": 192
+            "x": 700,
+            "y": 400
           },
-          "ms": 900
+          "ms": 800
         },
         {
           "op": "wait",
           "ms": 900
         },
         {
+          "op": "hover",
+          "selector": ".lang",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": ".lang button, .lang"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
           "op": "move",
           "to": {
-            "x": 1005,
-            "y": 176
+            "x": 700,
+            "y": 400
           },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "minFps": 5,
+      "crop": {
+        "selector": ".lang",
+        "x": -330,
+        "y": -60,
+        "w": 480
+      },
+      "cursor": true
+    },
+    {
+      "name": "detail-menu",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 5000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
           "ms": 500
         },
         {
           "op": "move",
           "to": {
-            "x": 940,
-            "y": 210
+            "x": 657,
+            "y": 37
           },
+          "ms": 500
+        },
+        {
+          "op": "wait",
           "ms": 700
         },
         {
           "op": "move",
           "to": {
-            "x": 973,
-            "y": 192
+            "x": 781,
+            "y": 37
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 890,
+            "y": 37
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-botoes",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 500
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 170,
+            "y": 642
           },
           "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 396,
+            "y": 642
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-seta",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": ".site-header{visibility:hidden !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 1000,
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 160
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1195,
+            "y": 131
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1400,
+            "y": 170
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-cartao",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 3300,
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 150
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 218,
+            "y": 380
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 552,
+            "y": 380
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1700
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-faq",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 2500,
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 196
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 285
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-reel",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/sobre"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 400,
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 400
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1339,
+            "y": 804
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": ".reel__toggle"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 650
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        },
+        {
+          "op": "click",
+          "selector": ".reel__toggle"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 650
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-imprensa",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/imprensa"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 800,
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 400
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 270,
+            "y": 330
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 400
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 270,
+            "y": 330
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-rodape",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price,[class*=\"price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": 6000,
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 200,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 422,
+            "y": 597
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 421,
+            "y": 639
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 668,
+            "y": 639
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 674,
+            "y": 681
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "page-sobre-desktop",
+      "device": "desktop-hd",
+      "url": "https://vivaosamba-linkando.vercel.app/sobre",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/sobre"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 880,
+            "y": 420
+          },
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 3600,
+          "ms": 14000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "page-contactos-desktop",
+      "device": "desktop-hd",
+      "url": "https://vivaosamba-linkando.vercel.app/contactos",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/contactos"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 880,
+            "y": 420
+          },
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 700,
+          "ms": 6000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.board__sale,.board__price,.home-price{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": ".board__sale,.board__price,.home-price{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.board__sale,.board__price,.home-price{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "evento-pagina-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": ".tour-card__foot{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.tour-card__foot{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "evento-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/eventos/reveillon-viva-o-samba-cavo-rooftop-2026"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"sale\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": ".tour-card__foot{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(function(){var s=document.createElement('style');s.textContent='.tour-card__foot{display:none !important}';var f=function(){(document.head||document.documentElement).appendChild(s)};if(document.head||document.documentElement){f()}else{new MutationObserver(function(m,o){if(document.documentElement){f();o.disconnect()}}).observe(document,{childList:true})}})();\n(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "sobre-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/sobre",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/sobre"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "sobre-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/sobre",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/sobre"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "contactos-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/contactos",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/contactos"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "contactos-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/contactos",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/contactos"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "ajuda-pagina-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/ajuda",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/ajuda"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "ajuda-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://vivaosamba-linkando.vercel.app/ajuda",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://vivaosamba-linkando.vercel.app/ajuda"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-desktop",
+      "device": "desktop-hd",
+      "cursor": true,
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"sale\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 0,
+          "moveMs": 400,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 1,
+          "moveMs": 400,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 2,
+          "moveMs": 400,
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"sale\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": "[data-menu-toggle]"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "faixas-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"sale\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".strips",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".strips"
+          },
+          "by": {
+            "dx": -220,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".strips"
+          },
+          "by": {
+            "dx": -220,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "selector": ".strips"
+          },
+          "by": {
+            "dx": 440,
+            "dy": 0
+          },
+          "ms": 1100,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": ".strip",
+          "nth": 1,
+          "moveMs": 500
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "click",
+          "selector": ".strip",
+          "nth": 2,
+          "moveMs": 500
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "click",
+          "selector": ".strip",
+          "nth": 0,
+          "moveMs": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "minFps": 2
+    },
+    {
+      "name": "agenda-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"sale\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "top"
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "bottom"
+          },
+          "ms": 8000
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "top"
+          },
+          "ms": 2500
+        }
+      ],
+      "minFps": 4,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "maxBytes": 4000000,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"chat\"],[class*=\"cookie\"],[id*=\"cookie\"],[class*=\"consent\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 640
+          },
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 690,
+            "y": 400
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 860,
+            "y": 400
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1030,
+            "y": 400
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1200,
+            "y": 400
+          },
+          "ms": 450
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#agenda",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 460,
+            "y": 500
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".home-reveillon",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".home-history",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 400
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".partners",
+            "at": "top",
+            "offsetVh": -0.1
+          },
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "hover",
+          "selector": ".marquee__toggle",
+          "ms": 300,
+          "moveMs": 300
+        },
+        {
+          "op": "click",
+          "selector": ".marquee__toggle",
+          "moveMs": 100
         },
         {
           "op": "wait",
           "ms": 1200
         },
         {
-          "op": "move",
-          "to": {
-            "x": 700,
-            "y": 330
-          },
-          "ms": 700
+          "op": "click",
+          "selector": ".marquee__toggle",
+          "moveMs": 100
         },
         {
           "op": "wait",
-          "ms": 900
+          "ms": 200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".site-footer a[href=\"/imprensa\"]",
+          "ms": 300,
+          "moveMs": 300
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".lang",
+          "ms": 300,
+          "moveMs": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".site-nav__link",
+          "nth": 0,
+          "ms": 300,
+          "moveMs": 300
+        },
+        {
+          "op": "wait",
+          "ms": 500
         },
         {
           "op": "move",
           "to": {
-            "x": 1268,
-            "y": 780
+            "x": 300,
+            "y": 640
           },
-          "ms": 1100
+          "ms": 600
         },
         {
           "op": "wait",
-          "ms": 1400
+          "ms": 200
         }
-      ]
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€|R\\$\\s?\\d[\\d.,]*)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
     }
   ]
 }

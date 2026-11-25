@@ -45,7 +45,7 @@ Ao criar, redesenhar ou ajustar o visual de qualquer interface, siga a skill **`
 Quando duas fontes discordam, vence a de cima:
 1. Este `CLAUDE.md` (cores, tipografia, logo, conteúdo, i18n)
 2. Skills do projeto: `add-portfolio-project`, `build-site-deck`
-3. `taste-skill:design-taste-frontend` e `copywriting` (texto de página; o texto fixado neste arquivo só muda se o Carlos pedir)
+3. `taste-skill:design-taste-frontend`, `copywriting` e `copy-editing` (texto de página; o texto fixado neste arquivo só muda se o Carlos pedir)
 4. Estilos Awesome Design — só referência de grid, hierarquia, escala tipográfica e estados; nunca de paleta ou fonte
 5. Verificadores: `web-design-guidelines`, `design:accessibility-review`
 
@@ -96,7 +96,7 @@ Ordem das seções:
 
 1. **Hero** — Tagline principal + número de credibilidade + CTA
 2. **Marquee** — Ticker com serviços em loop
-3. **Serviços** — Cards dos 5 serviços
+3. **Serviços** — Cards dos 6 serviços
 4. **Cases em destaque** — Grid editorial com 4 projetos
 5. **Processo** — Linha do tempo da metodologia
 6. **CTA Final** — Frase de encerramento + botão de contato
@@ -125,19 +125,21 @@ Scroll storytelling:
 
 ## Conteúdo
 
-### Tagline principal (Hero)
+### Título do hero (Carlos, 2026-11-20)
 ```
-Design que posiciona.
-Sites que vendem.
+Marcas, sites
+e sistemas.
+```
+Sem eyebrow. À direita do título, o campo de diagnóstico (rótulo "Comece pelo diagnóstico gratuito", atalhos e caixa de texto que abre `/diagnostico` com a mensagem já enviada). Logo abaixo do hero vem a lista de projetos (Carlos, 2026-11-24): cada projeto numa linha com o texto aberto e a vitrine em vídeo ao lado, como no celular; sem palco alternando sites. Depois, serviços e processo também em lista, e o FAQ. Nada de repetir projeto, número ou passo em duas seções.
+
+Subtítulo (aprovado pelo Carlos em 2026-11-20):
+```
+Estúdio de marca e desenvolvimento web. Criamos identidade visual, sites,
+landing pages e sistemas internos para empresas que querem vender mais.
+9 anos, 5 países. O diagnóstico é gratuito.
 ```
 
-Subtítulo:
-```
-Estúdio de marca e desenvolvimento web.
-9 anos, 4 países, clientes que crescem.
-```
-
-CTA: `Iniciar projeto →`
+CTA: `Solicitar diagnóstico →` (o diagnóstico é gratuito e feito na página `/diagnostico`, uma conversa em tela cheia com a IA)
 
 ### Serviços
 
@@ -148,6 +150,7 @@ CTA: `Iniciar projeto →`
 | Criação de Site | Site completo com pesquisa, prototipação e desenvolvimento |
 | Landing Page | Página de produto, serviço ou lançamento focada em conversão |
 | Redesign de Site | Reformulação visual e estrutural de sites existentes |
+| Sistemas Internos | Painéis e interfaces de gestão para equipes — diagnóstico do gargalo, arquitetura da informação, design das telas e acompanhamento (sem tabela de preço: o valor sai na proposta) |
 
 ### Projetos do Portfólio
 
@@ -180,6 +183,8 @@ CTA: `Iniciar projeto →`
 - **Tags:** Site · UI/UX
 
 ### Novo projeto no portfólio
+
+Reels de apresentação para o Instagram (4:5, visual do site, sem texto explicativo): skill **`reels-instagram`**, motor em `scripts/reels/`.
 
 Todo projeto novo entra como deck (`lib/decks/`), pela skill **`add-portfolio-project`**: o card ganha a **vitrine** (o site em ação: efeitos, interações e a página rolando), a apresentação completa em `/apresentacoes/<slug>`, o registro em `lib/decks/index.ts` e a verificação com `node scripts/deck/check-standard.mjs <slug> --net`. Não use `lib/projects.ts` para projetos novos.
 
@@ -217,7 +222,7 @@ Cor do texto: `#EEFB6E` sobre `#27272B`. Velocidade moderada, pausa no hover.
 
 ### Agente Comercial IA
 
-Chat flutuante no canto inferior direito, aberto pelos botões "Solicitar diagnóstico". A IA conduz o **diagnóstico** inteiro (`app/api/chat/route.ts` + prompt em `lib/chat-context.ts`): entende o projeto, pede nome e e-mail no meio da conversa, resume, confirma e fecha avisando que a proposta chega por e-mail em até 24h; a conversa vai ao time por `/api/chat/lead`. Cita os cases (os 8 decks de `/apresentacoes`), conhece a tabela de preços/prazos, não inventa valores nem fatos do estúdio, não promete resultado, data ou desconto e tem piso de R$ 1.500. O formulário `/briefing` é a alternativa. Fluxo, regras, travas e como testar: `docs/chat-diagnostico.md`.
+Página `/diagnostico` com a conversa em tela cheia (estilo ChatGPT), para onde levam todos os botões "Solicitar diagnóstico"; o botão redondo do canto é um atalho para ela. O **diagnóstico é gratuito** e a IA o conduz inteiro (`app/api/chat/route.ts` + prompt em `lib/chat-context.ts`): percorre todas as perguntas do briefing (`lib/briefing-fields.ts`), só pede nome e e-mail no fim, resume, confirma e fecha avisando que a proposta chega por e-mail em até 24h. Ao fechar, o servidor gera com a mesma LLM um rascunho de proposta (escopo, prazo, faixa de investimento da base interna) e manda ao Carlos por `/api/chat/lead`, junto das respostas campo a campo e da conversa; o cliente não recebe nada automático, o Carlos revisa e envia. Cita os cases (todos os decks de `/apresentacoes`, lidos de `lib/decks`), conhece os prazos típicos, **nunca cita preço** (valor só na proposta enviada por e-mail), não inventa fatos do estúdio e não promete resultado, data ou desconto. O orçamento que o visitante informa é comparado no servidor com a base interna de valores (`lib/pricing-base.ts`, números em `PRICING_BASE` no `.env`, fora do git porque o repositório é público); o modelo recebe só a instrução, sem número, e a classe (qualificado, a avaliar, fora do perfil) vai no e-mail do lead. O formulário `/briefing` é a alternativa. Fluxo, regras, travas e como testar: `docs/chat-diagnostico.md`.
 
 Provedores (ver `.env.local.example`): **Gemini no plano gratuito** primeiro (`GEMINI_API_KEY`), **Claude** opcional (`ANTHROPIC_API_KEY`, modelo em `ANTHROPIC_MODEL`, padrão `claude-sonnet-5-5`; `CHAT_PROVIDER=claude` o coloca como primeiro). **Fallback:** sem chave (ou com as APIs fora do ar), o chat usa as respostas roteirizadas abaixo em JavaScript puro — o site nunca quebra.
 
@@ -245,17 +250,17 @@ const responses = {
   greeting: "Olá! Sou o assistente do Linkando Design. Como posso ajudar? Está pensando em um projeto de marca ou site?",
   
   pricing: {
-    brand: "Desenvolvimento de marca a partir de R$ 8.000 (Brasil) ou €2.000 (Europa/EUA). O valor final depende da complexidade do projeto.",
-    site: "Sites completos a partir de R$ 6.000. Landing pages a partir de R$ 3.500. Quer me contar mais sobre o seu projeto?",
-    redesign: "Redesigns de identidade a partir de R$ 5.000. Redesigns de site a partir de R$ 6.000.",
-    general: "Os valores variam conforme o escopo. Me conta o que você precisa e consigo dar uma estimativa mais precisa."
+    // Preço NUNCA é passado no chat nem em outro canal: só na proposta enviada por e-mail.
+    // A base interna de valores (PRICING_BASE no .env, tabela em docs/privado/) serve só
+    // para qualificar o lead, e o resultado vai no e-mail do lead para o time.
+    general: "O valor depende do escopo e só sai na proposta, que o time envia por e-mail em até 24h depois do diagnóstico. O diagnóstico é gratuito."
   },
   
   deadline: "Depende do serviço: landing pages em 1–2 semanas, sites completos em 4–8 semanas, branding completo em 3–6 semanas. Tem uma data específica em mente?",
   
   process: "Nosso processo tem 7 etapas: Briefing → Pesquisa → Estratégia → Design → Prototipação → Desenvolvimento → Entrega. Cada etapa é validada com o cliente antes de avançar.",
   
-  services: "Trabalhamos com: Desenvolvimento de Marca, Redesign de Identidade, Criação de Site, Landing Page e Redesign de Site. Qual desses faz mais sentido para você agora?",
+  services: "Trabalhamos com: Desenvolvimento de Marca, Redesign de Identidade, Criação de Site, Landing Page, Redesign de Site e Sistemas Internos. Qual desses faz mais sentido para você agora?",
   
   portfolio: "Nosso portfólio inclui projetos em França, Portugal, Cabo Verde e outros países. Você pode ver os cases completos aqui mesmo no site. Quer que eu te conte sobre algum projeto específico?",
   
@@ -307,8 +312,9 @@ Ajustes principais no mobile:
 ## SEO
 
 ```
-title: "Linkando Design — Estúdio de Marca e Desenvolvimento Web"
-description: "Estúdio especializado em identidade visual, branding e desenvolvimento de sites. 9 anos de experiência, clientes em 4 países."
+title: "Linkando Design | Criação de Sites, Marca e Sistemas Internos"
+description: "Estúdio de design de marca e desenvolvimento web: identidade visual, criação de site, landing page, redesign e sistemas internos. 9 anos, clientes em 5 países. Diagnóstico gratuito."
+JSON-LD: ProfessionalService (home) + FAQPage (perguntas da home); sem telefone, e-mail ou avaliação inventados.
 og:image: /og-image.jpg (1200x630)
 ```
 

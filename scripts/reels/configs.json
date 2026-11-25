@@ -1,0 +1,1983 @@
+[
+ {
+  "slug": "cinnamon-studio",
+  "name": "Cinnamon Studio",
+  "kind": "site",
+  "accent": "#7d6650",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/cinnamon/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/cinnamon/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/cinnamon/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/cinnamon/detail-menu-hover.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-menu-hover.jpg",
+    "from": 2.63,
+    "score": 29.8
+   },
+   {
+    "src": "/decks/cinnamon/detail-menu-icones.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-menu-icones.jpg",
+    "from": 2.17,
+    "score": 27.7
+   },
+   {
+    "src": "/decks/cinnamon/detail-torre-controle.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-torre-controle.jpg",
+    "from": 5.1,
+    "score": 57.2
+   },
+   {
+    "src": "/decks/cinnamon/detail-torre-studio.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-torre-studio.jpg",
+    "from": 1.17,
+    "score": 72.3
+   },
+   {
+    "src": "/decks/cinnamon/detail-tour-navegacao.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-tour-navegacao.jpg",
+    "from": 2.43,
+    "score": 153.3
+   },
+   {
+    "src": "/decks/cinnamon/detail-indicacoes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-indicacoes.jpg",
+    "from": 2.43,
+    "score": 305.7
+   },
+   {
+    "src": "/decks/cinnamon/detail-galeria.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-galeria.jpg",
+    "from": 6.1,
+    "score": 396.4
+   },
+   {
+    "src": "/decks/cinnamon/detail-deperto.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/cinnamon/detail-deperto.jpg",
+    "from": 7.77,
+    "score": 101.1
+   }
+  ],
+  "page": {
+   "src": "/decks/cinnamon/inicio-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/cinnamon/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/cinnamon/tour-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/cinnamon/tour-mobile.jpg",
+    "from": 2.5,
+    "score": 562.1
+   },
+   {
+    "src": "/decks/cinnamon/torre-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/cinnamon/torre-mobile.jpg",
+    "from": 7.1,
+    "score": 548.2
+   },
+   {
+    "src": "/decks/cinnamon/nav-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/cinnamon/nav-mobile.jpg",
+    "from": 2.03,
+    "score": 16.2
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#22231f",
+     "name": "Dark"
+    },
+    {
+     "hex": "#171816",
+     "name": "Dark 2"
+    },
+    {
+     "hex": "#2c2d28",
+     "name": "Dark 3"
+    },
+    {
+     "hex": "#f3eee5",
+     "name": "Cream"
+    },
+    {
+     "hex": "#f0eadc",
+     "name": "Cream 2"
+    },
+    {
+     "hex": "#b7a48e",
+     "name": "Tan"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Montserrat",
+     "name": "Montserrat · Extra Light",
+     "sample": "Seu espaço. Seu ritmo.",
+     "weight": 200,
+     "uppercase": false
+    },
+    {
+     "family": "Montserrat",
+     "name": "Montserrat · Extra Light, caixa alta",
+     "sample": "Cinnamon",
+     "weight": 200,
+     "uppercase": true
+    }
+   ],
+   "icons": {
+    "stroke": 1,
+    "items": [
+     "<path d=\"M12 5v14M5 12h14\" />",
+     "<path d=\"M5 12h14\" />",
+     "<path d=\"M6 9l6 6 6-6\" />",
+     "<path d=\"M6 15l6-6 6 6\" />",
+     "<path d=\"M6 6l12 12M18 6L6 18\" />",
+     "<path d=\"M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5\" />",
+     "<path d=\"M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5\" />",
+     "<path data-fx=\"nudge\" d=\"M9 5l7 7-7 7\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "hubber",
+  "name": "Hubber",
+  "kind": "site",
+  "accent": "#e3008d",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/hubber/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/hubber/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/hubber/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/hubber/detail-logo-pontos.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-logo-pontos.jpg",
+    "from": 14.83,
+    "score": 222.1
+   },
+   {
+    "src": "/decks/hubber/detail-texto-digitado.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-texto-digitado.jpg",
+    "from": 0.9,
+    "score": 198.3
+   },
+   {
+    "src": "/decks/hubber/detail-logo-abrindo.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-logo-abrindo.jpg",
+    "from": 6.1,
+    "score": 273.0
+   },
+   {
+    "src": "/decks/hubber/detail-cartas-video.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-cartas-video.jpg",
+    "from": 0.97,
+    "score": 264.2
+   },
+   {
+    "src": "/decks/hubber/detail-fundo-alternando.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-fundo-alternando.jpg",
+    "from": 0.7,
+    "score": 222.7
+   },
+   {
+    "src": "/decks/hubber/detail-marca-texto.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-marca-texto.jpg",
+    "from": 0.7,
+    "score": 2.8
+   },
+   {
+    "src": "/decks/hubber/detail-botao-fixo.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-botao-fixo.jpg",
+    "from": 3.63,
+    "score": 447.3
+   },
+   {
+    "src": "/decks/hubber/detail-fases.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/hubber/detail-fases.jpg",
+    "from": 0.43,
+    "score": 283.8
+   }
+  ],
+  "page": {
+   "src": "/decks/hubber/inicio-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/hubber/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/hubber/cases-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/hubber/cases-mobile.jpg",
+    "from": 19.9,
+    "score": 1610.3
+   },
+   {
+    "src": "/decks/hubber/agencia-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/hubber/agencia-mobile.jpg",
+    "from": 1.3,
+    "score": 1150.3
+   },
+   {
+    "src": "/decks/hubber/build-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/hubber/build-mobile.jpg",
+    "from": 1.03,
+    "score": 1136.3
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#ff009e",
+     "name": "Magenta"
+    },
+    {
+     "hex": "#005cff",
+     "name": "Blue"
+    },
+    {
+     "hex": "#161616",
+     "name": "Ink"
+    },
+    {
+     "hex": "#1f1f1f",
+     "name": "Ink raised"
+    },
+    {
+     "hex": "#ffffff",
+     "name": "White"
+    },
+    {
+     "hex": "#f4f4f4",
+     "name": "White raised"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Archivo",
+     "name": "946 Latin Wide 3",
+     "sample": "Você está pagando aluguel",
+     "weight": 400,
+     "uppercase": false
+    },
+    {
+     "family": "Archivo",
+     "name": "Archivo",
+     "sample": "Marketing deixa de ser um serviço que você contrata e passa a ser um ativo que você domina.",
+     "weight": 400,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.5,
+    "items": [
+     "<path d=\"M2.67 6.67h18.66M2.67 12h18.66M2.67 17.33h18.66\" />",
+     "<path d=\"M4 4l16 16M20 4L4 20\" />",
+     "<path d=\"M5 9l7 7 7-7\" />",
+     "<circle cx=\"12\" cy=\"12\" r=\"8.5\" /><path d=\"M3.5 12h17M12 3.5c2.36 2.36 3.6 5.46 3.6 8.5s-1.24 6.14-3.6 8.5c-2.36-2.36-3.6-5.46-3.6-8.5s1.24-6.14 3.6-8.5Z\" />",
+     "<path d=\"M8 5.5v13l11-6.5z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/><path d=\"M8 14h3M8 17h6\"/>",
+     "<circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><path d=\"M8.6 13.5l6.8 4M15.4 6.5l-6.8 4\"/>",
+     "<path d=\"M12 19l7-7 3 3-7 7-3-3z\"/><path d=\"M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z\"/><path d=\"M2 2l7.6 7.6\"/><circle cx=\"11\" cy=\"11\" r=\"2\"/>"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "collision-auto-pros",
+  "name": "Collision Auto Pros",
+  "kind": "site",
+  "accent": "#1f668e",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/collision/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/collision/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/collision/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/collision/detail-fotos.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-fotos.jpg",
+    "from": 5.83,
+    "score": 445.0
+   },
+   {
+    "src": "/decks/collision/detail-botao.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-botao.jpg",
+    "from": 0.0,
+    "score": 6.1
+   },
+   {
+    "src": "/decks/collision/detail-idioma-guia.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-idioma-guia.jpg",
+    "from": 2.83,
+    "score": 14.0
+   },
+   {
+    "src": "/decks/collision/detail-campos.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-campos.jpg",
+    "from": 1.7,
+    "score": 0.8
+   },
+   {
+    "src": "/decks/collision/detail-globo.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-globo.jpg",
+    "from": 5.83,
+    "score": 20.8
+   },
+   {
+    "src": "/decks/collision/detail-letras.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-letras.jpg",
+    "from": 10.77,
+    "score": 175.4
+   },
+   {
+    "src": "/decks/collision/detail-404.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-404.jpg",
+    "from": 0.0,
+    "score": 35.6
+   },
+   {
+    "src": "/decks/collision/detail-dock.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/collision/detail-dock.jpg",
+    "from": 0.17,
+    "score": 314.2
+   }
+  ],
+  "page": {
+   "src": "/decks/collision/inicio-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/collision/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/collision/formulario-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/collision/formulario-mobile.jpg",
+    "from": 0.7,
+    "score": 818.2
+   },
+   {
+    "src": "/decks/collision/gracias-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/collision/gracias-mobile.jpg",
+    "from": 2.43,
+    "score": 356.3
+   },
+   {
+    "src": "/decks/collision/404-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/collision/404-mobile.jpg",
+    "from": 0.0,
+    "score": 45.5
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#f5f5f2",
+     "name": "Paper"
+    },
+    {
+     "hex": "#ffffff",
+     "name": "White"
+    },
+    {
+     "hex": "#0d0d0e",
+     "name": "Ink"
+    },
+    {
+     "hex": "#17171a",
+     "name": "Dark 2"
+    },
+    {
+     "hex": "#3b9ad0",
+     "name": "Accent"
+    },
+    {
+     "hex": "#1f668e",
+     "name": "Accent ink"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Inter · Regular, cinza",
+     "sample": "Si mañana chocas,",
+     "weight": 400,
+     "uppercase": false
+    },
+    {
+     "family": "Inter",
+     "name": "Inter · Semibold",
+     "sample": "¿sabes exactamente qué hacer?",
+     "weight": 600,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.6,
+    "items": [
+     "<path d=\"M7.75 18.36 4 19.9l.64-4.65A8.5 8.5 0 1 1 7.75 18.36z\"/><ellipse class=\"ic-meridian\" cx=\"12\" cy=\"11\" rx=\"3.6\" ry=\"8.5\"/><path class=\"ic-a\" d=\"M3.5 11h17\"/>",
+     "<path d=\"m7 10 5 5 5-5\"/>",
+     "<path class=\"ic-track\" d=\"M5 12.5l4.5 4.5L19 7.5\"/><path class=\"ic-tick\" pathLength=\"1\" d=\"M5 12.5l4.5 4.5L19 7.5\"/>",
+     "<path d=\"M6 18 18 6M8 6h10v10\"/>",
+     "<path d=\"M19 12H5M11 5l-7 7 7 7\"/>",
+     "<path d=\"M15.5 5.75H5.5A2.5 2.5 0 0 0 3 8.25v8.5a2.5 2.5 0 0 0 2.5 2.5h13a2.5 2.5 0 0 0 2.5-2.5V9.2\"/><path d=\"m3.6 7.4 7.25 5.3a1.95 1.95 0 0 0 2.3 0L17.9 9.2\"/><circle class=\"ic-af\" cx=\"19.5\" cy=\"5.5\" r=\"2.6\" stroke=\"none\"/><circle class=\"ic-a ic-ping\" cx=\"19.5\" cy=\"5.5\" r=\"2.6\"/>",
+     "<path class=\"ic-crown\" d=\"M10 2.75h4M12 2.75V6\"/><path d=\"m18 7.6 1.4-1.4\"/><circle cx=\"12\" cy=\"13.6\" r=\"7.6\"/><path class=\"ic-a ic-arc\" pathLength=\"1\" d=\"M12 8a5.6 5.6 0 0 1 4.85 2.8\"/><path class=\"ic-hand\" d=\"M12 13.6V9.6\"/><circle cx=\"12\" cy=\"13.6\" r=\"1.1\" fill=\"currentColor\" stroke=\"none\"/>",
+     "<rect x=\"6\" y=\"2.5\" width=\"12\" height=\"19\" rx=\"2.75\"/><path d=\"M10.75 5.1h2.5M11 19h2\"/><rect class=\"ic-shot\" x=\"7.6\" y=\"4\" width=\"8.8\" height=\"16\" rx=\"1.5\" fill=\"currentColor\" stroke=\"none\"/><path class=\"ic-a ic-frame\" d=\"M8.75 10.6V9.25h1.35M13.9 9.25h1.35v1.35M15.25 14.4v1.35H13.9M10.1 15.75H8.75V14.4\"/><path class=\"ic-check\" pathLength=\"1\" d=\"m10.3 12.6 1.2 1.2 2.3-2.5\"/>"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "az-car-rental",
+  "name": "AZ Car Rental",
+  "kind": "site",
+  "accent": "#c01840",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/az/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/az/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/az/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/az/detail-cartoes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/az/detail-cartoes.jpg",
+    "from": 0.0,
+    "score": 7.6
+   },
+   {
+    "src": "/decks/az/detail-formulario.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/az/detail-formulario.jpg",
+    "from": 5.37,
+    "score": 13.4
+   },
+   {
+    "src": "/decks/az/detail-faixa.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/az/detail-faixa.jpg",
+    "from": 2.17,
+    "score": 8.7
+   },
+   {
+    "src": "/decks/az/detail-topicos.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/az/detail-topicos.jpg",
+    "from": 2.9,
+    "score": 1.0
+   }
+  ],
+  "page": {
+   "src": "/decks/az/inicio-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/az/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/az/hero-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/az/hero-mobile.jpg",
+    "from": 5.97,
+    "score": 1560.0
+   },
+   {
+    "src": "/decks/az/formulario-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/az/formulario-mobile.jpg",
+    "from": 0.7,
+    "score": 1162.0
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#272c32",
+     "name": "Grafite"
+    },
+    {
+     "hex": "#da1e48",
+     "name": "Red"
+    },
+    {
+     "hex": "#c01840",
+     "name": "Red deep"
+    },
+    {
+     "hex": "#fbe8ed",
+     "name": "Red tint"
+    },
+    {
+     "hex": "#f4f4f5",
+     "name": "Gray 05"
+    },
+    {
+     "hex": "#ffffff",
+     "name": "White"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter Tight",
+     "name": "Inter Tight · Light",
+     "sample": "Primeira vez nos EUA?",
+     "weight": 300,
+     "uppercase": false
+    },
+    {
+     "family": "Inter Tight",
+     "name": "Inter Tight · Bold",
+     "sample": "Saiba o que ninguém conta",
+     "weight": 700,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.75,
+    "items": [
+     "<path d=\"M4 21V9h16v12M4 9l2-4h12l2 4M9 21v-6h6v6M12 5V3\"/>",
+     "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2.5\" /><circle cx=\"8.5\" cy=\"11\" r=\"2\" /><path d=\"M13.5 10h4M13.5 14h4M5.5 16.5c.7-1.4 1.8-2 3-2s2.3.6 3 2\" />",
+     "<rect x=\"2.5\" y=\"6\" width=\"19\" height=\"13\" rx=\"2.5\" /><path d=\"M2.5 10.5h19M6.5 15.5h4\" />",
+     "<circle cx=\"7.5\" cy=\"15.5\" r=\"3.5\" /><path d=\"M10 13l10-10M17 6l2 2M14 9l2 2\" />",
+     "<path d=\"M4 17a8 8 0 1 1 16 0M12 17l3.5-6\" /><circle cx=\"12\" cy=\"17\" r=\"1.2\" />",
+     "<path d=\"M12 3l8 3v6c0 4.5-3.4 7.6-8 9-4.6-1.4-8-4.5-8-9V6l8-3z\" /><path d=\"M9 12l2 2 4-4\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "tickett",
+  "name": "Tickett",
+  "kind": "site",
+  "accent": "#006f92",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/tickett/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/tickett/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/tickett/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/tickett/detail-luz.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-luz.jpg",
+    "from": 0.0,
+    "score": 16.7
+   },
+   {
+    "src": "/decks/tickett/detail-bilhete.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-bilhete.jpg",
+    "from": 4.37,
+    "score": 41.1
+   },
+   {
+    "src": "/decks/tickett/detail-whatsapp.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-whatsapp.jpg",
+    "from": 3.23,
+    "score": 7.2
+   },
+   {
+    "src": "/decks/tickett/detail-progresso.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-progresso.jpg",
+    "from": 5.1,
+    "score": 15.6
+   },
+   {
+    "src": "/decks/tickett/detail-top10.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-top10.jpg",
+    "from": 1.83,
+    "score": 50.2
+   },
+   {
+    "src": "/decks/tickett/detail-filtros.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-filtros.jpg",
+    "from": 3.97,
+    "score": 37.4
+   },
+   {
+    "src": "/decks/tickett/detail-evento.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-evento.jpg",
+    "from": 10.5,
+    "score": 204.9
+   },
+   {
+    "src": "/decks/tickett/detail-cartoes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/tickett/detail-cartoes.jpg",
+    "from": 2.97,
+    "score": 1.9
+   }
+  ],
+  "page": {
+   "src": "/decks/tickett/inicio-desktop.mp4",
+   "w": 1440,
+   "h": 900,
+   "poster": "/decks/tickett/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/tickett/busca-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/tickett/busca-mobile.jpg",
+    "from": 6.7,
+    "score": 785.0
+   },
+   {
+    "src": "/decks/tickett/evento-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/tickett/evento-mobile.jpg",
+    "from": 0.57,
+    "score": 607.4
+   },
+   {
+    "src": "/decks/tickett/top10-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/tickett/top10-mobile.jpg",
+    "from": 3.03,
+    "score": 342.6
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#000000",
+     "name": "Black"
+    },
+    {
+     "hex": "#0f0f11",
+     "name": "Surface"
+    },
+    {
+     "hex": "#1c1c20",
+     "name": "Elevated"
+    },
+    {
+     "hex": "#2d2d32",
+     "name": "Border"
+    },
+    {
+     "hex": "#afafbc",
+     "name": "Text soft"
+    },
+    {
+     "hex": "#00b1e3",
+     "name": "Cyan"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Bebas Neue",
+     "sample": "TOP 10",
+     "weight": 700,
+     "uppercase": false
+    },
+    {
+     "family": "Inter",
+     "name": "Inter · Bold",
+     "sample": "Eventos em Destaque",
+     "weight": 700,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.5,
+    "items": [
+     "<path d=\"M14.43 5.93L20.5 12l-6.07 6.07M3.5 12h16.83\" />",
+     "<path d=\"M9.57 5.93L3.5 12l6.07 6.07M20.5 12H3.67\" />",
+     "<path d=\"M18 6 6 18M6 6l12 12\" />",
+     "<path d=\"M3 12 9 18 21 6\" />",
+     "<path d=\"M11 20a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM18.93 20.69c.53 1.6 1.74 1.76 2.67.36.85-1.28.29-2.33-1.25-2.33-1.14-.01-1.78.88-1.42 1.97Z\" />",
+     "<path d=\"M8 2v3M16 2v3M3.5 9.09h17M21 8.5V17c0 3-1.5 5-5 5H8c-3.5 0-5-2-5-5V8.5c0-3 1.5-5 5-5h8c3.5 0 5 2 5 5Z\" /><path d=\"M15.695 13.7h.009M15.695 16.7h.009M11.995 13.7h.01M11.995 16.7h.01M8.294 13.7h.01M8.294 16.7h.01\" />",
+     "<path d=\"M19.5 12.5A2.5 2.5 0 0 1 22 10V9c0-4-1-5-5-5H7C3 4 2 5 2 9v.5a2.5 2.5 0 0 1 0 5v.5c0 4 1 5 5 5h10c4 0 5-1 5-5a2.5 2.5 0 0 1-2.5-2.5Z\" /><path d=\"M10 4v16\" stroke-dasharray=\"5 5\" />",
+     "<path d=\"M3 7h18M3 12h18M3 17h18\" />"
+    ]
+   },
+   "illustrations": [
+    "<svg class=\"ill\" viewBox=\"0 0 240 200\" aria-hidden=\"true\"><rect class=\"ill-stroke\" x=\"26\" y=\"30\" width=\"188\" height=\"142\" rx=\"10\"></rect><line class=\"ill-stroke ill-thin ill-faint\" x1=\"26\" y1=\"56\" x2=\"214\" y2=\"56\"></line><g class=\"ill-fill ill-soft\"><circle cx=\"38\" cy=\"43\" r=\"2.5\"></circle><circle cx=\"47\" cy=\"43\" r=\"2.5\"></circle><circle cx=\"56\" cy=\"43\" r=\"2.5\"></circle></g><rect class=\"ill-stroke ill-thin ill-soft\" x=\"68\" y=\"36\" width=\"134\" height=\"14\" rx=\"7\"></rect><text class=\"ill-label ill-soft\" x=\"78\" y=\"46\">tickett.com</text><rect class=\"ill-stroke ill-block\" x=\"40\" y=\"68\" width=\"160\" height=\"40\" rx=\"5\" style=\"animation-delay:0s\"></rect><line class=\"ill-stroke ill-thin ill-soft ill-block\" x1=\"52\" y1=\"82\" x2=\"108\" y2=\"82\" style=\"animation-delay:0.1s\"></line><line class=\"ill-stroke ill-thin ill-faint ill-block\" x1=\"52\" y1=\"94\" x2=\"140\" y2=\"94\" style=\"animation-delay:0.15s\"></line><rect class=\"ill-stroke ill-thin ill-block\" x=\"40\" y=\"116\" width=\"48\" height=\"32\" rx=\"4\" style=\"animation-delay:0.35s\"></rect><rect class=\"ill-stroke ill-thin ill-block\" x=\"96\" y=\"116\" width=\"48\" height=\"32\" rx=\"4\" style=\"animation-delay:0.5s\"></rect><rect class=\"ill-stroke ill-thin ill-block\" x=\"152\" y=\"116\" width=\"48\" height=\"32\" rx=\"4\" style=\"animation-delay:0.65s\"></rect><rect class=\"ill-stroke ill-btn\" x=\"40\" y=\"156\" width=\"56\" height=\"12\" rx=\"6\"></rect><g class=\"ill-cursor\"><path class=\"ill-fill\" d=\"M92 150l14 6-6 2-2 6-6-14Z\"></path></g></svg>",
+    "<svg class=\"ill\" viewBox=\"0 0 240 200\" aria-hidden=\"true\"><g class=\"ill-loop\"><path class=\"ill-stroke ill-soft\" d=\"M120 100C104 82 86 74 86 58C86 40 102 28 120 28C138 28 154 40 154 58C154 74 136 82 120 100C104 118 86 126 86 142C86 160 102 172 120 172C138 172 154 160 154 142C154 126 136 118 120 100Z\"></path><path class=\"ill-stroke ill-trail\" d=\"M120 100C104 82 86 74 86 58C86 40 102 28 120 28C138 28 154 40 154 58C154 74 136 82 120 100C104 118 86 126 86 142C86 160 102 172 120 172C138 172 154 160 154 142C154 126 136 118 120 100Z\"></path></g><g class=\"ill-stroke ill-thin\"><path d=\"M108 56l6-5 6 4 6-4 6 5\"></path><path d=\"M109 59l7 7 4-3 4 3 7-7\"></path></g><g class=\"ill-stroke ill-thin\"><path d=\"M108 134h24a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-13l-6 5v-5h-5a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z\"></path><g class=\"ill-fill ill-soft\"><circle cx=\"114\" cy=\"142\" r=\"1.6\"></circle><circle cx=\"120\" cy=\"142\" r=\"1.6\"></circle><circle cx=\"126\" cy=\"142\" r=\"1.6\"></circle></g></g><circle cx=\"120\" cy=\"100\" r=\"19\" fill=\"var(--color-bg-tertiary)\"></circle><g class=\"ill-stroke\"><path d=\"M110 101v-3a10 10 0 0 1 20 0v3\"></path><rect x=\"106\" y=\"100\" width=\"7\" height=\"11\" rx=\"3\"></rect><rect x=\"127\" y=\"100\" width=\"7\" height=\"11\" rx=\"3\"></rect><path class=\"ill-thin ill-soft\" d=\"M130 111v2a5 5 0 0 1-5 5h-4\"></path></g></svg>",
+    "<svg class=\"ill\" viewBox=\"0 0 240 200\" aria-hidden=\"true\"><circle class=\"ill-stroke ill-thin ill-faint ill-link\" cx=\"120\" cy=\"100\" r=\"58\" stroke-dasharray=\"4 8\"></circle><g class=\"ill-team\"><g class=\"ill-upright\"><circle class=\"ill-stroke ill-thin ill-soft\" cx=\"120\" cy=\"42\" r=\"17\"></circle><rect class=\"ill-stroke ill-thin\" x=\"112\" y=\"39\" width=\"16\" height=\"10\" rx=\"2\"></rect><rect class=\"ill-stroke ill-thin\" x=\"115\" y=\"33\" width=\"10\" height=\"6\" rx=\"1\"></rect></g><g class=\"ill-upright\"><circle class=\"ill-stroke ill-thin ill-soft\" cx=\"178\" cy=\"100\" r=\"17\"></circle><path class=\"ill-stroke ill-thin\" d=\"M178 92l8 3v5c0 5-4 8-8 9-4-1-8-4-8-9v-5l8-3Z\"></path></g><g class=\"ill-upright\"><circle class=\"ill-stroke ill-thin ill-soft\" cx=\"120\" cy=\"158\" r=\"17\"></circle><path class=\"ill-stroke ill-thin\" d=\"M114 152l-4 3 2 4 3-1v9h10v-9l3 1 2-4-4-3-3-1a3 3 0 0 1-6 0l-3 1Z\"></path></g><g class=\"ill-upright\"><circle class=\"ill-stroke ill-thin ill-soft\" cx=\"62\" cy=\"100\" r=\"17\"></circle><path class=\"ill-stroke ill-thin\" d=\"M55 102v-2a7 7 0 0 1 14 0v2\"></path><rect class=\"ill-stroke ill-thin\" x=\"53\" y=\"101\" width=\"5\" height=\"8\" rx=\"2\"></rect><rect class=\"ill-stroke ill-thin\" x=\"66\" y=\"101\" width=\"5\" height=\"8\" rx=\"2\"></rect></g></g><circle class=\"ill-fill ill-soft\" cx=\"120\" cy=\"100\" r=\"3\"></circle></svg>",
+    "<svg class=\"ill\" viewBox=\"0 0 240 200\" aria-hidden=\"true\"><line class=\"ill-stroke ill-thin ill-faint\" x1=\"24\" y1=\"128\" x2=\"168\" y2=\"128\" stroke-dasharray=\"4 8\"></line><g class=\"ill-band\" style=\"animation-delay:0s\"><rect class=\"ill-stroke\" x=\"54\" y=\"88\" width=\"62\" height=\"24\" rx=\"12\"></rect><rect class=\"ill-stroke ill-thin ill-soft\" x=\"92\" y=\"93\" width=\"14\" height=\"14\" rx=\"2\"></rect><g class=\"ill-fill ill-soft\"><rect x=\"95\" y=\"96\" width=\"3\" height=\"3\"></rect><rect x=\"101\" y=\"96\" width=\"3\" height=\"3\"></rect><rect x=\"95\" y=\"102\" width=\"3\" height=\"3\"></rect><rect x=\"101\" y=\"102\" width=\"3\" height=\"3\"></rect></g><line class=\"ill-stroke ill-thin ill-faint\" x1=\"62\" y1=\"100\" x2=\"84\" y2=\"100\"></line></g><g class=\"ill-band\" style=\"animation-delay:1s\"><rect class=\"ill-stroke\" x=\"54\" y=\"88\" width=\"62\" height=\"24\" rx=\"12\"></rect><rect class=\"ill-stroke ill-thin ill-soft\" x=\"92\" y=\"93\" width=\"14\" height=\"14\" rx=\"2\"></rect><g class=\"ill-fill ill-soft\"><rect x=\"95\" y=\"96\" width=\"3\" height=\"3\"></rect><rect x=\"101\" y=\"96\" width=\"3\" height=\"3\"></rect><rect x=\"95\" y=\"102\" width=\"3\" height=\"3\"></rect><rect x=\"101\" y=\"102\" width=\"3\" height=\"3\"></rect></g><line class=\"ill-stroke ill-thin ill-faint\" x1=\"62\" y1=\"100\" x2=\"84\" y2=\"100\"></line></g><g class=\"ill-band\" style=\"animation-delay:2s\"><rect class=\"ill-stroke\" x=\"54\" y=\"88\" width=\"62\" height=\"24\" rx=\"12\"></rect><rect class=\"ill-stroke ill-thin ill-soft\" x=\"92\" y=\"93\" width=\"14\" height=\"14\" rx=\"2\"></rect><g class=\"ill-fill ill-soft\"><rect x=\"95\" y=\"96\" width=\"3\" height=\"3\"></rect><rect x=\"101\" y=\"96\" width=\"3\" height=\"3\"></rect><rect x=\"95\" y=\"102\" width=\"3\" height=\"3\"></rect><rect x=\"101\" y=\"102\" width=\"3\" height=\"3\"></rect></g><line class=\"ill-stroke ill-thin ill-faint\" x1=\"62\" y1=\"100\" x2=\"84\" y2=\"100\"></line></g><rect class=\"ill-stroke\" x=\"150\" y=\"44\" width=\"52\" height=\"118\" rx=\"10\"></rect><rect class=\"ill-stroke ill-thin ill-soft\" x=\"161\" y=\"60\" width=\"30\" height=\"30\" rx=\"4\"></rect><line class=\"ill-stroke ill-scan\" x1=\"163\" y1=\"75\" x2=\"189\" y2=\"75\"></line><circle class=\"ill-ok ill-fill ill-gate-ok\" cx=\"176\" cy=\"106\" r=\"5\"></circle><text class=\"ill-num ill-count-a\" x=\"176\" y=\"136\" text-anchor=\"middle\">001</text><text class=\"ill-num ill-count-b\" x=\"176\" y=\"136\" text-anchor=\"middle\">002</text><text class=\"ill-label ill-faint\" x=\"176\" y=\"152\" text-anchor=\"middle\">LOTAÇÃO</text></svg>"
+   ]
+  }
+ },
+ {
+  "slug": "viva-o-samba",
+  "name": "Viva o Samba",
+  "kind": "site",
+  "accent": "#821718",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/viva-o-samba/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/viva-o-samba/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/viva-o-samba/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/viva-o-samba/detail-botoes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/viva-o-samba/detail-botoes.jpg",
+    "from": 0.0,
+    "score": 62.7
+   },
+   {
+    "src": "/decks/viva-o-samba/detail-seta.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/viva-o-samba/detail-seta.jpg",
+    "from": 0.0,
+    "score": 1.4
+   },
+   {
+    "src": "/decks/viva-o-samba/detail-reel.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/viva-o-samba/detail-reel.jpg",
+    "from": 0.1,
+    "score": 81.6
+   },
+   {
+    "src": "/decks/viva-o-samba/detail-imprensa.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/viva-o-samba/detail-imprensa.jpg",
+    "from": 1.63,
+    "score": 5.6
+   },
+   {
+    "src": "/decks/viva-o-samba/detail-rodape.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/viva-o-samba/detail-rodape.jpg",
+    "from": 1.3,
+    "score": 0.7
+   }
+  ],
+  "page": {
+   "src": "/decks/viva-o-samba/inicio-desktop.mp4",
+   "w": 1440,
+   "h": 900,
+   "poster": "/decks/viva-o-samba/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/viva-o-samba/sobre-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/viva-o-samba/sobre-mobile.jpg",
+    "from": 2.57,
+    "score": 1606.0
+   },
+   {
+    "src": "/decks/viva-o-samba/evento-pagina-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/viva-o-samba/evento-pagina-mobile.jpg",
+    "from": 10.1,
+    "score": 1349.8
+   },
+   {
+    "src": "/decks/viva-o-samba/ajuda-pagina-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/viva-o-samba/ajuda-pagina-mobile.jpg",
+    "from": 2.57,
+    "score": 989.4
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#faf7f2",
+     "name": "Papel"
+    },
+    {
+     "hex": "#f2eee8",
+     "name": "Areia"
+    },
+    {
+     "hex": "#dfd7cc",
+     "name": "Linha"
+    },
+    {
+     "hex": "#2a2222",
+     "name": "Tinta"
+    },
+    {
+     "hex": "#6b6161",
+     "name": "Cinza"
+    },
+    {
+     "hex": "#821718",
+     "name": "Bordô"
+    },
+    {
+     "hex": "#d8a067",
+     "name": "Ocre"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Bebas Neue",
+     "name": "Bebas Neue",
+     "sample": "O SAMBA QUE VIVE",
+     "weight": 400,
+     "uppercase": false
+    },
+    {
+     "family": "Plus Jakarta Sans",
+     "name": "Plus Jakarta Sans",
+     "sample": "Domingos · portas 17h00 · início 18h30",
+     "weight": 500,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.75,
+    "items": [
+     "<g transform=\"scale(0.5455)\" stroke-width=\"3.2\"><circle cx=\"22\" cy=\"22\" r=\"20.75\"/><path d=\"M1.25 22h41.5M6.10 8.66h31.79M6.10 35.34h31.79\"/><path class=\"globe__m globe__m--1\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--2\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--3\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--4\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/></g>",
+     "<path d=\"M5 12h14M13 6l6 6-6 6\"/>",
+     "<path d=\"M7 17 17 7M8 7h9v9\"/>",
+     "<rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15\" rx=\"3\"/><path d=\"M3.5 10h17M8 3v4M16 3v4\"/>",
+     "<path d=\"M6 6l12 12M18 6 6 18\"/>",
+     "<path d=\"M12 4v11M7 11l5 5 5-5M5 20h14\"/>",
+     "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3c-3.2 2.6-3.2 15.4 0 18M12 3c3.2 2.6 3.2 15.4 0 18\"/>",
+     "<path d=\"M9 6v12M15 6v12\"/>"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "yanns",
+  "name": "YANNS",
+  "kind": "site",
+  "accent": "#930c2e",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/yanns/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/yanns/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/yanns/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/yanns/detail-rolar.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/yanns/detail-rolar.jpg",
+    "from": 0.1,
+    "score": 121.2
+   },
+   {
+    "src": "/decks/yanns/detail-clipes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/yanns/detail-clipes.jpg",
+    "from": 3.37,
+    "score": 20.9
+   },
+   {
+    "src": "/decks/yanns/detail-tamanhos.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/yanns/detail-tamanhos.jpg",
+    "from": 3.83,
+    "score": 5.9
+   },
+   {
+    "src": "/decks/yanns/detail-camisola.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/yanns/detail-camisola.jpg",
+    "from": 0.37,
+    "score": 10.8
+   },
+   {
+    "src": "/decks/yanns/detail-botoes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/yanns/detail-botoes.jpg",
+    "from": 2.5,
+    "score": 16.4
+   }
+  ],
+  "page": {
+   "src": "/decks/yanns/inicio-desktop.mp4",
+   "w": 1440,
+   "h": 900,
+   "poster": "/decks/yanns/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/yanns/musique-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/yanns/musique-mobile.jpg",
+    "from": 4.37,
+    "score": 1943.3
+   },
+   {
+    "src": "/decks/yanns/videos-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/yanns/videos-mobile.jpg",
+    "from": 3.3,
+    "score": 1624.4
+   },
+   {
+    "src": "/decks/yanns/biografia-pagina-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/yanns/biografia-pagina-mobile.jpg",
+    "from": 8.1,
+    "score": 1596.6
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#930c2e",
+     "name": "Vinho"
+    },
+    {
+     "hex": "#020612",
+     "name": "Quase preto"
+    },
+    {
+     "hex": "#526078",
+     "name": "Cinza-azul"
+    },
+    {
+     "hex": "#fcfcfc",
+     "name": "Branco gelo"
+    },
+    {
+     "hex": "#eef2f7",
+     "name": "Cinza claro"
+    },
+    {
+     "hex": "#dbe2ec",
+     "name": "Linha"
+    },
+    {
+     "hex": "#dca0aa",
+     "name": "Rosa"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Inter · ExtraBold",
+     "sample": "DATES DE TOURNÉE",
+     "weight": 800,
+     "uppercase": true
+    },
+    {
+     "family": "Inter",
+     "name": "Inter · Regular a SemiBold",
+     "sample": "Fri. 21 Aug. · 20:00",
+     "weight": 500,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.6,
+    "items": [
+     "<path d=\"M8 5.13965V19.1396L19 12.1396L8 5.13965Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M14 19H18V5H14M6 19H10V5H6V19Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M14 3.23047V5.29047C16.89 6.15047 19 8.83047 19 12.0005C19 15.1705 16.89 17.8405 14 18.7005V20.7705C18 19.8605 21 16.2805 21 12.0005C21 7.72047 18 4.14047 14 3.23047ZM16.5 12.0005C16.5 10.2305 15.5 8.71047 14 7.97047V16.0005C15.5 15.2905 16.5 13.7605 16.5 12.0005ZM3 9.00047V15.0005H7L12 20.0005V4.00047L7 9.00047H3Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M12 4L9.91 6.09L12 8.18M4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.53C15.58 18.04 14.83 18.46 14 18.7V20.77C15.38 20.45 16.63 19.82 17.68 18.96L19.73 21L21 19.73L12 10.73M19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.6455 14.8709 20.999 13.4465 21 12C21 7.72 18 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM16.5 12C16.5 10.23 15.5 8.71 14 7.97V10.18L16.45 12.63C16.5 12.43 16.5 12.21 16.5 12Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M17 18C17.5304 18 18.0391 18.2107 18.4142 18.5858C18.7893 18.9609 19 19.4696 19 20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22C16.4696 22 15.9609 21.7893 15.5858 21.4142C15.2107 21.0391 15 20.5304 15 20C15 18.89 15.89 18 17 18ZM1 2H4.27L5.21 4H20C20.2652 4 20.5196 4.10536 20.7071 4.29289C20.8946 4.48043 21 4.73478 21 5C21 5.17 20.95 5.34 20.88 5.5L17.3 11.97C16.96 12.58 16.3 13 15.55 13H8.1L7.2 14.63L7.17 14.75C7.17 14.8163 7.19634 14.8799 7.24322 14.9268C7.29011 14.9737 7.3537 15 7.42 15H19V17H7C6.46957 17 5.96086 16.7893 5.58579 16.4142C5.21071 16.0391 5 15.5304 5 15C5 14.65 5.09 14.32 5.24 14.04L6.6 11.59L3 4H1V2ZM7 18C7.53043 18 8.03914 18.2107 8.41421 18.5858C8.78929 18.9609 9 19.4696 9 20C9 20.5304 8.78929 21.0391 8.41421 21.4142C8.03914 21.7893 7.53043 22 7 22C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20C5 18.89 5.89 18 7 18ZM16 11L18.78 6H6.14L8.5 11H16Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M16.36 14C16.44 13.34 16.5 12.68 16.5 12C16.5 11.32 16.44 10.66 16.36 10H19.74C19.9 10.64 20 11.31 20 12C20 12.69 19.9 13.36 19.74 14M14.59 19.56C15.19 18.45 15.65 17.25 15.97 16H18.92C17.9512 17.6683 16.4141 18.932 14.59 19.56ZM14.34 14H9.66C9.56 13.34 9.5 12.68 9.5 12C9.5 11.32 9.56 10.65 9.66 10H14.34C14.43 10.65 14.5 11.32 14.5 12C14.5 12.68 14.43 13.34 14.34 14ZM12 19.96C11.17 18.76 10.5 17.43 10.09 16H13.91C13.5 17.43 12.83 18.76 12 19.96ZM8 8H5.08C6.03864 6.32703 7.57466 5.06124 9.4 4.44C8.8 5.55 8.35 6.75 8 8ZM5.08 16H8C8.35 17.25 8.8 18.45 9.4 19.56C7.57827 18.9323 6.04429 17.6682 5.08 16ZM4.26 14C4.1 13.36 4 12.69 4 12C4 11.31 4.1 10.64 4.26 10H7.64C7.56 10.66 7.5 11.32 7.5 12C7.5 12.68 7.56 13.34 7.64 14M12 4.03C12.83 5.23 13.5 6.57 13.91 8H10.09C10.5 6.57 11.17 5.23 12 4.03ZM18.92 8H15.97C15.6565 6.76161 15.1931 5.56611 14.59 4.44C16.43 5.07 17.96 6.34 18.92 8ZM12 2C6.47 2 2 6.5 2 12C2 14.6522 3.05357 17.1957 4.92893 19.0711C5.85752 19.9997 6.95991 20.7362 8.17317 21.2388C9.38642 21.7413 10.6868 22 12 22C14.6522 22 17.1957 20.9464 19.0711 19.0711C20.9464 17.1957 22 14.6522 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7362 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z\" fill=\"currentColor\" stroke=\"none\" />",
+     "<path d=\"M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z\" fill=\"currentColor\" stroke=\"none\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "station-one",
+  "name": "Station One",
+  "kind": "site",
+  "accent": "#8d8d99",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/stationone/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/stationone/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/stationone/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/stationone/detail-botoes.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/stationone/detail-botoes.jpg",
+    "from": 2.83,
+    "score": 23.7
+   },
+   {
+    "src": "/decks/stationone/detail-seta.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/stationone/detail-seta.jpg",
+    "from": 1.83,
+    "score": 10.7
+   },
+   {
+    "src": "/decks/stationone/detail-logo.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/stationone/detail-logo.jpg",
+    "from": 2.23,
+    "score": 25.3
+   },
+   {
+    "src": "/decks/stationone/detail-cartao.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/stationone/detail-cartao.jpg",
+    "from": 1.77,
+    "score": 12.7
+   },
+   {
+    "src": "/decks/stationone/detail-busca.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/stationone/detail-busca.jpg",
+    "from": 0.3,
+    "score": 55.8
+   },
+   {
+    "src": "/decks/stationone/detail-perguntas.mp4",
+    "w": 960,
+    "h": 720,
+    "poster": "/decks/stationone/detail-perguntas.jpg",
+    "from": 0.57,
+    "score": 31.3
+   }
+  ],
+  "page": {
+   "src": "/decks/stationone/inicio-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/stationone/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/stationone/sobre-pagina-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/stationone/sobre-pagina-mobile.jpg",
+    "from": 4.97,
+    "score": 1501.6
+   },
+   {
+    "src": "/decks/stationone/espetaculos-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/stationone/espetaculos-mobile.jpg",
+    "from": 1.03,
+    "score": 697.0
+   },
+   {
+    "src": "/decks/stationone/baralho-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/stationone/baralho-mobile.jpg",
+    "from": 8.43,
+    "score": 251.5
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#ffffff",
+     "name": "Papel"
+    },
+    {
+     "hex": "#f1f2f4",
+     "name": "Cinza claro"
+    },
+    {
+     "hex": "#d9dbdf",
+     "name": "Linha"
+    },
+    {
+     "hex": "#5e6168",
+     "name": "Cinza"
+    },
+    {
+     "hex": "#0b0c0e",
+     "name": "Tinta"
+    },
+    {
+     "hex": "#0b7a3e",
+     "name": "Verde"
+    },
+    {
+     "hex": "#a85600",
+     "name": "Âmbar"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Archivo",
+     "name": "Archivo · ExtraBold, larga",
+     "sample": "Os grandes concertos",
+     "weight": 800,
+     "uppercase": false
+    },
+    {
+     "family": "Archivo",
+     "name": "Archivo · Regular a SemiBold",
+     "sample": "Sagres Campo Pequeno · portas 20:00",
+     "weight": 500,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.75,
+    "items": [
+     "<g transform=\"scale(0.5455)\" stroke-width=\"3.2\"><circle cx=\"22\" cy=\"22\" r=\"20.75\"/><path d=\"M1.25 22h41.5M6.10 8.66h31.79M6.10 35.34h31.79\"/><path class=\"globe__m globe__m--1\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--2\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--3\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--4\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/></g>",
+     "<path d=\"M5 12h14M13 6l6 6-6 6\"/>",
+     "<path d=\"M7 17 17 7M8 7h9v9\"/>",
+     "<rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15\" rx=\"3\"/><path d=\"M3.5 10h17M8 3v4M16 3v4\"/>",
+     "<path d=\"M6 6l12 12M18 6 6 18\"/>",
+     "<path d=\"M12 4v11M7 11l5 5 5-5M5 20h14\"/>",
+     "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3c-3.2 2.6-3.2 15.4 0 18M12 3c3.2 2.6 3.2 15.4 0 18\"/>",
+     "<path d=\"M9 6v12M15 6v12\"/>"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "jsynq",
+  "name": "JSYNQ",
+  "kind": "site",
+  "accent": "#1f6b48",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/jsynq/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/jsynq/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/jsynq/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/jsynq/agents-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq/agents-desktop.jpg",
+    "from": 2.83,
+    "score": 741.6
+   },
+   {
+    "src": "/decks/jsynq/platform-page-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq/platform-page-desktop.jpg",
+    "from": 53.17,
+    "score": 535.3
+   },
+   {
+    "src": "/decks/jsynq/real-estate-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq/real-estate-desktop.jpg",
+    "from": 8.77,
+    "score": 723.1
+   },
+   {
+    "src": "/decks/jsynq/diagnostic-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq/diagnostic-desktop.jpg",
+    "from": 12.5,
+    "score": 689.5
+   }
+  ],
+  "page": {
+   "src": "/decks/jsynq/consulting-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/jsynq/consulting-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/jsynq/home-b-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/jsynq/home-b-mobile.jpg",
+    "from": 15.23,
+    "score": 1899.0
+   },
+   {
+    "src": "/decks/jsynq/consulting-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/jsynq/consulting-mobile.jpg",
+    "from": 1.03,
+    "score": 1889.6
+   },
+   {
+    "src": "/decks/jsynq/agents-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/jsynq/agents-mobile.jpg",
+    "from": 2.57,
+    "score": 1865.4
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#f6f6fa",
+     "name": "Papel"
+    },
+    {
+     "hex": "#0b0b0c",
+     "name": "Escuro"
+    },
+    {
+     "hex": "#040405",
+     "name": "Tinta"
+    },
+    {
+     "hex": "#4a4a55",
+     "name": "Texto suave"
+    },
+    {
+     "hex": "#45ad7e",
+     "name": "Verde da marca"
+    },
+    {
+     "hex": "#2e8a60",
+     "name": "Verde de título"
+    },
+    {
+     "hex": "#1f6b48",
+     "name": "Verde de texto"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "IA que atende seus clientes e vende por você.",
+     "weight": 800,
+     "uppercase": false
+    },
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "Agentes de IA respondem no WhatsApp e no Instagram a qualquer hora e passam a conversa para o seu time no momento certo.",
+     "weight": 400,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.6,
+    "items": [
+     "<path d=\"M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z\" /><path d=\"m9 12 2 2 4-4\" />",
+     "<path d=\"M3 4h18l-7 8.5V19l-4 2v-8.5Z\" />",
+     "<path d=\"m3 17 6-6 4 4 8-8M15 7h6v6\" />",
+     "<path d=\"M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1\" /><circle cx=\"15\" cy=\"6\" r=\"2\" /><circle cx=\"9\" cy=\"12\" r=\"2\" /><circle cx=\"17\" cy=\"18\" r=\"2\" />",
+     "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2.5\" /><path d=\"M9 4v16M15 4v16\" />",
+     "<rect x=\"3\" y=\"3\" width=\"6\" height=\"6\" rx=\"1.5\" /><rect x=\"15\" y=\"15\" width=\"6\" height=\"6\" rx=\"1.5\" /><path d=\"M6 9v3a3 3 0 0 0 3 3h6\" />",
+     "<rect x=\"3\" y=\"6\" width=\"13\" height=\"12\" rx=\"2\" /><path d=\"m16 10 5-3v10l-5-3\" />",
+     "<path d=\"M12 3.5 13.6 9l5.4 1.5-5.4 1.5L12 17.5l-1.6-5.5L5 10.5 10.4 9ZM19 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7Z\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "hubber-reels",
+  "name": "Hubber Reels",
+  "kind": "site",
+  "accent": "#9a6100",
+  "frame": "browser",
+  "hero": {
+   "src": "/decks/hubber-reels/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/hubber-reels/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/hubber-reels/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/hubber-reels/fundo-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/hubber-reels/fundo-desktop.jpg",
+    "from": 0.57,
+    "score": 113.5
+   },
+   {
+    "src": "/decks/hubber-reels/secoes-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/hubber-reels/secoes-desktop.jpg",
+    "from": 15.7,
+    "score": 191.7
+   },
+   {
+    "src": "/decks/hubber-reels/parede-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/hubber-reels/parede-desktop.jpg",
+    "from": 6.1,
+    "score": 77.2
+   },
+   {
+    "src": "/decks/hubber-reels/formulario-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/hubber-reels/formulario-desktop.jpg",
+    "from": 4.83,
+    "score": 307.6
+   }
+  ],
+  "page": {
+   "src": "/decks/hubber-reels/inicio-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/hubber-reels/inicio-desktop.jpg"
+  },
+  "phones": [
+   {
+    "src": "/decks/hubber-reels/formulario-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/hubber-reels/formulario-mobile.jpg",
+    "from": 0.7,
+    "score": 2311.6
+   },
+   {
+    "src": "/decks/hubber-reels/hero-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/hubber-reels/hero-mobile.jpg",
+    "from": 13.97,
+    "score": 1218.4
+   },
+   {
+    "src": "/decks/hubber-reels/nav-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/hubber-reels/nav-mobile.jpg",
+    "from": 4.37,
+    "score": 130.3
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#EE9B00",
+     "name": "Amber"
+    },
+    {
+     "hex": "#F0A92B",
+     "name": "Amber soft"
+    },
+    {
+     "hex": "#C97D00",
+     "name": "Amber deep"
+    },
+    {
+     "hex": "#07080A",
+     "name": "Void"
+    },
+    {
+     "hex": "#0C0D10",
+     "name": "Base"
+    },
+    {
+     "hex": "#F4F1EA",
+     "name": "Light"
+    },
+    {
+     "hex": "#111111",
+     "name": "On amber"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Archivo",
+     "name": "946 Latin Wide 3",
+     "sample": "Turn one shoot into a full month of content",
+     "weight": 400,
+     "uppercase": false
+    },
+    {
+     "family": "Archivo",
+     "name": "Archivo",
+     "sample": "You run your business. We handle the content.",
+     "weight": 400,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.5,
+    "items": [
+     "<path d=\"M5 12.4 9.4 17 19 7\" />",
+     "<path d=\"M11 17l-5-5 5-5M18 17l-5-5 5-5\" />",
+     "<path d=\"M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7\" />",
+     "<path d=\"M6 6l12 12M18 6 6 18\" />",
+     "<circle cx=\"12\" cy=\"12\" r=\"8.5\" /><path d=\"M3.5 12h17M12 3.5c2.36 2.36 3.6 5.46 3.6 8.5s-1.24 6.14-3.6 8.5c-2.36-2.36-3.6-5.46-3.6-8.5s1.24-6.14 3.6-8.5Z\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "jsynq-workspace",
+  "name": "JSYNQ Workspace",
+  "kind": "system",
+  "accent": "#29684C",
+  "frame": "card",
+  "hero": {
+   "src": "/decks/jsynq-workspace/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/jsynq-workspace/vitrine-desktop.jpg"
+  },
+  "coverClip": null,
+  "heroMobile": "/decks/jsynq-workspace/hero-mobile.mp4",
+  "build": null,
+  "details": [
+   {
+    "src": "/decks/jsynq-workspace/inicio-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-workspace/inicio-desktop.jpg",
+    "from": 3.97,
+    "score": 131.7
+   },
+   {
+    "src": "/decks/jsynq-workspace/quadro-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-workspace/quadro-desktop.jpg",
+    "from": 10.17,
+    "score": 37.5
+   },
+   {
+    "src": "/decks/jsynq-workspace/mensagens-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-workspace/mensagens-desktop.jpg",
+    "from": 0.9,
+    "score": 161.4
+   },
+   {
+    "src": "/decks/jsynq-workspace/ia-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-workspace/ia-desktop.jpg",
+    "from": 3.63,
+    "score": 144.5
+   },
+   {
+    "src": "/decks/jsynq-workspace/biblioteca-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-workspace/biblioteca-desktop.jpg",
+    "from": 6.1,
+    "score": 131.9
+   },
+   {
+    "src": "/decks/jsynq-workspace/reunioes-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-workspace/reunioes-desktop.jpg",
+    "from": 6.5,
+    "score": 97.4
+   }
+  ],
+  "page": null,
+  "phones": [
+   {
+    "src": "/decks/jsynq-workspace/hero-mobile.mp4",
+    "w": 520,
+    "h": 1126,
+    "poster": "/decks/jsynq-workspace/hero-mobile.jpg",
+    "from": 7.43,
+    "score": 324.3
+   }
+  ],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#F6F6FA",
+     "name": "Fundo"
+    },
+    {
+     "hex": "#E4E4E9",
+     "name": "Linha"
+    },
+    {
+     "hex": "#040405",
+     "name": "Texto"
+    },
+    {
+     "hex": "#4D4B5C",
+     "name": "Texto suave"
+    },
+    {
+     "hex": "#45AD7E",
+     "name": "Verde"
+    },
+    {
+     "hex": "#29684C",
+     "name": "Verde escuro"
+    },
+    {
+     "hex": "#153426",
+     "name": "Verde profundo"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "Precisa da sua atenção",
+     "weight": 600,
+     "uppercase": false
+    },
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "IA atendendo · Assumir conversa · Em andamento",
+     "weight": 500,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.6,
+    "items": [
+     "<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\" />",
+     "<circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" />",
+     "<path d=\"M5 12h14\" /><path d=\"M12 5v14\" />",
+     "<path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\" /><circle cx=\"12\" cy=\"12\" r=\"3\" />",
+     "<polyline points=\"6 3 20 12 6 21 6 3\" />",
+     "<rect x=\"14\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\" /><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\" />",
+     "<path d=\"M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z\" /><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\" /><line x1=\"12\" x2=\"12\" y1=\"19\" y2=\"22\" />",
+     "<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "jsynq-marca",
+  "name": "JSYNQ · Marca",
+  "kind": "brand",
+  "accent": "#29684C",
+  "frame": "card",
+  "hero": {
+   "src": "/decks/jsynq-marca/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/jsynq-marca/vitrine-desktop.jpg"
+  },
+  "coverClip": {
+   "src": "/decks/jsynq-marca/papelaria-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/jsynq-marca/papelaria-desktop.jpg"
+  },
+  "heroMobile": null,
+  "build": {
+   "src": "/decks/jsynq-marca/simbolo-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/jsynq-marca/simbolo-desktop.jpg",
+   "from": 0
+  },
+  "details": [
+   {
+    "src": "/decks/jsynq-marca/versoes-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-marca/versoes-desktop.jpg",
+    "from": 5.1,
+    "score": 98.3
+   },
+   {
+    "src": "/decks/jsynq-marca/regras-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-marca/regras-desktop.jpg",
+    "from": 5.1,
+    "score": 20.9
+   },
+   {
+    "src": "/decks/jsynq-marca/papelaria-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-marca/papelaria-desktop.jpg",
+    "from": 4.63,
+    "score": 56.6
+   },
+   {
+    "src": "/decks/jsynq-marca/web-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-marca/web-desktop.jpg",
+    "from": 4.63,
+    "score": 166.8
+   },
+   {
+    "src": "/decks/jsynq-marca/redes-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-marca/redes-desktop.jpg",
+    "from": 4.63,
+    "score": 152.9
+   },
+   {
+    "src": "/decks/jsynq-marca/sinalizacao-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/jsynq-marca/sinalizacao-desktop.jpg",
+    "from": 1.97,
+    "score": 3.7
+   }
+  ],
+  "page": null,
+  "phones": [],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#45AD7E",
+     "name": "Verde JSYNQ"
+    },
+    {
+     "hex": "#040405",
+     "name": "Preto JSYNQ"
+    },
+    {
+     "hex": "#FFFFFF",
+     "name": "Branco"
+    },
+    {
+     "hex": "#1B4A35",
+     "name": "Verde escuro"
+    },
+    {
+     "hex": "#C7E6D8",
+     "name": "Verde claro"
+    },
+    {
+     "hex": "#4D4B5C",
+     "name": "Cinza azulado"
+    },
+    {
+     "hex": "#E4E4E9",
+     "name": "Cinza claro"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "Work smarter. Stay in sync.",
+     "weight": 700,
+     "uppercase": false
+    },
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "Tudo o que a sua equipe precisa, num só espaço de trabalho.",
+     "weight": 400,
+     "uppercase": false
+    }
+   ],
+   "icons": {
+    "stroke": 1.6,
+    "items": [
+     "<path d=\"M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z\" /><path d=\"m9 12 2 2 4-4\" />",
+     "<path d=\"M3 4h18l-7 8.5V19l-4 2v-8.5Z\" />",
+     "<path d=\"m3 17 6-6 4 4 8-8M15 7h6v6\" />",
+     "<path d=\"M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1\" /><circle cx=\"15\" cy=\"6\" r=\"2\" /><circle cx=\"9\" cy=\"12\" r=\"2\" /><circle cx=\"17\" cy=\"18\" r=\"2\" />",
+     "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2.5\" /><path d=\"M9 4v16M15 4v16\" />",
+     "<rect x=\"3\" y=\"3\" width=\"6\" height=\"6\" rx=\"1.5\" /><rect x=\"15\" y=\"15\" width=\"6\" height=\"6\" rx=\"1.5\" /><path d=\"M6 9v3a3 3 0 0 0 3 3h6\" />",
+     "<rect x=\"3\" y=\"6\" width=\"13\" height=\"12\" rx=\"2\" /><path d=\"m16 10 5-3v10l-5-3\" />",
+     "<path d=\"M12 3.5 13.6 9l5.4 1.5-5.4 1.5L12 17.5l-1.6-5.5L5 10.5 10.4 9ZM19 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7Z\" />"
+    ]
+   },
+   "illustrations": []
+  }
+ },
+ {
+  "slug": "in-the-level",
+  "name": "In The Level",
+  "kind": "brand",
+  "accent": "#0169A2",
+  "frame": "card",
+  "hero": {
+   "src": "/decks/in-the-level/vitrine-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/in-the-level/vitrine-desktop.jpg"
+  },
+  "coverClip": {
+   "src": "/decks/in-the-level/papelaria-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/in-the-level/papelaria-desktop.jpg"
+  },
+  "heroMobile": null,
+  "build": {
+   "src": "/decks/in-the-level/simbolo-desktop.mp4",
+   "w": 1280,
+   "h": 800,
+   "poster": "/decks/in-the-level/simbolo-desktop.jpg",
+   "from": 0
+  },
+  "details": [
+   {
+    "src": "/decks/in-the-level/versoes-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/in-the-level/versoes-desktop.jpg",
+    "from": 4.37,
+    "score": 212.9
+   },
+   {
+    "src": "/decks/in-the-level/sistema-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/in-the-level/sistema-desktop.jpg",
+    "from": 10.5,
+    "score": 8.2
+   },
+   {
+    "src": "/decks/in-the-level/papelaria-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/in-the-level/papelaria-desktop.jpg",
+    "from": 4.63,
+    "score": 62.9
+   },
+   {
+    "src": "/decks/in-the-level/digital-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/in-the-level/digital-desktop.jpg",
+    "from": 4.83,
+    "score": 135.9
+   },
+   {
+    "src": "/decks/in-the-level/ambiente-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/in-the-level/ambiente-desktop.jpg",
+    "from": 4.57,
+    "score": 37.5
+   },
+   {
+    "src": "/decks/in-the-level/apresentacao-desktop.mp4",
+    "w": 1280,
+    "h": 800,
+    "poster": "/decks/in-the-level/apresentacao-desktop.jpg",
+    "from": 10.77,
+    "score": 5.1
+   }
+  ],
+  "page": null,
+  "phones": [],
+  "style": {
+   "swatches": [
+    {
+     "hex": "#008AD8",
+     "name": "Azul Pantone 2382 C"
+    },
+    {
+     "hex": "#0169A2",
+     "name": "Azul medium"
+    },
+    {
+     "hex": "#A1D3EE",
+     "name": "Azul lightest"
+    },
+    {
+     "hex": "#F2F7F9",
+     "name": "Azul superlight"
+    },
+    {
+     "hex": "#0C111D",
+     "name": "Cinza 950"
+    },
+    {
+     "hex": "#667085",
+     "name": "Cinza 500"
+    },
+    {
+     "hex": "#EAECF0",
+     "name": "Cinza 200"
+    }
+   ],
+   "fonts": [
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "Solutions with In the Level",
+     "weight": 700,
+     "uppercase": false
+    },
+    {
+     "family": "Inter",
+     "name": "Inter",
+     "sample": "Powerful tools and expert services designed to streamline operations.",
+     "weight": 400,
+     "uppercase": false
+    }
+   ],
+   "icons": null,
+   "illustrations": []
+  }
+ }
+]

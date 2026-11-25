@@ -22,6 +22,8 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const SPRING = { stiffness: 220, damping: 38, mass: 0.35 };
 // Com reduced motion o canvas mostra um frame só, em 40% do roteiro.
 const STATIC_PROGRESS = 0.4;
+// celular: quanto o trilho da imagem presa passa da altura dela (em svh)
+const LEAD_SVH = 40;
 
 const pad3 = (n: number) => String(n).padStart(3, "0");
 
@@ -157,8 +159,41 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  // celular: só a imagem fica presa, no meio da tela, com o texto acima e a seção seguinte subindo abaixo.
+  // O trilho tem a altura da imagem + LEAD_SVH: curto o bastante para a seção seguinte aparecer enquanto ela está presa.
+  // A animação começa quando a imagem chega perto do meio da tela e termina quando ela se solta.
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+  const [mediaH, setMediaH] = useState(0);
+  const [vh, setVh] = useState(0);
+  useEffect(() => {
+    const el = mediaRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => {
+      setMediaH(el.getBoundingClientRect().height);
+      setVh(window.innerHeight);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const barH = 56;
+  const stuckTop = (vh + barH - mediaH) / 2;
+  const { scrollYProgress: railProgress } = useScroll({
+    target: railRef,
+    offset: ["start 0.65", `end ${Math.round(stuckTop + mediaH)}px`],
+  });
+  const [wide, setWide] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setWide(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  const pinned = !reduced && wide;
   const staticProgress = useMotionValue(STATIC_PROGRESS);
-  const drive = reduced ? staticProgress : scrollYProgress;
+  const railPinned = !reduced && !wide && mediaH > 0;
+  const drive = reduced ? staticProgress : wide ? scrollYProgress : railProgress;
   const smooth = useSpring(drive, SPRING);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -247,13 +282,14 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
   });
 
   return (
-    <Chapter id={chapter.id} style={reduced ? undefined : { padding: 0 }}>
-      <div ref={ref} style={reduced ? undefined : { height: `${chapter.scrollLength}vh` }}>
-        <div className={reduced ? undefined : "sticky top-0 deck-screen h-[100svh]"}>
+    <Chapter id={chapter.id} style={pinned ? { padding: 0 } : undefined}>
+      <div ref={ref} style={pinned ? { height: `${chapter.scrollLength}vh` } : undefined}>
+        <div className={pinned ? "sticky top-[var(--deck-bar-h)] deck-screen h-[calc(100svh-var(--deck-bar-h))]" : undefined}>
           <div
             className={cx(
-              "deck-container grid items-center gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.9fr)] lg:gap-12",
-              !reduced && "h-full",
+              "deck-container grid content-start items-center gap-10 lg:content-center lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.9fr)] lg:gap-12",
+              // a tela presa (só no lg) começa abaixo da barra, com texto e imagem centralizados
+              pinned && "h-full",
             )}
           >
             <div className="min-w-0">
@@ -273,18 +309,25 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
               >
                 {chapter.body}
               </motion.p>
-              <dl className="mt-10 hidden lg:block">
-                {chapter.specs.map((s, i) => (
-                  <SpecRow key={s.k} spec={s} index={i} reduced={reduced} />
-                ))}
-              </dl>
+              {chapter.specs.length > 0 && (
+                <dl className="mt-10 hidden lg:block">
+                  {chapter.specs.map((s, i) => (
+                    <SpecRow key={s.k} spec={s} index={i} reduced={reduced} />
+                  ))}
+                </dl>
+              )}
             </div>
 
             <div className="flex min-w-0 lg:justify-end">
+              <div ref={railRef} className={railPinned ? "w-full" : "contents"} style={railPinned ? { height: `calc(${mediaH}px + ${LEAD_SVH}svh)` } : undefined}>
+              <div className={railPinned ? "sticky w-full" : "contents"} style={railPinned ? { top: stuckTop } : undefined}>
+              {/* empilhado (abaixo do lg) o texto fica em cima, então a imagem cede altura para caber na tela presa */}
               <div
-                className="relative overflow-hidden"
+                ref={mediaRef}
+                className="relative w-[var(--seq-w)] overflow-hidden lg:w-[var(--seq-w-lg)]"
                 style={{
-                  width: `min(100%, ${(72 * ratio).toFixed(1)}vh)`,
+                  ["--seq-w" as string]: `min(100%, ${(50 * ratio).toFixed(1)}vh)`,
+                  ["--seq-w-lg" as string]: `min(100%, ${(72 * ratio).toFixed(1)}vh)`,
                   aspectRatio: `${width} / ${height}`,
                   border: "1px solid var(--d-line)",
                   borderRadius: "var(--d-radius)",
@@ -333,6 +376,8 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
                     </p>
                   )}
                 </div>
+              </div>
+              </div>
               </div>
             </div>
           </div>

@@ -9,3 +9,12 @@ next-env.d.ts
 .mockup-tmp/
 .vercel
 .env*
+
+# notas internas (preços): o repositório é público
+docs/privado/
+
+# capturas do staging do JSYNQ Workspace (dados mascarados, mas internos)
+scripts/deck/workspace-shots/
+
+# reels do Instagram (vídeos grandes, gerados por scripts/reels)
+exports/

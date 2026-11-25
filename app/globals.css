@@ -123,13 +123,6 @@ body {
     background-size: 14px 14px;
   }
 
-  /* Barra de progresso do palco da home: o fim desta animação troca de site
-     (onAnimationEnd), então pausar a barra pausa a troca junto. */
-  .stage-progress {
-    transform-origin: left;
-    animation: stage-progress 7000ms linear forwards;
-  }
-
   /* Entrada do hero: sobe e aparece uma vez no load; --i escalona os blocos (ver HomeHero) */
   .hero-in {
     animation: hero-in 0.55s cubic-bezier(0.21, 0.47, 0.32, 0.98) both;
@@ -165,15 +158,6 @@ body {
   }
 }
 
-/* enchimento da barra do palco (ver .stage-progress); fora de @layer, como o globe-spin acima */
-@keyframes stage-progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
 
 @keyframes hero-in {
   from {

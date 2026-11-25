@@ -178,9 +178,9 @@ async function check({ file, exportName, deck }) {
   // texto público: sem biblioteca, nome de arquivo ou código fora de Desenvolvimento/Qualidade/Animações
   let achados = 0;
   for (const c of ch) {
-    if (/desenvolv|qualidade|movimento/.test(c.id)) continue;
+    if (/desenvolv|qualidade/.test(c.id)) continue;
     for (const s of strings({ ...c, media: undefined, backdrop: undefined, desktop: undefined, mobile: undefined })) {
-      if (/^\/decks\//.test(s) || /^https?:/.test(s)) continue;
+      if (/^\/decks\//.test(s) || /^https?:/.test(s) || /^</.test(s) || /^\.[a-z]/.test(s)) continue; // SVG e CSS dos ícones não são texto
       if (LIBS.test(s) || ARQUIVO.test(s) || CODIGO.test(s)) {
         achados++;
         warn(`texto técnico fora de Desenvolvimento (${c.id}): ${s.slice(0, 80)}`);

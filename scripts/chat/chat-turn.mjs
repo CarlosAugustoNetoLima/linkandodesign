@@ -27,6 +27,7 @@ if (msg === "--show") {
 if (!msg) { console.error("falta a mensagem"); process.exit(2); }
 
 const DONE_RE = /\[\[\s*diagnostico-completo\s*\]\]/i;
+const OUT_RE = /\[\[\s*diagnostico-fora\s*\]\]/i;
 const strip = (t) => t.replace(/\[\[[^\]]*\]\]/g, "").replace(/\[\[[^\]]*$/, "").trim();
 const ipN = [...id].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 250, 7);
 
@@ -52,9 +53,12 @@ if (!ok) {
 }
 const truncated = /problema de conex/.test(text);
 const done = DONE_RE.test(text);
+const out = OUT_RE.test(text);
 const clean = strip(text);
-s.messages.push({ role: "assistant", content: clean, ...(done ? { marker: true } : {}), ...(truncated ? { truncated: true } : {}) });
+s.messages.push({ role: "assistant", content: clean, ...(done ? { marker: true } : {}), ...(out ? { outMarker: true } : {}), ...(truncated ? { truncated: true } : {}) });
 if (done) s.done = true;
+if (out) s.out = true;
 writeFileSync(file, JSON.stringify(s, null, 2));
 console.log(clean);
 if (done) console.log("\n[DIAGNÓSTICO FECHADO: o assistente encerrou. Pare aqui.]");
+if (out) console.log("\n[ENCERRADO COMO FORA DO PERFIL: o site mandaria a conversa com status out. Pare aqui.]");

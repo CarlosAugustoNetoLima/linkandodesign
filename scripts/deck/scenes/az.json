@@ -1,873 +1,2107 @@
 {
- "site": "az",
- "url": "https://azcarental-linkando.vercel.app/guia",
- "outDir": "public/decks/az",
- "scenes": [
-  {
-   "name": "hero-top-desktop",
-   "device": "desktop",
-   "setup": [
+  "site": "az",
+  "url": "https://azcarental-linkando.vercel.app/guia",
+  "outDir": "public/decks/az",
+  "scenes": [
     {
-     "op": "goto"
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 260,
+            "y": 650
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 560
+          },
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 700
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
     },
     {
-     "op": "wait",
-     "ms": 6500
+      "name": "pointer-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 330
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1180,
+            "y": 520
+          },
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 820,
+            "y": 260
+          },
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 430
+          },
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 760,
+            "y": 480
+          },
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 980,
+            "y": 300
+          },
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "name": "form-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "selector": "form.formbar button[type=submit]"
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar button[type=submit]"
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar input[name=FNAME]"
+        },
+        {
+          "op": "type",
+          "text": "Ana Souza",
+          "delay": 75
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar input[name=EMAIL]"
+        },
+        {
+          "op": "type",
+          "text": "ana@exemplo.com",
+          "delay": 60
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar .check__box"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "form.formbar button[type=submit]",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 300
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 7000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#dentro",
+            "at": "top"
+          },
+          "ms": 6000
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        }
+      ]
+    },
+    {
+      "name": "detail-cabecalho",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": "html{zoom:.8}.js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 220,
+          "ms": 1700
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1300
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-botao",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "form.formbar .btn--red",
+            "at": "top",
+            "offsetPx": -576
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 400,
+            "y": 200
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "hover",
+          "selector": "form.formbar .btn--red",
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 400,
+            "y": 200
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "form.formbar .btn--red",
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-faixa",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".ticker__track{animation-delay:-17s !important}"
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".ticker",
+            "at": "top",
+            "offsetPx": -300
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 100,
+            "y": 700
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5000
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-topicos",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".topic",
+            "at": "top",
+            "offsetPx": -110
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 100,
+            "y": 800
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "ms": 1000,
+          "nth": 0
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "ms": 1000,
+          "nth": 1
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "ms": 1100,
+          "nth": 2
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 100,
+            "y": 800
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-faq",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".faq__q",
+            "at": "top",
+            "offsetPx": -200
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 100,
+            "y": 800
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "hover",
+          "selector": ".faq__q",
+          "ms": 500,
+          "nth": 1
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1700
+        },
+        {
+          "op": "hover",
+          "selector": ".faq__q",
+          "ms": 300,
+          "nth": 1
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-consentimento",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".check__box",
+            "at": "top",
+            "offsetPx": -522
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 800
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 200
+        },
+        {
+          "op": "hover",
+          "selector": ".check__box",
+          "ms": 300,
+          "nth": 0
+        },
+        {
+          "op": "click",
+          "selector": ".check__box",
+          "nth": 0
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 640
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".check__box",
+          "ms": 200,
+          "nth": 0
+        },
+        {
+          "op": "click",
+          "selector": ".check__box",
+          "nth": 0
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 640
+          },
+          "ms": 400
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-cartoes",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 800
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5000
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-capa",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 800
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "page-frota-desktop",
+      "device": "desktop",
+      "url": "https://azcarental-linkando.vercel.app/categorias",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/categorias"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{visibility:hidden !important}.urgency-bar{display:none !important}.car-card__price{display:none !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 880,
+            "y": 420
+          },
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 4000,
+          "ms": 14000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ]
+    },
+    {
+      "name": "page-orlando-desktop",
+      "device": "desktop",
+      "url": "https://azcarental-linkando.vercel.app/orlando",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/orlando"
+        },
+        {
+          "op": "css",
+          "text": ".urgency-bar{display:none !important}.bloco:has(table){display:none !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 880,
+            "y": 420
+          },
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 4000,
+          "ms": 14000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ]
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://azcarental-linkando.vercel.app/guia",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}.car-card__price{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://azcarental-linkando.vercel.app/guia",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}.car-card__price{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "frota-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://azcarental-linkando.vercel.app/categorias",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/categorias"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}.car-card__price{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": ".car-card__price{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "frota-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://azcarental-linkando.vercel.app/categorias",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/categorias"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}.car-card__price{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": ".car-card__price{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "orlando-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://azcarental-linkando.vercel.app/orlando",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/orlando"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}.car-card__price{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body > footer:last-of-type",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": "nav .nav-drop-menu a:nth-child(2){display:none !important} .bloco:nth-child(4) .kv:nth-child(7) li:nth-child(2){display:none !important} .bloco.log:nth-child(7) table{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body > footer:last-of-type",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "orlando-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://azcarental-linkando.vercel.app/orlando",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/orlando"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}.car-card__price{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body > footer:last-of-type",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": "nav .nav-drop-menu a:nth-child(2){display:none !important} .bloco:nth-child(4) .kv:nth-child(7) li:nth-child(2){display:none !important} .bloco.log:nth-child(7) table{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body > footer:last-of-type",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "formulario-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#form",
+            "at": "top",
+            "offsetPx": -160
+          },
+          "ms": 3500
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "secao-dentro-desktop",
+      "device": "desktop",
+      "fps": 60,
+      "endFade": 900,
+      "cursor": true,
+      "maxBytes": 8388608,
+      "url": "https://azcarental-linkando.vercel.app/guia",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#dentro",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".topic",
+            "at": "top",
+            "offsetPx": -200
+          },
+          "speed": 220,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 0,
+          "moveMs": 550,
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 1,
+          "moveMs": 550,
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 2,
+          "moveMs": 550,
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 3,
+          "moveMs": 550,
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 4,
+          "moveMs": 550,
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 5,
+          "moveMs": 550,
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#dentro",
+            "at": "bottom"
+          },
+          "speed": 260,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "secao-porque-desktop",
+      "device": "desktop",
+      "fps": 60,
+      "endFade": 900,
+      "cursor": true,
+      "maxBytes": 8388608,
+      "url": "https://azcarental-linkando.vercel.app/guia",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#porque",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "#porque .btn",
+          "moveMs": 1000,
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#porque",
+            "at": "bottom"
+          },
+          "speed": 220,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "secao-faq-desktop",
+      "device": "desktop",
+      "fps": 60,
+      "endFade": 900,
+      "cursor": true,
+      "maxBytes": 8388608,
+      "url": "https://azcarental-linkando.vercel.app/guia",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#faq",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 1,
+          "moveMs": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 2,
+          "moveMs": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 3,
+          "moveMs": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        }
+      ]
+    },
+    {
+      "name": "secao-cta-desktop",
+      "device": "desktop",
+      "fps": 60,
+      "endFade": 900,
+      "cursor": true,
+      "maxBytes": 8388608,
+      "url": "https://azcarental-linkando.vercel.app/guia",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}.urgency-bar{display:none!important}[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "section.cta",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "section.cta input[name=FNAME]",
+          "moveMs": 900
+        },
+        {
+          "op": "type",
+          "text": "Ana",
+          "delay": 90
+        },
+        {
+          "op": "click",
+          "selector": "section.cta input[name=EMAIL]",
+          "moveMs": 600
+        },
+        {
+          "op": "type",
+          "text": "ana@exemplo.com",
+          "delay": 60
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": "section.cta button",
+          "moveMs": 700,
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "detail-formulario",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://azcarental-linkando.vercel.app/guia"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"],[class*=\"diaria\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".js [data-reveal],.js [data-stagger]>*{opacity:1 !important;transform:none !important}.hdr,header,.nav,#wa-float,#ig-float{visibility:hidden !important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".check__box",
+            "at": "top",
+            "offsetPx": -522
+          },
+          "ms": 0
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 0
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 800
+          },
+          "ms": 100
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar input[name=FNAME]",
+          "moveMs": 900
+        },
+        {
+          "op": "type",
+          "text": "Ana Souza",
+          "delay": 70
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar input[name=EMAIL]",
+          "moveMs": 600
+        },
+        {
+          "op": "type",
+          "text": "ana@exemplo.com",
+          "delay": 55
+        },
+        {
+          "op": "click",
+          "selector": "form.formbar .check__box",
+          "moveMs": 600
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": "form.formbar button[type=submit]",
+          "moveMs": 700,
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 1000
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "recordFromStart": true,
+      "maxBytes": 4000000,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#wa-float,#ig-float{display:none!important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 620,
+            "y": 420
+          },
+          "ms": 1100
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".ticker",
+            "at": "top",
+            "offsetPx": -120
+          },
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 500,
+            "y": 260
+          },
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#dentro",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".topic",
+          "nth": 2,
+          "moveMs": 500,
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 520
+          },
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#porque",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": "#porque .btn",
+          "moveMs": 500,
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 420
+          },
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#faq",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "hover",
+          "selector": ".faq__q",
+          "nth": 1,
+          "moveMs": 400,
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": ".faq__q",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 1300
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "section.cta",
+            "at": "top",
+            "offsetPx": -60
+          },
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": "section.cta input[name=FNAME]",
+          "moveMs": 900
+        },
+        {
+          "op": "type",
+          "text": "Ana",
+          "delay": 90
+        },
+        {
+          "op": "click",
+          "selector": "section.cta input[name=EMAIL]",
+          "moveMs": 600
+        },
+        {
+          "op": "type",
+          "text": "ana@exemplo.com",
+          "delay": 60
+        },
+        {
+          "op": "click",
+          "selector": "section.cta .check__box",
+          "moveMs": 600
+        },
+        {
+          "op": "hover",
+          "selector": "section.cta .btn--red",
+          "moveMs": 500,
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2600
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
     }
-   ],
-   "record": [
-    {
-     "op": "move",
-     "to": {
-      "x": 260,
-      "y": 650
-     },
-     "ms": 900
-    },
-    {
-     "op": "scroll",
-     "to": 40,
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 420,
-      "y": 560
-     },
-     "ms": 1200
-    },
-    {
-     "op": "scroll",
-     "to": 0,
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 300,
-      "y": 700
-     },
-     "ms": 1200
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "pointer-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    }
-   ],
-   "record": [
-    {
-     "op": "move",
-     "to": {
-      "x": 1000,
-      "y": 330
-     },
-     "ms": 900
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 1180,
-      "y": 520
-     },
-     "ms": 1500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 820,
-      "y": 260
-     },
-     "ms": 1600
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 1100,
-      "y": 430
-     },
-     "ms": 1600
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 760,
-      "y": 480
-     },
-     "ms": 1600
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 980,
-      "y": 300
-     },
-     "ms": 1500
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    }
-   ]
-  },
-  {
-   "name": "form-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 600
-    },
-    {
-     "op": "move",
-     "to": {
-      "selector": "form.formbar button[type=submit]"
-     },
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": "form.formbar button[type=submit]"
-    },
-    {
-     "op": "wait",
-     "ms": 1600
-    },
-    {
-     "op": "click",
-     "selector": "form.formbar input[name=FNAME]"
-    },
-    {
-     "op": "type",
-     "text": "Ana Souza",
-     "delay": 75
-    },
-    {
-     "op": "click",
-     "selector": "form.formbar input[name=EMAIL]"
-    },
-    {
-     "op": "type",
-     "text": "ana@exemplo.com",
-     "delay": 60
-    },
-    {
-     "op": "click",
-     "selector": "form.formbar .check__box"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "form.formbar button[type=submit]",
-     "ms": 1200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 300,
-      "y": 300
-     },
-     "ms": 800
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "cotizador-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://azcarental-linkando.vercel.app/cotizador"
-    },
-    {
-     "op": "wait",
-     "ms": 6000
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 800
-    },
-    {
-     "op": "click",
-     "selector": "#rail .mini",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": 240,
-     "ms": 900
-    },
-    {
-     "op": "wait",
-     "ms": 300
-    },
-    {
-     "op": "click",
-     "selector": "#rail .mini",
-     "nth": 4
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "click",
-     "selector": "#aeros button[data-aero=\"MIA\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 1600
-    },
-    {
-     "op": "scroll",
-     "to": 620,
-     "ms": 900
-    },
-    {
-     "op": "wait",
-     "ms": 300
-    },
-    {
-     "op": "click",
-     "selector": "#mais"
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "scroll",
-     "to": 1000,
-     "ms": 1000
-    },
-    {
-     "op": "wait",
-     "ms": 300
-    },
-    {
-     "op": "hover",
-     "selector": "#cta",
-     "ms": 1500
-    },
-    {
-     "op": "wait",
-     "ms": 800
-    }
-   ]
-  },
-  {
-   "name": "frota-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://azcarental-linkando.vercel.app/"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": ".fleet-grid",
-      "at": "top",
-      "offsetVh": -0.35
-     },
-     "ms": 0
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 40,
-      "y": 760
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 2500
-    },
-    {
-     "op": "click",
-     "selector": ".fleet-seta.dir"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": ".fleet-seta.dir"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": ".fleet-filter .filter-btn:has-text(\"SUV\")"
-    },
-    {
-     "op": "wait",
-     "ms": 2200
-    },
-    {
-     "op": "click",
-     "selector": ".fleet-modelo>button"
-    },
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "press",
-     "key": "Escape"
-    },
-    {
-     "op": "wait",
-     "ms": 800
-    }
-   ]
-  },
-  {
-   "name": "busca-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://azcarental-linkando.vercel.app/"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "press",
-     "key": "/"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "type",
-     "text": "pedagio",
-     "delay": 110
-    },
-    {
-     "op": "wait",
-     "ms": 1700
-    },
-    {
-     "op": "press",
-     "key": "ArrowDown"
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "press",
-     "key": "Escape"
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "hover",
-     "selector": "#az-lang a",
-     "nth": 1,
-     "ms": 1600
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 450
-     },
-     "ms": 800
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "hero-mobile",
-   "device": "mobile",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 7000
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 800
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "#dentro",
-      "at": "top"
-     },
-     "ms": 6000
-    },
-    {
-     "op": "wait",
-     "ms": 300
-    },
-    {
-     "op": "scroll",
-     "to": 0,
-     "ms": 2500
-    }
-   ]
-  },
-  {
-   "name": "menus-desktop",
-   "device": "desktop-fhd",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://azcarental-linkando.vercel.app/"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "#como-funciona",
-      "at": "top",
-      "offsetVh": -0.2
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 960,
-      "y": 900
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "hover",
-     "selector": ".nav-drop > a",
-     "nth": 0,
-     "ms": 2600
-    },
-    {
-     "op": "hover",
-     "selector": ".nav-drop > a",
-     "nth": 1,
-     "ms": 1900
-    },
-    {
-     "op": "hover",
-     "selector": ".nav-drop > a",
-     "nth": 2,
-     "ms": 1900
-    },
-    {
-     "op": "hover",
-     "selector": ".nav-drop > a",
-     "nth": 3,
-     "ms": 2000
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 960,
-      "y": 900
-     },
-     "ms": 700
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    }
-   ]
-  },
-  {
-   "name": "faq-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://azcarental-linkando.vercel.app/"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": ".faq-find",
-      "at": "top",
-      "offsetVh": -0.16
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 40,
-      "y": 760
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "click",
-     "selector": "#faq-find-in"
-    },
-    {
-     "op": "type",
-     "text": "caucao",
-     "delay": 130
-    },
-    {
-     "op": "wait",
-     "ms": 2600
-    },
-    {
-     "op": "click",
-     "selector": ".faq-find .limpa"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "type",
-     "text": "xyzw",
-     "delay": 130
-    },
-    {
-     "op": "wait",
-     "ms": 1700
-    },
-    {
-     "op": "press",
-     "key": "Escape"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": ".faq-bt",
-     "nth": 0,
-     "ms": 400
-    },
-    {
-     "op": "click",
-     "selector": ".faq-bt",
-     "nth": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "hover",
-     "selector": ".faq-bt",
-     "nth": 1,
-     "ms": 400
-    },
-    {
-     "op": "click",
-     "selector": ".faq-bt",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1700
-    },
-    {
-     "op": "hover",
-     "selector": ".faq-bt",
-     "nth": 3,
-     "ms": 400
-    },
-    {
-     "op": "click",
-     "selector": ".faq-bt",
-     "nth": 3
-    },
-    {
-     "op": "wait",
-     "ms": 1900
-    }
-   ]
-  },
-  {
-   "name": "orlando-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://azcarental-linkando.vercel.app/orlando"
-    },
-    {
-     "op": "wait",
-     "ms": 4500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "#comer",
-      "at": "top",
-      "offsetVh": -0.12
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "click",
-     "selector": ".switch button",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "click",
-     "selector": ".switch button",
-     "nth": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "#carro",
-      "at": "top",
-      "offsetVh": -0.1
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 40,
-      "y": 760
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "click",
-     "selector": ".gar-btn",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "click",
-     "selector": ".gar-btn",
-     "nth": 3
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "click",
-     "selector": ".gar-btn",
-     "nth": 4
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "#comer",
-      "at": "top",
-      "offsetVh": -0.12
-     },
-     "ms": 1600
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "click",
-     "selector": ".switch button",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 2000
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "#distancias",
-      "at": "top",
-      "offsetVh": -0.12
-     },
-     "ms": 1600
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "#destinos .chip",
-     "nth": 2,
-     "ms": 500
-    },
-    {
-     "op": "click",
-     "selector": "#destinos .chip",
-     "nth": 2
-    },
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "hover",
-     "selector": "#destinos .chip",
-     "nth": 4,
-     "ms": 500
-    },
-    {
-     "op": "click",
-     "selector": "#destinos .chip",
-     "nth": 4
-    },
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "hover",
-     "selector": "#destinos .chip",
-     "nth": 7,
-     "ms": 600
-    },
-    {
-     "op": "click",
-     "selector": "#destinos .chip",
-     "nth": 7
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "hover",
-     "selector": "#destinos .chip",
-     "nth": 8,
-     "ms": 600
-    },
-    {
-     "op": "click",
-     "selector": "#destinos .chip",
-     "nth": 8
-    },
-    {
-     "op": "wait",
-     "ms": 1700
-    }
-   ]
-  }
- ]
+  ]
 }

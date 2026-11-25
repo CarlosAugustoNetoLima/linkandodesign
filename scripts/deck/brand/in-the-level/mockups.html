@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>In The Level · mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../common.css">
+<style>
+  :root { --b: #008AD8; --b0: #F2F7F9; --b1: #A1D3EE; --b2: #51AEE3; --b4: #0169A2; --b5: #03496B; --b6: #042835; --k: #0C111D; --g9: #101828; --g8: #182230; --g7: #344054; --g6: #475467; --g5: #667085; --g4: #98A2B3; --g3: #D0D5DD; --g2: #EAECF0; --g1: #F2F4F7; }
+  /* logo em duas camadas: símbolo e texto, cada um com a sua cor */
+  .itl { position: relative; }
+  .itl > i { position: absolute; inset: 0; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+  .itl > i.s { background: var(--sc, var(--b)); }
+  .itl > i.t { background: var(--tc, var(--k)); }
+  .h { aspect-ratio: 2623 / 278; } .h > .s { --m: url(/in-the-level/assets/horizontal-symbol.png); } .h > .t { --m: url(/in-the-level/assets/horizontal-text.png); }
+  .v2 { aspect-ratio: 1608 / 578; } .v2 > .s { --m: url(/in-the-level/assets/secondary-symbol.png); } .v2 > .t { --m: url(/in-the-level/assets/secondary-text.png); }
+  .rd { aspect-ratio: 1163 / 601; } .rd > .s { --m: url(/in-the-level/assets/reduced-symbol.png); } .rd > .t { --m: url(/in-the-level/assets/reduced-text.png); }
+  .mn { aspect-ratio: 1273 / 1380; } .mn > .s { --m: url(/in-the-level/assets/minimal-symbol.png); } .mn > .t { --m: url(/in-the-level/assets/minimal-text.png); }
+  .sy { aspect-ratio: 76 / 91; -webkit-mask: url(/in-the-level/assets/symbol.svg) center / contain no-repeat; mask: url(/in-the-level/assets/symbol.svg) center / contain no-repeat; background: var(--c, var(--b)); }
+  .on-dark { --tc: #fff; }
+
+  /* ---------- 1 · cartões ---------- */
+  #cards .surface { background: radial-gradient(120% 90% at 20% 10%, #F4F6F8 0%, #DDE2E7 50%, #C3CAD2 100%); }
+  .table { position: absolute; left: 50%; top: 52%; width: 0; height: 0; transform: perspective(2600px) rotateX(34deg) rotateZ(-16deg); transform-style: preserve-3d; }
+  .card { position: absolute; width: 600px; height: 343px; border-radius: 10px; overflow: hidden; }
+  .card .edge { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 -2px 0 rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.3); pointer-events: none; }
+  .shadow { box-shadow: 0 1px 1px rgba(0,0,0,.18), 0 10px 18px -6px rgba(20,30,40,.30), 0 40px 70px -20px rgba(20,30,40,.40); }
+  #cards .c1 { left: -650px; top: -260px; background: var(--k); transform: rotate(-6deg); }
+  #cards .c2 { left: -10px; top: -300px; background: var(--b); transform: rotate(4deg); }
+  #cards .c3 { left: -380px; top: 100px; background: #FCFCFD; transform: rotate(-1deg); }
+  #cards .c4 { left: 260px; top: 90px; background: var(--k); transform: rotate(10deg); }
+  #cards .c1 .itl { position: absolute; left: 50%; top: 50%; width: 400px; transform: translate(-50%, -50%); }
+  #cards .c2 .sy { position: absolute; left: 50%; top: 50%; width: 92px; transform: translate(-50%, -50%); --c: #fff; }
+  #cards .c2 .bg { position: absolute; right: -80px; bottom: -110px; width: 360px; --c: rgba(255,255,255,.10); }
+  .who { position: absolute; left: 48px; top: 50px; }
+  .who b { display: block; font: 700 26px Inter; color: var(--k); letter-spacing: -.01em; }
+  .who span { display: block; margin-top: 6px; font: 500 16px Inter; color: var(--g6); }
+  .contact { position: absolute; left: 48px; bottom: 44px; font: 500 15px/1.7 Inter; color: var(--g7); }
+  .contact em { font-style: normal; color: var(--b); }
+  #cards .c3 .itl { position: absolute; right: 44px; bottom: 44px; width: 150px; }
+  #cards .c4 .itl { position: absolute; left: 50%; top: 50%; width: 170px; transform: translate(-50%, -50%); }
+  #cards .light, #stationery .light { background: linear-gradient(115deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 40%), radial-gradient(70% 60% at 85% 95%, rgba(20,30,40,.22), transparent 70%); }
+
+  /* ---------- 2 · papelaria ---------- */
+  #stationery .surface { background: radial-gradient(120% 90% at 30% 10%, #EEF1F4 0%, #D6DCE2 55%, #BCC4CD 100%); }
+  .letter { position: absolute; left: -520px; top: -470px; width: 640px; height: 905px; background: #FDFDFE; border-radius: 2px; transform: rotate(-4deg); }
+  .letter .itl { position: absolute; left: 60px; top: 64px; width: 250px; }
+  .letter .lines { position: absolute; left: 60px; right: 60px; top: 200px; }
+  .letter .lines i { display: block; height: 8px; border-radius: 4px; background: var(--g2); margin-bottom: 16px; }
+  .letter .foot { position: absolute; left: 60px; right: 60px; bottom: 54px; padding-top: 18px; border-top: 2px solid var(--b); display: flex; justify-content: space-between; font: 500 13px Inter; color: var(--g6); }
+  .env { position: absolute; left: 70px; top: -190px; width: 760px; height: 380px; background: var(--k); border-radius: 4px; transform: rotate(5deg); overflow: hidden; }
+  .env .flap { position: absolute; left: 0; right: 0; top: 0; height: 210px; background: linear-gradient(180deg, #121828, #0C111D); clip-path: polygon(0 0, 100% 0, 50% 100%); filter: drop-shadow(0 6px 8px rgba(0,0,0,.4)); }
+  .env .sy { position: absolute; left: 50%; top: 150px; width: 44px; transform: translateX(-50%); }
+  .env .itl { position: absolute; right: 40px; bottom: 34px; width: 210px; }
+  .card.small { left: 160px; top: 170px; transform: rotate(-12deg); background: var(--b); }
+  .card.small .sy { position: absolute; left: 50%; top: 50%; width: 80px; transform: translate(-50%, -50%); --c: #fff; }
+
+  /* ---------- 3 · assinatura de e-mail ---------- */
+  #email .surface { background: radial-gradient(120% 100% at 15% 0%, #51AEE3 0%, #008AD8 35%, #0169A2 75%, #03496B 100%); }
+  #email .surface::after { opacity: .1; mix-blend-mode: overlay; }
+  .mail { position: absolute; left: 260px; top: 130px; width: 1080px; padding-bottom: 46px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 40px 80px -20px rgba(3,30,50,.55), 0 100px 160px -40px rgba(3,30,50,.55); }
+  .mail .top { height: 54px; background: var(--g1); display: flex; align-items: center; gap: 8px; padding: 0 18px; border-bottom: 1px solid var(--g2); font: 600 15px Inter; color: var(--g7); }
+  .mail .top .dots { display: flex; gap: 8px; margin-right: 18px; }
+  .dots i { width: 13px; height: 13px; border-radius: 50%; background: #FF5F57; } .dots i:nth-child(2) { background: #FEBC2E; } .dots i:nth-child(3) { background: #28C840; }
+  .mail .row { height: 52px; border-bottom: 1px solid var(--g2); display: flex; align-items: center; gap: 16px; padding: 0 30px; font: 500 15px Inter; color: var(--g5); }
+  .mail .row i { display: block; height: 8px; border-radius: 4px; background: var(--g2); }
+  .mail .body { padding: 34px 30px; }
+  .mail .body i { display: block; height: 8px; border-radius: 4px; background: var(--g2); margin-bottom: 16px; }
+  .sig { margin: 36px 30px 0; padding-top: 28px; border-top: 1px solid var(--g2); display: flex; gap: 28px; align-items: center; }
+  .sig .mn { width: 170px; }
+  .sig .bar { width: 3px; align-self: stretch; background: var(--b); }
+  .sig b { display: block; font: 700 32px Inter; color: var(--k); }
+  .sig span { display: block; margin-top: 6px; font: 500 20px Inter; color: var(--g6); }
+  .sig p { margin-top: 16px; font: 500 18px/1.7 Inter; color: var(--g7); }
+  .sig p em { font-style: normal; color: var(--b); }
+
+  /* ---------- 4 · navegador ---------- */
+  #browser .surface { background: radial-gradient(120% 100% at 15% 0%, #1C2B45 0%, #0C111D 55%, #070A12 100%); }
+  .win { position: absolute; left: 220px; top: 90px; width: 1260px; border-radius: 14px; background: #1A1F2B; overflow: hidden; transform: perspective(3000px) rotateY(-9deg) rotateX(3deg); transform-origin: 0 50%; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 80px -20px rgba(0,0,0,.7), 0 0 160px -40px rgba(0,138,216,.45); }
+  .tabs { height: 50px; background: #121722; display: flex; align-items: flex-end; padding: 0 14px; gap: 6px; }
+  .tabs .dots { display: flex; gap: 8px; align-self: center; margin-right: 18px; }
+  .tab { height: 38px; width: 250px; border-radius: 10px 10px 0 0; display: flex; align-items: center; gap: 10px; padding: 0 14px; font: 500 14px Inter; color: #8B93A5; }
+  .tab.on { background: #1A1F2B; color: #E8ECF2; }
+  .tab .x { margin-left: auto; color: #6B7385; }
+  .tab .sy { width: 15px; flex: none; }
+  .grey { width: 16px; height: 16px; border-radius: 4px; background: #3A4150; flex: none; }
+  .bar2 { height: 52px; display: flex; align-items: center; gap: 14px; padding: 0 18px; border-bottom: 1px solid #2A3040; }
+  .nav { display: flex; gap: 14px; color: #6B7385; font: 500 18px Inter; }
+  .addr { flex: 1; height: 34px; border-radius: 17px; background: #232937; display: flex; align-items: center; gap: 10px; padding: 0 16px; font: 400 15px Inter; color: #C9CFDA; }
+  .page { display: block; width: 100%; }
+  .zoomtab { position: absolute; left: 120px; top: 760px; transform: scale(1.9); transform-origin: 0 0; background: #121722; border-radius: 14px; padding: 10px 10px 0; box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 20px 40px -10px rgba(0,0,0,.6); }
+  .zoomtab .tab { width: 220px; }
+
+  /* ---------- 5 · parede de vidro ---------- */
+  #glass .surface { background: linear-gradient(180deg, #DCE2E8 0%, #C9D1D9 55%, #9EA8B3 100%); }
+  .room { position: absolute; inset: 0; background: radial-gradient(40% 50% at 70% 40%, rgba(255,250,240,.9), transparent 70%), radial-gradient(30% 40% at 20% 60%, rgba(161,211,238,.5), transparent 70%), linear-gradient(180deg, #EEF1F4 0%, #D7DDE3 60%, #AEB7C1 100%); filter: blur(18px); }
+  .room .desk { position: absolute; left: 10%; right: 30%; top: 64%; height: 30px; background: #6B7280; border-radius: 6px; }
+  .room .lamp { position: absolute; left: 60%; top: 10%; width: 180px; height: 26px; background: #2E3440; border-radius: 13px; }
+  .room .plant { position: absolute; left: 80%; top: 40%; width: 140px; height: 260px; background: #4B6B55; border-radius: 70px 70px 20px 20px; }
+  .frame { position: absolute; top: -6%; bottom: -6%; width: 26px; background: linear-gradient(90deg, #2A2F38, #4A505C 40%, #2A2F38); box-shadow: 0 0 20px rgba(0,0,0,.3); }
+  .glassp { position: absolute; left: 0; right: 0; top: -6%; bottom: -6%; background: linear-gradient(110deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,.12) 55%, rgba(255,255,255,0) 70%); }
+  .frost { position: absolute; left: 0; right: 0; top: 340px; height: 280px; background: rgba(255,255,255,.55); backdrop-filter: blur(14px) saturate(1.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(255,255,255,.4); }
+  .frost .itl { position: absolute; left: 50%; top: 50%; width: 820px; transform: translate(-50%, -50%); }
+  .floor2 { position: absolute; left: -6%; right: -6%; bottom: -6%; height: 120px; background: linear-gradient(180deg, #7C8591, #8E97A2); }
+
+  /* ---------- 6 · notebook com adesivos ---------- */
+  #laptop .surface { background: radial-gradient(110% 90% at 30% 15%, #F7F8FA 0%, #E3E7EC 55%, #CDD3DA 100%); }
+  .lid { position: absolute; left: 50%; top: 50%; width: 1040px; height: 690px; transform: translate(-50%, -50%) perspective(2600px) rotateX(30deg) rotateZ(-12deg); border-radius: 30px; background: linear-gradient(135deg, #C9CDD3 0%, #AEB3BA 45%, #BEC2C8 70%, #A5AAB2 100%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.35), inset 0 -6px 0 rgba(0,0,0,.12), 0 2px 3px rgba(0,0,0,.2), 0 40px 70px -20px rgba(20,30,40,.45), 0 90px 140px -40px rgba(20,30,40,.45); }
+  .lid::before { content: ""; position: absolute; left: 30px; right: 30px; bottom: -10px; height: 12px; border-radius: 0 0 8px 8px; background: linear-gradient(180deg, #7D828A, #5D6168); }
+  .lid::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,0) 40%); }
+  .stk { position: absolute; border-radius: 50%; background: #fff; box-shadow: 0 1px 1px rgba(0,0,0,.2), 0 4px 8px -2px rgba(0,0,0,.25); display: grid; place-items: center; }
+  .stk.circ { left: 120px; top: 120px; width: 300px; height: 300px; transform: rotate(-8deg); }
+  .stk.circ .mn { width: 230px; }
+  .stk.sq { left: 520px; top: 330px; width: 190px; height: 190px; border-radius: 34px; background: var(--b); transform: rotate(9deg); }
+  .stk.sq .sy { width: 80px; --c: #fff; }
+  .stk.dk { left: 690px; top: 90px; width: 270px; height: 140px; border-radius: 70px; background: var(--k); transform: rotate(-4deg); }
+  .stk.dk .rd { width: 120px; }
+
+  /* ---------- 7 · apresentação ---------- */
+  #slide .surface { background: radial-gradient(90% 90% at 50% 40%, #1F2A3D 0%, #0C111D 60%, #05070C 100%); }
+  .tv { position: absolute; left: 50%; top: 46%; width: 1240px; aspect-ratio: 16 / 9; transform: translate(-50%, -50%) perspective(3200px) rotateY(-10deg); border-radius: 14px; background: #06080D; padding: 14px; box-shadow: 0 0 0 1px #262D3A, 0 50px 90px -30px rgba(0,0,0,.8), 0 0 140px -20px rgba(0,138,216,.35); }
+  .scr { position: relative; width: 100%; height: 100%; border-radius: 4px; overflow: hidden; background: var(--k); }
+  .scr .itl { position: absolute; left: 66px; top: 56px; width: 260px; }
+  .scr h1 { position: absolute; left: 66px; top: 176px; font: 700 80px/1.1 Inter; letter-spacing: -.02em; color: #fff; }
+  .scr h1 em { font-style: normal; color: var(--b2); }
+  .scr .offers { position: absolute; left: 66px; right: 66px; bottom: 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .scr .offers div { border: 1px solid #263044; border-radius: 12px; padding: 20px; background: rgba(255,255,255,.02); }
+  .scr .offers b { display: block; font: 700 19px Inter; color: #fff; }
+  .scr .offers span { display: block; margin-top: 8px; font: 400 14px/1.5 Inter; color: var(--g4); }
+  .scr .offers div:first-child { border-color: var(--b); }
+  .scr .glass { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 38%); }
+  .scr .bg { position: absolute; right: -40px; top: -60px; width: 420px; --c: rgba(0,138,216,.12); }
+  .stand { position: absolute; left: 50%; top: 84%; width: 380px; height: 16px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.6), transparent); }
+
+  /* ---------- 8 · versões ---------- */
+  #versions .surface, #versionsdark .surface, #system .surface { background: radial-gradient(120% 100% at 20% 0%, #FFFFFF 0%, #F2F4F7 50%, #E4E8EE 100%); }
+  #versionsdark .surface { background: radial-gradient(120% 100% at 20% 0%, #1A2336 0%, #0C111D 60%, #070A12 100%); }
+  .vgrid { position: absolute; left: 110px; right: 110px; top: 120px; bottom: 120px; display: grid; grid-template-columns: 1.6fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 28px; }
+  .vt { position: relative; border-radius: 14px; background: #fff; display: grid; place-items: center; box-shadow: var(--sh-2); }
+  .vt span { position: absolute; left: 24px; bottom: 20px; font: 600 13px Inter; letter-spacing: .16em; text-transform: uppercase; color: var(--g5); }
+  .vt.big { grid-row: span 2; }
+  #versionsdark .vt { background: #121828; box-shadow: 0 0 0 1px #222B3D, var(--sh-2); } #versionsdark .vt span { color: var(--g4); }
+  #versionsdark .vt.blue { background: var(--b); } #versionsdark .vt.blue span { color: rgba(255,255,255,.7); }
+
+  /* ---------- 9 · sistema (tipografia e cores) ---------- */
+  .sys { position: absolute; left: 110px; right: 110px; top: 70px; bottom: 70px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; }
+  .panel { border-radius: 16px; background: #fff; box-shadow: var(--sh-2); padding: 40px 44px; overflow: hidden; position: relative; }
+  .panel h6 { font: 600 13px Inter; letter-spacing: .16em; text-transform: uppercase; color: var(--g5); }
+  .scale { margin-top: 18px; }
+  .scale div { display: flex; align-items: baseline; gap: 22px; border-bottom: 1px solid var(--g2); padding: 8px 0; white-space: nowrap; overflow: hidden; }
+  .scale small { width: 120px; flex: none; font: 500 13px Inter; color: var(--g5); }
+  .scale b { font-family: Inter; font-weight: 700; color: var(--k); letter-spacing: -.01em; line-height: 1.2; }
+  .chips { margin-top: 18px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .chips div { aspect-ratio: 1 / 1.7; border-radius: 10px; position: relative; box-shadow: inset 0 0 0 1px rgba(0,0,0,.05); }
+  .chips div span { position: absolute; left: 8px; bottom: 8px; font: 600 11px Inter; }
+  .chips.g { grid-template-columns: repeat(10, 1fr); }
+  .chips.g div { aspect-ratio: 1 / 2.4; }
+  .chips.st { grid-template-columns: repeat(3, 1fr); }
+  .chips.st div { aspect-ratio: 1.5 / 1; }
+  .panel .chips + h6 { margin-top: 36px; }
+.aa { position: absolute; left: 44px; right: 44px; bottom: 34px; display: flex; align-items: flex-end; gap: 24px; border-top: 1px solid var(--g2); padding-top: 18px; }
+  .aa b { font: 700 150px/0.9 Inter; letter-spacing: -.04em; color: var(--b); }
+  .aa span { font: 700 30px/1.3 Inter; color: var(--k); padding-bottom: 12px; } .aa small { font: 500 14px Inter; color: var(--g5); }
+</style>
+</head>
+<body>
+<div id="fit">
+
+  <section class="scene" id="cards" data-cam="1,0,0,1.06,-14,-10">
+    <div class="cam"><div class="surface"></div>
+      <div class="table">
+        <div class="card shadow c3 paper">
+          <div class="who"><b>Carlos Lima</b><span>Diretor de design</span></div>
+          <div class="contact">contact@inthelevel.com<br><em>inthelevel.com</em></div>
+          <div class="itl v2"><i class="s"></i><i class="t"></i></div><span class="edge"></span>
+        </div>
+        <div class="card shadow c1 paper"><div class="itl h on-dark"><i class="s"></i><i class="t"></i></div><span class="edge"></span></div>
+        <div class="card shadow c4 paper"><div class="itl mn on-dark"><i class="s"></i><i class="t"></i></div><span class="edge"></span></div>
+        <div class="card shadow c2 paper"><div class="sy bg"></div><div class="sy"></div><span class="edge"></span></div>
+      </div>
+      <div class="light"></div>
+    </div>
+  </section>
+
+  <section class="scene" id="stationery" data-cam="1,0,0,1.06,-10,-12">
+    <div class="cam"><div class="surface"></div>
+      <div class="table">
+        <div class="letter shadow paper">
+          <div class="itl h"><i class="s"></i><i class="t"></i></div>
+          <div class="lines">
+            <i style="width:30%;margin-bottom:46px"></i>
+            <i style="width:96%"></i><i style="width:92%"></i><i style="width:98%"></i><i style="width:64%;margin-bottom:38px"></i>
+            <i style="width:94%"></i><i style="width:97%"></i><i style="width:90%"></i><i style="width:96%"></i><i style="width:52%;margin-bottom:38px"></i>
+            <i style="width:93%"></i><i style="width:88%"></i><i style="width:40%"></i>
+          </div>
+          <div class="foot"><span>contact@inthelevel.com</span><span>inthelevel.com</span></div>
+        </div>
+        <div class="env shadow paper"><div class="flap"></div><div class="sy"></div><div class="itl h on-dark"><i class="s"></i><i class="t"></i></div></div>
+        <div class="card small shadow paper"><div class="sy"></div><span class="edge"></span></div>
+      </div>
+      <div class="light"></div>
+    </div>
+  </section>
+
+  <section class="scene" id="email" data-cam="1,0,0,1.05,-16,-8">
+    <div class="cam"><div class="surface"></div>
+      <div class="mail">
+        <div class="top"><span class="dots"><i></i><i></i><i></i></span>Nova mensagem</div>
+        <div class="row">Para<i style="width:240px"></i></div>
+        <div class="row">Assunto<i style="width:380px"></i></div>
+        <div class="body"><i style="width:22%;margin-bottom:30px"></i><i style="width:92%"></i><i style="width:96%"></i><i style="width:74%;margin-bottom:30px"></i><i style="width:88%"></i><i style="width:40%"></i></div>
+        <div class="sig">
+          <div class="itl mn"><i class="s"></i><i class="t"></i></div>
+          <span class="bar"></span>
+          <div><b>Carlos Lima</b><span>Diretor de design · In The Level</span><p>contact@inthelevel.com<br><em>inthelevel.com</em></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="browser" data-cam="1,0,0,1.05,-20,-6">
+    <div class="cam"><div class="surface"></div>
+      <div class="win">
+        <div class="tabs"><div class="dots"><i></i><i></i><i></i></div>
+          <div class="tab on"><span class="sy"></span>In The Level<span class="x">×</span></div>
+          <div class="tab"><span class="grey"></span>Nova aba<span class="x">×</span></div>
+        </div>
+        <div class="bar2"><div class="nav"><span>←</span><span>→</span><span>↻</span></div><div class="addr">inthelevel.com</div></div>
+        <img class="page" src="/in-the-level/assets/site.jpg" alt="">
+      </div>
+      <div class="zoomtab"><div class="tab on"><span class="sy"></span>In The Level<span class="x">×</span></div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="glass" data-cam="1,0,0,1.05,0,-10">
+    <div class="cam"><div class="surface"></div>
+      <div class="room"><div class="plant"></div><div class="plant" style="left:6%;top:48%;width:110px;height:200px"></div></div>
+      <div class="floor2"></div>
+      <div class="glassp"></div>
+      <div class="frost"><div class="itl h"><i class="s"></i><i class="t"></i></div></div>
+      <div class="frame" style="left:120px"></div><div class="frame" style="right:120px"></div>
+    </div>
+  </section>
+
+  <section class="scene" id="laptop" data-cam="1,0,0,1.06,-10,-10">
+    <div class="cam"><div class="surface"></div>
+      <div class="lid">
+        <div class="stk circ"><div class="itl mn"><i class="s"></i><i class="t"></i></div></div>
+        <div class="stk sq"><div class="sy"></div></div>
+        <div class="stk dk"><div class="itl rd on-dark"><i class="s"></i><i class="t"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="slide" data-cam="1,0,0,1.05,-16,-4">
+    <div class="cam"><div class="surface"></div>
+      <div class="stand"></div>
+      <div class="tv"><div class="scr">
+        <div class="sy bg"></div>
+        <div class="itl h on-dark"><i class="s"></i><i class="t"></i></div>
+        <h1>Solutions with<br><em>In the Level</em></h1>
+        <div class="offers">
+          <div><b>JSYNQ Workspace</b><span>Manage teams and projects efficiently in an integrated way.</span></div>
+          <div><b>Plug&amp;Sync</b><span>Automate data integration and visualization.</span></div>
+          <div><b>Outsourcing</b><span>Skilled professionals for your business.</span></div>
+          <div><b>On-Demand Software</b><span>Custom solutions for your needs.</span></div>
+        </div>
+        <div class="glass"></div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="versions" data-cam="1,0,0,1.04,-10,-6">
+    <div class="cam"><div class="surface"></div>
+      <div class="vgrid">
+        <div class="vt big"><div class="itl h" style="width:80%"><i class="s"></i><i class="t"></i></div><span>Principal</span></div>
+        <div class="vt"><div class="itl v2" style="width:62%"><i class="s"></i><i class="t"></i></div><span>Secundária</span></div>
+        <div class="vt"><div class="itl rd" style="width:44%"><i class="s"></i><i class="t"></i></div><span>Reduzida</span></div>
+        <div class="vt"><div class="itl mn" style="width:40%"><i class="s"></i><i class="t"></i></div><span>Mínima</span></div>
+        <div class="vt"><div class="sy" style="width:20%"></div><span>Símbolo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="versionsdark" data-cam="1,0,0,1.04,10,-6">
+    <div class="cam"><div class="surface"></div>
+      <div class="vgrid">
+        <div class="vt big"><div class="itl h on-dark" style="width:80%"><i class="s"></i><i class="t"></i></div><span>Principal</span></div>
+        <div class="vt"><div class="itl v2 on-dark" style="width:62%"><i class="s"></i><i class="t"></i></div><span>Secundária</span></div>
+        <div class="vt"><div class="itl rd on-dark" style="width:44%"><i class="s"></i><i class="t"></i></div><span>Reduzida</span></div>
+        <div class="vt"><div class="itl mn on-dark" style="width:40%"><i class="s"></i><i class="t"></i></div><span>Mínima</span></div>
+        <div class="vt blue"><div class="sy" style="width:20%;--c:#fff"></div><span>Símbolo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="system" data-cam="1,0,0,1.04,-8,-8">
+    <div class="cam"><div class="surface"></div>
+      <div class="sys">
+        <div class="panel">
+          <h6>Tipografia · Inter</h6>
+          <div class="scale">
+            <div><small>Display 80</small><b style="font-size:80px">In the Level</b></div>
+            <div><small>Display 72</small><b style="font-size:72px">In the Level</b></div>
+            <div><small>Heading 64</small><b style="font-size:64px">In the Level</b></div>
+            <div><small>Heading 56</small><b style="font-size:56px">In the Level</b></div>
+            <div><small>Heading 48</small><b style="font-size:48px">In the Level</b></div>
+            <div><small>Heading 40</small><b style="font-size:40px">In the Level</b></div>
+            <div><small>Heading 32</small><b style="font-size:32px">In the Level</b></div>
+            <div><small>Heading 24</small><b style="font-size:24px">In the Level</b></div>
+            <div><small>Body 18</small><b style="font-size:18px;font-weight:400">Powerful tools and expert services.</b></div>
+            <div><small>Body 14</small><b style="font-size:14px;font-weight:500">Powerful tools and expert services.</b></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h6>Primária · azul</h6>
+          <div class="chips" id="cp"></div>
+          <h6>Cinzas</h6>
+          <div class="chips g" id="cg"></div>
+          <h6>Aviso · erro · sucesso</h6>
+          <div class="chips st"><div style="background:#EAB308"><span style="color:#fff">#EAB308</span></div><div style="background:#EF4444"><span style="color:#fff">#EF4444</span></div><div style="background:#10B981"><span style="color:#fff">#10B981</span></div></div>
+          <div class="aa"><b>Aa</b><span>Inter<br><small>Bold · Semibold · Medium · Regular</small></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script>
+  const P = [["#F2F7F9", "#03496B"], ["#A1D3EE", "#03496B"], ["#51AEE3", "#fff"], ["#008AD8", "#fff"], ["#0169A2", "#fff"], ["#03496B", "#fff"], ["#042835", "#fff"]];
+  document.getElementById("cp").innerHTML = P.map(([h, c]) => `<div style="background:${h}"><span style="color:${c}">${h}</span></div>`).join("");
+  const G = ["#0C111D", "#101828", "#182230", "#344054", "#475467", "#667085", "#98A2B3", "#D0D5DD", "#EAECF0", "#F2F4F7"];
+  document.getElementById("cg").innerHTML = G.map((h, i) => `<div style="background:${h}"><span style="color:${i < 6 ? "#fff" : "#344054"};font-size:8px">${["950", "900", "800", "700", "600", "500", "400", "300", "200", "100"][i]}</span></div>`).join("");
+</script>
+<script src="../common.js"></script>
+</body>
+</html>

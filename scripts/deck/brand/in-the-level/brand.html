@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In The Level · marca em movimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --b: #008AD8; --k: #0C111D; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--k); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #fff; }
+  .layer { position: fixed; inset: 0; opacity: 0; }
+  #bg { opacity: 1; background: var(--k); }
+  .tag { position: fixed; left: 4.2vw; top: 4.6vh; font: 600 12px Inter; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); z-index: 9; display: flex; gap: 14px; }
+  .tag b { color: #fff; font-weight: 600; }
+  .act { position: fixed; right: 4.2vw; top: 4.6vh; font: 600 12px Inter; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); z-index: 9; }
+
+  .itl { position: relative; }
+  .itl > i { position: absolute; inset: 0; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+  .itl > i.s { background: var(--sc, var(--b)); } .itl > i.t { background: var(--tc, #fff); }
+  .h { aspect-ratio: 2623 / 278; } .h > .s { --m: url(/in-the-level/assets/horizontal-symbol.png); } .h > .t { --m: url(/in-the-level/assets/horizontal-text.png); }
+  .v2 { aspect-ratio: 1608 / 578; } .v2 > .s { --m: url(/in-the-level/assets/secondary-symbol.png); } .v2 > .t { --m: url(/in-the-level/assets/secondary-text.png); }
+  .rd { aspect-ratio: 1163 / 601; } .rd > .s { --m: url(/in-the-level/assets/reduced-symbol.png); } .rd > .t { --m: url(/in-the-level/assets/reduced-text.png); }
+  .mn { aspect-ratio: 1273 / 1380; } .mn > .s { --m: url(/in-the-level/assets/minimal-symbol.png); } .mn > .t { --m: url(/in-the-level/assets/minimal-text.png); }
+
+  /* 1 · símbolo */
+  #sym { position: fixed; left: 50%; top: 50%; right: auto; bottom: auto; width: min(34vh, 50vw); aspect-ratio: 76 / 91; transform-origin: 0 0; z-index: 3; }
+  #sym svg { width: 100%; height: 100%; overflow: visible; display: block; }
+  .cap { position: fixed; left: 50%; bottom: 12vh; top: auto; right: auto; transform: translateX(-50%); text-align: center; z-index: 4; white-space: nowrap; }
+  .cap p { font: 500 15px Inter; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .cap h2 { margin-top: 10px; font: 700 clamp(26px, 3.6vw, 48px) Inter; letter-spacing: -.02em; }
+
+  /* 2 · logo */
+  #logo { position: fixed; left: 50%; top: 50%; right: auto; bottom: auto; width: min(76vw, 1000px); transform: translate(-50%, -50%); z-index: 3; }
+  #logo .t { clip-path: inset(0 100% 0 0); }
+
+  /* 3 · versões */
+  #tiles { display: grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2vw; padding: 14vh 9vw; }
+  .tile { border-radius: 12px; background: #fff; display: grid; place-items: center; box-shadow: 0 30px 60px -30px rgba(12,17,29,.35); }
+  .tile.big { grid-row: span 2; }
+  .tile .itl { --tc: #0C111D; }
+
+  /* 4 · mínima */
+  #mini .itl { position: fixed; left: 50%; top: 50%; width: min(52vh, 70vw); transform: translate(-50%, -50%); }
+  #mini .t { -webkit-mask-image: var(--m), conic-gradient(from 0deg at 50% 52%, #000 var(--sweep, 0deg), transparent 0); -webkit-mask-composite: source-in; mask-image: var(--m), conic-gradient(from 0deg at 50% 52%, #000 var(--sweep, 0deg), transparent 0); mask-composite: intersect; -webkit-mask-size: contain, 100% 100%; mask-size: contain, 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; }
+
+  /* 5 · cores */
+  #palette { padding: 15vh 8vw 12vh; display: grid; grid-template-rows: 1.6fr 1fr; gap: 2.4vh; }
+  .row { display: grid; gap: 1vw; }
+  .row.p { grid-template-columns: repeat(7, 1fr); } .row.g { grid-template-columns: repeat(10, 1fr); }
+  .sw { border-radius: 10px; position: relative; transform-origin: 50% 100%; }
+  .sw span { position: absolute; left: 12px; bottom: 10px; font: 600 12px Inter; letter-spacing: .02em; }
+  .sw b { position: absolute; left: 12px; top: 12px; font: 600 12px Inter; opacity: .8; }
+
+  /* 6 · tipografia */
+  #type { padding: 13vh 8vw; display: flex; flex-direction: column; justify-content: center; gap: .6vh; }
+  #type div { display: flex; align-items: baseline; gap: 3vw; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: .6vh; white-space: nowrap; }
+  #type small { width: 9vw; min-width: 90px; font: 500 13px Inter; color: rgba(255,255,255,.5); flex: none; }
+  #type b { font-family: Inter; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+
+  /* 7 · aplicações */
+  #apps .track { position: absolute; left: 0; top: 50%; display: flex; gap: 2.4vw; transform: translateY(-50%); }
+  #apps .track img { height: 58vh; border-radius: 10px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); display: block; }
+
+  @media (orientation: portrait) {
+    #logo { width: 88vw; }
+    #palette { padding: 13vh 6vw 9vh; grid-template-rows: 1fr 1fr; }
+    .row.p { grid-template-columns: repeat(4, 1fr); } .row.g { grid-template-columns: repeat(5, 1fr); }
+    .sw span { font-size: 10px; left: 8px; } .sw b { display: none; }
+    #apps .track img { height: 44vh; }
+    .tag { left: 7vw; top: 4vh; font-size: 10px; } .act { display: none; }
+    .cap { bottom: 15vh; }
+  }
+</style>
+</head>
+<body>
+<div id="bg" class="layer"></div>
+<div class="tag"><b>In The Level</b><span>Identidade visual</span></div>
+<div class="act" id="actname"></div>
+
+<div id="sym" class="layer"></div>
+<div class="cap layer" id="cap1"><p>Símbolo</p><h2>Duas setas e uma base</h2></div>
+<div id="logo" class="layer"><div class="itl h"><i class="s"></i><i class="t"></i></div></div>
+<div id="tiles" class="layer">
+  <div class="tile big"><div class="itl h" style="width:80%"><i class="s"></i><i class="t"></i></div></div>
+  <div class="tile"><div class="itl v2" style="width:64%"><i class="s"></i><i class="t"></i></div></div>
+  <div class="tile"><div class="itl rd" style="width:46%"><i class="s"></i><i class="t"></i></div></div>
+  <div class="tile" style="background:#0C111D;box-shadow:0 0 0 1px #222B3D"><div class="itl mn" style="width:40%;--tc:#fff"><i class="s"></i><i class="t"></i></div></div>
+  <div class="tile" style="background:#008AD8"><div class="itl rd" style="width:46%;--sc:#fff;--tc:#fff"><i class="s"></i><i class="t"></i></div></div>
+</div>
+<div id="mini" class="layer"><div class="itl mn"><i class="s"></i><i class="t"></i></div></div>
+<div id="palette" class="layer"><div class="row p" id="rp"></div><div class="row g" id="rg"></div></div>
+<div id="type" class="layer">
+  <div><small>Display 80</small><b style="font-size:min(80px,6.2vw)">In the Level</b></div>
+  <div><small>Heading 64</small><b style="font-size:min(64px,5vw)">In the Level</b></div>
+  <div><small>Heading 48</small><b style="font-size:min(48px,3.8vw)">In the Level</b></div>
+  <div><small>Heading 32</small><b style="font-size:min(32px,2.6vw)">In the Level</b></div>
+  <div><small>Body 18</small><b style="font-size:18px;font-weight:400;letter-spacing:0">Powerful tools and expert services.</b></div>
+</div>
+<div id="apps" class="layer"><div class="track" id="track"></div></div>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  const SHORT = q.get("short") === "1";
+  const LIGHT = q.get("light") === "1";
+  const A = "/in-the-level/assets/";
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x) => Math.min(1, Math.max(0, x));
+  const io = (x) => { x = clamp(x); return (1 - Math.cos(Math.PI * x)) / 2; };
+  const out = (x) => 1 - Math.pow(1 - clamp(x), 3);
+  const seg = (t, a, b) => clamp((t - a) / (b - a));
+  const mix = (a, b, k) => a + (b - a) * k;
+  const lerpColor = (c1, c2, k) => {
+    const p = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    const a = p(c1), b = p(c2);
+    return `rgb(${a.map((v, i) => Math.round(mix(v, b[i], k))).join(",")})`;
+  };
+  const BASE = LIGHT ? "#F2F7F9" : "#0C111D";
+
+  const T = SHORT
+    ? { rise: [0.3, 2.6], move: [3.4, 4.4], word: [4.4, 5.6], logoOut: [7.0, 7.6], tiles: null, mini: null, pal: [7.6, 11.4], type: null, apps: [11.4, 16.6], end: 17.2 }
+    : { rise: [0.3, 2.6], move: [3.6, 4.6], word: [4.6, 5.8], logoOut: [7.4, 8.0], tiles: [8.0, 11.0], mini: [11.0, 13.6], pal: [13.6, 17.0], type: [17.0, 19.6], apps: [19.6, 24.6], end: 25.2 };
+  if (q.get("end")) T.end = Number(q.get("end"));
+
+  const P = [["#F2F7F9", "superlight", "#03496B"], ["#A1D3EE", "lightest", "#03496B"], ["#51AEE3", "light", "#fff"], ["#008AD8", "Pantone 2382 C", "#fff"], ["#0169A2", "medium", "#fff"], ["#03496B", "dark", "#fff"], ["#042835", "darker", "#fff"]];
+  const G = [["#0C111D", "950"], ["#101828", "900"], ["#182230", "800"], ["#344054", "700"], ["#475467", "600"], ["#667085", "500"], ["#98A2B3", "400"], ["#D0D5DD", "300"], ["#EAECF0", "200"], ["#F2F4F7", "100"]];
+
+  let shapes, tiles, sws, track, lines;
+  async function build() {
+    const txt = await (await fetch(A + "symbol.svg")).text();
+    const svg = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
+    $("sym").appendChild(svg);
+    // ordem de baixo para cima: a base, a seta de baixo e a seta de cima
+    const ps = [...svg.querySelectorAll("path")];
+    shapes = [ps[1], ps[0], ps[2]];
+    $("rp").innerHTML = P.map(([h, n, c]) => `<div class="sw" style="background:${h};color:${c}"><b>${n}</b><span>${h}</span></div>`).join("");
+    $("rg").innerHTML = G.map(([h, n], i) => `<div class="sw" style="background:${h};color:${i < 6 ? "#fff" : "#344054"};box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)"><b>${n}</b><span>${h}</span></div>`).join("");
+    sws = [...document.querySelectorAll(".sw")];
+    tiles = [...document.querySelectorAll(".tile")];
+    lines = [...document.querySelectorAll("#type > div")];
+    const imgs = SHORT ? ["cards", "glass", "laptop", "email", "slide"] : ["cards", "stationery", "email", "browser", "glass", "laptop", "slide"];
+    track = $("track");
+    track.innerHTML = imgs.map((n) => `<img src="${A}mock/mockup-${n}.jpg" alt="">`).join("");
+    await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
+    await document.fonts.ready;
+    if (LIGHT) {
+      document.head.insertAdjacentHTML("beforeend", `<style>html,body{background:${BASE};color:#0C111D}.tag,.act,.cap p{color:rgba(12,17,29,.55)}.tag b{color:#0C111D}.cap h2{color:#0C111D}#logo .itl{--tc:#0C111D}</style>`);
+    }
+  }
+
+  function render(t) {
+    const W = innerWidth, H = innerHeight;
+    let bg = BASE;
+    let lightK = 0;
+    if (T.tiles) {
+      lightK = io(seg(t, T.tiles[0] - 0.3, T.tiles[0] + 0.4)) * (1 - io(seg(t, T.tiles[1] - 0.4, T.tiles[1] + 0.2)));
+      bg = lerpColor(BASE, "#F2F7F9", lightK);
+    }
+    $("bg").style.background = bg;
+    document.querySelector(".tag").style.opacity = 1 - lightK;
+    $("actname").style.opacity = 1 - lightK;
+
+    // 1 · as três formas sobem uma a uma
+    shapes.forEach((p, i) => {
+      const k = out(seg(t, T.rise[0] + i * 0.55, T.rise[0] + i * 0.55 + 0.9));
+      p.style.opacity = k;
+      p.style.transform = `translateY(${(1 - k) * 22}px)`;
+    });
+    $("cap1").style.opacity = io(seg(t, T.rise[1] - 0.6, T.rise[1])) * (1 - io(seg(t, T.move[0] - 0.4, T.move[0] + 0.1)));
+
+    // 2 · o símbolo viaja até o logo horizontal; o nome se revela da esquerda para a direita
+    const sw = Math.min(0.34 * H * 76 / 91, 0.5 * W);
+    const sh = sw * 91 / 76;
+    const lw = Math.min(W > H ? 0.76 * W : 0.88 * W, 1000);
+    const lh = lw * 278 / 2623;
+    // o símbolo ocupa a altura toda do logo, à esquerda (medida no recorte do PDF)
+    const symH = lh * 0.93, symW = symH * 76 / 91;
+    const tx = W / 2 - lw / 2 + lh * 0.02, ty = H / 2 - symH / 2;
+    const m = io(seg(t, ...T.move));
+    const x = mix(W / 2 - sw / 2, tx, m), y = mix(H / 2 - sh / 2, ty, m), sc = mix(1, symW / sw, m);
+    $("sym").style.transform = `translate(${x - W / 2}px, ${y - H / 2}px) scale(${sc})`;
+    const logoOn = t >= T.move[1];
+    $("sym").style.opacity = logoOn ? 0 : 1;
+    $("logo").style.opacity = logoOn ? 1 - io(seg(t, ...T.logoOut)) : 0;
+    const rv = io(seg(t, ...T.word));
+    $("logo").querySelector(".t").style.clipPath = `inset(0 ${100 - rv * 100}% 0 0)`;
+
+    // 3 · versões
+    if (T.tiles) {
+      const on = t >= T.tiles[0] && t < T.tiles[1] + 0.3;
+      $("tiles").style.opacity = on ? 1 - io(seg(t, T.tiles[1] - 0.4, T.tiles[1] + 0.2)) : 0;
+      tiles.forEach((el, i) => {
+        const k = out(seg(t, T.tiles[0] + 0.15 * i, T.tiles[0] + 0.15 * i + 0.8));
+        el.style.opacity = k;
+        el.style.transform = `translateY(${(1 - k) * 40}px) scale(${0.96 + 0.04 * k})`;
+      });
+    }
+
+    // 4 · versão mínima: o nome se desenha em volta do símbolo
+    if (T.mini) {
+      const on = t >= T.mini[0] - 0.1 && t < T.mini[1] + 0.3;
+      $("mini").style.opacity = on ? io(seg(t, T.mini[0], T.mini[0] + 0.5)) * (1 - io(seg(t, T.mini[1] - 0.4, T.mini[1] + 0.2))) : 0;
+      $("mini").querySelector(".t").style.setProperty("--sweep", `${360 * io(seg(t, T.mini[0] + 0.3, T.mini[1] - 0.8))}deg`);
+    }
+
+    // 5 · cores
+    const pOn = t >= T.pal[0] - 0.1 && t < T.pal[1] + 0.3;
+    $("palette").style.opacity = pOn ? 1 - io(seg(t, T.pal[1] - 0.4, T.pal[1] + 0.2)) : 0;
+    sws.forEach((d, j) => {
+      const k = out(seg(t, T.pal[0] + 0.06 * j, T.pal[0] + 0.06 * j + 0.8));
+      d.style.transform = `scaleY(${k})`;
+      d.style.opacity = k;
+    });
+
+    // 6 · tipografia
+    if (T.type) {
+      const on = t >= T.type[0] - 0.1 && t < T.type[1] + 0.3;
+      $("type").style.opacity = on ? 1 - io(seg(t, T.type[1] - 0.4, T.type[1] + 0.2)) : 0;
+      lines.forEach((d, j) => {
+        const k = out(seg(t, T.type[0] + 0.12 * j, T.type[0] + 0.12 * j + 0.8));
+        d.style.opacity = k;
+        d.style.transform = `translateY(${(1 - k) * 24}px)`;
+      });
+    }
+
+    // 7 · aplicações
+    const aOn = t >= T.apps[0] - 0.1;
+    const ak = seg(t, T.apps[0], T.apps[1]);
+    $("apps").style.opacity = aOn ? io(seg(t, T.apps[0], T.apps[0] + 0.5)) * (1 - io(seg(t, T.apps[1] - 0.2, T.end))) : 0;
+    const tw = track.scrollWidth;
+    track.style.transform = `translate(${mix(W * 0.18, W - tw - W * 0.1, ak)}px, -50%)`;
+
+    const names = [[0, "Símbolo"], [T.move[0], "Logo"], [T.tiles ? T.tiles[0] : 99, "Versões"], [T.mini ? T.mini[0] : 99, "Versão mínima"], [T.pal[0], "Cores"], [T.type ? T.type[0] : 99, "Tipografia"], [T.apps[0], "Aplicações"]];
+    let nm = "";
+    for (const [a, n] of names) if (t >= a) nm = n;
+    $("actname").textContent = nm;
+  }
+
+  build().then(() => {
+    render(0);
+    if (q.get("t")) return render(Number(q.get("t")));
+    let t0 = null;
+    const running = () => q.get("play") === "1" || getComputedStyle(document.documentElement).getPropertyValue("--run").trim() === "running";
+    (function f(now) {
+      if (t0 === null) { if (!running()) return requestAnimationFrame(f); t0 = now; }
+      render(((now - t0) / 1000) % T.end);
+      requestAnimationFrame(f);
+    })(performance.now());
+  });
+</script>
+</body>
+</html>

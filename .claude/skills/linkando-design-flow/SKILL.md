@@ -12,7 +12,7 @@ Esta skill não desenha nada sozinha: define **a ordem** em que as outras skills
 
 1. **`CLAUDE.md` do projeto** — cores, tipografia, logo, conteúdo, i18n, responsividade, performance. Nada abaixo muda isso.
 2. **Skills do projeto** — `add-portfolio-project` e `build-site-deck`. Se o pedido é projeto novo ou deck, siga a skill inteira; este fluxo só complementa. Em decks, o palco veste a identidade do site apresentado e só a moldura veste a marca Linkando.
-3. **`taste-skill:design-taste-frontend` e `copywriting`** — critério contra o visual genérico e gate de acabamento (taste-skill); texto de página sem cara de IA e sem afirmação sem prova (copywriting). O texto já fixado no `CLAUDE.md` (tagline, subtítulo, serviços, descrição dos projetos) só muda se o Carlos pedir.
+3. **`taste-skill:design-taste-frontend`, `copywriting` e `copy-editing`** — critério contra o visual genérico e gate de acabamento (taste-skill); texto de página sem cara de IA e sem afirmação sem prova (copywriting). O texto já fixado no `CLAUDE.md` (tagline, subtítulo, serviços, descrição dos projetos) só muda se o Carlos pedir.
 4. **Estilos Awesome Design** — referência, nunca receita.
 5. **Verificadores** (`web-design-guidelines`, `design:accessibility-review`) — apontam problemas; a decisão segue a ordem acima.
 
@@ -24,14 +24,14 @@ Pule o que não se aplica: um ajuste de espaçamento não precisa de brainstormi
 2. **Marca.** Releia "Identidade Visual" e "Componentes-chave" do `CLAUDE.md`. Cores e fontes vêm de lá, sem exceção.
 3. **Estilo de referência.** Escolha **um** (no máximo dois) da tabela abaixo e invoque com a ferramenta Skill. Extraia só: grid, proporção da escala tipográfica, hierarquia, estados de interação e ritmo de espaçamento. Descarte paleta, fontes, raios e sombras que contradigam a marca.
 4. **Gosto.** Página ou seção nova, ou reforma: invoque `taste-skill:design-taste-frontend`. Ajuste pontual: não invoque.
-5. **Texto.** Texto novo ou reescrito (hero, seção, CTA, página): invoque `copywriting`. Ela diagnostica antes (do zero, voz existente ou edição pontual) e só escreve o que consegue sustentar. Números e afirmações sobre o estúdio vêm do `CLAUDE.md` ou de evidência real; sem isso fica `[NEED: ...]`, nunca invente. Entregue PT e EN, nos dicionários de `lib/i18n.ts`. Troca de uma palavra ou de um CTA não precisa da skill.
+5. **Texto.** Texto novo ou reescrito (hero, seção, CTA, página): invoque `copywriting`. Ela diagnostica antes (do zero, voz existente ou edição pontual) e só escreve o que consegue sustentar. Números e afirmações sobre o estúdio vêm do `CLAUDE.md` ou de evidência real; sem isso fica `[NEED: ...]`, nunca invente. Entregue PT e EN, nos dicionários de `lib/i18n.ts`. Troca de uma palavra ou de um CTA não precisa da skill. Texto que já existe e só precisa de revisão: `copy-editing`.
 6. **Construção.** Delegue ao `executor` (fluxo do `~/.claude/CLAUDE.md`). O brief leva: arquivos, o brief do passo 1, os tokens da marca, as regras extraídas no passo 3 e o critério de pronto. Decisão de design é sua, não do executor.
 7. **Verificação.** Antes de dar por concluído:
-   - preview no navegador em desktop e 375px, rolando de verdade para ver os efeitos de scroll;
+   - captura com Playwright (`channel: "chrome"`, rolando a página antes) em desktop e 375px; o painel do navegador do app não roda os efeitos de rolagem;
    - `web-design-guidelines` nos arquivos alterados;
    - `design:accessibility-review` se mudou estrutura, contraste ou foco;
    - texto novo: nenhum `[NEED: ...]` aberto no que foi entregue e o mesmo conteúdo existe em PT e EN;
-   - `npm run lint` e `npx tsc --noEmit`;
+   - `npx tsc --noEmit` (o projeto não tem ESLint configurado, então `npm run lint` não roda);
    - deck: `node scripts/deck/check-standard.mjs <slug> --net`.
 
    Corrija o que for achado real. O que contradiz a marca, registre e siga a marca.

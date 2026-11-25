@@ -31,8 +31,8 @@ const html = `<!doctype html>
 <div class="card">
   <div class="logo">${logoSvg}</div>
   <div class="hero">
-    <h1>O DIGITAL DA SUA EMPRESA<span>NÃO PRECISA SER COMPLICADO.</span></h1>
-    <p class="sub">Interfaces, sites e marcas · 9 anos · clientes em 4 países</p>
+    <h1>DESIGN QUE POSICIONA.<span>SITES QUE VENDEM.</span></h1>
+    <p class="sub">Marca e desenvolvimento web · 9 anos · clientes em 5 países</p>
   </div>
   <div class="url">linkandodesign.com</div>
 </div>

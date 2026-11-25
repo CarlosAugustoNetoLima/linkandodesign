@@ -15,9 +15,9 @@ export const dictionaries = {
     htmlLang: "pt-BR",
 
     meta: {
-      title: "Linkando Design — Estúdio de Marca e Desenvolvimento Web",
+      title: "Linkando Design | Criação de Sites, Marca e Sistemas Internos",
       description:
-        "Estúdio especializado em identidade visual, branding e desenvolvimento de sites. 9 anos de experiência, clientes em 4 países.",
+        "Estúdio de design de marca e desenvolvimento web: identidade visual, criação de site, landing page, redesign e sistemas internos. 9 anos, clientes em 5 países. Diagnóstico gratuito.",
     },
 
     nav: {
@@ -32,18 +32,17 @@ export const dictionaries = {
 
     home: {
       hero: {
-        eyebrow: "Portfólio de marcas e sites",
         secondary: "Ver projetos",
-        title1: "Design que posiciona.",
-        title2: "Sites que vendem.",
-        text: "Estúdio de marca e desenvolvimento web. 9 anos, 4 países, clientes que crescem.",
+        title1: "Marcas, sites",
+        title2: "e sistemas.",
+        text: "Estúdio de marca e desenvolvimento web. Criamos identidade visual, sites, landing pages e sistemas internos para empresas que querem vender mais.",
+        facts: ["9 anos", "5 países", "Diagnóstico gratuito"],
         cta: "Solicitar diagnóstico",
-        stage: {
-          aria: "Vitrine dos projetos",
-          tabs: "Escolher projeto",
-          view: "Ver apresentação",
-          desktop: "Computador",
-          mobile: "Celular",
+        starter: {
+          placeholder: "Conte o que você precisa: um site, uma marca, um sistema…",
+          send: "Enviar e abrir o diagnóstico",
+          note: "Comece pelo diagnóstico gratuito",
+          quickAria: "Atalhos para começar",
         },
       },
 
@@ -54,48 +53,62 @@ export const dictionaries = {
 
       index: {
         label: "Projetos de 2026",
-        title: "Do briefing ao ar, em movimento.",
-        text: "Toque ou passe o mouse para ver cada site em movimento. Cada projeto abre uma apresentação com os efeitos, as decisões de design e o link do site real.",
+        title: "Nossos projetos.",
+        text: "Cada projeto abre uma apresentação com os efeitos, as decisões de design e o link do site no ar.",
         all: "Ver todas as apresentações",
         open: "Abrir apresentação",
+        view: "Ver apresentação",
+        live: "Site no ar",
+        thumbAlt: "Site",
         note: "",
       },
 
-      band: {
-        label: "Nosso diferencial",
-        title: "Pesquisa e estratégia antes de qualquer tela.",
-        text: "Antes de desenhar, entendemos o negócio, analisamos mercado e concorrência e definimos posicionamento e conceito. Depois vêm design e prototipação, para você validar antes de começarmos a desenvolver.",
-        cta: "Solicitar diagnóstico",
-        sites: "sites entregues em 2026",
-      },
 
       services: {
         label: "Nossos serviços",
-        title: "Do que a sua empresa precisa agora?",
+        title: "Serviços.",
+        ctas: ["Quero uma identidade visual", "Quero um site", "Quero uma landing page", "Quero um sistema"],
         proof: "Onde isso foi feito",
+        proofAlt: "Site",
         items: [
           {
             n: "001",
-            title: "Uma marca que posiciona",
+            title: "Desenvolvimento de marca e identidade visual",
+            tagline: "Marca nova ou redesign da atual",
             text: "Desenvolvimento de Marca cria a identidade visual estratégica do zero, com naming, logo e sistema de design. Redesign de Identidade evolui a marca que você já tem, com intenção e coerência.",
           },
           {
             n: "002",
-            title: "Um site que vende",
+            title: "Criação e redesign de site",
+            tagline: "Site novo ou redesign do atual",
             text: "Criação de Site entrega o site completo, com pesquisa, prototipação e desenvolvimento. Redesign de Site reformula o visual e a estrutura de um site que já existe.",
           },
           {
             n: "003",
-            title: "Uma landing page que converte",
+            title: "Landing page",
+            tagline: "Página de produto, serviço ou lançamento",
             text: "Página de produto, serviço ou lançamento focada em conversão, do design ao desenvolvimento.",
           },
+          {
+            n: "004",
+            title: "Sistemas internos para a equipe",
+            tagline: "Painéis e telas de gestão",
+            text: "Painéis e interfaces de gestão para a sua equipe: diagnóstico do gargalo, arquitetura da informação, design das telas e acompanhamento com a equipe já usando.",
+          },
         ],
+      },
+
+
+      finalCta: {
+        title: "Solicite o diagnóstico gratuito.",
+        text: "O diagnóstico é gratuito e a proposta chega por e-mail em até 24h.",
+        cta: "Solicitar diagnóstico",
       },
 
       diff: {
         label: "Nosso diferencial",
         title: "Nosso jeito de trabalhar.",
-        text: "Estúdio de marca e desenvolvimento web. Pesquisa, estratégia e prototipação vêm antes do desenvolvimento, em 7 etapas, e cada etapa é validada com o cliente antes de avançar. 9 anos de experiência, clientes em 4 países.",
+        text: "Estúdio de marca e desenvolvimento web. Pesquisa, estratégia e prototipação vêm antes do desenvolvimento, em 7 etapas, e cada etapa é validada com o cliente antes de avançar. 9 anos de experiência, clientes em 5 países.",
       },
 
       method: {
@@ -121,7 +134,7 @@ export const dictionaries = {
         items: [
           {
             q: "Quanto custa?",
-            a: "O valor depende do escopo de cada projeto. Depois do diagnóstico, enviamos a proposta por e-mail em até 24h, com prazos e valores.",
+            a: "O diagnóstico é gratuito e feito pelo chat. O valor do projeto depende do escopo: depois do diagnóstico, enviamos a proposta por e-mail em até 24h, com prazos e valores.",
           },
           {
             q: "Quanto tempo demora?",
@@ -140,8 +153,8 @@ export const dictionaries = {
     },
 
     footer: {
-      title: "Vamos começar o seu projeto?",
-      text: "Clique no botão abaixo para batermos um papo rápido e sem compromisso.",
+      title: "Solicite um diagnóstico.",
+      text: "O diagnóstico é gratuito e a proposta chega por e-mail em até 24h.",
       cta: "Falar no WhatsApp",
       nav: "Navegação",
       rights: "Todos os direitos reservados.",
@@ -163,10 +176,10 @@ export const dictionaries = {
     about: {
       label: "Sobre nós",
       title: "Um estúdio de marca e desenvolvimento web.",
-      text: "O Linkando Design é um estúdio de marca e desenvolvimento web. Em 9 anos, atendemos clientes em 4 países, da França a Cabo Verde, criando identidades visuais e sites que posicionam e vendem.",
+      text: "O Linkando Design é um estúdio de marca e desenvolvimento web. Em 9 anos, atendemos clientes em 5 países (Portugal, França, Cabo Verde, EUA e Brasil), criando identidades visuais, sites, landing pages e sistemas internos.",
       authority: {
         title: "O que fazemos na prática.",
-        text: "Criamos identidades visuais do zero, evoluímos marcas que já existem e construímos sites e landing pages, da pesquisa à entrega. Marca e site saem do mesmo estúdio.",
+        text: "Criamos identidades visuais do zero, evoluímos marcas que já existem, construímos sites e landing pages e desenhamos sistemas internos, da pesquisa à entrega. Marca e site saem do mesmo estúdio.",
       },
       method: {
         title: "O método em sete etapas.",
@@ -174,7 +187,7 @@ export const dictionaries = {
       },
       stats: [
         { value: "9", label: "anos de estúdio" },
-        { value: "4", label: "países atendidos" },
+        { value: "5", label: "países atendidos" },
         { value: "7", label: "etapas, cada uma validada com você" },
       ],
     },
@@ -209,8 +222,8 @@ export const dictionaries = {
       title: "Assistente Linkando",
       subtitle: "Diagnóstico do seu projeto",
       greeting:
-        "Olá! Eu conduzo o diagnóstico do seu projeto por aqui. São algumas perguntas rápidas, uma de cada vez, e no final o time analisa e envia a proposta por e-mail, com prazos e valores. Para começar: o que você faz e o que está travando hoje?",
-      quick: ["Quero fazer o diagnóstico", "Quanto custa?", "Quanto tempo demora?", "Como funciona?"],
+        "Olá! Eu conduzo o diagnóstico gratuito do seu projeto por aqui. São algumas perguntas rápidas, uma de cada vez, e no final o time analisa e envia a proposta por e-mail, com prazos e valores. Para começar: o que você faz e o que está travando hoje?",
+      quick: ["Quero criar um site", "Quero criar ou renovar minha marca", "Preciso de uma landing page", "Preciso de um sistema interno"],
       inputPh: "Escreva a sua mensagem…",
       openAria: "Abrir o assistente",
       closeAria: "Fechar o assistente",
@@ -224,9 +237,9 @@ export const dictionaries = {
     htmlLang: "en",
 
     meta: {
-      title: "Linkando Design — Interface, website and brand design",
+      title: "Linkando Design | Website, Brand Identity and Internal Systems Studio",
       description:
-        "We design clean, organised interfaces that make your company easier to run and turn visitors into clients. 9 years, clients across 4 countries.",
+        "Brand and web development studio: visual identity, website creation, landing pages, redesign and internal systems. 9 years, clients in 5 countries. Free diagnosis.",
     },
 
     nav: {
@@ -241,18 +254,17 @@ export const dictionaries = {
 
     home: {
       hero: {
-        eyebrow: "Portfolio — brands, websites and systems",
         secondary: "See projects",
-        title1: "Your company's digital side",
-        title2: "doesn't have to be complicated.",
-        text: "A website that doesn't bring in enquiries, or a system that slows your team down? Let's turn that into more sales.",
+        title1: "Brands, websites",
+        title2: "and systems.",
+        text: "Brand and web development studio. We create visual identities, websites, landing pages and internal systems for companies that want to sell more.",
+        facts: ["9 years", "5 countries", "Free diagnosis"],
         cta: "Request a diagnosis",
-        stage: {
-          aria: "Project showcase",
-          tabs: "Choose a project",
-          view: "See the presentation",
-          desktop: "Desktop",
-          mobile: "Mobile",
+        starter: {
+          placeholder: "Tell us what you need: a website, a brand, a system…",
+          send: "Send and open the diagnosis",
+          note: "Start with a free diagnosis",
+          quickAria: "Shortcuts to get started",
         },
       },
 
@@ -263,59 +275,76 @@ export const dictionaries = {
 
       index: {
         label: "2026 projects",
-        title: "From brief to launch, in motion.",
-        text: "Tap or hover to see each site in motion. Every project opens a presentation with the effects, the design decisions and a link to the real site.",
+        title: "Our projects.",
+        text: "Each project opens a presentation with its effects, design decisions and a link to the live site.",
         all: "See all presentations",
         open: "Open presentation",
+        view: "View presentation",
+        live: "Live site",
+        thumbAlt: "Website",
         note: "The presentations are written in Portuguese.",
       },
 
-      band: {
-        label: "What sets us apart",
-        title: "You don't need to have all the answers ready.",
-        text: "We don't design on gut feeling. We use exact measurements and strict design standards to organise every screen. What that means in practice: the system becomes genuinely intuitive, the site doesn't break, and your team doesn't need a manual to use what we built.",
-        cta: "Request a diagnosis",
-        sites: "sites shipped in 2026",
-      },
 
       services: {
         label: "Our services",
-        title: "Where does it hurt in your company today?",
+        title: "Services.",
+        ctas: ["I want a visual identity", "I want a website", "I want a landing page", "I want a system"],
         proof: "Where we did this",
+        proofAlt: "Website",
         items: [
           {
             n: "001",
-            title: "The brand doesn't look credible",
-            text: "First impressions close the sale. We build visual identities that show the level of professionalism your company actually has — so you can charge what your work is worth.",
+            title: "Brand development and visual identity",
+            tagline: "New brand or a redesign",
+            text: "Brand Development builds a strategic visual identity from scratch, with naming, logo and design system. Identity Redesign evolves the brand you already have, with intent and coherence.",
           },
           {
             n: "002",
-            title: "The site looks good but doesn't sell",
-            text: "A confusing site drives clients away. We design clean, fast pages. The goal is to take visitors by the hand and lead them straight to the contact button. That simple.",
+            title: "Website creation and redesign",
+            tagline: "New website or a redesign",
+            text: "Website Creation delivers the complete site, with research, prototyping and development. Website Redesign reworks the look and structure of a site that already exists.",
           },
           {
             n: "003",
-            title: "The operation has become a mess",
-            text: "This is where teams lose time. We design internal systems built for collaboration. No confusing screens. Every button has a reason to be there, so the workflow runs smoothly and without headaches.",
+            title: "Landing pages",
+            tagline: "Product, service or launch page",
+            text: "A product, service or launch page focused on conversion, from design to development.",
+          },
+          {
+            n: "004",
+            title: "Internal systems for your team",
+            tagline: "Management dashboards and screens",
+            text: "Dashboards and management interfaces for your team: diagnosis of the bottleneck, information architecture, screen design and follow-up once the team is using it.",
           },
         ],
+      },
+
+
+      finalCta: {
+        title: "Request your free diagnosis.",
+        text: "The diagnosis is free and the proposal reaches you by email within 24h.",
+        cta: "Request a diagnosis",
       },
 
       diff: {
         label: "What sets us apart",
         title: "The way we work.",
-        text: "We don't design on gut feeling. We use exact measurements and strict design standards to organise every screen. What that means in practice: the system becomes genuinely intuitive, the site doesn't break, and your team doesn't need a manual to use what we built.",
+        text: "A brand and web development studio. Research, strategy and prototyping come before development, in 7 stages, and each stage is approved by the client before moving on. 9 years of experience, clients in 5 countries.",
       },
 
       method: {
         label: "How we work",
-        title: "No surprises at the end of the month.",
-        text: "We believe predictability is everything in business. We work to a structured timeline with clearly defined approval stages. That way you follow the design with confidence, seeing exactly how the solution takes shape — without unnecessary rush and without rework.",
+        title: "Seven stages, each one approved by you.",
+        text: "You follow the project from briefing to delivery and approve each stage before the next one starts.",
         steps: [
-          { n: "01", title: "Diagnosis", text: "We map the real bottleneck in your operation before designing a single screen." },
-          { n: "02", title: "Structure", text: "We define the information architecture and the path the user takes." },
-          { n: "03", title: "Design", text: "Organised screens built to exact measurements, validated with you at every stage." },
-          { n: "04", title: "Delivery", text: "Launch, follow-up and adjustments with your team already using it." },
+          { n: "01", title: "Briefing", text: "We learn the business, the goals and the audience." },
+          { n: "02", title: "Research", text: "We analyse the market, competitors and references." },
+          { n: "03", title: "Strategy", text: "We define positioning, architecture and creative concept." },
+          { n: "04", title: "Design", text: "We create the visual identity or the interface layout." },
+          { n: "05", title: "Prototyping", text: "We validate with you before developing." },
+          { n: "06", title: "Development", text: "We build with a focus on performance and responsiveness." },
+          { n: "07", title: "Delivery", text: "We publish, train your team and support you after delivery." },
         ],
       },
 
@@ -326,24 +355,28 @@ export const dictionaries = {
         cta: "Ask in the chat",
         items: [
           {
+            q: "How much does it cost?",
+            a: "The diagnosis is free and done in the chat. The price of the project depends on the scope: after the diagnosis, we send the proposal by email within 24 hours, with timelines and values.",
+          },
+          {
             q: "How long does it take?",
-            a: "Every project needs a different level of architecture. During our diagnosis phase we map your business scenario and set a realistic timeline. We focus entirely on quality and usability, and that takes method, planning and consistent stages — never rushed solutions.",
+            a: "It depends on the service: landing pages in 1 to 2 weeks, complete websites in 4 to 8, full branding in 3 to 6. These are estimates; the proposal sets the schedule for your project.",
           },
           {
-            q: "Will the system be hard to use?",
-            a: "Quite the opposite. Our main focus is collaboration and everyday ease of use. If you need a 50-page manual to use the interface we built, we failed at the design.",
+            q: "How does it work?",
+            a: "Seven stages: briefing, research, strategy, design, prototyping, development and delivery. You approve each one before the next starts.",
           },
           {
-            q: "What do I need to have to get started?",
-            a: "Just an idea of where your company's bottleneck is today. Don't worry about having a perfect plan — we design the solution together.",
+            q: "What do I need to get started?",
+            a: "Just an idea of what you want to solve. The diagnosis, by chat or through the briefing form, helps organise the rest, and you don't need everything defined.",
           },
         ],
       },
     },
 
     footer: {
-      title: "Shall we tidy the house?",
-      text: "Click the button below for a quick, no-strings chat.",
+      title: "Request a diagnosis.",
+      text: "The diagnosis is free and the proposal reaches you by email within 24h.",
       cta: "Chat on WhatsApp",
       nav: "Navigation",
       rights: "All rights reserved.",
@@ -364,20 +397,20 @@ export const dictionaries = {
 
     about: {
       label: "About us",
-      title: "Design that organises the operation and supports growth.",
-      text: "Linkando Design is a studio for interface, website and brand design. Over 9 years we've worked with companies in 4 countries — from France to Cape Verde — designing digital products teams use every day without needing a manual.",
+      title: "A brand and web development studio.",
+      text: "Linkando Design is a brand and web development studio. Over 9 years we've worked with clients in 5 countries (Portugal, France, Cape Verde, the USA and Brazil), creating visual identities, websites, landing pages and internal systems.",
       authority: {
         title: "What we actually do.",
-        text: "We work where the routine jams: confusing screens, scattered processes and brands that no longer match the size of the business. We design the structure before the aesthetics, so the solution fixes management and collaboration — not just how things look.",
+        text: "We create visual identities from scratch, evolve brands that already exist, build websites and landing pages, and design internal systems, from research to delivery. Brand and site come from the same studio.",
       },
       method: {
-        title: "Why method matters.",
-        text: "Solid planning and strict validation stages are what separate a definitive interface from expensive rework. Every layout decision has a reason, every spacing follows a standard. That's what makes design last.",
+        title: "The method in seven stages.",
+        text: "Seven stages, from briefing to delivery. Research, strategy and prototyping come before development, and each stage is approved by you before moving on.",
       },
       stats: [
         { value: "9", label: "years as a studio" },
-        { value: "4", label: "countries served" },
-        { value: "100%", label: "projects shipped live" },
+        { value: "5", label: "countries served" },
+        { value: "7", label: "stages, each approved by you" },
       ],
     },
 
@@ -400,8 +433,8 @@ export const dictionaries = {
       numbers: "In numbers",
       palette: "Palette & typography",
       dna: "Visual DNA",
-      ctaTitle: "Does your company have a similar bottleneck?",
-      ctaText: "Let's map your scenario and design the best way forward. Quick chat, no strings.",
+      ctaTitle: "Have a similar project?",
+      ctaText: "Tell us what you need and we'll design the best way forward. Quick chat, no strings.",
       cta: "Chat on WhatsApp",
       deviceDesktop: "Desktop",
       deviceMobile: "Mobile",
@@ -411,8 +444,8 @@ export const dictionaries = {
       title: "Linkando Assistant",
       subtitle: "Diagnosis of your project",
       greeting:
-        "Hi! I run the diagnosis of your project right here. It's a few quick questions, one at a time, and at the end the team reviews it and sends the proposal by email, with timelines and values. To start: what do you do, and what is holding you back today?",
-      quick: ["I want to start the diagnosis", "How much does it cost?", "How long does it take?", "How does it work?"],
+        "Hi! I run the free diagnosis of your project right here. It's a few quick questions, one at a time, and at the end the team reviews it and sends the proposal by email, with timelines and values. To start: what do you do, and what is holding you back today?",
+      quick: ["I want a new website", "I want to create or refresh my brand", "I need a landing page", "I need an internal system"],
       inputPh: "Type your message…",
       openAria: "Open the assistant",
       closeAria: "Close the assistant",

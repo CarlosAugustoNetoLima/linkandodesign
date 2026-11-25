@@ -1,40 +1,19 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import { chapterNumber } from "@/components/deck/chapterIndex";
+import { cx } from "@/components/deck/cx";
 import Chapter from "@/components/deck/primitives/Chapter";
 import DeviceFrame from "@/components/deck/primitives/DeviceFrame";
 import Eyebrow from "@/components/deck/primitives/Eyebrow";
 import LoopVideo from "@/components/deck/primitives/LoopVideo";
+import { TourDesktop, TourMobile, type TourStep, useTour } from "@/components/deck/primitives/Tour";
 import WordReveal from "@/components/deck/primitives/WordReveal";
 import { useReduced } from "@/components/deck/useReduced";
-import type { Deck, ResponsiveChapter, Spec } from "@/lib/decks/types";
+import type { Deck, ResponsiveChapter } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
-type SpecRowProps = { spec: Spec; index: number; reduced: boolean | null };
-
-// Linha de especificação: rótulo à esquerda, valor à direita, hairline no topo.
-function SpecRow({ spec, index, reduced }: SpecRowProps) {
-  return (
-    <motion.div
-      className="grid grid-cols-[132px_1fr] gap-x-4 py-3"
-      style={{ borderTop: "1px solid var(--d-line)" }}
-      initial={reduced ? false : { opacity: 0, x: 16 }}
-      whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: EASE, delay: index * 0.06 }}
-    >
-      <dt className="pt-0.5 text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--d-fg-muted)" }}>
-        {spec.k}
-      </dt>
-      <dd className="text-[14.5px] leading-[1.6]" style={{ color: "var(--d-fg)" }}>
-        {spec.v}
-      </dd>
-    </motion.div>
-  );
-}
 
 // Régua de largura: uma linha que se desenha ao entrar na tela, com tracinhos nas pontas.
 function Ruler({ label, reduced }: { label: string; reduced: boolean | null }) {
@@ -60,57 +39,103 @@ function Ruler({ label, reduced }: { label: string; reduced: boolean | null }) {
   );
 }
 
-// Responsivo: a mesma página no desktop e no celular, em loop. No lg o celular
-// fica sobreposto no canto; abaixo disso, empilhado. Parallax opostos no scroll.
+// Responsivo: a mesma página no desktop e no celular, em loop, lado a lado e sem
+// sobreposição a partir do sm; abaixo disso, empilhados.
+// A tela abre só com o título e o botão "Ver detalhes"; body e cada nota viram passos do tour, um por
+// clique: a rolagem da página fica livre.
 export default function Responsive({ chapter, deck }: { chapter: ResponsiveChapter; deck: Deck }) {
   const reduced = useReduced();
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const phoneY = useTransform(scrollYProgress, [0, 1], [70, -30]);
-  const desktopY = useTransform(scrollYProgress, [0, 1], [-16, 16]);
 
   const { desktop, mobile } = chapter;
-  const host = new URL(deck.liveUrl).host;
+  const host = deck.frameHost ?? new URL(deck.liveUrl).host;
+  // telas maiores (deck.largeMedia): as duas telas ~70% da largura, à esquerda, na mesma proporção
+  const large = !!deck.largeMedia;
+  // altura da tela menos o cabeçalho do deck e o padding do capítulo (deck.css), menos a moldura do navegador
+  // (barra e borda, 36px) e a régua (~52px). A largura do conjunto sai da do navegador: celular = 0.31 do navegador, gap 32px
+  const rowMax = `calc(((100svh - var(--deck-bar-h) - var(--sp-1) - 88px) * ${(desktop.width / desktop.height).toFixed(4)}) * 1.31 + 32px)`;
+
+  const steps: TourStep[] = [
+    { title: "Visão geral", text: chapter.body },
+    ...chapter.notes.map((n) => ({ title: n.k, text: n.v, device: n.device })),
+  ];
+  const tour = useTour(steps);
+  // no tour, o aparelho que não é o do passo ativo fica esmaecido
+  const target = tour.tour ? tour.step.device : undefined;
+  const dim = (d: "desktop" | "mobile") => (target && target !== d ? 0.28 : 1);
+
+  // a mídia vai para a direita quando o DeckPlayer alterna os lados (side "right")
+  const mediaRight = chapter.side === "right";
 
   return (
-    <Chapter id={chapter.id}>
-      <div ref={ref} className="deck-container">
-        <Eyebrow index={chapterNumber(deck, chapter.id)}>{chapter.eyebrow}</Eyebrow>
-        <WordReveal as="h2" className="deck-h2 mt-5" text={chapter.title} />
-        <motion.p
-          className="deck-body mt-6"
-          initial={reduced ? false : { opacity: 0, y: 16 }}
-          whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: EASE }}
+    // sem scroll anchoring: o texto se recentraliza ao abrir o tour e a página não deve andar junto
+    <Chapter id={chapter.id} className="[overflow-anchor:none]">
+      <div className="deck-container">
+        <div
+          className={cx(
+            "grid grid-cols-[minmax(0,1fr)] items-center gap-x-16 gap-y-12",
+            large && "lg:gap-x-10",
+            mediaRight
+              ? large
+                ? "lg:grid-cols-[minmax(280px,23fr)_minmax(0,77fr)]"
+                : "lg:grid-cols-[minmax(0,1fr)_minmax(0,2.3fr)]"
+              : large
+                ? "lg:grid-cols-[minmax(0,77fr)_minmax(280px,23fr)]"
+                : "lg:grid-cols-[minmax(0,2.3fr)_minmax(0,1fr)]",
+          )}
         >
-          {chapter.body}
-        </motion.p>
+          <div className={cx("order-1 min-w-0", mediaRight ? "lg:order-1" : "lg:order-2")}>
+            <motion.div layout={reduced ? false : "position"} transition={{ duration: 0.5, ease: EASE }}>
+              <Eyebrow index={chapterNumber(deck, chapter.id)}>{chapter.eyebrow}</Eyebrow>
+              <WordReveal
+                as="h2"
+                className="deck-h2 mt-6"
+                style={{ fontSize: "clamp(1.5rem, 2.4vw, 2.3rem)" }}
+                text={chapter.title}
+              />
+            </motion.div>
 
-        <div className="relative mt-14">
-          <motion.div className="lg:w-[78%]" style={{ y: reduced ? 0 : desktopY }}>
-            <DeviceFrame kind="browser" url={host} aspect={desktop.width / desktop.height}>
-              <LoopVideo media={desktop} />
-            </DeviceFrame>
-            <Ruler label="1280 px" reduced={reduced} />
-          </motion.div>
+            {large ? (
+              <div className="[&_.deck-body]:!text-[14px]">
+                <TourDesktop tour={tour} />
+              </div>
+            ) : (
+              <TourDesktop tour={tour} />
+            )}
+          </div>
 
-          <motion.div
-            className="mx-auto mt-12 max-w-[240px] lg:absolute lg:bottom-[-48px] lg:right-0 lg:mx-0 lg:mt-0 lg:w-[21%] lg:max-w-none"
-            style={{ y: reduced ? 0 : phoneY }}
+          <div
+            className={cx("order-2 min-w-0", mediaRight ? "lg:order-2" : "lg:order-1", large && "lg:mx-auto lg:max-w-[var(--row-max)]")}
+            style={large ? ({ "--row-max": rowMax } as CSSProperties) : undefined}
           >
-            <DeviceFrame kind="phone" aspect={mobile.width / mobile.height}>
-              <LoopVideo media={mobile} />
-            </DeviceFrame>
-            <Ruler label="390 px" reduced={reduced} />
-          </motion.div>
-        </div>
+            {/* lado a lado, sem sobreposição, com as bases alinhadas: a coluna do celular
+                (0.31fr) dá a ele quase a mesma altura do navegador. No celular, empilhados. */}
+            <div className="sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,0.31fr)] sm:items-end sm:gap-6 lg:gap-8">
+              <motion.div
+                animate={{ opacity: dim("desktop") }}
+                transition={{ duration: reduced ? 0 : 0.4, ease: EASE }}
+              >
+                <DeviceFrame kind="browser" url={host} aspect={desktop.width / desktop.height} bare={deck.mediaFramed}>
+                  <LoopVideo media={desktop} still={tour.still} />
+                </DeviceFrame>
+                <Ruler label="1280 px" reduced={reduced} />
+              </motion.div>
 
-        <dl className="mt-16 grid gap-x-12 md:grid-cols-2 lg:mt-24">
-          {chapter.notes.map((n, i) => (
-            <SpecRow key={n.k} spec={n} index={i} reduced={reduced} />
-          ))}
-        </dl>
+              <motion.div
+                className="mx-auto mt-12 max-w-[200px] sm:mx-0 sm:mt-0 sm:max-w-none"
+                animate={{ opacity: dim("mobile") }}
+                transition={{ duration: reduced ? 0 : 0.4, ease: EASE }}
+              >
+                <DeviceFrame kind="phone" aspect={mobile.width / mobile.height}>
+                  <LoopVideo media={mobile} still={tour.still} />
+                </DeviceFrame>
+                <Ruler label="390 px" reduced={reduced} />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* celular: o tour abre logo abaixo da tela, um passo por vez */}
+          <TourMobile tour={tour} className="order-3" />
+        </div>
       </div>
     </Chapter>
   );

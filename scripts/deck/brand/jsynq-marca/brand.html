@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSYNQ · marca em movimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --g: #45AD7E; --k: #040405; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--k); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #fff; }
+  .layer { position: fixed; inset: 0; opacity: 0; }
+  #sym, #grid, #logo { right: auto; bottom: auto; }
+  .cap.layer { top: auto; right: auto; }
+  #bg { opacity: 1; background: var(--k); }
+  .tag { position: fixed; left: 4.2vw; top: 4.6vh; font: 600 12px Inter; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); z-index: 9; display: flex; gap: 14px; align-items: center; }
+  .tag b { color: #fff; font-weight: 600; }
+  .tag span { transition: none; }
+  .act { position: fixed; right: 4.2vw; top: 4.6vh; font: 600 12px Inter; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); z-index: 9; }
+
+  /* 1 · símbolo */
+  #sym { position: fixed; left: 50%; top: 50%; width: min(42vh, 62vw); aspect-ratio: 1; transform-origin: 0 0; z-index: 3; }
+  #sym svg { width: 100%; height: 100%; overflow: visible; }
+  #grid { position: fixed; left: 50%; top: 50%; width: min(42vh, 62vw); aspect-ratio: 1; transform: translate(-50%, -50%); z-index: 2; }
+  #grid svg { width: 100%; height: 100%; overflow: visible; }
+  .cap { position: fixed; left: 50%; bottom: 13vh; transform: translateX(-50%); text-align: center; z-index: 4; }
+  .cap p { font: 500 15px Inter; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .cap h2 { margin-top: 10px; font: 700 clamp(28px, 4.2vw, 54px) Inter; letter-spacing: -.02em; }
+  .cap h2 em { font-style: normal; color: var(--g); }
+
+  /* 2 · logo */
+  #logo { position: fixed; left: 50%; top: 50%; width: min(72vw, 980px); transform: translate(-50%, -50%); z-index: 3; }
+  #logo svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+  /* 3 · versões */
+  #tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2vw; padding: 14vh 10vw; align-content: center; }
+  .tile { aspect-ratio: 16 / 7; border-radius: 10px; display: grid; place-items: center; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
+  .tile i { display: block; -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; background: var(--c); }
+
+  /* 4 · cores */
+  #palette { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; padding: 13vh 8vw 10vh; }
+  .col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; border-radius: 8px; overflow: hidden; }
+  .main { position: relative; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; font: 600 15px Inter; }
+  .main b { font: 700 clamp(22px, 2.6vw, 36px) Inter; letter-spacing: -.01em; }
+  .tones { display: grid; grid-template-rows: repeat(9, 1fr); }
+  .tones div { font: 500 11px Inter; padding: 0 12px; display: flex; align-items: center; letter-spacing: .03em; }
+
+  /* 5 · tipografia */
+  #type { display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; padding: 0 8vw; gap: 4vw; }
+  #type .aa { font: 800 clamp(160px, 30vw, 380px)/1 Inter; letter-spacing: -.05em; color: var(--g); }
+  #type .name { font: 700 clamp(40px, 6vw, 84px) Inter; letter-spacing: -.03em; }
+  #type .w { margin-top: 2vh; font-size: clamp(26px, 3.2vw, 44px); line-height: 1.25; letter-spacing: -.02em; }
+  #type .w span { display: block; }
+  #type .note { margin-top: 3vh; font: 400 15px/1.6 Inter; color: rgba(255,255,255,.6); max-width: 34em; }
+
+  /* 6 · aplicações */
+  #apps .track { position: absolute; left: 0; top: 50%; display: flex; gap: 2.4vw; transform: translateY(-50%); }
+  #apps .track img { height: 58vh; border-radius: 10px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); display: block; }
+
+  @media (orientation: portrait) {
+    #logo { width: 86vw; }
+    #tiles { grid-template-columns: 1fr; padding: 12vh 8vw; gap: 3vw; }
+    #palette { grid-template-columns: 1fr; padding: 12vh 7vw 8vh; gap: 4vw; }
+    #type { grid-template-columns: 1fr; padding: 14vh 8vw; align-content: center; gap: 0; }
+    #type .aa { font-size: 44vw; }
+    #apps .track img { height: 46vh; }
+    .tag { left: 7vw; top: 4vh; font-size: 10px; } .act { display: none; }
+    .cap { bottom: 16vh; width: 90vw; }
+  }
+</style>
+</head>
+<body>
+<div id="bg" class="layer"></div>
+<div class="tag"><b>jsynq</b><span>Identidade visual</span></div>
+<div class="act" id="actname"></div>
+
+<div id="grid" class="layer"></div>
+<div id="sym" class="layer"></div>
+<div class="cap layer" id="cap1"><p>Símbolo</p><h2>J + S · <em>Just Sync</em></h2></div>
+<div id="logo" class="layer"></div>
+<div id="tiles" class="layer"></div>
+<div id="palette" class="layer"></div>
+<div id="type" class="layer">
+  <div class="aa">Aa</div>
+  <div>
+    <div class="name">Inter</div>
+    <div class="w"><span style="font-weight:400">Work smarter.</span><span style="font-weight:700;color:var(--g)">Stay in sync.</span></div>
+    <p class="note">Família tipográfica da marca: legível, com altura-x alta e feita para telas.</p>
+  </div>
+</div>
+<div id="apps" class="layer"><div class="track" id="track"></div></div>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  const SHORT = q.get("short") === "1";
+  const A = "/jsynq-marca/assets/";
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x) => Math.min(1, Math.max(0, x));
+  const io = (x) => { x = clamp(x); return (1 - Math.cos(Math.PI * x)) / 2; };
+  const out = (x) => 1 - Math.pow(1 - clamp(x), 3);
+  const seg = (t, a, b) => clamp((t - a) / (b - a));
+  const mix = (a, b, k) => a + (b - a) * k;
+  const lerpColor = (c1, c2, k) => {
+    const p = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    const a = p(c1), b = p(c2);
+    return `rgb(${a.map((v, i) => Math.round(mix(v, b[i], k))).join(",")})`;
+  };
+
+  // linha do tempo (s). A versão curta (celular) pula as versões e a tipografia.
+  const T = SHORT
+    ? { draw: [0, 2.6], fill: [2.2, 3.2], move: [3.6, 4.6], word: [4.2, 5.8], logoOut: [7.0, 7.6], tiles: null, pal: [7.6, 11.4], type: null, apps: [11.4, 16.6], end: 17.2 }
+    : { draw: [0, 2.8], fill: [2.4, 3.4], move: [4.2, 5.2], word: [4.8, 6.4], logoOut: [8.0, 8.6], tiles: [8.6, 12.0], pal: [12.0, 15.8], type: [15.8, 19.0], apps: [19.0, 24.4], end: 25.0 };
+
+  if (q.get("end")) T.end = Number(q.get("end"));
+  const PRIMARY = ["#13231C", "#153426", "#1B4A35", "#29684C", "#8FCEB2", "#AFDBC7", "#C7E6D8", "#EEF7F3", "#F8FFFC"];
+  const SECOND = ["#282733", "#3A3847", "#4D4B5C", "#605E70", "#737185", "#888599", "#BBB9C7", "#E4E4E9", "#F6F6FA"];
+
+  async function svg(name) {
+    const txt = await (await fetch(A + name)).text();
+    const d = new DOMParser().parseFromString(txt, "image/svg+xml").documentElement;
+    d.querySelectorAll("style").forEach((s) => s.remove());
+    return d;
+  }
+
+  let poly, polyLen, logoSvg, parts, tiles, cols, track;
+  async function build() {
+    // símbolo com traço que se desenha
+    const s = await svg("symbol-jsynq-white.svg");
+    poly = s.querySelector("polygon");
+    poly.setAttribute("fill", "#45AD7E");
+    poly.setAttribute("stroke", "#45AD7E");
+    poly.setAttribute("stroke-width", "18");
+    poly.setAttribute("stroke-linejoin", "miter");
+    $("sym").appendChild(s);
+    polyLen = poly.getTotalLength();
+    poly.style.strokeDasharray = polyLen;
+
+    // grade de construção: espessura da haste (428,5 de 3000) e eixos
+    const g = [];
+    for (const v of [0, 428.5, 1500, 2571.5, 3000]) {
+      g.push(`<line x1="${v}" y1="-300" x2="${v}" y2="3300"/>`, `<line x1="-300" y1="${v}" x2="3300" y2="${v}"/>`);
+    }
+    $("grid").innerHTML = `<svg viewBox="0 0 3000 3000"><g stroke="rgba(255,255,255,.16)" stroke-width="6" fill="none">${g.join("")}<circle cx="1500" cy="1500" r="1500" stroke-dasharray="20 30"/></g></svg>`;
+
+    // logo horizontal: cada letra entra em sequência
+    logoSvg = await svg("logo-jsynq-horizontal-white.svg");
+    logoSvg.querySelectorAll("[class]").forEach((e) => { e.removeAttribute("class"); e.setAttribute("fill", "#fff"); });
+    $("logo").appendChild(logoSvg);
+    parts = [...logoSvg.querySelectorAll("polygon, path, rect")];
+    parts[0].setAttribute("fill", "#45AD7E");
+
+    // versões e cores do logo
+    const V = [
+      ["#45AD7E", "logo-jsynq-horizontal-white.svg", "#fff", 8948.57 / 1080],
+      ["#040405", "logo-jsynq-horizontal-primary.svg", "#45AD7E", 8948.57 / 1080],
+      ["#FFFFFF", "logo-jsynq-horizontal-black.svg", "#040405", 8948.57 / 1080],
+      ["#1B4A35", "logo-jsynq-stack-white.svg", "#fff", 3085.71 / 1080],
+    ];
+    $("tiles").innerHTML = V.map(([bg, f, c, r]) => `<div class="tile" style="background:${bg}"><i style="--src:url(${A}${f});--c:${c};width:${r > 4 ? 62 : 34}%;aspect-ratio:${r}"></i></div>`).join("");
+    tiles = [...$("tiles").children];
+
+    const col = (main, name, tones, ink) => `<div class="col"><div class="main" style="background:${main};color:${ink}"><span>${name}</span><b>${main}</b></div><div class="tones">${tones.map((h, i) => `<div style="background:${h};color:${i < 4 ? "rgba(255,255,255,.8)" : "rgba(4,4,5,.7)"}">${h}</div>`).join("")}</div></div>`;
+    $("palette").innerHTML = col("#45AD7E", "Primária", PRIMARY, "#040405") + col("#040405", "Secundária", SECOND, "#fff");
+    cols = [...$("palette").children];
+    cols[1].querySelector(".main").style.boxShadow = "inset 0 0 0 1px rgba(255,255,255,.22)";
+
+    const imgs = SHORT ? ["cards", "app", "insta", "wall", "badge"] : ["cards", "badge", "browser", "insta", "wall", "slide", "linkedin"];
+    track = $("track");
+    track.innerHTML = imgs.map((n) => `<img src="${A}mock/mockup-${n}.jpg" alt="">`).join("");
+    await Promise.all([...track.querySelectorAll("img")].map((i) => i.decode().catch(() => {})));
+    await document.fonts.ready;
+  }
+
+  function render(t) {
+    const W = innerWidth, H = innerHeight;
+    // fundo: preto; verde só no trecho das versões
+    let bg = LIGHT ? "#F6F6FA" : "#040405";
+    if (T.tiles) {
+      const k = io(seg(t, T.tiles[0] - 0.3, T.tiles[0] + 0.4)) * (1 - io(seg(t, T.tiles[1] - 0.4, T.tiles[1] + 0.2)));
+      bg = lerpColor(LIGHT ? "#F6F6FA" : "#040405", "#EEF7F3", k);
+      document.querySelector(".tag").style.opacity = 1 - k;
+      $("actname").style.opacity = 1 - k;
+    }
+    $("bg").style.background = bg;
+
+    // 1 · desenho do símbolo e preenchimento
+    const dr = io(seg(t, T.draw[0] + 0.3, T.draw[1]));
+    poly.style.strokeDashoffset = polyLen * (1 - dr);
+    poly.style.fillOpacity = io(seg(t, ...T.fill));
+    poly.style.strokeOpacity = 1 - io(seg(t, T.fill[1], T.fill[1] + 0.4));
+    $("grid").style.opacity = io(seg(t, 0, 0.6)) * (1 - io(seg(t, T.fill[0], T.fill[1] + 0.3)));
+    $("cap1").style.opacity = io(seg(t, T.fill[0] + 0.2, T.fill[1] + 0.2)) * (1 - io(seg(t, T.move[0] - 0.3, T.move[0] + 0.2)));
+    $("cap1").style.transform = `translate(-50%, ${12 * (1 - out(seg(t, T.fill[0] + 0.2, T.fill[1] + 0.6)))}px)`;
+
+    // 2 · o símbolo viaja até a posição dele no logo horizontal
+    const sz = Math.min(0.42 * H, 0.62 * W);
+    const lw = Math.min(W > H ? 0.72 * W : 0.86 * W, 980);
+    const lh = lw * 1080 / 8948.57;
+    const tx = W / 2 - lw / 2, ty = H / 2 - lh / 2; // canto do logo
+    const targetS = lh / sz; // o símbolo do logo ocupa a altura toda (1080 de 1080)
+    const m = io(seg(t, ...T.move));
+    const x = mix(W / 2 - sz / 2, tx, m), y = mix(H / 2 - sz / 2, ty, m), sc = mix(1, targetS, m);
+    $("sym").style.transform = `translate(${x - W / 2}px, ${y - H / 2}px) scale(${sc})`;
+    const logoOn = t >= T.move[1];
+    $("sym").style.opacity = t < T.end - 0.6 && !logoOn ? 1 : 0;
+    $("logo").style.opacity = logoOn ? 1 - io(seg(t, ...T.logoOut)) : 0;
+    $("logo").style.transform = `translate(-50%, -50%) scale(${1 - 0.04 * io(seg(t, ...T.logoOut))})`;
+    parts.forEach((p, i) => {
+      if (i === 0) return;
+      const k = out(seg(t, T.word[0] + i * 0.05, T.word[0] + i * 0.05 + 0.6));
+      p.style.opacity = k;
+      p.style.transform = `translateY(${(1 - k) * 160}px)`;
+    });
+
+    // 3 · versões
+    if (T.tiles) {
+      const on = t >= T.tiles[0] && t < T.tiles[1] + 0.3;
+      $("tiles").style.opacity = on ? 1 - io(seg(t, T.tiles[1] - 0.4, T.tiles[1] + 0.2)) : 0;
+      tiles.forEach((el, i) => {
+        const k = out(seg(t, T.tiles[0] + 0.15 * i, T.tiles[0] + 0.15 * i + 0.8));
+        el.style.opacity = k;
+        el.style.transform = `translateY(${(1 - k) * 40}px) scale(${0.96 + 0.04 * k})`;
+      });
+    }
+
+    // 4 · cores
+    const pOn = t >= T.pal[0] - 0.1 && t < T.pal[1] + 0.3;
+    $("palette").style.opacity = pOn ? 1 - io(seg(t, T.pal[1] - 0.4, T.pal[1] + 0.2)) : 0;
+    cols.forEach((c, i) => {
+      const k = out(seg(t, T.pal[0] + 0.2 * i, T.pal[0] + 0.2 * i + 0.9));
+      c.style.opacity = k;
+      c.style.transform = `translateY(${(1 - k) * 60}px)`;
+      [...c.querySelectorAll(".tones div")].forEach((d, j) => {
+        const kk = out(seg(t, T.pal[0] + 0.5 + 0.2 * i + 0.07 * j, T.pal[0] + 0.9 + 0.2 * i + 0.07 * j));
+        d.style.transform = `scaleX(${kk})`;
+        d.style.transformOrigin = "0 50%";
+      });
+    });
+
+    // 5 · tipografia
+    if (T.type) {
+      const on = t >= T.type[0] - 0.1 && t < T.type[1] + 0.3;
+      const k = out(seg(t, T.type[0], T.type[0] + 0.9));
+      $("type").style.opacity = on ? k * (1 - io(seg(t, T.type[1] - 0.4, T.type[1] + 0.2))) : 0;
+      $("type").querySelector(".aa").style.transform = `translateY(${(1 - k) * 40}px)`;
+      $("type").querySelector(".aa").style.fontWeight = Math.round(mix(300, 800, io(seg(t, T.type[0] + 0.4, T.type[1] - 0.6)))) ;
+      $("type").querySelector(".aa").style.fontVariationSettings = `"wght" ${Math.round(mix(300, 800, io(seg(t, T.type[0] + 0.4, T.type[1] - 0.6))))}`;
+    }
+
+    // 6 · aplicações passando
+    const aOn = t >= T.apps[0] - 0.1;
+    const ak = seg(t, T.apps[0], T.apps[1]);
+    $("apps").style.opacity = aOn ? io(seg(t, T.apps[0], T.apps[0] + 0.5)) * (1 - io(seg(t, T.apps[1] - 0.2, T.end))) : 0;
+    const tw = track.scrollWidth;
+    track.style.transform = `translate(${mix(W * 0.18, W - tw - W * 0.1, ak)}px, -50%)`;
+
+    // nomes dos trechos
+    const names = [[0, "Símbolo"], [T.move[0], "Logo"], [T.tiles ? T.tiles[0] : 99, "Versões"], [T.pal[0], "Cores"], [T.type ? T.type[0] : 99, "Tipografia"], [T.apps[0], "Aplicações"]];
+    let nm = "";
+    for (const [a, n] of names) if (t >= a) nm = n;
+    $("actname").textContent = nm;
+  }
+
+  const LIGHT = q.get("light") === "1";
+  if (LIGHT) {
+    document.head.insertAdjacentHTML("beforeend", `<style>
+      html, body { background: #F6F6FA; color: #040405; }
+      .tag, .act, .cap p { color: rgba(4,4,5,.55); } .tag b { color: #040405; }
+      #grid g { stroke: rgba(4,4,5,.16); }
+    </style>`);
+  }
+  build().then(() => {
+    if (LIGHT) { parts.slice(1).forEach((p) => p.setAttribute("fill", "#040405")); }
+    render(0);
+    if (q.get("t")) return render(Number(q.get("t")));
+    let t0 = null;
+    const running = () => q.get("play") === "1" || getComputedStyle(document.documentElement).getPropertyValue("--run").trim() === "running";
+    (function f(now) {
+      if (t0 === null) { if (!running()) return requestAnimationFrame(f); t0 = now; }
+      render(((now - t0) / 1000) % T.end);
+      requestAnimationFrame(f);
+    })(performance.now());
+  });
+</script>
+</body>
+</html>

@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "playbook": "node scripts/chat/build-playbook.mjs",
+    "prebuild": "node scripts/chat/build-playbook.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

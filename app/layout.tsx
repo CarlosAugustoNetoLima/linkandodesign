@@ -22,16 +22,21 @@ const inter = Inter({
 });
 
 export function generateMetadata(): Metadata {
-  const dict = getDictionary(getLocale());
+  const locale = getLocale();
+  const dict = getDictionary(locale);
   return {
     title: dict.meta.title,
     description: dict.meta.description,
     metadataBase: new URL("https://linkandodesign.com"),
     openGraph: {
+      type: "website",
+      siteName: "Linkando Design",
+      locale: locale === "pt" ? "pt_BR" : "en_US",
       title: dict.meta.title,
       description: dict.meta.description,
       images: ["/og-image.jpg"],
     },
+    twitter: { card: "summary_large_image" },
   };
 }
 

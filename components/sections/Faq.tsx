@@ -15,8 +15,22 @@ export default function Faq({ locale }: { locale: Locale }) {
     </>
   );
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: t.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 md:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
+      />
       <div className="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
         <div>
           <p className="label">[{t.label}]</p>

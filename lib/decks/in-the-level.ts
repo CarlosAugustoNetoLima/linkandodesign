@@ -1,0 +1,278 @@
+import type { Deck, Media } from "./types";
+
+// Dossiê do deck da marca In The Level (só a identidade visual, sem o site). Cada fato vem
+// do sistema de design da marca (três páginas: cores, tipografia e logos) e do site no ar
+// (o que a empresa faz e os três pilares). O logo foi recortado do sistema em alta resolução
+// e o símbolo veio do site em vetor. As gravações são páginas montadas com esses arquivos e
+// a fonte Inter (scripts/deck/brand/in-the-level), sem imagem gerada por IA nem foto de banco.
+// Texto público: simples, sem nome de arquivo, sem metáfora, sem preço.
+const BASE = "/decks/in-the-level";
+
+const desktop = (name: string, alt: string): Media => ({
+  src: `${BASE}/${name}.mp4`,
+  poster: `${BASE}/${name}.jpg`,
+  width: 1280,
+  height: 800,
+  alt,
+});
+
+export const inTheLevel: Deck = {
+  slug: "in-the-level",
+  index: 13,
+  name: "In The Level",
+  client: "In The Level",
+  year: 2025,
+  sector: "Identidade visual · empresa de tecnologia",
+  location: "Internacional",
+  flags: ["🌍"],
+  tagline: "Duas setas sobre uma base, um azul e um sistema inteiro em Inter.",
+  liveUrl: "https://www.inthelevel.com",
+  // marca: as peças aparecem grandes, sem a barra do navegador
+  mediaFramed: true,
+  credits: [{ name: "Carlos Lima", role: "Direção criativa e identidade visual" }],
+  stack: ["Identidade visual", "Sistema de design"],
+  theme: {
+    accent: "#0169A2",
+    accentInk: "#ffffff",
+    fontKey: "inter",
+    displayWeight: 700,
+    displayTracking: "-0.035em",
+    displayUppercase: false,
+    radius: "10px",
+    coverWeight: 700,
+  },
+  cover: desktop("vitrine-desktop", "A marca In The Level em movimento: o símbolo se monta, vira o logo, mostra as versões, as cores, a tipografia e as aplicações"),
+  summary:
+    "Identidade visual da In The Level: símbolo de duas setas sobre uma base, cinco versões do logo, azul Pantone 2382 C com sete tons, cinzas, cores de aviso e uma escala tipográfica inteira em Inter.",
+  seo: {
+    title: "In The Level — Apresentação | Linkando Design",
+    description:
+      "Como foi construída a identidade visual da In The Level: símbolo, versões do logo, cores, tipografia, sistema de design e aplicações.",
+  },
+  chapters: [
+    {
+      type: "cover",
+      id: "capa",
+      label: "Capa",
+      kicker: "Portfólio 2025 · Identidade visual · Tecnologia",
+      title: "In The Level",
+      subtitle:
+        "Identidade visual de uma empresa de tecnologia dona do JSYNQ Workspace e do Plug&Sync, que também oferece profissionais e software sob medida.",
+      chips: ["Símbolo", "Logo", "Cores", "Tipografia", "Sistema de design"],
+      credit: "Linkando Design · 2025 · identidade visual e sistema de design",
+      backdrop: desktop("vitrine-desktop", "A marca In The Level em movimento: símbolo, logo, versões, cores, tipografia e aplicações"),
+    },
+    {
+      type: "statement",
+      id: "resumo",
+      label: "Resumo",
+      eyebrow: "O projeto",
+      text: "A In The Level faz tecnologia para empresas: produtos próprios, profissionais e software sob medida. A identidade reúne tudo isso sob um símbolo de duas setas sobre uma base, um azul forte e um sistema completo de cores e textos em Inter.",
+      emphasis: ["setas", "base", "azul", "Inter"],
+    },
+    {
+      type: "topics",
+      id: "ponto-de-partida",
+      label: "Ponto de partida",
+      eyebrow: "Ponto de partida",
+      title: "Ponto de partida.",
+      body: "O que o site da empresa e o sistema de design da marca mostram.",
+      items: [
+        {
+          title: "Os produtos",
+          text: "O JSYNQ Workspace, para gerir equipes e projetos num lugar só, e o Plug&Sync, para automatizar a integração e a visualização de dados.",
+        },
+        {
+          title: "Os serviços",
+          text: "Outsourcing, com profissionais para a empresa do cliente, e software sob medida.",
+        },
+        {
+          title: "Os três pilares",
+          text: "Eficiência, inovação e resultados duradouros, como a empresa se apresenta no próprio site.",
+          stat: { value: "3", label: "pilares: eficiência, inovação e resultados duradouros" },
+        },
+        {
+          title: "O que foi entregue",
+          text: "Um sistema de design em três partes: cores, tipografia e logos, cada logo em fundo branco e em fundo escuro.",
+          stat: { value: "3", label: "partes do sistema de design: cores, tipografia e logos" },
+        },
+        {
+          title: "Pensado para interface",
+          text: "O sistema já define o uso nas telas: o azul principal vai em botões, links, campos e estados ativos, e os cinzas em fundos, textos e separadores.",
+        },
+        {
+          title: "Ícone do site",
+          text: "O site da empresa já usa o símbolo azul como o ícone que aparece na aba do navegador.",
+        },
+      ],
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "simbolo",
+      label: "Símbolo",
+      eyebrow: "Construção do símbolo",
+      title: "Símbolo.",
+      body: "O símbolo tem três peças em azul: uma barra reta embaixo e duas setas iguais apontando para cima.",
+      media: desktop("simbolo-desktop", "A base e as duas setas do símbolo sobem uma a uma, e o símbolo vai para o lado do nome In The Level"),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Cor", v: "Azul Pantone 2382 C, a cor principal" },
+        { k: "Nome", v: "Em caixa alta, com letras de cantos arredondados" },
+      ],
+      decision: {
+        title: "As duas setas apontam para cima",
+        text: "Por ser feito de formas simples, o símbolo funciona sozinho no ícone do site e nos adesivos.",
+      },
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "versoes",
+      label: "Versões",
+      eyebrow: "Família do logo",
+      title: "Versões do logo.",
+      body: "As cinco versões do logo, do nome inteiro ao símbolo sozinho, em fundo branco e em fundo escuro.",
+      media: desktop("versoes-desktop", "As cinco versões do logo In The Level em fundo branco e depois em fundo escuro"),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Principal", v: "Símbolo e nome numa linha; é a que o site usa no topo" },
+        { k: "Secundária e reduzida", v: "O nome em duas linhas e a forma curta IN TL" },
+        { k: "Mínima", v: "O nome escrito em círculo em volta do símbolo" },
+      ],
+    },
+    {
+      type: "identity",
+      id: "cores-e-tipografia",
+      label: "Cores e tipo",
+      eyebrow: "Cor e tipografia",
+      title: "Cores e tipografia.",
+      swatches: [
+        { name: "Azul Pantone 2382 C", hex: "#008AD8", role: "Cor principal: botões, links, campos e estados ativos" },
+        { name: "Azul medium", hex: "#0169A2", role: "Tom mais escuro da escala azul" },
+        { name: "Azul lightest", hex: "#A1D3EE", role: "Tom claro da escala azul" },
+        { name: "Azul superlight", hex: "#F2F7F9", role: "Fundo mais claro da escala" },
+        { name: "Cinza 950", hex: "#0C111D", role: "Fundo escuro dos logos e texto principal" },
+        { name: "Cinza 500", hex: "#667085", role: "Textos de apoio e separadores" },
+        { name: "Cinza 200", hex: "#EAECF0", role: "Fundos e linhas claras" },
+      ],
+      fonts: [
+        {
+          name: "Inter",
+          role: "Títulos e interações",
+          sample: "Solutions with In the Level",
+          weight: 700,
+          tracking: "-0.02em",
+          size: "xl",
+          fontKey: "inter",
+          note: "Display em 80 e 72 pixels e títulos de 64 a 24, sempre em negrito e com 120% de entrelinha.",
+        },
+        {
+          name: "Inter",
+          role: "Corpo, tags e textos menores",
+          sample: "Powerful tools and expert services designed to streamline operations.",
+          weight: 400,
+          size: "md",
+          fontKey: "inter",
+          note: "Corpo de 18 a 10 pixels, cada tamanho em quatro pesos (do regular ao negrito).",
+        },
+      ],
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "sistema",
+      label: "Sistema",
+      eyebrow: "Sistema de design",
+      title: "Uso das cores e dos textos.",
+      body: "O sistema organiza as cores e os textos da marca para quem desenha as telas.",
+      media: desktop("sistema-desktop", "Painel do sistema de design: escala de títulos em Inter, escala azul, cinzas e as cores de aviso, erro e sucesso"),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Azul", v: "Sete tons: superlight, lightest, light, o Pantone, medium, dark e darker" },
+        { k: "Cinzas", v: "Dez tons, do 950 ao 100" },
+        { k: "Aviso, erro e sucesso", v: "Sete tons cada, do fundo claro ao escuro" },
+      ],
+      decision: {
+        title: "A Inter cobre títulos e textos",
+        text: "O sistema usa uma família só, a Inter, em dois papéis: títulos e interações, e corpo, tags e textos menores. Com uma fonte só, a diferença entre os textos fica no tamanho e no peso.",
+      },
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "papelaria",
+      label: "Papelaria",
+      eyebrow: "Aplicações · papelaria",
+      title: "Papelaria.",
+      body: "Cartões de visita nas versões escura, azul e branca, papel timbrado e envelope.",
+      media: desktop("papelaria-desktop", "Cartões de visita da In The Level em azul, escuro e branco, e papel timbrado com envelope"),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Cartões", v: "Logo principal, símbolo, versão mínima e o cartão com nome e contato" },
+        { k: "Envelope", v: "Escuro, com o símbolo na aba e o logo em branco" },
+      ],
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "digital",
+      label: "Digital",
+      eyebrow: "Aplicações · tela",
+      title: "Aplicações digitais.",
+      body: "O símbolo azul ocupa a aba do navegador. Na assinatura de e-mail, a versão mínima, em círculo, fica ao lado do nome, do cargo e do contato.",
+      media: desktop("digital-desktop", "Navegador com a aba da In The Level e o site aberto, e uma assinatura de e-mail com a versão mínima do logo"),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Aba", v: "O símbolo azul, que o próprio site já usa como ícone" },
+        { k: "Site", v: "O site da empresa usa o logo principal e o azul da marca" },
+      ],
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "ambiente",
+      label: "Ambiente",
+      eyebrow: "Aplicações · ambiente",
+      title: "Aplicações no ambiente.",
+      body: "No vidro, o logo principal numa faixa jateada. No notebook, três adesivos da marca.",
+      media: desktop("ambiente-desktop", "Logo In The Level numa faixa jateada de uma parede de vidro e adesivos da marca na tampa de um notebook"),
+      mediaKind: "desktop",
+      side: "left",
+      specs: [
+        { k: "Vidro", v: "Logo principal sobre faixa jateada, na altura dos olhos" },
+        { k: "Adesivos", v: "Versão mínima, símbolo e versão reduzida" },
+      ],
+    },
+    {
+      type: "feature",
+      layout: "full",
+      id: "apresentacao",
+      label: "Apresentação",
+      eyebrow: "Aplicações · apresentação",
+      title: "Capa de apresentação.",
+      body: "Uma capa de apresentação com o logo em branco, o título e os dois produtos e dois serviços em cartões.",
+      media: desktop("apresentacao-desktop", "Tela de apresentação com o título Solutions with In the Level e os cartões JSYNQ Workspace, Plug&Sync, Outsourcing e On-Demand Software"),
+      mediaKind: "desktop",
+      side: "right",
+      specs: [
+        { k: "Título", v: "Inter em negrito, segunda linha no azul light" },
+        { k: "Cartões", v: "JSYNQ Workspace, Plug&Sync, Outsourcing e On-Demand Software" },
+      ],
+    },
+    {
+      type: "cta",
+      id: "projeto-real",
+      label: "Ver projeto",
+      title: "A marca em uso.",
+      body: "O site da In The Level usa o logo principal, o símbolo e o azul desta identidade.",
+      button: "Ver projeto real",
+      note: "Abre em uma nova aba",
+    },
+  ],
+};

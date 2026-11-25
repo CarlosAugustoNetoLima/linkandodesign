@@ -1,0 +1,30 @@
+/* Base dos mockups de marca (Linkando Design). Cada cena é um palco de 1600×1000
+   escalado para caber na janela: ?s=<cena>[,<cena>] escolhe as cenas e ?anim=1
+   liga o movimento de câmera e a troca entre cenas (para gravar em vídeo). */
+:root {
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --sh-1: 0 1px 1px rgba(0, 0, 0, .10), 0 2px 4px rgba(0, 0, 0, .06);
+  --sh-2: 0 1px 2px rgba(0, 0, 0, .12), 0 8px 18px -6px rgba(0, 0, 0, .18), 0 30px 60px -18px rgba(0, 0, 0, .28);
+  --sh-3: 0 2px 3px rgba(0, 0, 0, .14), 0 18px 36px -10px rgba(0, 0, 0, .28), 0 60px 120px -30px rgba(0, 0, 0, .40);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #111; }
+body { font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+#fit { position: fixed; left: 50%; top: 50%; width: 1600px; height: 1000px; transform-origin: 50% 50%; }
+.scene { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+.scene.on { opacity: 1; }
+.cam { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
+
+/* superfícies */
+.surface { position: absolute; inset: -6%; }
+.surface::after { content: ""; position: absolute; inset: 0; background-image: var(--noise); opacity: .07; mix-blend-mode: multiply; pointer-events: none; }
+.light { position: absolute; inset: 0; pointer-events: none; }
+
+/* logos monocromáticos por máscara: --src (url) e cor de fundo */
+.mk { -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; background: var(--c, #000); }
+.duo { position: relative; }
+.duo > i { position: absolute; inset: 0; -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
+
+.paper { position: absolute; }
+.paper::after { content: ""; position: absolute; inset: 0; background-image: var(--noise); opacity: .045; mix-blend-mode: multiply; pointer-events: none; border-radius: inherit; }

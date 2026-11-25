@@ -57,14 +57,25 @@ export default function WordReveal({
               : undefined;
             return (
               <Fragment key={idx}>
-                <span aria-hidden="true" style={{ display: "inline-block", overflow: "hidden", verticalAlign: "top" }}>
+                {/* a máscara avança além da linha (padding) e o margin negativo devolve o espaço: sem isso o
+                    line-height curto do título corta a perna do g, p, y e os acentos */}
+                <span
+                  aria-hidden="true"
+                  style={{
+                    display: "inline-block",
+                    overflow: "hidden",
+                    verticalAlign: "top",
+                    padding: "0.14em 0.06em 0.3em",
+                    margin: "-0.14em -0.06em -0.3em",
+                  }}
+                >
                   {reduced ? (
                     <span style={emStyle}>{word}</span>
                   ) : (
                     <motion.span
                       style={{ display: "inline-block", ...emStyle }}
-                      initial={{ y: "110%" }}
-                      animate={{ y: shown ? 0 : "110%" }}
+                      initial={{ y: "160%" }}
+                      animate={{ y: shown ? 0 : "160%" }}
                       transition={{ duration: 1, ease: EASE, delay: delay + idx * stagger }}
                     >
                       {word}

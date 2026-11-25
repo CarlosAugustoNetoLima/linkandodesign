@@ -14,6 +14,7 @@ export type ShowcaseItem = {
   location: string;
   flags: string[];
   tagline: string;
+  liveUrl: string; // link real do site no ar (deck.liveUrl)
   desktop: Media; // deck.cover
   mobile: Media; // gravação do celular, na mesma pasta do cover
 };
@@ -30,6 +31,7 @@ export function getShowcase(): ShowcaseItem[] {
       location: deck.location,
       flags: deck.flags,
       tagline: deck.tagline,
+      liveUrl: deck.liveUrl,
       desktop: deck.cover,
       mobile: {
         src: dir + "hero-mobile.mp4",
@@ -42,9 +44,11 @@ export function getShowcase(): ShowcaseItem[] {
   });
 }
 
-// Dor → decks que a provam, na ordem dos 3 serviços de `dict.home.services.items`.
+// Serviço → decks que o provam, na ordem dos 4 cartões de `dict.home.services.items`
+// (marca, site, landing page, sistemas). Lista vazia esconde o bloco "onde isso foi feito".
 export const serviceProofs: string[][] = [
-  ["cinnamon-studio", "viva-o-samba"],
-  ["collision-auto-pros", "az-car-rental"],
-  ["tickett", "station-one"],
+  ["jsynq-marca", "in-the-level"],
+  ["jsynq", "tickett"],
+  ["hubber-reels", "collision-auto-pros"],
+  ["jsynq-workspace"],
 ];

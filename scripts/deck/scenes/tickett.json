@@ -1,818 +1,3009 @@
 {
- "site": "tickett",
- "url": "https://tickett-linkando.vercel.app/pt-PT",
- "outDir": "public/decks/tickett",
- "cookies": [
-  {
-   "name": "tkt_consent",
-   "value": "essential",
-   "url": "https://tickett-linkando.vercel.app"
-  },
-  {
-   "name": "tkt_consent",
-   "value": "essential",
-   "url": "http://localhost:3000"
-  }
- ],
- "scenes": [
-  {
-   "name": "hero-desktop",
-   "device": "desktop",
-   "setup": [
+  "site": "tickett",
+  "url": "https://tickett.com/pt-PT",
+  "outDir": "public/decks/tickett",
+  "cookies": [
     {
-     "op": "goto"
+      "name": "tkt_consent",
+      "value": "essential",
+      "url": "https://tickett.com"
     },
     {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 2500
+      "name": "tkt_consent",
+      "value": "essential",
+      "url": "http://localhost:3000"
     }
-   ],
-   "record": [
+  ],
+  "scenes": [
     {
-     "op": "wait",
-     "ms": 13500
+      "name": "hero-desktop",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 13500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "carousel-desktop",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Pausar destaques\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Anterior\"]",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "click",
+          "x": 1027,
+          "y": 419
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 700
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "top10-desktop",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 440,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "a[href*=\"/event/\"]",
+          "ms": 1100
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1100
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Anterior\"]",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Anterior\"]",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "bento-desktop",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 1000,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 1400,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 330,
+            "y": 460
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 940,
+            "y": 470
+          },
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 2050,
+          "ms": 2600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 400
+          },
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 520
+          },
+          "ms": 1300
+        },
+        {
+          "op": "scroll",
+          "to": 2800,
+          "ms": 2600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 420
+          },
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "venda-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "http://localhost:3000/pt-PT/venda"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}"
+        },
+        {
+          "op": "waitFor",
+          "selector": "#promotor-nome",
+          "timeout": 30000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "button[class*=\"Button_button\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "click",
+          "selector": "#promotor-nome"
+        },
+        {
+          "op": "type",
+          "text": "Teste Tickett",
+          "delay": 55
+        },
+        {
+          "op": "click",
+          "selector": "#promotor-entidade"
+        },
+        {
+          "op": "type",
+          "text": "Empresa Teste",
+          "delay": 55
+        },
+        {
+          "op": "click",
+          "selector": "#promotor-nif"
+        },
+        {
+          "op": "type",
+          "text": "123456789",
+          "delay": 55
+        },
+        {
+          "op": "click",
+          "selector": "#promotor-email"
+        },
+        {
+          "op": "type",
+          "text": "teste@exemplo.pt",
+          "delay": 50
+        },
+        {
+          "op": "click",
+          "selector": "#promotor-telefone"
+        },
+        {
+          "op": "type",
+          "text": "912345678",
+          "delay": 55
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": "button[class*=\"Button_button\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "scroll",
+          "to": 380,
+          "ms": 1600
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 6800
+        },
+        {
+          "op": "scroll",
+          "to": 520,
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "idioma-desktop",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 600
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "header button[aria-expanded][aria-controls]"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "button[lang=\"en-GB\"]",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "button[lang=\"en-GB\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 2600
+        },
+        {
+          "op": "click",
+          "selector": "header button[aria-expanded][aria-controls]"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": "button[lang=\"es\"]",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "button[lang=\"es\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 2300
+        },
+        {
+          "op": "click",
+          "selector": "header button[aria-expanded][aria-controls]"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": "button[lang=\"fr\"]",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "button[lang=\"fr\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 2300
+        },
+        {
+          "op": "click",
+          "selector": "header button[aria-expanded][aria-controls]"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": "button[lang=\"pt-PT\"]",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "button[lang=\"pt-PT\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "cookies-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "hover",
+          "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
+          "nth": 0,
+          "ms": 1100
+        },
+        {
+          "op": "hover",
+          "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
+          "nth": 1,
+          "ms": 1100
+        },
+        {
+          "op": "click",
+          "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "top",
+            "offsetVh": -0.35
+          },
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "button:has-text(\"Definições de cookies\")",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "button:has-text(\"Definições de cookies\")"
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        }
+      ],
+      "noCookies": true,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "alertas-desktop",
+      "device": "desktop-hd",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"AlertasWhatsapp-module\"][class*=\"__section\"]",
+            "at": "top",
+            "offsetVh": -0.28
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 740
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "click",
+          "selector": "section[class*=\"AlertasWhatsapp-module\"] input"
+        },
+        {
+          "op": "type",
+          "text": "pedro@",
+          "delay": 120
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "section[class*=\"AlertasWhatsapp-module\"] button[type=\"submit\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"Promotor-module\"][class*=\"__section\"]",
+            "at": "top",
+            "offsetVh": -0.2
+          },
+          "ms": 1700
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+          "nth": 0,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+          "nth": 1,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+          "nth": 2,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
+          "nth": 3,
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "menu-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-controls=\"mobile-menu\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": "#mobile-menu button[aria-expanded]"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-controls=\"mobile-search\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "type",
+          "text": "rock",
+          "delay": 150
+        },
+        {
+          "op": "wait",
+          "ms": 1700
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-controls=\"mobile-search\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-cartao",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/eventos"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": "a[class*=\"Card-module\"]",
+          "ms": 1500,
+          "moveMs": 500,
+          "nth": 0
+        },
+        {
+          "op": "hover",
+          "selector": "a[class*=\"Card-module\"]",
+          "ms": 1700,
+          "moveMs": 600,
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 330
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-pausa",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1187,
+            "y": 700
+          },
+          "ms": 100
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "click",
+          "x": 1187,
+          "y": 457,
+          "moveMs": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "x": 1187,
+          "y": 457,
+          "moveMs": 100
+        },
+        {
+          "op": "wait",
+          "ms": 200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1187,
+            "y": 545
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-mapa",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 2100,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 5000
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-categorias",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/eventos"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": "a:visible:has-text(\"Funk & Trap\")",
+          "ms": 500,
+          "moveMs": 500
+        },
+        {
+          "op": "click",
+          "selector": "a:visible:has-text(\"Funk & Trap\")",
+          "moveMs": 100
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "hover",
+          "selector": "a:visible:has-text(\"Reggae\")",
+          "ms": 500,
+          "moveMs": 500
+        },
+        {
+          "op": "click",
+          "selector": "a:visible:has-text(\"Reggae\")",
+          "moveMs": 100
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-calendario",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/eventos"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        }
+      ],
+      "record": [
+        {
+          "op": "click",
+          "selector": "button[aria-haspopup=\"true\"]:text-is(\"Data\")",
+          "moveMs": 400
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": "button:visible:has-text(\"Escolher data\")",
+          "moveMs": 400
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "button:text-is(\"12\")",
+          "moveMs": 500,
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "click",
+          "selector": "button:text-is(\"18\")",
+          "moveMs": 400,
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-compartilhar",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/event/2147/samba-pra-lua-cheia-27-novembro-Lisboa-LIS"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": 700,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": "[data-name=\"share\"] button[aria-label=\"copy\"]",
+          "ms": 300,
+          "moveMs": 500
+        },
+        {
+          "op": "click",
+          "selector": "[data-name=\"share\"] button[aria-label=\"copy\"]",
+          "moveMs": 100
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "hover",
+          "selector": "[data-name=\"share\"] button[aria-label=\"x\"]",
+          "ms": 400,
+          "moveMs": 400
+        },
+        {
+          "op": "hover",
+          "selector": "[data-name=\"share\"] button[aria-label=\"facebook\"]",
+          "ms": 400,
+          "moveMs": 400
+        },
+        {
+          "op": "hover",
+          "selector": "[data-name=\"share\"] button[aria-label=\"whatsapp\"]",
+          "ms": 400,
+          "moveMs": 400
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "detail-comprar",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"Price\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "click",
+          "x": 1187,
+          "y": 457,
+          "moveMs": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 700
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "hover",
+          "x": 185,
+          "y": 457,
+          "moveMs": 600,
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 520,
+            "y": 600
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "x": 185,
+          "y": 457,
+          "moveMs": 600,
+          "ms": 1000
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop-hd",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://tickett.com/pt-PT",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"priceBlock\"],[class*=\"priceRow\"],[class*=\"priceValue\"],[class*=\"priceLabel\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://tickett.com/pt-PT",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"priceStack\"],[class*=\"priceCol\"],[class*=\"priceLabel\"],[class*=\"priceValue\"],[class*=\"priceBlock\"],[class*=\"priceAccent\"],[class*=\"priceWhite\"]{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"priceBlock\"],[class*=\"priceRow\"],[class*=\"priceValue\"],[class*=\"priceLabel\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"]{display:none !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "venda-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://tickett.com/pt-PT/venda",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/venda"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"priceBlock\"],[class*=\"priceRow\"],[class*=\"priceValue\"],[class*=\"priceLabel\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "nav-desktop",
+      "device": "desktop-hd",
+      "cursor": true,
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"priceStack\"],[class*=\"priceCol\"],[class*=\"priceLabel\"],[class*=\"priceValue\"],[class*=\"priceBlock\"],[class*=\"priceAccent\"],[class*=\"priceWhite\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": "header nav a",
+          "nth": 0,
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": "header nav a",
+          "nth": 1,
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"LocaleSwitcher\"] button",
+          "ms": 300
+        },
+        {
+          "op": "click",
+          "selector": "[class*=\"LocaleSwitcher\"] button"
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"LocaleSwitcher\"] ul button",
+          "nth": 1,
+          "moveMs": 350,
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"LocaleSwitcher\"] ul button",
+          "nth": 2,
+          "moveMs": 350,
+          "ms": 800
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "maxBytes": 16777216
+    },
+    {
+      "name": "nav-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"priceStack\"],[class*=\"priceCol\"],[class*=\"priceLabel\"],[class*=\"priceValue\"],[class*=\"priceBlock\"],[class*=\"priceAccent\"],[class*=\"priceWhite\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-controls=\"mobile-menu\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": "#mobile-menu button[aria-expanded]"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "carrossel-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"priceStack\"],[class*=\"priceCol\"],[class*=\"priceLabel\"],[class*=\"priceValue\"],[class*=\"priceBlock\"],[class*=\"priceAccent\"],[class*=\"priceWhite\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "click",
+          "selector": "[class*=\"arrowButton\"]",
+          "nth": 1,
+          "moveMs": 0
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "click",
+          "selector": "[class*=\"arrowButton\"]",
+          "nth": 1,
+          "moveMs": 0
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "click",
+          "selector": "[class*=\"arrowButton\"]",
+          "nth": 0,
+          "moveMs": 0
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();"
+    },
+    {
+      "name": "top10-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"priceStack\"],[class*=\"priceCol\"],[class*=\"priceLabel\"],[class*=\"priceValue\"],[class*=\"priceBlock\"],[class*=\"priceAccent\"],[class*=\"priceWhite\"]{display:none!important}#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "section:has([class*=\"__rankNumber\"])",
+            "at": "top",
+            "offsetPx": -70
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "x": 300,
+            "y": 420
+          },
+          "by": {
+            "dx": -230,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "x": 300,
+            "y": 420
+          },
+          "by": {
+            "dx": -230,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "x": 300,
+            "y": 420
+          },
+          "by": {
+            "dx": -230,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "x": 300,
+            "y": 420
+          },
+          "by": {
+            "dx": -230,
+            "dy": 0
+          },
+          "ms": 900,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "drag",
+          "from": {
+            "x": 80,
+            "y": 420
+          },
+          "by": {
+            "dx": 300,
+            "dy": 0
+          },
+          "ms": 1200,
+          "touch": true
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "minFps": 2
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "cursor": true,
+      "url": "https://tickett.com/pt-PT",
+      "name": "detail-luz",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"__area-img1\"]",
+            "at": "top",
+            "offsetPx": -160
+          },
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 1000
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 330
+          },
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 300
+          },
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1150,
+            "y": 620
+          },
+          "ms": 1100
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 640
+          },
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 500
+          },
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        }
+      ]
+    },
+    {
+      "name": "detail-bilhete",
+      "device": "desktop-hd2",
+      "crop": {
+        "selector": "[class*=\"__area-img1\"]",
+        "x": -180,
+        "y": -8,
+        "w": 760
+      },
+      "minFps": 2,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett.com/pt-PT",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"__area-img1\"]",
+            "at": "top",
+            "offsetPx": -150
+          },
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1400,
+            "y": 880
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 6600
+        }
+      ]
+    },
+    {
+      "name": "detail-whatsapp",
+      "device": "desktop-hd2",
+      "crop": {
+        "selector": "[class*=\"__area-img3\"]",
+        "x": -180,
+        "y": -8,
+        "w": 760
+      },
+      "minFps": 2,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett.com/pt-PT",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"__area-img3\"]",
+            "at": "top",
+            "offsetPx": -150
+          },
+          "ms": 1800
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1400,
+            "y": 880
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 6600
+        }
+      ]
+    },
+    {
+      "name": "detail-progresso",
+      "device": "desktop-hd2",
+      "crop": {
+        "x": 1140,
+        "y": 360,
+        "w": 260
+      },
+      "minFps": 1,
+      "cursor": true,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett.com/pt-PT",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1300,
+            "y": 700
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "moveMs": 700
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1300,
+            "y": 700
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "cursor": true,
+      "url": "https://tickett.com/pt-PT",
+      "name": "detail-top10",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "section:has([class*=\"__rankNumber\"])",
+            "at": "top",
+            "offsetPx": -150
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 1000
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": "[class*=\"__rankNumber\"] ~ *, [class*=\"__card\"]",
+          "moveMs": 800,
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "section:has([class*=\"__rankNumber\"]) button[aria-label=\"Seguinte\"], section:has([class*=\"__rankNumber\"]) button:last-of-type",
+          "moveMs": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "click",
+          "selector": "section:has([class*=\"__rankNumber\"]) button[aria-label=\"Seguinte\"], section:has([class*=\"__rankNumber\"]) button:last-of-type",
+          "moveMs": 200
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "cursor": true,
+      "url": "https://tickett.com/pt-PT/eventos",
+      "name": "detail-filtros",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/eventos"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 700
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": "text=Funk & Trap",
+          "moveMs": 900,
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": "text=Funk & Trap",
+          "moveMs": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "click",
+          "selector": "text=Todos",
+          "moveMs": 600
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "button:has-text(\"Data\")",
+          "moveMs": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "hover",
+          "selector": "button:has-text(\"Este fim de semana\")",
+          "moveMs": 500,
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": "button:has-text(\"Escolher data\")",
+          "moveMs": 600
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": "button:has-text(\"Local\")",
+          "moveMs": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": "button:has-text(\"Ordenar\")",
+          "moveMs": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "cursor": true,
+      "url": "https://tickett.com/pt-PT/event/2022/the-calling-tour-portugal-2027-lisboa-23-abril-",
+      "name": "detail-evento",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/event/2022/the-calling-tour-portugal-2027-lisboa-23-abril-"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1300,
+            "y": 200
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-name=\"share\"]",
+            "at": "top",
+            "offsetPx": -500
+          },
+          "ms": 3000,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": "[data-name=\"share\"] [class*=\"__iconButton\"]",
+          "moveMs": 900,
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "[data-name=\"share\"] [class*=\"__iconButton\"]",
+          "moveMs": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "hover",
+          "selector": "[data-name=\"Sticky\"] a",
+          "moveMs": 900,
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "cursor": true,
+      "url": "https://tickett.com/pt-PT",
+      "name": "detail-cartoes",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"__card\"]",
+            "at": "top",
+            "offsetPx": -200
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 1050
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": "[class*=\"__card\"]",
+          "nth": 0,
+          "moveMs": 800,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"__card\"]",
+          "nth": 1,
+          "moveMs": 500,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"__card\"]",
+          "nth": 2,
+          "moveMs": 500,
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"__card\"]",
+          "nth": 3,
+          "moveMs": 500,
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 1050
+          },
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "checkout-desktop",
+      "device": "desktop",
+      "fps": 60,
+      "endFade": 900,
+      "cursor": true,
+      "maxBytes": 8388608,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett-linkando.vercel.app/pt-PT/checkout/2022",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett-linkando.vercel.app/pt-PT/checkout/2022"
+        },
+        {
+          "op": "css",
+          "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 600
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 250,
+            "y": 330
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 371,
+            "y": 353
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "[data-sector=\"PLATEIA\"]",
+          "moveMs": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 620
+          },
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "[data-demo=\"qty-plus\"]",
+          "moveMs": 700
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "[data-demo=\"qty-plus\"]",
+          "moveMs": 200
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "hover",
+          "selector": "[data-demo=\"cart-item\"]",
+          "moveMs": 900,
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "[data-demo=\"continue\"]",
+          "moveMs": 700
+        },
+        {
+          "op": "wait",
+          "ms": 2200
+        }
+      ]
+    },
+    {
+      "name": "busca-mobile",
+      "device": "mobile",
+      "fps": 60,
+      "endFade": 900,
+      "maxBytes": 9437184,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett.com/pt-PT",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-controls=\"mobile-search\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "type",
+          "text": "samba",
+          "delay": 140
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "press",
+          "key": "Enter"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": 600,
+          "ms": 2200,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "filtros-mobile",
+      "device": "mobile",
+      "fps": 60,
+      "endFade": 900,
+      "maxBytes": 9437184,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett.com/pt-PT/eventos",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/eventos"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Filtros\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "click",
+          "selector": "[role=\"dialog\"] button:has-text(\"Data\")"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "evento-mobile",
+      "device": "mobile",
+      "fps": 60,
+      "endFade": 900,
+      "maxBytes": 9437184,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett.com/pt-PT/event/2022/the-calling-tour-portugal-2027-lisboa-23-abril-",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett.com/pt-PT/event/2022/the-calling-tour-portugal-2027-lisboa-23-abril-"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"__priceBlock\"],[class*=\"__priceAccent\"],[class*=\"__priceWhite\"],[class*=\"__mediumPriceRow\"],[class*=\"__priceLabel\"],[class*=\"__priceStack\"],[class*=\"__priceCol\"],[class*=\"__priceValue\"],[class*=\"__stickyPrice\"]{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "checkout-mobile",
+      "device": "mobile",
+      "fps": 60,
+      "endFade": 900,
+      "maxBytes": 9437184,
+      "initScript": "(()=>{const re=/(€\\s?\\d[\\d.,]*|\\d[\\d.,]*\\s?€)/g;const run=()=>{if(!document.body)return;const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(n.parentElement&&n.parentElement.tagName==='SCRIPT')continue;if(re.test(n.nodeValue)){re.lastIndex=0;n.nodeValue=n.nodeValue.replace(re,'');}re.lastIndex=0;}};setInterval(run,60);document.addEventListener('DOMContentLoaded',run);})();",
+      "url": "https://tickett-linkando.vercel.app/pt-PT/checkout/2022",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://tickett-linkando.vercel.app/pt-PT/checkout/2022"
+        },
+        {
+          "op": "css",
+          "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "[data-sector=\"PLATEIA\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 1300
+        },
+        {
+          "op": "click",
+          "selector": "[data-demo=\"qty-plus\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": "[data-demo=\"qty-plus\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-demo=\"cart\"]",
+            "at": "bottom",
+            "offsetPx": 40
+          },
+          "ms": 1500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "[data-demo=\"continue\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "minFps": 2
+    },
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "maxBytes": 4000000,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}[class*=\"price\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Pausar destaques\"]"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 600
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Seguinte\"]",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "button[aria-label=\"Anterior\"]",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 600
+          },
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "section[class*=\"Top10-module\"]",
+            "offsetPx": -40
+          },
+          "ms": 1900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"WhyChooseUsBento\"][class*=\"__area-img1\"]",
+            "offsetPx": -110
+          },
+          "ms": 2000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 250,
+            "y": 430
+          },
+          "ms": 600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 820,
+            "y": 250
+          },
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"WhyChooseUsBento\"][class*=\"__area-img2\"]",
+            "offsetPx": -110
+          },
+          "ms": 1900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1020,
+            "y": 420
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[class*=\"WhyChooseUsBento\"][class*=\"__area-img3\"]",
+            "offsetPx": -110
+          },
+          "ms": 1900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 260,
+            "y": 420
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "section[class*=\"Top10-module\"]",
+            "offsetPx": -40
+          },
+          "ms": 2000
+        },
+        {
+          "op": "hover",
+          "selector": "section[class*=\"Top10-module\"] a[href*=\"/event/\"]",
+          "ms": 1000,
+          "nth": 2
+        },
+        {
+          "op": "click",
+          "selector": "section[class*=\"Top10-module\"] button[aria-label=\"Seguinte\"]",
+          "nth": 0
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "[class*=\"LocaleSwitcher\"] button"
+        },
+        {
+          "op": "hover",
+          "selector": "[class*=\"LocaleSwitcher\"] ul button",
+          "ms": 500,
+          "nth": 1,
+          "moveMs": 300
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 600
+          },
+          "ms": 300
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ]
     }
-   ]
-  },
-  {
-   "name": "carousel-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 2500
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 2800
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Pausar destaques\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Seguinte\"]",
-     "nth": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Seguinte\"]",
-     "nth": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Anterior\"]",
-     "nth": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "click",
-     "x": 1027,
-     "y": 419
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 700
-     },
-     "ms": 700
-    },
-    {
-     "op": "wait",
-     "ms": 3000
-    }
-   ]
-  },
-  {
-   "name": "top10-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 2500
-    },
-    {
-     "op": "scroll",
-     "to": 440,
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "a[href*=\"/event/\"]",
-     "ms": 1100
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Seguinte\"]",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1000
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Seguinte\"]",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1000
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Seguinte\"]",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1100
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Anterior\"]",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1000
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-label=\"Anterior\"]",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ]
-  },
-  {
-   "name": "bento-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 2500
-    },
-    {
-     "op": "scroll",
-     "to": 1000,
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 800
-    }
-   ],
-   "record": [
-    {
-     "op": "scroll",
-     "to": 1400,
-     "ms": 2200
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 330,
-      "y": 460
-     },
-     "ms": 900
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 940,
-      "y": 470
-     },
-     "ms": 1400
-    },
-    {
-     "op": "scroll",
-     "to": 2050,
-     "ms": 2600
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 420,
-      "y": 400
-     },
-     "ms": 1000
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 900,
-      "y": 520
-     },
-     "ms": 1300
-    },
-    {
-     "op": "scroll",
-     "to": 2800,
-     "ms": 2600
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 420
-     },
-     "ms": 1000
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "venda-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "http://localhost:3000/pt-PT/venda"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window,nextjs-portal{display:none!important}"
-    },
-    {
-     "op": "waitFor",
-     "selector": "#promotor-nome",
-     "timeout": 30000
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "click",
-     "selector": "button[class*=\"Button_button\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 1600
-    },
-    {
-     "op": "click",
-     "selector": "#promotor-nome"
-    },
-    {
-     "op": "type",
-     "text": "Teste Tickett",
-     "delay": 55
-    },
-    {
-     "op": "click",
-     "selector": "#promotor-entidade"
-    },
-    {
-     "op": "type",
-     "text": "Empresa Teste",
-     "delay": 55
-    },
-    {
-     "op": "click",
-     "selector": "#promotor-nif"
-    },
-    {
-     "op": "type",
-     "text": "123456789",
-     "delay": 55
-    },
-    {
-     "op": "click",
-     "selector": "#promotor-email"
-    },
-    {
-     "op": "type",
-     "text": "teste@exemplo.pt",
-     "delay": 50
-    },
-    {
-     "op": "click",
-     "selector": "#promotor-telefone"
-    },
-    {
-     "op": "type",
-     "text": "912345678",
-     "delay": 55
-    },
-    {
-     "op": "wait",
-     "ms": 500
-    },
-    {
-     "op": "click",
-     "selector": "button[class*=\"Button_button\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 2200
-    },
-    {
-     "op": "scroll",
-     "to": 380,
-     "ms": 1600
-    },
-    {
-     "op": "wait",
-     "ms": 1000
-    }
-   ]
-  },
-  {
-   "name": "hero-mobile",
-   "device": "mobile",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 2500
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 6800
-    },
-    {
-     "op": "scroll",
-     "to": 520,
-     "ms": 2200
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    },
-    {
-     "op": "scroll",
-     "to": 0,
-     "ms": 2000
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ]
-  },
-  {
-   "name": "idioma-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "css",
-     "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 600
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": "header button[aria-expanded][aria-controls]"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "button[lang=\"en-GB\"]",
-     "ms": 700
-    },
-    {
-     "op": "click",
-     "selector": "button[lang=\"en-GB\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 2600
-    },
-    {
-     "op": "click",
-     "selector": "header button[aria-expanded][aria-controls]"
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "hover",
-     "selector": "button[lang=\"es\"]",
-     "ms": 600
-    },
-    {
-     "op": "click",
-     "selector": "button[lang=\"es\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 2300
-    },
-    {
-     "op": "click",
-     "selector": "header button[aria-expanded][aria-controls]"
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "hover",
-     "selector": "button[lang=\"fr\"]",
-     "ms": 600
-    },
-    {
-     "op": "click",
-     "selector": "button[lang=\"fr\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 2300
-    },
-    {
-     "op": "click",
-     "selector": "header button[aria-expanded][aria-controls]"
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "hover",
-     "selector": "button[lang=\"pt-PT\"]",
-     "ms": 600
-    },
-    {
-     "op": "click",
-     "selector": "button[lang=\"pt-PT\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 2000
-    }
-   ]
-  },
-  {
-   "name": "cookies-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 300,
-      "y": 300
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1600
-    },
-    {
-     "op": "hover",
-     "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
-     "nth": 0,
-     "ms": 1100
-    },
-    {
-     "op": "hover",
-     "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
-     "nth": 1,
-     "ms": 1100
-    },
-    {
-     "op": "click",
-     "selector": "section[aria-labelledby=\"cookie-consent-title\"] button",
-     "nth": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "footer",
-      "at": "top",
-      "offsetVh": -0.35
-     },
-     "ms": 2200
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "button:has-text(\"Definições de cookies\")",
-     "ms": 700
-    },
-    {
-     "op": "click",
-     "selector": "button:has-text(\"Definições de cookies\")"
-    },
-    {
-     "op": "wait",
-     "ms": 2400
-    }
-   ],
-   "noCookies": true
-  },
-  {
-   "name": "alertas-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "css",
-     "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[class*=\"AlertasWhatsapp-module\"][class*=\"__section\"]",
-      "at": "top",
-      "offsetVh": -0.28
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 120,
-      "y": 740
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "click",
-     "selector": "section[class*=\"AlertasWhatsapp-module\"] input"
-    },
-    {
-     "op": "type",
-     "text": "pedro@",
-     "delay": 120
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    },
-    {
-     "op": "click",
-     "selector": "section[class*=\"AlertasWhatsapp-module\"] button[type=\"submit\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 2000
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[class*=\"Promotor-module\"][class*=\"__section\"]",
-      "at": "top",
-      "offsetVh": -0.2
-     },
-     "ms": 1700
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
-     "nth": 0,
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
-     "nth": 1,
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
-     "nth": 2,
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "[class*=\"Promotor-module\"] [class*=\"__featCard\"]",
-     "nth": 3,
-     "ms": 900
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "menu-mobile",
-   "device": "mobile",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "css",
-     "text": "#chatbase-bubble-button,#chatbase-message-bubbles,#chatbase-bubble-window{display:none!important}"
-    },
-    {
-     "op": "css",
-     "text": "section[aria-labelledby=\"cookie-consent-title\"]{display:none!important}"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-controls=\"mobile-menu\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "click",
-     "selector": "#mobile-menu button[aria-expanded]"
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "press",
-     "key": "Escape"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-controls=\"mobile-search\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "type",
-     "text": "rock",
-     "delay": 150
-    },
-    {
-     "op": "wait",
-     "ms": 1700
-    },
-    {
-     "op": "click",
-     "selector": "button[aria-controls=\"mobile-search\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ]
-  }
- ]
+  ]
 }

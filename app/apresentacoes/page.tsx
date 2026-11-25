@@ -11,13 +11,13 @@ export default function ApresentacoesPage() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-5 pb-10 pt-14 md:pt-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Portfólio 2026</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Portfólio</p>
         <h1 className="mt-4 max-w-4xl font-display text-display font-extrabold uppercase">
-          Sites que vendem, por dentro.
+          Projetos entregues.
         </h1>
         <p className="mt-5 max-w-xl text-muted">
-          Apresentações animadas dos sites que construí em 2026 com IA: os efeitos, o motion, as decisões de
-          UI e o site real a um clique.
+          Sites, landing pages, marcas e sistemas. Cada apresentação mostra os efeitos, as decisões de
+          design e o link do projeto no ar.
         </p>
       </section>
 

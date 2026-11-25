@@ -1,15 +1,9 @@
 "use client";
 
-import { Fragment, useRef, useState } from "react";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+import { Fragment } from "react";
+import { motion } from "framer-motion";
+import { cx } from "@/components/deck/cx";
 import Chapter from "@/components/deck/primitives/Chapter";
-import CountUp from "@/components/deck/primitives/CountUp";
 import Eyebrow from "@/components/deck/primitives/Eyebrow";
 import { useReduced } from "@/components/deck/useReduced";
 import type { Deck, StatementChapter } from "@/lib/decks/types";
@@ -19,113 +13,74 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 // Comparação de palavra: sem caixa e sem pontuação, como manda o campo emphasis.
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9À-ɏ]/g, "");
 
-type WordProps = {
-  text: string;
-  progress: MotionValue<number>;
-  start: number;
-  end: number;
-  emphasized: boolean;
-  reduced: boolean | null;
-};
-
-// Uma palavra: a opacidade acompanha o scroll; palavra de destaque também muda de cor.
-// Os hooks ficam aqui, um conjunto por palavra.
-function Word({ text, progress, start, end, emphasized, reduced }: WordProps) {
-  const opacity = useTransform(progress, [start, end], [0.14, 1]);
-  // framer não interpola var(), então a cor vai de fg para accent via color-mix
-  const mix = useTransform(progress, [end - 0.02, end], [0, 100]);
-  const accentMix = useTransform(mix, (p) => `color-mix(in srgb, var(--d-accent) ${p}%, var(--d-fg))`);
-
-  return (
-    <motion.span
-      style={{
-        opacity: reduced ? 1 : opacity,
-        color: emphasized ? (reduced ? "var(--d-accent)" : accentMix) : undefined,
-      }}
-    >
-      {text}
-    </motion.span>
-  );
-}
-
-// Afirmação: o texto acende palavra a palavra com o scroll e, ao fim, os números contam.
-// Com prefers-reduced-motion vira texto estático e altura normal.
+// Resumo: uma frase de abertura grande e o resto do texto pequeno.
+// Nada depende da rolagem: tudo entra uma vez ao aparecer na tela.
 export default function Statement({ chapter, deck }: { chapter: StatementChapter; deck: Deck }) {
   const reduced = useReduced();
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const [showStats, setShowStats] = useState(false);
-  useMotionValueEvent(scrollYProgress, "change", (v) => setShowStats(v > 0.7));
 
-  const words = chapter.text.split(/\s+/).filter(Boolean);
-  const N = Math.max(words.length, 1);
+  // Divide o texto em frases sem mudar nenhuma palavra; frase curta demais se junta à seguinte.
+  const sentences = chapter.text.match(/[^.!?]+(?:[.!?]+["”]?|$)\s*/g)?.map((s) => s.trim()) ?? [chapter.text];
+  const joined = sentences[0].length < 40 && sentences.length > 1;
+  const lead = joined ? `${sentences[0]} ${sentences[1]}` : sentences[0];
+  const support = sentences.slice(joined ? 2 : 1).join(" ");
+
   const marked = new Set(chapter.emphasis.map(norm));
-  const visible = reduced || showStats;
+  const leadWords = lead.split(/\s+/).filter(Boolean);
+  const supportWords = support.split(/\s+/).filter(Boolean);
 
   return (
-    <Chapter
-      id={chapter.id}
-      className={reduced ? undefined : "h-[240vh]"}
-      style={reduced ? undefined : { padding: 0 }}
-    >
-      <div ref={ref} className="h-full">
-        <div className={reduced ? "" : "sticky top-0 deck-screen h-[100svh]"}>
-          <div className="deck-container">
-            <Eyebrow>{chapter.eyebrow}</Eyebrow>
+    <Chapter id={chapter.id}>
+      <div className="deck-container">
+        <Eyebrow>{chapter.eyebrow}</Eyebrow>
 
-            <p
-              className="mt-8 leading-[1.22]"
-              style={{
-                fontSize: "clamp(1.7rem, 3.7vw, 3.3rem)",
-                fontWeight: "var(--d-display-weight)",
-                maxWidth: 1240,
-              }}
-            >
-              {words.map((w, i) => {
-                const a = (i / N) * 0.62;
-                const b = a + (0.62 / N) * 3;
-                return (
-                  <Fragment key={i}>
-                    <Word
-                      text={w}
-                      progress={scrollYProgress}
-                      start={a}
-                      end={b}
-                      emphasized={marked.has(norm(w))}
-                      reduced={reduced}
-                    />
-                    {i < words.length - 1 ? " " : null}
-                  </Fragment>
-                );
-              })}
-            </p>
+        <p
+          className="mt-8"
+          style={{
+            fontSize: lead.length > 170 ? "clamp(1.7rem, 3.4vw, 3rem)" : "clamp(1.9rem, 4.2vw, 3.8rem)",
+            fontWeight: "var(--d-display-weight)",
+            lineHeight: 1.12,
+            maxWidth: 1100,
+          }}
+        >
+          {leadWords.map((w, i) => (
+            <Fragment key={i}>
+              {/* inline-block: sem isso o y não se aplica a uma palavra em linha */}
+              <motion.span
+                className="inline-block"
+                style={{ color: marked.has(norm(w)) ? "var(--d-accent)" : undefined }}
+                initial={reduced ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+                transition={{ duration: 0.7, ease: EASE, delay: Math.min(i * 0.03, 0.9) }}
+              >
+                {w}
+              </motion.span>
+              {i < leadWords.length - 1 ? " " : null}
+            </Fragment>
+          ))}
+        </p>
 
-            <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-3">
-              {chapter.stats.map((s, i) => (
-                <motion.div
-                  key={s.label}
-                  initial={false}
-                  animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 24 }}
-                  transition={{ duration: 0.9, ease: EASE, delay: i * 0.12 }}
-                >
-                  <p
-                    className="leading-none"
-                    style={{
-                      fontSize: "clamp(2.4rem, 5vw, 4.4rem)",
-                      fontWeight: 200,
-                      color: "var(--d-accent)",
-                    }}
-                  >
-                    <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} start={visible} />
-                  </p>
-                  <p className="deck-body mt-4" style={{ fontSize: 14 }}>
-                    {s.label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {support && (
+          <motion.p
+            className="deck-body mt-8"
+            style={{ fontSize: "clamp(1rem, 1.25vw, 1.2rem)", maxWidth: "62ch" }}
+            initial={reduced ? false : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
+          >
+            {supportWords.map((w, i) => (
+              <Fragment key={i}>
+                {marked.has(norm(w)) ? (
+                  <span style={{ color: "var(--d-accent)", fontWeight: 500 }}>{w}</span>
+                ) : (
+                  w
+                )}
+                {i < supportWords.length - 1 ? " " : null}
+              </Fragment>
+            ))}
+          </motion.p>
+        )}
       </div>
     </Chapter>
   );

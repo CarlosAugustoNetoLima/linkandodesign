@@ -1,0 +1,2181 @@
+{
+  "site": "jsynq",
+  "url": "https://jsynq-linkando.vercel.app/pt",
+  "outDir": "public/decks/jsynq",
+  "cookies": [
+    {
+      "name": "jsynq.cookie-consent",
+      "value": "rejected",
+      "url": "https://jsynq-linkando.vercel.app"
+    }
+  ],
+  "cursor": true,
+  "scenes": [
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 640
+          },
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 760,
+            "y": 360
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 980,
+            "y": 300
+          },
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": "#hx-hc-tab-meet",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "#hx-hc-tab-meet"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1040,
+            "y": 360
+          },
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#consultoria",
+            "offsetPx": 330
+          },
+          "ms": 2600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1120,
+            "y": 520
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".hx-how__pin",
+            "offsetPx": 300
+          },
+          "ms": 2600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 980,
+            "y": 460
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".hx-acard",
+            "offsetPx": -150
+          },
+          "ms": 2200
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-acard",
+          "nth": 1,
+          "ms": 700
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 520
+          },
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#plataforma",
+            "offsetPx": 300
+          },
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 820,
+            "y": 400
+          },
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".hx-faq",
+            "offsetVh": -0.06
+          },
+          "ms": 2200
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-faq__q",
+          "nth": 1,
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": ".hx-faq__q",
+          "nth": 1
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 520
+          },
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 700,
+          "ms": 0
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "hover",
+          "selector": "#hx-hc-tab-service",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "#hx-hc-tab-service"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 760,
+            "y": 360
+          },
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": 1,
+          "ms": 0
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 30,
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".hx-hc__tab",
+            "offsetPx": -700
+          },
+          "ms": 1900
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#consultoria",
+            "offsetPx": 260
+          },
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".hx-how",
+            "offsetPx": 300
+          },
+          "ms": 2200
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2400
+        },
+        {
+          "op": "click",
+          "selector": ".site-header__toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": ".site-header__toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 700
+          },
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 200,
+            "y": 560
+          },
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 720
+          },
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 120,
+            "y": 640
+          },
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 700
+          },
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "tour-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 700
+          },
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 360
+          },
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1060,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "#hx-hc-tab-meet",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "#hx-hc-tab-meet"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 380
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1080,
+            "y": 320
+          },
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "#hx-hc-tab-crm",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "#hx-hc-tab-crm"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 880,
+            "y": 360
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1060,
+            "y": 300
+          },
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "#hx-hc-tab-auto",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "#hx-hc-tab-auto"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 380
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1080,
+            "y": 320
+          },
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "#hx-hc-tab-service",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": "#hx-hc-tab-service"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 360
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 700
+          },
+          "ms": 900
+        }
+      ]
+    },
+    {
+      "name": "layers-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "scroll",
+          "to": 1218,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 4500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 640
+          },
+          "ms": 200
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "hover",
+          "ms": 900,
+          "selector": "[data-cl-area=\"1\"] .hx-clayers__tag-txt b"
+        },
+        {
+          "op": "click",
+          "selector": "[data-cl-area=\"1\"] .hx-clayers__tag-txt b"
+        },
+        {
+          "op": "wait",
+          "ms": 2600
+        },
+        {
+          "op": "hover",
+          "selector": "[data-cl-next]",
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": "[data-cl-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        },
+        {
+          "op": "hover",
+          "selector": "[data-cl-next]",
+          "ms": 400
+        },
+        {
+          "op": "click",
+          "selector": "[data-cl-next]"
+        },
+        {
+          "op": "wait",
+          "ms": 2400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 420
+          },
+          "ms": 800
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 640
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        }
+      ]
+    },
+    {
+      "name": "how-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1260,
+            "y": 700
+          },
+          "ms": 200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#como-funciona",
+            "offsetPx": -520
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 640
+          },
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#como-funciona",
+            "offsetPx": -180
+          },
+          "ms": 3000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#como-funciona",
+            "offsetPx": 240
+          },
+          "ms": 4000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1260,
+            "y": 700
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#como-funciona",
+            "offsetPx": 360
+          },
+          "ms": 2000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 640
+          },
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "platform-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1260,
+            "y": 760
+          },
+          "ms": 200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#plataforma",
+            "offsetPx": 326
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 520
+          },
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-platform__btn--next",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": ".hx-platform__btn--next"
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-platform__btn--next",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": ".hx-platform__btn--next"
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-platform__btn--next",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": ".hx-platform__btn--next"
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-platform__btn--next",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": ".hx-platform__btn--next"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 560
+          },
+          "ms": 700
+        },
+        {
+          "op": "hover",
+          "selector": ".hx-platform__btn--prev",
+          "ms": 500
+        },
+        {
+          "op": "click",
+          "selector": ".hx-platform__btn--prev"
+        },
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1260,
+            "y": 760
+          },
+          "ms": 900
+        }
+      ]
+    },
+    {
+      "name": "consulting-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://jsynq-linkando.vercel.app/pt/consulting",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/consulting"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "home-a-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt?home=a",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt?home=a"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": ".crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#home-platform-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-platform__btn--next",
+          "items": 6,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "home-b-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt?home=b",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt?home=b"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#home-platform-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-platform__btn--next",
+          "items": 6,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "agents-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://jsynq-linkando.vercel.app/pt/jsynq-agent",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/jsynq-agent"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "platform-page-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://jsynq-linkando.vercel.app/pt/platform",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/platform"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": ".crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "real-estate-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://jsynq-linkando.vercel.app/pt/solutions/real-estate",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/solutions/real-estate"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "diagnostic-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://jsynq-linkando.vercel.app/pt/diagnostic",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/diagnostic"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "home-a-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt?home=a",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt?home=a"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": ".crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#home-agents-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"home-agents-rail\"]",
+          "items": 3,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#home-platform-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-platform__carousel .hx-rail-arrow--next",
+          "items": 6,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "home-b-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt?home=b",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt?home=b"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#home-platform-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"home-platform-rail\"]",
+          "items": 6,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "consulting-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt/consulting",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/consulting"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#cons-ben-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"cons-ben-rail\"]",
+          "items": 4,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#cons-packs-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"cons-packs-rail\"]",
+          "items": 3,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "agents-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt/jsynq-agent",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/jsynq-agent"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#ag-pillars-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"ag-pillars-rail\"]",
+          "items": 6,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "platform-page-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://jsynq-linkando.vercel.app/pt/platform",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/platform"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "css",
+          "text": ".crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "real-estate-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt/solutions/real-estate",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/solutions/real-estate"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#re-bento-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"re-bento-rail\"]",
+          "items": 5,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "diagnostic-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt/diagnostic",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt/diagnostic"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "#dg-opps-rail",
+            "offsetVh": -0.17
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "carousel",
+          "next": ".hx-rail-arrow--next[aria-controls=\"dg-opps-rail\"]",
+          "items": 6,
+          "perItemMs": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "menu-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt?home=b",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt?home=b"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "selector": ".site-lang"
+          },
+          "moveMs": 700
+        },
+        {
+          "op": "click",
+          "selector": ".site-lang"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "press",
+          "key": "Escape"
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "moveMs": 700
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "menu-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "stepped": true,
+      "url": "https://jsynq-linkando.vercel.app/pt?home=b",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://jsynq-linkando.vercel.app/pt?home=b"
+        },
+        {
+          "op": "css",
+          "text": ".cx-calc__result,.cx-calc strong,.cx-calc__sr,.crm-col__total,.crm-card__value{visibility:hidden!important}"
+        },
+        {
+          "op": "css",
+          "text": ".wa-fab{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "button.site-header__toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "click",
+          "selector": "button.site-header__toggle"
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    }
+  ]
+}

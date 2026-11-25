@@ -1,728 +1,2321 @@
 {
- "site": "collision",
- "url": "https://colisionautocenter-linkando.vercel.app/",
- "outDir": "public/decks/collision",
- "scenes": [
-  {
-   "name": "hero-top-desktop",
-   "device": "desktop",
-   "setup": [
+  "site": "collision",
+  "url": "https://colisionautocenter-linkando.vercel.app/",
+  "outDir": "public/decks/collision",
+  "scenes": [
     {
-     "op": "goto"
+      "name": "hero-top-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 500
+          },
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": 40,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 640
+          },
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 560,
+            "y": 420
+          },
+          "ms": 1200
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
     },
     {
-     "op": "wait",
-     "ms": 6500
+      "name": "cover-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        },
+        {
+          "op": "css",
+          "text": ".hdr,.hero__body,.hero__aside,.hero__form,.dock{visibility:hidden !important}"
+        },
+        {
+          "op": "css",
+          "text": ".hero{position:fixed !important;inset:0 !important;z-index:100 !important} html,body{background:#0d0d0e !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 700,
+          "ms": 7500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 7500
+        }
+      ]
+    },
+    {
+      "name": "crumple-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-crumple]",
+            "at": "top",
+            "offsetVh": -1
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-crumple]",
+            "at": "top",
+            "offsetVh": -0.4
+          },
+          "ms": 7000
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-crumple]",
+            "at": "top",
+            "offsetVh": -1
+          },
+          "ms": 4000
+        }
+      ]
+    },
+    {
+      "name": "expand-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-expand]",
+            "at": "top",
+            "offsetVh": -1
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-expand]",
+            "at": "top",
+            "offsetVh": -0.08
+          },
+          "ms": 8500
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-expand]",
+            "at": "top",
+            "offsetVh": -1
+          },
+          "ms": 3500
+        }
+      ]
+    },
+    {
+      "name": "form-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "selector": "#lead-name"
+          },
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "#lead-name"
+        },
+        {
+          "op": "type",
+          "text": "Carlos Mendes",
+          "delay": 75
+        },
+        {
+          "op": "click",
+          "selector": "#lead-email"
+        },
+        {
+          "op": "type",
+          "text": "carlos@exemplo.com",
+          "delay": 60
+        },
+        {
+          "op": "click",
+          "selector": "#lead-whatsapp"
+        },
+        {
+          "op": "type",
+          "text": "+1 813 555 0100",
+          "delay": 60
+        },
+        {
+          "op": "click",
+          "selector": ".kf .chip",
+          "nth": 1
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "click",
+          "selector": ".kf .chip",
+          "nth": 2
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "hover",
+          "selector": ".kf button[type=submit]",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 600
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "notfound-desktop",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [],
+      "record": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/nao-existe-404"
+        },
+        {
+          "op": "wait",
+          "ms": 8000
+        }
+      ]
+    },
+    {
+      "name": "whatsapp-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/"
+        },
+        {
+          "op": "wait",
+          "ms": 7000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-light=\"journey\"]",
+            "at": "bottom",
+            "offsetVh": 0.05
+          },
+          "ms": 14500
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        }
+      ]
+    },
+    {
+      "name": "hero-mobile",
+      "device": "mobile",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 7000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-expand]",
+            "at": "top"
+          },
+          "ms": 7000
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        }
+      ]
+    },
+    {
+      "name": "idioma-1",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 42
+          },
+          "ms": 0
+        },
+        {
+          "op": "click",
+          "selector": "details[data-lang-menu] summary"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "hover",
+          "selector": "a.lm__item[hreflang=\"en\"]",
+          "ms": 1100
+        },
+        {
+          "op": "hover",
+          "selector": "a.lm__item[hreflang=\"pt\"]",
+          "ms": 1100
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ]
+    },
+    {
+      "name": "idioma-2",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/en/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 1300,
+          "ms": 3000
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": 2600,
+          "ms": 3000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "idioma-3",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/pt/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1400
+        },
+        {
+          "op": "scroll",
+          "to": 1300,
+          "ms": 3000
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "scroll",
+          "to": 2600,
+          "ms": 3000
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "obrigado-desktop",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/pt/obrigado/"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 4200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 520
+          },
+          "ms": 1200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 560
+          },
+          "ms": 1400
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "troca-idioma",
+      "device": "desktop",
+      "recordFromStart": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 42
+          },
+          "ms": 0
+        },
+        {
+          "op": "click",
+          "selector": "details[data-lang-menu] summary"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": "a.lm__item[hreflang=\"pt\"]",
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": "a.lm__item[hreflang=\"pt\"]"
+        },
+        {
+          "op": "wait",
+          "ms": 4200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "name": "icones-desktop",
+      "device": "desktop",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/pt/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "css",
+          "text": ".inc__icon svg{width:4.5rem!important;height:4.5rem!important}.inc__cell{min-height:0!important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".inc__frame",
+            "at": "top",
+            "offsetPx": -110
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 2200
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 400
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 680,
+            "y": 600
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1040,
+            "y": 400
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 790
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "detail-cabecalho",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 600
+        },
+        {
+          "op": "scroll",
+          "to": 150,
+          "ms": 1700
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-menu",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": "main{opacity:0 !important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 600,
+            "y": 200
+          },
+          "ms": 300
+        },
+        {
+          "op": "hover",
+          "selector": ".hdr__nav a:nth-child(1)",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".hdr__nav a:nth-child(2)",
+          "ms": 900
+        },
+        {
+          "op": "hover",
+          "selector": ".hdr__nav a:nth-child(3)",
+          "ms": 900
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 220
+          },
+          "ms": 500
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-botao",
+      "device": "desktop-hd2",
+      "crop": {
+        "x": 1060,
+        "y": 527,
+        "w": 320
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1220,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1010,
+            "y": 662
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1220,
+            "y": 780
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1010,
+            "y": 662
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1220,
+            "y": 780
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-campos",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "click",
+          "selector": "#lead-name"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "type",
+          "text": "Maria Silva",
+          "delay": 45
+        },
+        {
+          "op": "wait",
+          "ms": 300,
+          "text": "Maria"
+        },
+        {
+          "op": "click",
+          "selector": "#lead-email"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "type",
+          "text": "maria@",
+          "delay": 45
+        },
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "press",
+          "key": "Tab"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-idioma-guia",
+      "device": "desktop-hd2",
+      "crop": {
+        "x": 890,
+        "y": 440,
+        "w": 420
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 740
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 400
+        },
+        {
+          "op": "hover",
+          "selector": ".chip:nth-child(2)",
+          "moveMs": 700,
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".chip:nth-child(2)"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".chip:nth-child(3)",
+          "moveMs": 500,
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".chip:nth-child(3)"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".chip:nth-child(1)",
+          "moveMs": 600,
+          "ms": 900
+        },
+        {
+          "op": "click",
+          "selector": ".chip:nth-child(1)"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 740
+          },
+          "ms": 600
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-faq",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".qa",
+            "at": "top",
+            "offsetPx": -320
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "hover",
+          "selector": ".qa:nth-child(1) summary",
+          "ms": 700
+        },
+        {
+          "op": "click",
+          "selector": ".qa:nth-child(1) summary"
+        },
+        {
+          "op": "wait",
+          "ms": 1800
+        },
+        {
+          "op": "click",
+          "selector": ".qa:nth-child(1) summary"
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "detail-globo",
+      "device": "desktop-hd2",
+      "crop": {
+        "x": 1032,
+        "y": 0,
+        "w": 160
+      },
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 300
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1163,
+            "y": 41
+          },
+          "ms": 900
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 300
+          },
+          "ms": 700
+        },
+        {
+          "op": "wait",
+          "ms": 2500
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "dock-mobile-src",
+      "device": "mobile",
+      "cursor": true,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 300
+        },
+        {
+          "op": "scroll",
+          "to": 1900,
+          "ms": 1600
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": 2500,
+          "ms": 2000
+        },
+        {
+          "op": "wait",
+          "ms": 500
+        }
+      ],
+      "minFps": 1
+    },
+    {
+      "name": "inicio-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://colisionautocenter-linkando.vercel.app/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "inicio-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://colisionautocenter-linkando.vercel.app/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "whatsapp-pagina-desktop",
+      "device": "desktop",
+      "maxBytes": 16777216,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer.ftr",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer.ftr",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "whatsapp-pagina-mobile",
+      "device": "mobile",
+      "maxBytes": 9437184,
+      "fps": 60,
+      "endFade": 900,
+      "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer.ftr",
+            "at": "bottom"
+          },
+          "ms": 2500
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer.ftr",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "nav-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".lm__btn",
+          "ms": 300
+        },
+        {
+          "op": "click",
+          "selector": ".lm__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "hover",
+          "selector": ".lm__item",
+          "nth": 1,
+          "moveMs": 350,
+          "ms": 800
+        },
+        {
+          "op": "hover",
+          "selector": ".lm__item",
+          "nth": 2,
+          "moveMs": 350,
+          "ms": 800
+        },
+        {
+          "op": "click",
+          "selector": ".lm__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "nav-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 4,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 1500
+        },
+        {
+          "op": "click",
+          "selector": ".lm__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 2800
+        },
+        {
+          "op": "click",
+          "selector": ".lm__btn"
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        }
+      ]
+    },
+    {
+      "name": "formulario-mobile",
+      "device": "mobile",
+      "endFade": 900,
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        },
+        {
+          "op": "wait",
+          "ms": 4000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "form",
+            "at": "top",
+            "offsetPx": -160
+          },
+          "ms": 3500
+        },
+        {
+          "op": "wait",
+          "ms": 2000
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "name": "vitrine-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "recordFromStart": true,
+      "maxBytes": 8388608,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "css",
+          "text": "[class*=\"price\"],[class*=\"preco\"],[class*=\"Price\"]{display:none!important}"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3800
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 420,
+            "y": 300
+          },
+          "ms": 1400
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 420
+          },
+          "ms": 1400
+        },
+        {
+          "op": "hover",
+          "selector": ".hero__form input",
+          "nth": 0,
+          "moveMs": 900,
+          "ms": 500
+        },
+        {
+          "op": "hover",
+          "selector": ".hero__form input",
+          "nth": 1,
+          "moveMs": 500,
+          "ms": 500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1000,
+            "y": 620
+          },
+          "ms": 800
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "footer",
+            "at": "bottom"
+          },
+          "speed": 420,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 4500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "gracias-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "recordFromStart": true,
+      "maxBytes": 8388608,
+      "url": "https://colisionautocenter-linkando.vercel.app/gracias/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/gracias/"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 420
+          },
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 520
+          },
+          "ms": 1400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "gracias-mobile",
+      "device": "mobile",
+      "recordFromStart": true,
+      "maxBytes": 9437184,
+      "url": "https://colisionautocenter-linkando.vercel.app/gracias/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/gracias/"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "404-desktop",
+      "device": "desktop",
+      "cursor": true,
+      "recordFromStart": true,
+      "maxBytes": 8388608,
+      "url": "https://colisionautocenter-linkando.vercel.app/nao-existe-404",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/nao-existe-404"
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1240,
+            "y": 780
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 640,
+            "y": 420
+          },
+          "ms": 1600
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 520
+          },
+          "ms": 1400
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body",
+            "at": "bottom"
+          },
+          "speed": 380,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 2500,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ]
+    },
+    {
+      "name": "404-mobile",
+      "device": "mobile",
+      "recordFromStart": true,
+      "maxBytes": 9437184,
+      "url": "https://colisionautocenter-linkando.vercel.app/nao-existe-404",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/nao-existe-404"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "body",
+            "at": "bottom"
+          },
+          "speed": 320,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "detail-letras",
+      "device": "desktop-43w",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-crumple]",
+            "at": "top",
+            "offsetVh": -0.55
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 1200
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-crumple]",
+            "at": "top",
+            "offsetVh": -0.93
+          },
+          "ms": 6000,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 900
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-crumple]",
+            "at": "top",
+            "offsetVh": -0.55
+          },
+          "ms": 5000,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 2
+    },
+    {
+      "name": "detail-404",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "recordFromStart": true,
+      "minFps": 2,
+      "url": "https://colisionautocenter-linkando.vercel.app/nao-existe",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/nao-existe"
+        }
+      ],
+      "record": [
+        {
+          "op": "wait",
+          "ms": 4500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 700,
+            "y": 500
+          },
+          "ms": 1500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 1100,
+            "y": 420
+          },
+          "ms": 1500
+        },
+        {
+          "op": "wait",
+          "ms": 1000
+        }
+      ]
+    },
+    {
+      "name": "detail-fotos",
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 2,
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6500
+        },
+        {
+          "op": "css",
+          "text": ".hdr,.hero__body,.hero__aside,.hero__form,.dock{visibility:hidden !important}"
+        },
+        {
+          "op": "css",
+          "text": ".hero{position:fixed !important;inset:0 !important;z-index:100 !important} html,body{background:#0d0d0e !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 700
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 700,
+          "ms": 4500,
+          "ease": "soft"
+        },
+        {
+          "op": "scroll",
+          "to": 0,
+          "ms": 4500,
+          "ease": "soft"
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "name": "fotos-a",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".hdr,.hero__body,.hero__aside,.hero__form,.dock{visibility:hidden !important}"
+        },
+        {
+          "op": "wait",
+          "ms": 600
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": 450,
+          "ms": 3200,
+          "ease": "soft"
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "name": "fotos-b",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".dock{display:none!important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-expand]",
+            "at": "top",
+            "offsetVh": -0.9
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": {
+            "selector": "[data-expand]",
+            "at": "top",
+            "offsetVh": -0.08
+          },
+          "ms": 3600,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "name": "fotos-c",
+      "setup": [
+        {
+          "op": "goto"
+        },
+        {
+          "op": "wait",
+          "ms": 6000
+        },
+        {
+          "op": "css",
+          "text": ".dock{display:none!important}"
+        },
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".final",
+            "at": "top",
+            "offsetVh": -0.5
+          },
+          "ms": 0
+        },
+        {
+          "op": "wait",
+          "ms": 800
+        }
+      ],
+      "record": [
+        {
+          "op": "scroll",
+          "to": {
+            "selector": ".final",
+            "at": "top",
+            "offsetVh": 0
+          },
+          "ms": 3200,
+          "ease": "soft"
+        },
+        {
+          "op": "wait",
+          "ms": 300
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "name": "fotos-d",
+      "url": "https://colisionautocenter-linkando.vercel.app/gracias/",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/gracias/"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 900
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 500
+          },
+          "ms": 3200
+        }
+      ]
+    },
+    {
+      "device": "desktop-43w",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1440
+      },
+      "minFps": 1,
+      "name": "fotos-e",
+      "url": "https://colisionautocenter-linkando.vercel.app/nao-existe",
+      "setup": [
+        {
+          "op": "goto",
+          "url": "https://colisionautocenter-linkando.vercel.app/nao-existe"
+        },
+        {
+          "op": "wait",
+          "ms": 3500
+        },
+        {
+          "op": "move",
+          "to": {
+            "x": 300,
+            "y": 900
+          },
+          "ms": 0
+        }
+      ],
+      "record": [
+        {
+          "op": "move",
+          "to": {
+            "x": 900,
+            "y": 600
+          },
+          "ms": 3200
+        }
+      ]
     }
-   ],
-   "record": [
-    {
-     "op": "move",
-     "to": {
-      "x": 900,
-      "y": 500
-     },
-     "ms": 900
-    },
-    {
-     "op": "scroll",
-     "to": 40,
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 420,
-      "y": 640
-     },
-     "ms": 1200
-    },
-    {
-     "op": "scroll",
-     "to": 0,
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 560,
-      "y": 420
-     },
-     "ms": 1200
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "cover-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    },
-    {
-     "op": "css",
-     "text": ".hdr,.hero__body,.hero__aside,.hero__form,.dock{visibility:hidden !important}"
-    },
-    {
-     "op": "css",
-     "text": ".hero{position:fixed !important;inset:0 !important;z-index:100 !important} html,body{background:#0d0d0e !important}"
-    },
-    {
-     "op": "wait",
-     "ms": 700
-    }
-   ],
-   "record": [
-    {
-     "op": "scroll",
-     "to": 700,
-     "ms": 7500
-    },
-    {
-     "op": "scroll",
-     "to": 0,
-     "ms": 7500
-    }
-   ]
-  },
-  {
-   "name": "crumple-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-crumple]",
-      "at": "top",
-      "offsetVh": -1
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 800
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-crumple]",
-      "at": "top",
-      "offsetVh": -0.4
-     },
-     "ms": 7000
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-crumple]",
-      "at": "top",
-      "offsetVh": -1
-     },
-     "ms": 4000
-    }
-   ]
-  },
-  {
-   "name": "expand-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-expand]",
-      "at": "top",
-      "offsetVh": -1
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 800
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 500
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-expand]",
-      "at": "top",
-      "offsetVh": -0.08
-     },
-     "ms": 8500
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-expand]",
-      "at": "top",
-      "offsetVh": -1
-     },
-     "ms": 3500
-    }
-   ]
-  },
-  {
-   "name": "form-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 6500
-    }
-   ],
-   "record": [
-    {
-     "op": "move",
-     "to": {
-      "selector": "#lead-name"
-     },
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": "#lead-name"
-    },
-    {
-     "op": "type",
-     "text": "Carlos Mendes",
-     "delay": 75
-    },
-    {
-     "op": "click",
-     "selector": "#lead-email"
-    },
-    {
-     "op": "type",
-     "text": "carlos@exemplo.com",
-     "delay": 60
-    },
-    {
-     "op": "click",
-     "selector": "#lead-whatsapp"
-    },
-    {
-     "op": "type",
-     "text": "+1 813 555 0100",
-     "delay": 60
-    },
-    {
-     "op": "click",
-     "selector": ".kf .chip",
-     "nth": 1
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    },
-    {
-     "op": "click",
-     "selector": ".kf .chip",
-     "nth": 2
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    },
-    {
-     "op": "hover",
-     "selector": ".kf button[type=submit]",
-     "ms": 1200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 300,
-      "y": 600
-     },
-     "ms": 800
-    },
-    {
-     "op": "wait",
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "notfound-desktop",
-   "device": "desktop",
-   "recordFromStart": true,
-   "setup": [],
-   "record": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/nao-existe-404"
-    },
-    {
-     "op": "wait",
-     "ms": 8000
-    }
-   ]
-  },
-  {
-   "name": "whatsapp-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/whatsapp/"
-    },
-    {
-     "op": "wait",
-     "ms": 7000
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 800
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-light=\"journey\"]",
-      "at": "bottom",
-      "offsetVh": 0.05
-     },
-     "ms": 14500
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    }
-   ]
-  },
-  {
-   "name": "hero-mobile",
-   "device": "mobile",
-   "setup": [
-    {
-     "op": "goto"
-    },
-    {
-     "op": "wait",
-     "ms": 7000
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 800
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": "[data-expand]",
-      "at": "top"
-     },
-     "ms": 7000
-    },
-    {
-     "op": "wait",
-     "ms": 300
-    },
-    {
-     "op": "scroll",
-     "to": 0,
-     "ms": 2500
-    }
-   ]
-  },
-  {
-   "name": "idioma-1",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 1100,
-      "y": 42
-     },
-     "ms": 0
-    },
-    {
-     "op": "click",
-     "selector": "details[data-lang-menu] summary"
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "hover",
-     "selector": "a.lm__item[hreflang=\"en\"]",
-     "ms": 1100
-    },
-    {
-     "op": "hover",
-     "selector": "a.lm__item[hreflang=\"pt\"]",
-     "ms": 1100
-    },
-    {
-     "op": "wait",
-     "ms": 500
-    }
-   ]
-  },
-  {
-   "name": "idioma-2",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/en/"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "scroll",
-     "to": 1300,
-     "ms": 3000
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": 2600,
-     "ms": 3000
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ]
-  },
-  {
-   "name": "idioma-3",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/pt/"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 1400
-    },
-    {
-     "op": "scroll",
-     "to": 1300,
-     "ms": 3000
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    },
-    {
-     "op": "scroll",
-     "to": 2600,
-     "ms": 3000
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ]
-  },
-  {
-   "name": "obrigado-desktop",
-   "device": "desktop",
-   "recordFromStart": true,
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/pt/obrigado/"
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 4200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 420,
-      "y": 520
-     },
-     "ms": 1200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 900,
-      "y": 560
-     },
-     "ms": 1400
-    },
-    {
-     "op": "wait",
-     "ms": 1200
-    }
-   ]
-  },
-  {
-   "name": "troca-idioma",
-   "device": "desktop",
-   "recordFromStart": true,
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 1100,
-      "y": 42
-     },
-     "ms": 0
-    },
-    {
-     "op": "click",
-     "selector": "details[data-lang-menu] summary"
-    },
-    {
-     "op": "wait",
-     "ms": 900
-    },
-    {
-     "op": "hover",
-     "selector": "a.lm__item[hreflang=\"pt\"]",
-     "ms": 900
-    },
-    {
-     "op": "click",
-     "selector": "a.lm__item[hreflang=\"pt\"]"
-    },
-    {
-     "op": "wait",
-     "ms": 4200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 600
-    }
-   ]
-  },
-  {
-   "name": "icones-desktop",
-   "device": "desktop",
-   "setup": [
-    {
-     "op": "goto",
-     "url": "https://colisionautocenter-linkando.vercel.app/pt/"
-    },
-    {
-     "op": "wait",
-     "ms": 3500
-    },
-    {
-     "op": "css",
-     "text": ".inc__icon svg{width:4.5rem!important;height:4.5rem!important}.inc__cell{min-height:0!important}"
-    },
-    {
-     "op": "scroll",
-     "to": {
-      "selector": ".inc__frame",
-      "at": "top",
-      "offsetPx": -110
-     },
-     "ms": 0
-    },
-    {
-     "op": "wait",
-     "ms": 2500
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 0
-    }
-   ],
-   "record": [
-    {
-     "op": "wait",
-     "ms": 2200
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 300,
-      "y": 400
-     },
-     "ms": 800
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 680,
-      "y": 600
-     },
-     "ms": 900
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 1040,
-      "y": 400
-     },
-     "ms": 900
-    },
-    {
-     "op": "wait",
-     "ms": 1800
-    },
-    {
-     "op": "move",
-     "to": {
-      "x": 640,
-      "y": 790
-     },
-     "ms": 700
-    },
-    {
-     "op": "wait",
-     "ms": 1500
-    }
-   ]
-  }
- ]
+  ]
 }
