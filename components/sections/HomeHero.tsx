@@ -43,7 +43,7 @@ export default function HomeHero({ locale }: { locale: Locale }) {
             </h1>
 
             <div className="hero-in" style={{ ["--i" as string]: 2 }}>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">{t.text}</p>
+              <p className="mt-4 hidden max-w-2xl text-base leading-relaxed text-white/70 md:block md:text-lg">{t.text}</p>
               <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2 sm:gap-x-5">
                 {t.facts.map((f) => (
                   <li key={f} className="flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold sm:gap-2 sm:text-sm md:text-base text-white">
