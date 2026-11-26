@@ -18,7 +18,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 export default function ProjectList({ items, t, showMeta }: Props) {
   return (
     <ReducedProvider>
-      <section id="projetos" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-8 pb-14 md:pt-12 md:pb-20">
+      <section id="projetos" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-4 pb-14 md:pt-6 md:pb-20">
         <ul className="border-t border-line">
           {items.map((item) => (
             <li
