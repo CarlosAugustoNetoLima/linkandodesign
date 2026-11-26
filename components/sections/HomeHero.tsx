@@ -34,7 +34,7 @@ export default function HomeHero({ locale }: { locale: Locale }) {
           <div className="relative z-10">
             
             <h1
-              className={`hero-in font-display text-[clamp(2rem,7vw,3rem)] lg:whitespace-nowrap ${titleSize} leading-[1.06] tracking-[-0.03em] font-extrabold uppercase`}
+              className={`hero-in font-display text-balance text-[clamp(2.75rem,12vw,3.5rem)] lg:whitespace-nowrap ${titleSize} leading-[1.06] tracking-[-0.03em] font-extrabold uppercase`}
               style={{ ["--i" as string]: 1 }}
             >
               
