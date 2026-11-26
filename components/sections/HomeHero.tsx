@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DiagnosisStarter from "@/components/agent/DiagnosisStarter";
+import LivingDots from "@/components/agent/LivingDots";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 // Países onde já entregamos: a prova imediata logo abaixo do texto.
@@ -27,9 +28,10 @@ export default function HomeHero({ locale }: { locale: Locale }) {
   return (
     <>
       <section className="mx-auto max-w-7xl px-5 pt-6 md:pt-8">
-        {/* painel escuro na cor do botão "Solicitar diagnóstico" (tinta), cantos de 24px */}
-        <div className="grid grid-cols-1 gap-6 rounded-[24px] bg-ink px-5 py-8 text-white sm:px-8 md:px-12 md:py-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:px-16 lg:py-16">
-          <div className="min-w-0">
+        {/* painel escuro na cor do diagnóstico (charcoal) com o campo de pontos interativo */}
+        <div className="relative overflow-hidden grid grid-cols-1 gap-6 rounded-[24px] bg-charcoal px-5 py-8 text-white sm:px-8 md:px-12 md:py-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:px-16 lg:py-16">
+          <LivingDots contained className="rounded-[24px]" />
+          <div className="relative z-10 min-w-0">
             <h1
               className="hero-in font-display text-[clamp(2rem,7vw,3rem)] lg:text-[clamp(2.25rem,4.6vw,4.5rem)] leading-[1.06] tracking-[-0.03em] font-extrabold uppercase"
               style={{ ["--i" as string]: 1 }}
@@ -75,7 +77,7 @@ export default function HomeHero({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="hero-in min-w-0" style={{ ["--i" as string]: 3 }}>
+          <div className="relative z-10 hero-in min-w-0" style={{ ["--i" as string]: 3 }}>
             <DiagnosisStarter
               placeholder={t.starter.placeholder}
               sendLabel={t.starter.send}
