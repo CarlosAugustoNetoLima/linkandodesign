@@ -27,9 +27,9 @@ export default function HomeHero({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-5 pt-6 md:pt-8">
+      <section className="px-4 sm:px-6 pt-0 pb-12 md:pb-16 lg:pb-20">
         {/* painel escuro na cor do diagnóstico (charcoal) com o campo de pontos interativo */}
-        <div className="relative overflow-hidden grid grid-cols-1 gap-6 rounded-[24px] bg-charcoal px-5 py-8 text-white sm:px-8 md:px-12 md:py-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:px-16 lg:py-16">
+        <div className="relative overflow-hidden grid grid-cols-1 gap-8 rounded-[24px] bg-charcoal px-6 py-12 text-white sm:px-10 md:px-14 md:py-16 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:px-16 lg:py-20 xl:py-24 min-h-[560px] md:min-h-[620px] lg:min-h-[660px]">
           <LivingDots contained className="rounded-[24px]" />
           <div className="relative z-10 min-w-0">
             <h1
