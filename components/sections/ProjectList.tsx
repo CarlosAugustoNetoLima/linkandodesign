@@ -18,17 +18,8 @@ const pad = (n: number) => String(n).padStart(2, "0");
 export default function ProjectList({ items, t, showMeta }: Props) {
   return (
     <ReducedProvider>
-      <section id="projetos" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-14 md:py-20">
-        <div className="lg:flex lg:items-end lg:justify-between lg:gap-12">
-          <div>
-            <p className="label">[{t.label}]</p>
-            <h2 className="mt-4 max-w-xl font-display text-h2 font-extrabold uppercase">{t.title}</h2>
-          </div>
-          {/* ao lado do título no desktop, em duas linhas */}
-          <p className="mt-4 max-w-xl text-muted lg:mt-0 lg:max-w-[34rem] lg:pb-2">{t.text}</p>
-        </div>
-
-        <ul className="mt-10 border-t border-line">
+      <section id="projetos" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-8 pb-14 md:pt-12 md:pb-20">
+        <ul className="border-t border-line">
           {items.map((item) => (
             <li
               key={item.slug}
