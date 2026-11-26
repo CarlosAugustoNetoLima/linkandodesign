@@ -335,13 +335,11 @@ export const hubber: Deck = {
       title: "Detalhes da interface.",
       items: [
         { label: "Logo de pontos", media: detail("logo-pontos", "O cursor passa sobre o logo de pontos e os pontos seguem o mouse") },
-        { label: "Texto digitado", media: detail("texto-digitado", "O título da seção A virada sendo digitado letra a letra, com o cursor piscando") },
+        { label: "Texto digitado", media: detail("fundo-alternando", "O título da seção A virada sendo digitado letra a letra, com o cursor piscando") },
         { label: "Logo abrindo", media: detail("logo-abrindo", "Depois do título digitado, a janela no formato do logo abre e mostra a seção clara") },
         { label: "Cartas de vídeo", media: detail("cartas-video", "Os depoimentos em vídeo empilhando com a rolagem: cada carta nova sobe e as anteriores encolhem") },
-        { label: "Fundo alternando", media: detail("fundo-alternando", "O rótulo muda de azul para magenta enquanto a janela abre e o fundo passa de escuro a claro") },
         { label: "Palavra em destaque", media: detail("marca-texto", "A frase do título mudando para magenta") },
         { label: "Botão fixo no celular e tablet", media: detail("botao-fixo", "Numa tela de tablet, o botão de diagnóstico aparece embaixo e acompanha a rolagem; no computador ele não existe") },
-        { label: "Fases do método", media: detail("fases", "As três fases do método entrando na tela") },
       ],
     },
     {

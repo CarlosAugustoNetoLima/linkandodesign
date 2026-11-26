@@ -39,7 +39,13 @@ export default function Details({ chapter, deck }: { chapter: DetailsChapter; de
         <Eyebrow index={chapterNumber(deck, chapter.id)}>{chapter.eyebrow}</Eyebrow>
         <WordReveal as="h2" className="deck-h2 mt-5" text={chapter.title} />
 
-        <div className="mt-[var(--sp-3)] grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+        <div
+          className={`mt-[var(--sp-3)] grid grid-cols-2 gap-4 sm:gap-5 ${
+            chapter.items.length % 3 === 0 && chapter.items.length % 4 !== 0
+              ? "lg:grid-cols-3"
+              : "lg:grid-cols-4"
+          }`}
+        >
           {chapter.items.map((item, i) => (
             <motion.figure
               key={item.label}
