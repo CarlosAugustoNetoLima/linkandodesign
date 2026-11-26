@@ -1,5 +1,3 @@
-// Captura de ESTADOS interativos do YANNS (evidência dos efeitos como stills).
-// Menu mobile, modal de carrinho, modal de vídeo, lang switcher. FR.
 import puppeteer from "puppeteer-core";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -41,7 +39,6 @@ async function run() {
     await el.click();
   };
 
-  // 1) Menu mobile aberto
   try {
     const page = await newPage(browser, { width: 390, height: 844, mobile: true });
     await page.goto(BASE + "/", { waitUntil: "networkidle2", timeout: 30000 });
@@ -52,7 +49,6 @@ async function run() {
     await page.close();
   } catch (e) { console.log("✗ mobile-menu-open —", e.message); }
 
-  // 2) Modal de carrinho (desktop)
   try {
     const page = await newPage(browser, { width: 1440, height: 900 });
     await page.goto(BASE + "/", { waitUntil: "networkidle2", timeout: 30000 });
@@ -63,18 +59,16 @@ async function run() {
     await page.close();
   } catch (e) { console.log("✗ desktop-cart-modal —", e.message); }
 
-  // 3) Modal de vídeo (desktop, /musique)
   try {
     const page = await newPage(browser, { width: 1440, height: 900 });
     await page.goto(BASE + "/musique", { waitUntil: "networkidle2", timeout: 30000 });
     await sleep(900);
     await tryClick(page, ".card-youtube");
-    await sleep(2500); // iframe do YouTube carrega
+    await sleep(2500);
     await shot(page, "desktop-video-modal");
     await page.close();
   } catch (e) { console.log("✗ desktop-video-modal —", e.message); }
 
-  // 4) Lang switcher aberto (desktop)
   try {
     const page = await newPage(browser, { width: 1440, height: 900 });
     await page.goto(BASE + "/", { waitUntil: "networkidle2", timeout: 30000 });

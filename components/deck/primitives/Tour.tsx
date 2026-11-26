@@ -8,14 +8,10 @@ import type { TourPin } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const pad = (n: number) => String(n).padStart(2, "0");
-// Os detalhes por clique saíram dos decks: cada tela mostra só o texto principal, sem botão.
 const SHOW_ONLY_FIRST = true;
 
-// Passo do tour: `tag` é um rótulo opcional (ex.: "Decisão"), antes do título.
-// `device` esmaece o outro aparelho no capítulo Celular; `at` não é mais desenhado.
 export type TourStep = { tag?: string; title: string; text: string; at?: TourPin; device?: "desktop" | "mobile" };
 
-// Botão que abre os detalhes (o passo a passo da tela). Sem seta: a seta sugeria que o tour levava para fora da página.
 function TourButton({ n, onOpen }: { n: number; onOpen: () => void }) {
   return (
     <>
@@ -38,15 +34,12 @@ function TourButton({ n, onOpen }: { n: number; onOpen: () => void }) {
   );
 }
 
-// Estado do tour de um capítulo. O capítulo passa os passos e renderiza TourDesktop (lg) e
-// TourMobile (abaixo do lg). O tour não mexe na rolagem: o passo só muda por clique ou seta.
 export function useTour(steps: TourStep[]) {
   const [tour, setTour] = useState(false);
   const [active, setActive] = useState(0);
 
   const N = steps.length;
   const step = steps[active];
-  // a gravação segue rodando: os detalhes não marcam pontos na tela
   const still = false;
 
   function openTour() {
@@ -62,7 +55,6 @@ export function useTour(steps: TourStep[]) {
     setActive(Math.min(N - 1, Math.max(0, i)));
   }
 
-  // no último passo, "Concluir" fecha o tour
   function next() {
     if (active === N - 1) closeTour();
     else goTo(active + 1);
@@ -73,14 +65,12 @@ export function useTour(steps: TourStep[]) {
 
 export type TourState = ReturnType<typeof useTour>;
 
-// Painel do tour: um passo por vez, trocado pelos botões ou pelas setas do teclado.
 function TourPanel({ tour, panelRef }: { tour: TourState; panelRef?: RefObject<HTMLDivElement> }) {
   const reduced = useReduced();
   const { active, steps, N, step, closeTour, goTo, next } = tour;
   const last = active === N - 1;
   const nextRef = useRef<HTMLButtonElement>(null);
 
-  // o botão que abriu o tour some: o foco do teclado vai para o "Próximo", sem rolar a página
   useEffect(() => {
     nextRef.current?.focus({ preventScroll: true });
   }, []);
@@ -91,7 +81,6 @@ function TourPanel({ tour, panelRef }: { tour: TourState; panelRef?: RefObject<H
       role="group"
       aria-label="Detalhes desta tela"
       data-tour
-      // o stopPropagation impede o DeckPlayer de trocar de capítulo com as setas (ele ouve em window)
       onKeyDown={(e) => {
         if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
         e.preventDefault();
@@ -117,7 +106,7 @@ function TourPanel({ tour, panelRef }: { tour: TourState; panelRef?: RefObject<H
         </button>
       </div>
 
-      {/* passos empilhados na mesma célula: a altura é a do maior, e nada pula ao trocar */}
+      
       <div className="mt-4 grid" aria-live="polite">
         {steps.map((s, i) => (
           <motion.div
@@ -146,7 +135,7 @@ function TourPanel({ tour, panelRef }: { tour: TourState; panelRef?: RefObject<H
         ))}
       </div>
 
-      {/* no lg as barras encolhem para os botões nunca passarem da coluna; se nem assim cabem, a barra desce */}
+      
       <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-6 lg:gap-y-3">
         <div className="order-2 flex gap-1.5 lg:order-1 lg:min-w-0 lg:flex-1 lg:basis-36">
           {steps.map((s, i) => (
@@ -185,7 +174,7 @@ function TourPanel({ tour, panelRef }: { tour: TourState; panelRef?: RefObject<H
             Anterior
           </button>
 
-          {/* o anel chama o clique no primeiro passo; com reduced motion, não pisca */}
+          
           <span className="relative flex flex-1 lg:flex-none">
             {active === 0 && !reduced && (
               <motion.span
@@ -237,12 +226,10 @@ function OnlyStep({ text, className }: { text: string; className?: string }) {
   );
 }
 
-// Lado do lg: o botão abre o painel no lugar dele, com a mesma animação de entrada e saída.
 export function TourDesktop({ tour }: { tour: TourState }) {
   const reduced = useReduced();
   const { tour: open, N, openTour, steps } = tour;
 
-  // sem "Ver detalhes" (Carlos, 2026-11-22): a tela mostra só o primeiro passo, o texto principal
   if (SHOW_ONLY_FIRST || N === 1) return <OnlyStep text={steps[0].text} className="mt-8 hidden lg:block" />;
 
   return (
@@ -266,13 +253,11 @@ export function TourDesktop({ tour }: { tour: TourState }) {
   );
 }
 
-// Abaixo do lg: o painel abre logo abaixo do botão, com o mesmo passo a passo do lg.
 export function TourMobile({ tour, className }: { tour: TourState; className?: string }) {
   const reduced = useReduced();
   const { tour: open, N, openTour, steps } = tour;
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // ao abrir, leva o painel à vista sem pular
   useEffect(() => {
     if (open) panelRef.current?.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
   }, [open, reduced]);

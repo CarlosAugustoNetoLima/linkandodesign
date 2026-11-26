@@ -1,20 +1,3 @@
-// Grava o scroll-through DESKTOP dos sites que aparecem no card de vidro do
-// hero (components/sections/HeroShowcase3D.tsx).
-//
-// Por que existe: os mp4 de festivalcrato/wauw/jsynq tinham sido gerados por
-// scripts/generate-mockups.mjs, que compõe uma CENA (moldura de browser +
-// celular sobre fundo colorido + domínio embaixo). Dentro do card de vidro isso
-// vira mockup dentro de mockup, e o celular não tem lugar ali. O alvo é o
-// yanns.mp4: gravação desktop pura, sangrando de borda a borda.
-//
-// Mesmo molde do scripts/record-yanns-home.mjs (puppeteer + screencast), só que
-// apontando para os sites no ar em vez do mirror local.
-//
-//   node scripts/record-hero-sites.mjs            # os três
-//   node scripts/record-hero-sites.mjs wauw       # um só
-//
-// Saída: public/projects/<name>.mp4 (o -mockup.mp4 antigo fica preservado ao
-// lado, ver REPLACE em scripts/README.md).
 import puppeteer from "puppeteer-core";
 import { execFileSync } from "node:child_process";
 
@@ -27,18 +10,11 @@ const TARGETS = [
   { name: "jsynq", url: "https://jsynq.com/" },
 ];
 
-// Viewport de gravação: fonte nítida. A entrega sai reduzida (ver ENCODE_W):
-// a textura do vídeo é enviada para a GPU todo frame, e 1280 de largura é bem
-// mais do que o card ocupa na tela.
 const VP = { width: 1280, height: 800, deviceScaleFactor: 1 };
 const ENCODE_W = 960;
 const ENCODE_H = 600;
 const SCROLL_MS = 14000;
 
-// Quantas alturas de viewport o scroll percorre. NÃO rolar a página inteira:
-// festivalcrato.pt tem ~14.000px, o que daria ~1000px/s e o vídeo passa
-// voando, caindo em faixas escuras/vazias entre as seções. Limitando ao topo
-// (a parte mais rica de qualquer um desses sites) o movimento fica legível.
 const SCROLL_VIEWPORTS = 6;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -49,9 +25,6 @@ if (!list.length) {
   process.exit(1);
 }
 
-// Fecha banner de cookies pelo texto EXATO do botão. Nunca por substring: "OK"
-// casa com títulos de card e abre modais por cima da gravação inteira (essa
-// armadilha já queimou uma rodada, ver scripts/README.md).
 async function dismissCookies(p) {
   const clicked = await p
     .evaluate(() => {
@@ -98,13 +71,11 @@ async function recordOne({ name, url }) {
   } catch {
     console.log("   (networkidle2 estourou, seguindo com o que carregou)");
   }
-  await sleep(4000); // fontes, vídeo de hero, animações de entrada
+  await sleep(4000);
 
   const btn = await dismissCookies(p);
   console.log(`   cookies: ${btn ? `fechado via "${btn}"` : "nenhum banner"}`);
 
-  // pré-carrega tudo (lazy-load/reveal on scroll) e volta ao topo, senão a
-  // gravação mostra buracos e imagens entrando no meio do movimento
   await p.evaluate(async () => {
     await new Promise((res) => {
       let y = 0;
@@ -129,28 +100,18 @@ async function recordOne({ name, url }) {
   });
   await sleep(500);
 
-  // O scroll é dirigido por EVENTOS DE RODA reais, não por window.scrollTo.
-  // Motivo: festivalcrato.pt e jsynq.com usam scroll suavizado por JS, que roda
-  // o próprio rAF e reescreve a posição todo frame — o scrollTo era desfeito
-  // antes de pintar e a gravação saía 100% parada (scrollY ficava em 0 nos 181
-  // frames medidos, com a página tendo 13866px de curso). A roda entra pelo
-  // pipeline de input, que essas bibliotecas respeitam.
-  //
-  // O alvo é recalculado pelo RELÓGIO a cada passo, então a latência do
-  // round-trip com o browser não atrasa a timeline: um passo lento só gera um
-  // delta maior no seguinte.
   const maxY = await p.evaluate(
     (vp) => Math.min(document.body.scrollHeight - window.innerHeight, vp * window.innerHeight),
     SCROLL_VIEWPORTS
   );
-  await p.mouse.move(VP.width / 2, VP.height / 2); // a roda vai para o elemento sob o cursor
+  await p.mouse.move(VP.width / 2, VP.height / 2);
 
   const rec = await p.screencast({ path: webm, fps: 30 });
   const t0 = Date.now();
   let prev = 0;
   for (;;) {
     const t = Math.min(1, (Date.now() - t0) / SCROLL_MS);
-    const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // ease-in-out
+    const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     const target = Math.round(e * maxY);
     if (target > prev) await p.mouse.wheel({ deltaY: target - prev });
     prev = target;
@@ -160,8 +121,6 @@ async function recordOne({ name, url }) {
   await sleep(700);
   await rec.stop();
 
-  // Guarda-costas: uma gravação parada é um bug silencioso — o arquivo sai com
-  // tamanho plausível e só se percebe olhando frame a frame.
   const endY = await p.evaluate(() => window.scrollY);
   const covered = maxY > 0 ? endY / maxY : 0;
   console.log(`   scroll: 0 -> ${endY} de ${maxY} (${(covered * 100).toFixed(0)}% da página)`);
@@ -178,9 +137,6 @@ async function recordOne({ name, url }) {
   console.log(`   -> ${out}`);
 }
 
-// Cada alvo é independente: numa rodada anterior o renderizador do wauw morreu
-// no meio ("Target closed") e derrubou o processo inteiro, levando junto o
-// jsynq, que nem chegou a gravar. Uma falha agora custa só o próprio alvo.
 const failed = [];
 for (const target of list) {
   try {

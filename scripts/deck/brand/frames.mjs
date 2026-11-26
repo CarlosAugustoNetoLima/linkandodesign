@@ -1,5 +1,3 @@
-// Folha de contato de uma página animada em instantes fixos (?t=).
-//   node scripts/deck/brand/frames.mjs <slug/pagina.html[?extra]> <w> <h> <t1,t2,…> <saida.jpg>
 import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync } from 'node:fs';

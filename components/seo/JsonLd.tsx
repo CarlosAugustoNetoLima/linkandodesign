@@ -1,4 +1,3 @@
-// Dados estruturados da empresa (schema.org). Sem telefone, e-mail, endereço nem avaliações.
 export default function JsonLd() {
   const data = {
     "@context": "https://schema.org",

@@ -12,8 +12,6 @@ import type { Deck, DetailsChapter } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Detalhes: grade de recortes curtos da interface, cada um só com um nome. Sem texto sobre o vídeo.
-// Cada recorte abre ampliado num diálogo (computador e celular), com anterior/próximo e Esc para fechar.
 export default function Details({ chapter, deck }: { chapter: DetailsChapter; deck: Deck }) {
   const reduced = useReduced();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -86,7 +84,6 @@ export default function Details({ chapter, deck }: { chapter: DetailsChapter; de
         onClose={() => setOpen(null)}
         onClick={(e) => e.target === e.currentTarget && setOpen(null)}
         onKeyDown={(e) => {
-          // as setas trocam o recorte e não chegam ao atalho de capítulos do deck
           if (e.key.startsWith("Arrow") || e.key.startsWith("Page") || e.key === "Home" || e.key === "End") e.stopPropagation();
           if (e.key === "ArrowRight") step(1);
           if (e.key === "ArrowLeft") step(-1);

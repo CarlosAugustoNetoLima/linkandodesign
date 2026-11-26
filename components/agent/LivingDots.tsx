@@ -8,7 +8,6 @@ type Props = {
   className?: string;
 };
 
-// Campo de pontos vivo: grade com respiração contínua e interatividade com cursor/toque.
 export default function LivingDots({ active = false, contained = false, className }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
   const activeRef = useRef(active);
@@ -59,7 +58,6 @@ export default function LivingDots({ active = false, contained = false, classNam
 
     function draw(now: number) {
       if (!ctx) return;
-      // tempo acelerado: as ondas passam organicamente
       const t = reduce ? 4 : ((now - start) / 1000) * 2.2;
       const amp = 1 + boost * 0.45;
       ctx.clearRect(0, 0, w, h);
@@ -79,15 +77,13 @@ export default function LivingDots({ active = false, contained = false, classNam
           const gx = ox + i * gap;
           const gy = oy + j * gap;
 
-          // Ondas contínuas orgânicas
           const a = Math.sin(gx * 0.006 + t * 0.7 + Math.sin(gy * 0.004 + t * 0.4) * 1.6);
           const b = Math.sin(gy * 0.009 - t * 0.55 + gx * 0.003);
           const c = Math.sin(gx * 0.045 + gy * 0.038 + t * 1.2);
-          let v = (a * 0.5 + b * 0.3 + c * 0.2) * 0.5 + 0.5; // 0..1
+          let v = (a * 0.5 + b * 0.3 + c * 0.2) * 0.5 + 0.5;
           v = Math.min(1, Math.max(0, (v - 0.5) * amp + 0.5));
           const p = v * v;
 
-          // Interatividade com o cursor (repulsão sutil e iluminação)
           let mForce = 0;
           let pushX = 0;
           let pushY = 0;
@@ -107,7 +103,6 @@ export default function LivingDots({ active = false, contained = false, classNam
             }
           }
 
-          // Ondas de toque/clique (ripples)
           let ripForce = 0;
           for (let k = 0; k < ripples.length; k++) {
             const rip = ripples[k];
@@ -144,7 +139,6 @@ export default function LivingDots({ active = false, contained = false, classNam
     function loop(now: number) {
       boost += ((activeRef.current ? 1 : 0) - boost) * 0.04;
 
-      // Suavização da posição do mouse
       const m = mouseRef.current;
       if (m.active) {
         m.x += (m.targetX - m.x) * 0.16;
@@ -154,7 +148,6 @@ export default function LivingDots({ active = false, contained = false, classNam
         m.y += (-9999 - m.y) * 0.1;
       }
 
-      // Propagação de ripples
       const ripples = ripplesRef.current;
       for (let i = ripples.length - 1; i >= 0; i--) {
         const rip = ripples[i];

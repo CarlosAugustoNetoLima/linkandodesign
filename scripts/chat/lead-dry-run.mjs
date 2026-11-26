@@ -1,11 +1,3 @@
-// Gera o e-mail do lead (alertas, respostas do briefing, pré-proposta, notas internas e conversa) de
-// uma conversa simulada com chat-turn.mjs, SEM enviar nada: grava .txt e .html.
-// Uso: node scripts/chat/lead-dry-run.mjs <id-da-sessao> [partial|out]
-// (sem modo: "out" se a conversa terminou com [[diagnostico-fora]], senão "complete")
-// Lê a conversa de CHAT_SIM_DIR/<id>.json (o mesmo de chat-turn.mjs) e grava em
-// LEAD_DRY_RUN_DIR (padrão: pasta temporária do sistema/linkando-lead).
-// Usa GEMINI_API_KEY, PRICING_BASE e as envs da pré-proposta do .env.local (só lê; o SMTP é apagado do
-// ambiente deste processo, então não há como sair e-mail).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
@@ -16,7 +8,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const require = createRequire(import.meta.url);
 const jiti = require("jiti")(import.meta.url, { alias: { "@": root }, interopDefault: true });
 
-// .env.local → process.env (sem sobrescrever o que já existe), menos o SMTP
 const envFile = join(root, ".env.local");
 if (existsSync(envFile)) {
   for (const line of readFileSync(envFile, "utf8").split("\n")) {

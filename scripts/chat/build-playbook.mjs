@@ -1,10 +1,3 @@
-// Converte o playbook do diagnóstico (docs/playbook-diagnostico.md, que o Carlos edita)
-// em lib/playbook.generated.ts, que o chat e o e-mail do lead leem (via lib/briefing-fields.ts).
-// Roda sozinho no `prebuild` (deploy da Vercel) e à mão com `npm run playbook`.
-// Uso: node scripts/chat/build-playbook.mjs [--check]
-//   --check  não grava: sai com erro se o arquivo gerado estiver desatualizado
-// Erro de formato (seção desconhecida, linha de pergunta malformada, id repetido) PARA o
-// script com o número da linha: no deploy, o build falha e a versão anterior continua no ar.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,7 +6,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const SRC = join(root, "docs/playbook-diagnostico.md");
 const OUT = join(root, "lib/playbook.generated.ts");
 
-// Título da seção no .md → tipo de projeto no código ("all" = Comum)
 const SECTIONS = {
   comum: "all",
   marca: "brand",
@@ -23,18 +15,18 @@ const SECTIONS = {
   "landing page": "landing",
   "sistema interno": "system",
 };
-const RESERVED = new Set(["name", "email", "phone"]); // contato: fixo no código, pedido só no fim
+const RESERVED = new Set(["name", "email", "phone"]);
 
 const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
 const errors = [];
 const warnings = [];
 
 const lines = readFileSync(SRC, "utf8").split("\n");
-let section = null; // tipo atual
-let list = null; // "required" | "nice" | "alert"
-const fields = new Map(); // id → { id, question, types:Set, required:Set, line }
-const alerts = new Map(); // id → { id, text, types:Set }
-const seenInSection = new Set(); // `${section}:${id}`
+let section = null;
+let list = null;
+const fields = new Map();
+const alerts = new Map();
+const seenInSection = new Set();
 
 lines.forEach((raw, i) => {
   const n = i + 1;
@@ -54,7 +46,7 @@ lines.forEach((raw, i) => {
     if (!list) errors.push(`linha ${n}: subtítulo desconhecido "${line.slice(4).trim()}" (use: Obrigatório antes do e-mail, Bom saber, Alerta)`);
     return;
   }
-  if (!/^[-*]\s*\[/.test(line)) return; // texto livre: ignorado
+  if (!/^[-*]\s*\[/.test(line)) return;
   const m = line.match(/^[-*]\s*\[([^\]]*)\]\s*(.+)$/);
   if (!m) return errors.push(`linha ${n}: formato esperado "- [id] Pergunta | Question"`);
   const id = m[1].trim();
@@ -102,21 +94,18 @@ const alertRows = [...alerts.values()].map(
   (a) => `  { id: ${JSON.stringify(a.id)}, text: { pt: ${JSON.stringify(a.text.pt)}, en: ${JSON.stringify(a.text.en)} }, types: ${typesOf(a.types)} },`,
 );
 
-const out = `// GERADO por scripts/chat/build-playbook.mjs a partir de docs/playbook-diagnostico.md.
-// NÃO EDITE À MÃO: edite o playbook e rode \`npm run playbook\` (o build da Vercel roda sozinho).
-
-export type PlaybookType = "brand" | "identity" | "site" | "landing" | "siteRedesign" | "system";
+const out = `export type PlaybookType = "brand" | "identity" | "site" | "landing" | "siteRedesign" | "system";
 
 export type PlaybookField = {
   id: string;
   question: { pt: string; en: string };
-  types: PlaybookType[] | "all"; // onde a pergunta vale
-  required: PlaybookType[] | "all"; // onde é obrigatória antes do e-mail ([] = só "bom saber")
+  types: PlaybookType[] | "all";
+  required: PlaybookType[] | "all";
 };
 
 export type PlaybookAlert = {
   id: string;
-  text: { pt: string; en: string }; // quando o alerta acende
+  text: { pt: string; en: string };
   types: PlaybookType[] | "all";
 };
 

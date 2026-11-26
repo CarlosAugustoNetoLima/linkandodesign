@@ -2,8 +2,6 @@
 
 import { motion, useScroll, useReducedMotion } from "framer-motion";
 
-// Barra de progresso de leitura no topo: feedback de scroll sem roubar atenção.
-// Fica sob o header (z menor) e some para quem pediu menos movimento.
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const reduced = useReducedMotion();

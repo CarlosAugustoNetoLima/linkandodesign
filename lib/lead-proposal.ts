@@ -25,42 +25,24 @@ import {
   type ServiceKey,
 } from "@/lib/pricing-base";
 
-// Tudo o que o e-mail do lead (/api/chat/lead) leva além da conversa, e só para o
-// Carlos: alertas e placar, a classe do lead (Qualificado, A avaliar, Fora do perfil),
-// as respostas do briefing campo a campo (extraídas pela IA e validadas contra o
-// playbook, lib/briefing-fields.ts), uma PRÉ-PROPOSTA escrita para o cliente, pronta
-// para encaminhar, com três opções (Essencial, Recomendado, Completo), e as notas
-// internas. O cliente não recebe nada automático: o Carlos revisa e encaminha.
-//
-// Números da pré-proposta: a IA sugere valores e horas, mas quem decide é o código
-// (priceOptions): cada opção fica dentro da faixa do PRICING_BASE e acima do piso
-// PRICE_FLOOR, nunca abaixo de horas × R$ 180, arredondada para centenas; a taxa de
-// urgência (20% a 30%) entra por cima quando o prazo é menor que a faixa típica. O
-// plano de pagamento, o desconto no Pix, o parcelamento e o resumo do contrato são
-// montados pelo código (paymentPlan, checkPaymentPlan), nunca pela IA.
-// Usa os mesmos provedores e a mesma ordem de fallback do chat (lib/llm.ts).
-// As funções são puras o bastante para rodar fora do Next (scripts/chat/lead-dry-run.mjs).
 
-// "parcial": item de acesso (domínio, hospedagem, redes) respondido sem dizer onde está
-// registrado ou quem tem o acesso. O portão do chat pede para aprofundar uma vez.
 export type AnswerStatus = "respondido" | "parcial" | "nao-sabe" | "sem-resposta";
 export type Answer = { status: AnswerStatus; value: string };
 export type RaisedAlert = { id: string; reason: string };
 export type Signals = {
   decider: "decide" | "identificado" | "nao-identificado";
   deadline: "viavel" | "sem-data" | "urgente-aceita" | "urgente-sem-resposta" | "urgente-recusa";
-  budgetFlexible: boolean | null; // investimento abaixo: a pessoa disse que pode aumentar?
-  naming: boolean; // o nome da marca ainda vai ser criado
-  siteAdvanced: boolean; // site com 3D, efeitos pesados ou mais de um idioma
+  budgetFlexible: boolean | null;
+  naming: boolean;
+  siteAdvanced: boolean;
 };
 export type BriefingAnswers = {
   types: ProjectType[];
   answers: Record<string, Answer>;
-  alerts: RaisedAlert[]; // só os que a IA avalia (os do servidor entram no e-mail)
+  alerts: RaisedAlert[];
   signals: Signals;
 };
 
-// Prazos típicos (CLAUDE.md). Iguais aos do roteiro do chat.
 const DEADLINES_PT =
   "Landing page: 1–2 semanas. Site completo: 4–8 semanas. Branding completo: 3–6 semanas. Sistemas: depende do escopo. Mais de um serviço: as faixas se somam como ponto de partida.";
 
@@ -69,7 +51,6 @@ const transcriptOf = (turns: Turn[]) =>
 
 const typesOrUnsure = (b: BriefingAnswers): ProjectType[] => (b.types.length ? b.types : ["unsure"]);
 
-// ── Extração das respostas, dos alertas e dos sinais ────────────────────────
 function extractionPrompt(): string {
   const fields = BRIEFING_FIELDS.map(
     (f) =>
@@ -126,8 +107,6 @@ function parseJson(text: string): unknown {
 const oneOf = <T extends string>(v: unknown, list: readonly T[], fallback: T): T =>
   typeof v === "string" && (list as readonly string[]).includes(v) ? (v as T) : fallback;
 
-// Valida contra o playbook: id desconhecido sai, id ausente vira "sem-resposta",
-// alerta desconhecido, do servidor ou de outro tipo de projeto sai.
 export function normalizeAnswers(raw: unknown): BriefingAnswers | null {
   if (!raw || typeof raw !== "object") return null;
   const r = raw as { types?: unknown; answers?: unknown; alerts?: unknown; signals?: unknown };
@@ -182,8 +161,6 @@ export async function extractBriefing(turns: Turn[], opts: { deadlineMs?: number
   return out ? normalizeAnswers(parseJson(out)) : null;
 }
 
-// Itens de acesso que podem vir "parcial", e como saber se a IA já aprofundou: alguma
-// mensagem dela citou o item junto com onde está ou quem tem o acesso.
 export const PARTIAL_IDS = ["site_domain", "site_hosting", "brand_availability"];
 const DIG_WORDS = /(acesso|registrad|com quem|quem tem|quem cuida|onde est|livre|dispon[ií]v|access|registered|who has|where is|available)/i;
 const PARTIAL_TOPIC: Record<string, RegExp> = {
@@ -195,10 +172,6 @@ function dugDeeper(id: string, turns: Turn[]): boolean {
   return turns.some((t) => t.role === "assistant" && PARTIAL_TOPIC[id]?.test(t.content) && DIG_WORDS.test(t.content));
 }
 
-// Obrigatórios para os tipos do projeto que ficaram sem resposta ("não sei" conta
-// como resposta). `contact` inclui nome e e-mail na conta. Com `turns` (portão do chat),
-// também conta como faltando: item de acesso "parcial" que a IA ainda não aprofundou, e
-// a decisão de contratação sem decisor claro.
 export function missingRequired(b: BriefingAnswers, opts: { contact?: boolean; turns?: Turn[] } = {}): string[] {
   const turns = opts.turns;
   return requiredFor(typesOrUnsure(b), opts)
@@ -213,15 +186,14 @@ export function missingRequired(b: BriefingAnswers, opts: { contact?: boolean; t
     .map((f) => f.id);
 }
 
-// ── Regras fixas de valor e pagamento (o código decide, não a IA) ───────────
 const DEFAULT_PRICE_FLOOR = 5000;
 const DEFAULT_VALIDITY_DAYS = 15;
-export const HOURLY_MIN = 180; // conferência: horas × R$ 180 é o mínimo de cada opção
+export const HOURLY_MIN = 180;
 export const URGENCY_PCT = { min: 20, max: 30, default: 25 };
 export const PAYMENT = {
-  smallUpTo: 5000, // até este valor: 50% no contrato e 50% na entrega
+  smallUpTo: 5000,
   small: [50, 50],
-  large: [30, 40, 30], // contrato, aprovação do design, entrega
+  large: [30, 40, 30],
   pixDiscountPct: 5,
   cardNoInterest: 3,
   cardWithInterest: 6,
@@ -249,13 +221,11 @@ export type PricedOption = {
   scope: string;
   deadline: string;
   hours: number | null;
-  suggested: number | null; // o que a IA sugeriu (sem urgência)
-  base: number; // dentro da faixa, sem urgência
-  price: number; // final, com urgência quando houver
+  suggested: number | null;
+  base: number;
+  price: number;
 };
 
-// Limites de cada opção: piso = maior entre PRICE_FLOOR e o mínimo da faixa; teto = o
-// máximo da faixa (sem teto configurado, não limita). Urgência entra por cima da faixa.
 export function priceOptions(
   raw: { name?: string; scope?: string; deadline?: string; hours?: unknown; price?: unknown }[],
   band: Band | null,
@@ -288,7 +258,6 @@ export function priceOptions(
       notes.push(`${name}: ${brl(round100(base))} fora da faixa (${brl(lower)} a ${upper ? brl(upper) : "sem teto"}); ajustado para ${brl(clamped)}.`);
     return { name, scope: (r.scope ?? "").trim(), deadline: (r.deadline ?? "").trim(), hours, suggested, base: clamped, price: clamped };
   });
-  // Essencial < Recomendado < Completo: se a faixa achatou os valores, reordena e avisa
   const sorted = options.map((o) => o.base).sort((a, b) => a - b);
   options.forEach((o, i) => (o.base = sorted[i]));
   if (new Set(sorted).size < 3) notes.push("Duas opções ficaram com o mesmo valor (a faixa limitou): diferencie o escopo ou o valor antes de encaminhar.");
@@ -302,7 +271,6 @@ export function pixTotal(price: number): number {
   return Math.floor((price * (100 - PAYMENT.pixDiscountPct)) / 100 / 10) * 10;
 }
 
-// Plano de pagamento de um valor: até R$ 5.000, 50/50; acima, 30/40/30.
 export function paymentPlan(price: number, locale: Locale): Installment[] {
   const pt = locale === "pt";
   const labels = price <= PAYMENT.smallUpTo
@@ -310,12 +278,10 @@ export function paymentPlan(price: number, locale: Locale): Installment[] {
     : pt ? ["na assinatura do contrato", "na aprovação do design", "na entrega"] : ["when the contract is signed", "on design approval", "on delivery"];
   const pcts = price <= PAYMENT.smallUpTo ? PAYMENT.small : PAYMENT.large;
   const parts = pcts.map((pct, i) => ({ label: labels[i], pct, amount: (price * pct) / 100 }));
-  // centavos não existem aqui (valor em centenas), mas o último fecha a conta por segurança
   parts[parts.length - 1].amount = price - parts.slice(0, -1).reduce((s, p) => s + p.amount, 0);
   return parts;
 }
 
-// Confere as regras do Carlos; devolve o problema ou null.
 export function checkPaymentPlan(price: number, plan: Installment[]): string | null {
   const minEntry = price <= PAYMENT.smallUpTo ? PAYMENT.small[0] : PAYMENT.large[0];
   if (plan[0].pct < minEntry) return `entrada abaixo de ${minEntry}%`;
@@ -325,11 +291,10 @@ export function checkPaymentPlan(price: number, plan: Installment[]): string | n
   return null;
 }
 
-// ── Pré-proposta (IA) ───────────────────────────────────────────────────────
 export type ProposalDraft = {
   title: string;
   understanding: string;
-  steps: { n: string; deliverable: string }[]; // escopo da opção Recomendado
+  steps: { n: string; deliverable: string }[];
   deadline: string;
   options: { name: string; scope: string; deadline: string; hours: unknown; price: unknown }[];
   differences: string;
@@ -456,8 +421,6 @@ export async function generateDraft(
   return out ? normalizeDraft(parseJson(out)) : null;
 }
 
-// Tira dos textos do cliente qualquer frase com dinheiro, percentual ou condição de
-// pagamento escrita pela IA (essas partes são do código). Conta quantas frases saíram.
 const PAYMENT_WORDS = /\b(parcel\w*|juros|à vista|a vista|entrada|sinal|desconto|rodadas?|install?ments?|interest|upfront|down payment|discount|revision rounds?)\b|%/i;
 function cleanForClient(text: string, removed: { n: number }): string {
   return text
@@ -478,7 +441,7 @@ export type ClientProposal = {
   urgencyPct: number | null;
   lower: number;
   upper: number | null;
-  notes: string[]; // o que o servidor corrigiu
+  notes: string[];
   removed: number;
 };
 
@@ -527,9 +490,7 @@ function buildClientProposal(
     if (problem) notes.push(`Plano de pagamento de ${o.name} reprovado (${problem}): confira antes de encaminhar.`);
     return { o, plan };
   });
-  // total no Pix: arredondado para dezenas, para baixo (a favor do cliente)
   const pix = (n: number) => brl(pixTotal(n));
-  // contrato por tipo: domínio e acessos só existem em site, landing e sistema
   const digital = services.some((k) => k === "site" || k === "siteRedesign" || k === "landing" || k === "system");
   const brandish = services.some((k) => k === "brand" || k === "identity");
   const join = (xs: string[], and: string) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} ${and} ${xs[xs.length - 1]}` : xs[0]);
@@ -615,9 +576,6 @@ function buildClientProposal(
   return { subject: L.subject, text, options: priced.options, urgencyPct, lower: priced.lower, upper: priced.upper, notes, removed: removed.n };
 }
 
-// "Encaminhar ao cliente": mailto com o e-mail do cliente, o assunto e só a saudação.
-// A pré-proposta inteira passa de ~1800 caracteres e quebra o link em vários clientes de
-// e-mail: o Carlos cola o texto do bloco "copie daqui" do e-mail interno.
 export function forwardLink(to: string, p: ClientProposal, locale: Locale, name: string): { href: string; full: boolean } {
   const first = name.split(/\s+/)[0] ?? "";
   const full = false;
@@ -630,7 +588,6 @@ export function forwardLink(to: string, p: ClientProposal, locale: Locale, name:
   };
 }
 
-// ── Qualificação do lead e placar ───────────────────────────────────────────
 export type LeadClass = "Qualificado" | "A avaliar" | "Fora do perfil";
 type Mark = "✅" | "⚠️" | "❌";
 export type Score = { label: string; mark: Mark; note: string };
@@ -644,15 +601,11 @@ function modifiersOf(b: BriefingAnswers | null): Modifiers {
   return { naming: Boolean(b?.signals.naming), siteAdvanced: Boolean(b?.signals.siteAdvanced) };
 }
 
-// Qualificação do investimento: contra o mínimo da opção Essencial dos tipos extraídos
-// (com naming, se o nome ainda vai ser criado); sem extração, pela identificação por
-// palavras de lib/pricing-base.ts (a mesma do chat).
 function leadQualification(input: { turns: Turn[]; locale: Locale }, b: BriefingAnswers | null): Qualification {
   const extracted = (b?.types ?? []).filter((t): t is ServiceKey => t !== "unsure");
   const visitor = input.turns.filter((m) => m.role === "user").map((m) => m.content);
   const first = qualify(visitor, input.locale, extracted);
   if (!b?.signals.naming) return first;
-  // nome a criar: o mínimo da opção Essencial inclui o do naming
   const naming = (priceBand(first.services, { naming: true })?.min ?? 0) - (priceBand(first.services)?.min ?? 0);
   return naming > 0 ? qualify(visitor, input.locale, extracted, naming) : first;
 }
@@ -707,14 +660,11 @@ export function scorecard(status: LeadInput["status"], b: BriefingAnswers | null
   return { cls, scores };
 }
 
-// ── E-mail do lead ──────────────────────────────────────────────────────────
 const COPY_START = "========== PRÉ-PROPOSTA: copie daqui até o fim do bloco ==========";
 const COPY_END = "========== fim do bloco ==========";
 export type LeadInput = {
-  contact: string; // vazio em "out" sem contato
+  contact: string;
   locale: Locale;
-  // complete = diagnóstico fechado; partial = a pessoa saiu no meio; out = fechado
-  // como fora do perfil (investimento abaixo e sem flexibilidade)
   status: "partial" | "complete" | "out";
   turns: Turn[];
 };
@@ -726,11 +676,9 @@ export type LeadExtras = {
   services: ServiceKey[];
   band: Band | null;
   cls: LeadClass | null;
-  warning: string | null; // aviso quando a geração falhou
+  warning: string | null;
 };
 
-// "complete" e "out": extrai as respostas; só "complete" fora do perfil não, gera a
-// pré-proposta. Nunca lança: se algo falhar, devolve o aviso e o e-mail sai com a conversa.
 export async function prepareLeadExtras(input: LeadInput): Promise<LeadExtras> {
   const empty: LeadExtras = { briefing: null, draft: null, proposal: null, services: [], band: null, cls: null, warning: null };
   if (input.status === "partial") return empty;
@@ -788,8 +736,6 @@ const STATUS_LABEL: Record<AnswerStatus, string> = {
   "sem-resposta": "SEM RESPOSTA",
 };
 
-// Alertas do e-mail: os que a IA acendeu e os do servidor (orçamento contra a base,
-// valor proposto acima do declarado, obrigatórios sem resposta).
 function leadAlerts(input: LeadInput, extras: LeadExtras, q: Qualification): string[] {
   const out: string[] = [];
   const b = extras.briefing;
@@ -830,7 +776,7 @@ export function buildLeadEmail(input: LeadInput, extras: LeadExtras): { subject:
   const { turns } = input;
   const contact = input.contact || "sem contato";
   const status = input.status;
-  const full = status !== "partial"; // complete e out têm alertas, placar e briefing
+  const full = status !== "partial";
   const title =
     status === "complete"
       ? "Diagnóstico pelo chat (completo)"
@@ -838,7 +784,6 @@ export function buildLeadEmail(input: LeadInput, extras: LeadExtras): { subject:
         ? "Diagnóstico pelo chat (encerrado: fora do perfil, sem proposta)"
         : "Diagnóstico pelo chat (incompleto: a conversa foi interrompida)";
   const lang = input.locale === "en" ? "English" : "Português";
-  // Qualificação contra a base interna de valores: só o time vê (o visitante nunca).
   const q = leadQualification(input, extras.briefing);
   const fit = qualificationLine(q);
   const { cls, scores } = scorecard(status, extras.briefing, q);
@@ -863,7 +808,6 @@ export function buildLeadEmail(input: LeadInput, extras: LeadExtras): { subject:
       : "Não gerada.";
   const placar = scores.map((s) => `${s.mark} ${s.label}: ${s.note}`);
 
-  // ── texto ──
   const parts = [`${title}\nContato informado: ${contact}\nIdioma do site: ${lang}`];
   if (full) {
     parts.push(
@@ -894,7 +838,6 @@ export function buildLeadEmail(input: LeadInput, extras: LeadExtras): { subject:
   }
   const text = parts.join("\n\n---\n\n") + "\n";
 
-  // ── html ──
   const h2 = (t: string) => `<h3 style="margin:24px 0 8px;font-size:16px">${esc(t)}</h3>`;
   const box = "padding:8px 12px;border-radius:8px";
   const br = (t: string) => esc(t).replace(/\n/g, "<br>");

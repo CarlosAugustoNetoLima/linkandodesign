@@ -1,15 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do Station One. Cada fato foi conferido em /Users/carloslima/stationone (README, componentes,
-// estilos, scripts e textos) ou, nos efeitos, no site servido do código. Figma NÃO entra: o repositório não tem
-// nenhuma referência a ele. O texto é para o público: simples, sem nome de arquivo e sem termo técnico além do
-// nome das linguagens (sem nome de biblioteca). Não citar: e-mail e dados legais da
-// empresa, ano de fundação, textos marcados como provisórios, o TODO do horário de um show e o identificador do
-// projeto na Vercel. ATENÇÃO: o link da Vercel está atrás do login da Vercel (Deployment Protection), então
-// todas as gravações saíram do código servido localmente (servidor PHP em localhost), com a data simulada de
-// 1º de outubro de 2026 (`?_now=`, recurso de desenvolvimento do próprio site), quando os três espetáculos
-// estavam em cartaz. Na janela de compra só foram passados o mouse e um clique num setor do mapa, sem
-// adicionar bilhetes. A faixa de cartazes foi gravada a 1440 × 900, onde o efeito se vê melhor.
 const BASE = "/decks/stationone";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -59,7 +49,6 @@ export const stationOne: Deck = {
   credits: [{ name: "Carlos Lima", role: "Direção criativa, design e desenvolvimento" }],
   stack: ["PHP", "HTML", "CSS", "JavaScript"],
   theme: {
-    // a marca é preta e branca, como o logo: o destaque do palco é o próprio preto do site
     accent: "#0b0c0e",
     accentInk: "#ffffff",
     fontKey: "archivo",
@@ -138,7 +127,6 @@ export const stationOne: Deck = {
         note: "Ícones de traço, usados na interface do site.",
         stroke: 1.75,
         animated: false,
-        // globo do seletor de idioma do cabeçalho: os meridianos giram como no site
         css: ".vg-globe .globe__m{transform-box:fill-box;transform-origin:left center;animation:vg-meridian 3.75s cubic-bezier(.37,0,.63,1) infinite}.vg-globe .globe__m--2{animation-delay:-.94s}.vg-globe .globe__m--3{animation-delay:-1.875s}.vg-globe .globe__m--4{animation-delay:-2.81s}@keyframes vg-meridian{from{transform:scaleX(-1)}to{transform:scaleX(1)}}@media (prefers-reduced-motion:reduce){.vg-globe .globe__m{animation:none}}",
         items: [
           { label: "Seletor de idioma", cls: "vg-globe", shapes: "<g transform=\"scale(0.5455)\" stroke-width=\"3.2\"><circle cx=\"22\" cy=\"22\" r=\"20.75\"/><path d=\"M1.25 22h41.5M6.10 8.66h31.79M6.10 35.34h31.79\"/><path class=\"globe__m globe__m--1\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--2\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--3\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--4\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/></g>" },

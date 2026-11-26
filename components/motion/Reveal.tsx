@@ -9,8 +9,6 @@ type Props = {
   className?: string;
 };
 
-// Fade + subida curta ao entrar no viewport. Uma vez só (once) para não
-// re-animar em scroll de volta; com prefers-reduced-motion vira um div parado.
 export default function Reveal({ children, delay = 0, className }: Props) {
   const reduced = useReducedMotion();
 

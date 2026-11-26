@@ -31,7 +31,6 @@ for (const c of chapters) {
   const fr = span > H * 1.2 ? [0.04, 0.35, 0.7, 0.97] : [0, span > 60 ? 0.6 : 0];
   let i = 0;
   for (const f of fr) {
-    // rolagem gradual até o ponto (dispara IO/whileInView pelo caminho)
     const target = Math.round(c.top + span * f);
     const cur = await page.evaluate(() => scrollY);
     const steps = 6;

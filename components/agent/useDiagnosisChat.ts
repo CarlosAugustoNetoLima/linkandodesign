@@ -7,7 +7,6 @@ import { EMAIL } from "@/lib/contact";
 
 export type Message = { from: "agent" | "user"; text: string };
 
-// Fallback offline — usado só se a API do agente estiver indisponível
 const fallback = {
   pt: {
     pricing: {
@@ -55,9 +54,6 @@ const fallback = {
   },
 } as const;
 
-// Aviso de privacidade do chat (LGPD, art. 9º: finalidade, forma, controlador,
-// compartilhamento e direitos). Mantenha em sincronia com o que a rota
-// /api/chat e /api/chat/lead realmente fazem.
 export const privacy = {
   pt: {
     short: "Atendimento por IA. Se você informar e-mail ou telefone aqui, enviamos esta conversa ao nosso time.",
@@ -82,8 +78,6 @@ export const privacy = {
 const EMAIL_RE = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/;
 const PHONE_RE = /\+?\d[\d\s().-]{7,}\d/;
 
-// Telefone só com 10 a 13 dígitos e que não seja data (2026-12-01): sem isso, um
-// número qualquer da conversa (data, orçamento) viraria o "contato" do visitante.
 function findPhone(text: string): string | null {
   const m = text.match(PHONE_RE)?.[0].trim();
   if (!m) return null;
@@ -91,15 +85,9 @@ function findPhone(text: string): string | null {
   return digits >= 10 && digits <= 13 && !/^\d{4}-\d{2}-\d{2}$/.test(m) ? m : null;
 }
 
-// Marcador que a IA escreve ao concluir o diagnóstico. Não aparece na tela nem
-// vai para o histórico: só diz ao código que a conversa terminou.
 const DONE_RE = /\[\[\s*diagnostico-completo\s*\]\]/i;
-// Fim sem proposta (investimento abaixo do mínimo e sem flexibilidade): a conversa vai
-// ao time marcada "Fora do perfil", mesmo sem contato.
 const OUT_RE = /\[\[\s*diagnostico-fora\s*\]\]/i;
 
-// Tira os marcadores [[...]] do texto, inclusive um "[[" ainda incompleto no fim
-// (enquanto o stream chega).
 export function stripMarkers(text: string): string {
   return text.replace(/\[\[[^\]]*\]\]/g, "").replace(/\[\[[^\]]*\]?$/, "").trimEnd();
 }
@@ -116,9 +104,6 @@ function leadBody(locale: Locale, contact: string, status: LeadStatus, msgs: Mes
   });
 }
 
-// Transforma caminhos do site (/briefing, /apresentacoes, /projeto/x), URLs e
-// e-mails do texto do assistente em links clicáveis. Só texto: nada de HTML
-// vindo do modelo é interpretado. /portfolio continua aceito: redireciona.
 const LINKABLE = /(\/(?:briefing|apresentacoes(?:\/[a-z0-9-]+)?|portfolio|sobre|projeto\/[a-z0-9-]+)\b|https?:\/\/[^\s)]+|[\w.+-]+@[\w-]+(?:\.[\w-]+)+)/g;
 export function renderText(text: string) {
   return text.split(LINKABLE).map((part, i) => {
@@ -156,7 +141,6 @@ function fallbackReply(locale: Locale, input: string, greeting: string): string 
   if (/serviço|servico|o que voc|fazem|oferec|service|what do you/.test(t)) return f.services;
   if (/portfolio|portfólio|trabalhos anteriores|cases|projetos|projects|work/.test(t))
     return f.portfolio;
-  // saudação só como palavra inteira: "oi" dentro de "pois" ou "hi" dentro de "this" não conta
   const isGreeting = t.split(/[^a-zà-ÿ]+/).some((w) => ["oi", "olá", "ola", "hey", "hi", "hello"].includes(w));
   if (isGreeting || /bom dia|boa tarde|boa noite/.test(t)) return greeting;
   return f.cta;
@@ -164,19 +148,17 @@ function fallbackReply(locale: Locale, input: string, greeting: string): string 
 
 export function useDiagnosisChat(locale: Locale) {
   const t = getDictionary(locale).chat;
-  // saudação imediata: a espera artificial só atrasava o primeiro contato
   const [messages, setMessages] = useState<Message[]>([{ from: "agent", text: t.greeting }]);
   const [typing, setTyping] = useState(false);
   const busyRef = useRef(false);
-  const contactRef = useRef<string | null>(null); // contato mais recente dito pelo visitante
-  const leadStateRef = useRef<LeadState>("none"); // o que já foi enviado ao time nesta conversa
-  const messagesRef = useRef<Message[]>([]); // espelho de messages para o handler de pagehide
+  const contactRef = useRef<string | null>(null);
+  const leadStateRef = useRef<LeadState>("none");
+  const messagesRef = useRef<Message[]>([]);
 
   useEffect(() => {
     messagesRef.current = messages;
   }, [messages]);
 
-  // saiu da página antes do fim: sendBeacon continua valendo durante o unload
   useEffect(() => {
     function onPageHide() {
       const contact = contactRef.current;
@@ -191,7 +173,6 @@ export function useDiagnosisChat(locale: Locale) {
     return () => window.removeEventListener("pagehide", onPageHide);
   }, [locale]);
 
-  // envia a conversa ao time; se a rede falhar, volta ao estado anterior para tentar de novo
   function postLead(status: LeadStatus, msgs: Message[]) {
     const contact = contactRef.current ?? "";
     if (!contact && status !== "out") return;
@@ -212,8 +193,6 @@ export function useDiagnosisChat(locale: Locale) {
     busyRef.current = true;
 
     const nextMessages: Message[] = [...messages, { from: "user", text: trimmed }];
-    // e-mail sempre vence telefone (a proposta vai por e-mail); o telefone só vale
-    // enquanto não houver e-mail
     const email = trimmed.match(EMAIL_RE)?.[0];
     if (email) contactRef.current = email;
     else if (!contactRef.current) contactRef.current = findPhone(trimmed);
@@ -261,7 +240,6 @@ export function useDiagnosisChat(locale: Locale) {
 
       if (!started) throw new Error("resposta vazia");
     } catch {
-      // API indisponível — responde com o script offline
       setTyping(false);
       setMessages((m) => [
         ...m,
@@ -270,11 +248,9 @@ export function useDiagnosisChat(locale: Locale) {
     } finally {
       busyRef.current = false;
       setTyping(false);
-      // a IA marcou o fim do diagnóstico: a conversa vai ao time como completa
       if (DONE_RE.test(reply) && leadStateRef.current !== "complete") {
         postLead("complete", [...nextMessages, { from: "agent", text: stripMarkers(reply) }]);
       } else if (OUT_RE.test(reply) && leadStateRef.current === "none") {
-        // encerrado como fora do perfil: vai ao time sem pré-proposta
         postLead("out", [...nextMessages, { from: "agent", text: stripMarkers(reply) }]);
       }
     }

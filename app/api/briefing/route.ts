@@ -11,11 +11,9 @@ import { clean, esc, isEmail, makeLimiter, oneLine, sendSiteMail, smtpConfigured
 
 export const runtime = "nodejs";
 
-// Envia o briefing para o e-mail do estúdio (ver lib/mail.ts: SMTP e prefixo
-// "[Site]" que leva a mensagem para a pasta Site do webmail).
 
 const MAX = { name: 120, email: 160, short: 160, long: 4000 };
-const tooMany = makeLimiter(5, 60 * 60 * 1000); // 5 envios por hora por IP
+const tooMany = makeLimiter(5, 60 * 60 * 1000);
 
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
@@ -25,8 +23,6 @@ export async function POST(req: Request) {
     return Response.json({ error: "invalid" }, { status: 400 });
   }
 
-  // honeypot: campo invisível que humano não preenche. Responde "ok" para o
-  // bot não tentar de novo, mas não envia nada.
   if (clean(body.website, 200)) return Response.json({ ok: true });
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";

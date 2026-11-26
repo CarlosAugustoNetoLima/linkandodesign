@@ -1,13 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do Viva o Samba. Cada fato foi conferido em /Users/carloslima/vivaosamba (README,
-// especificação e plano de 29/10/2026, estilos, scripts e textos) ou no site no ar. Figma NÃO entra: o
-// repositório não tem nenhuma referência a ele. O texto é para o público: simples, sem nome de arquivo, sem metáfora e sem
-// termo técnico além do nome das linguagens (sem nome de biblioteca). Não citar:
-// e-mail, endereço legal e identificadores do grupo, o nome da base de partida, textos legais provisórios
-// e o nome do sistema de onde vieram os cartazes. As gravações saíram do site na Vercel; na janela de
-// compra foram só adicionados e retirados bilhetes do carrinho, sem avançar para os dados pessoais. A
-// gravação do globo de idioma está ampliada (o resto da página é escondido na gravação).
 const BASE = "/decks/viva-o-samba";
 const LIVE = "https://vivaosamba-linkando.vercel.app";
 
@@ -41,7 +33,6 @@ const mobile = (name: string, alt: string): Media => ({
   alt,
 });
 
-// Página do espetáculo gravada nas faixas de evento (evento e compra).
 const EVENT_PATH = "/eventos/reveillon-viva-o-samba-cavo-rooftop-2026";
 
 export const vivaOSamba: Deck = {
@@ -66,7 +57,6 @@ export const vivaOSamba: Deck = {
   ],
   stack: ["PHP", "HTML", "CSS", "JavaScript"],
   theme: {
-    // o bordô do site (botões e rodapé) tem bom contraste sobre o papel claro do palco
     accent: "#821718",
     accentInk: "#ffffff",
     fontKey: "plusJakarta",
@@ -146,7 +136,6 @@ export const vivaOSamba: Deck = {
         note: "Ícones de traço, usados na interface do site.",
         stroke: 1.75,
         animated: false,
-        // globo do seletor de idioma do cabeçalho: os meridianos giram como no site
         css: ".vg-globe .globe__m{transform-box:fill-box;transform-origin:left center;animation:vg-meridian 3.75s cubic-bezier(.37,0,.63,1) infinite}.vg-globe .globe__m--2{animation-delay:-.94s}.vg-globe .globe__m--3{animation-delay:-1.875s}.vg-globe .globe__m--4{animation-delay:-2.81s}@keyframes vg-meridian{from{transform:scaleX(-1)}to{transform:scaleX(1)}}@media (prefers-reduced-motion:reduce){.vg-globe .globe__m{animation:none}}",
         items: [
           { label: "Seletor de idioma", cls: "vg-globe", shapes: "<g transform=\"scale(0.5455)\" stroke-width=\"3.2\"><circle cx=\"22\" cy=\"22\" r=\"20.75\"/><path d=\"M1.25 22h41.5M6.10 8.66h31.79M6.10 35.34h31.79\"/><path class=\"globe__m globe__m--1\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--2\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--3\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/><path class=\"globe__m globe__m--4\" d=\"M22 1.25a20.75 20.75 0 0 1 0 41.5\"/></g>" },

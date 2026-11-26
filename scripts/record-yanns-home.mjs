@@ -1,10 +1,7 @@
-// Grava um scroll-through da HOME do YANNS (localhost:8000, FR) para o hero do
-// case. Screencast (puppeteer) → webm; depois ffmpeg converte para mp4 1280x800.
 import puppeteer from "puppeteer-core";
 
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const BASE = "http://localhost:8000";
-// arg: "desktop" (padrão) ou "mobile"
 const KIND = process.argv[2] === "mobile" ? "mobile" : "desktop";
 const VP = KIND === "mobile"
   ? { width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
@@ -28,7 +25,6 @@ await p.setCookie({ name: "yanns_lang", value: "fr", domain: "localhost", path: 
 await p.goto(BASE + "/", { waitUntil: "networkidle2", timeout: 30000 });
 await sleep(800);
 
-// pré-carrega imagens (scroll completo) e congela a coleção em LE MAILLOT
 await p.evaluate(async () => {
   await new Promise((res) => { let y = 0; const t = setInterval(() => { window.scrollBy(0, 600); y += 600; if (y >= document.body.scrollHeight) { clearInterval(t); res(); } }, 60); });
 });
@@ -43,13 +39,10 @@ await p.evaluate(async () => {
 await sleep(700);
 await p.evaluate(() => window.scrollTo(0, 0));
 await sleep(700);
-// garante o vídeo do hero tocando
 await p.evaluate(() => { document.querySelectorAll("video").forEach((v) => { v.muted = true; v.play?.().catch(() => {}); }); });
 await sleep(400);
 
-// ---- grava ----
 const recorder = await p.screencast({ path: OUT_WEBM, fps: 30 });
-// scroll suave do topo ao fim em ~14s
 await p.evaluate(async () => {
   const dur = 14000;
   const maxY = document.body.scrollHeight - window.innerHeight;
@@ -57,7 +50,6 @@ await p.evaluate(async () => {
   await new Promise((res) => {
     function step(now) {
       const t = Math.min(1, (now - start) / dur);
-      // ease-in-out
       const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       window.scrollTo(0, Math.round(e * maxY));
       if (t < 1) requestAnimationFrame(step); else res();

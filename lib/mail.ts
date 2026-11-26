@@ -1,20 +1,11 @@
 import nodemailer from "nodemailer";
 
-// Envio de e-mail do site para o estúdio via SMTP (caixa da Hostinger).
-// Todo e-mail sai com o prefixo "[Site]" no assunto: é por ele que o filtro do
-// webmail move a mensagem para a pasta "Site". Usado por /api/briefing e
-// /api/chat/lead.
-//
-// Variáveis (.env.local — ver .env.local.example):
-//   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS  (obrigatórias)
-//   MAIL_TO  (padrão: o próprio SMTP_USER)
 
 export const MAIL_SUBJECT_TAG = "[Site]";
 
 export const clean = (v: unknown, max: number) =>
   typeof v === "string" ? v.replace(/\r/g, "").trim().slice(0, max) : "";
 
-// cabeçalhos de e-mail não podem ter quebra de linha (injeção de header)
 export const oneLine = (v: string) => v.replace(/[\r\n]+/g, " ");
 
 export const esc = (v: string) =>
@@ -27,7 +18,6 @@ export function smtpConfigured() {
   return Boolean(SMTP_HOST && SMTP_USER && SMTP_PASS);
 }
 
-// anti-abuso simples, por instância e por chave (IP)
 export function makeLimiter(max: number, windowMs: number) {
   const hits = new Map<string, number[]>();
   return (key: string) => {
@@ -40,7 +30,7 @@ export function makeLimiter(max: number, windowMs: number) {
 }
 
 export async function sendSiteMail(opts: {
-  subject: string; // sem o prefixo: ele é acrescentado aqui
+  subject: string;
   text: string;
   html: string;
   replyTo?: { name?: string; address: string };

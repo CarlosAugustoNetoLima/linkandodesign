@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 import { DIAG_START_KEY } from "@/components/agent/DiagnosisStarter";
 
-// Abre o diagnóstico já com uma primeira mensagem (ex.: o serviço do card), como o campo do hero.
 export default function StartDiagnosisButton({
   message,
   className,

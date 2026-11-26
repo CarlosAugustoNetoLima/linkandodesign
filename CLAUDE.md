@@ -135,7 +135,7 @@ Sem eyebrow. À direita do título, o campo de diagnóstico (rótulo "Comece pel
 Subtítulo (aprovado pelo Carlos em 2026-11-20):
 ```
 Estúdio de marca e desenvolvimento web. Criamos identidade visual, sites,
-landing pages e sistemas internos para empresas que querem vender mais.
+landing pages e sistemas internos para empresas que querem se destacar.
 9 anos, 5 países. O diagnóstico é gratuito.
 ```
 

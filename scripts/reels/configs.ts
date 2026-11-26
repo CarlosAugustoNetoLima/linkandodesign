@@ -1,13 +1,9 @@
-// Monta a configuração de cada reel a partir dos dossiês dos decks (lib/decks).
-// Uso: npx tsx --tsconfig tsconfig.json scripts/reels/configs.ts > scripts/reels/configs.json
-// Depois: python3 -I scripts/reels/peaks.py (acha o trecho de mais movimento de cada gravação).
 import { decks } from "@/lib/decks";
 import type { Chapter, Media } from "@/lib/decks/types";
 
 type Clip = { src: string; w: number; h: number; poster?: string };
 const clip = (m: Media): Clip => ({ src: m.src, w: m.width, h: m.height, poster: m.poster });
 
-// fontes dos decks (next/font) → família do Google Fonts
 const GF: Record<string, string> = {
   montserrat: "Montserrat",
   archivo: "Archivo",
@@ -34,13 +30,11 @@ const raw = decks.map((d) => {
   const features = ch.filter((c) => c.type === "feature" && c.mediaKind === "desktop") as Extract<Chapter, { type: "feature" }>[];
   const kind = !page && !details ? (d.mediaFramed && d.frameHost ? "system" : "brand") : "site";
 
-  // marca: a construção é a gravação do próprio símbolo (primeiro capítulo de computador)
   const build = kind === "brand" ? features.find((f) => f.media.src !== d.cover.src) : undefined;
   const shots = details
     ? details.items.map((i) => clip(i.media))
     : features.filter((f) => f.media.src !== d.cover.src && f !== page && f !== build).slice(0, 6).map((f) => clip(f.media));
 
-  // celulares: páginas diferentes da inicial (a inicial já aparece no começo); o peaks.py escolhe as 3 com mais movimento
   const phoneClips = phones && phones.type === "phones" ? phones.phones.slice(1).map((p) => clip(p.media)) : [];
   if (phoneClips.length < 3 && kind !== "brand")
     phoneClips.unshift(clip({ src: dir + "hero-mobile.mp4", poster: dir + "hero-mobile.jpg", width: 520, height: 1126, alt: "" }));
@@ -54,7 +48,6 @@ const raw = decks.map((d) => {
     accent: lum(d.theme.accent) < 0.08 ? "#8d8d99" : d.theme.accent,
     frame: kind === "site" ? "browser" : "card",
     hero: clip(d.cover),
-    // capa da marca: a papelaria (ou as versões do logo) mostra a marca aplicada
     coverStill: kind === "brand" ? (ch.find((c) => c.id === "papelaria" && c.type === "feature") ?? ch.find((c) => c.id === "versoes" && c.type === "feature")) : undefined,
     coverClip: null as Clip | null,
     heroMobile: kind === "brand" ? null : dir + "hero-mobile.mp4",

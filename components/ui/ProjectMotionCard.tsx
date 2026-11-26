@@ -3,13 +3,10 @@
 import Link from "next/link";
 import MotionPair, { type MotionPairDict } from "@/components/ui/MotionPair";
 
-// Card de projeto: a gravação real do site em desktop e mobile, lado a lado,
-// com a ficha do projeto logo abaixo — tudo dentro do mesmo card.
-// Hover moderno: elevação suave com sombra difusa.
 export type MotionCardProps = {
-  slug: string; // base dos arquivos de gravação
+  slug: string;
   name: string;
-  url: string; // domínio exibido na barra do navegador
+  url: string;
   year: string;
   flag: string;
   summary: string;
@@ -35,7 +32,7 @@ export default function ProjectMotionCard({
     <article className="group overflow-hidden rounded-3xl border border-line bg-surface p-2 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-lg motion-reduce:transform-none">
       <MotionPair base={slug} name={name} url={url} dict={devices} />
 
-      {/* Ficha do projeto — dentro do card */}
+      
       <div className="p-4 sm:p-7">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight sm:text-3xl">

@@ -1,18 +1,3 @@
-// Base interna de valores: serve para qualificar o lead (no chat, sem número nenhum) e
-// para a pré-proposta do e-mail interno ao Carlos. Nunca é mostrada ao visitante, nem no
-// chat nem no site: preço só existe na proposta enviada por e-mail. Os números vêm da
-// variável de ambiente PRICING_BASE (JSON), porque o repositório é público; a tabela
-// legível fica em docs/privado/ (fora do git). Sem a variável, não há qualificação: o
-// chat não julga o orçamento e o time decide.
-//
-// PRICING_BASE={"floor":0,"eurFactor":0,"min":{"brand":0,"identity":0,"site":0,"landing":0,"siteRedesign":0,"system":0,"siteAdvanced":0,"naming":0},"max":{...as mesmas chaves}}
-//   floor        piso absoluto em R$ (nenhuma faixa começa abaixo dele)
-//   eurFactor    base em euro = base em R$ × fator
-//   min / max    faixa por serviço, em R$ (vários serviços somam). O mínimo é a opção
-//                Essencial; é contra ele que o investimento declarado é comparado.
-//   siteAdvanced (opcional) faixa do site com 3D, efeitos pesados ou vários idiomas:
-//                substitui a de site e de redesign de site quando o escopo pede
-//   naming       (opcional) soma à marca quando o nome ainda vai ser criado
 
 export type ServiceKey = "brand" | "identity" | "site" | "landing" | "siteRedesign" | "system";
 export type PriceKey = ServiceKey | "siteAdvanced" | "naming";
@@ -65,10 +50,6 @@ function loadBase(): Base | null {
   return cached;
 }
 
-// ── Valores ditos na conversa ──────────────────────────────────────────────
-// Só conta como valor o número que vem com moeda ("R$ 5.000", "US$ 15,000", "€2.000"),
-// com "mil"/"k" ("uns 8 mil", "15k") ou com a palavra da moeda ("800 reais"). Telefone,
-// prazo ("2 semanas") e quantidade de páginas ficam de fora.
 const MONEY =
   /(R\$|US\$|U\$|€|\$|\bEUR\b|\bUSD\b|\bBRL\b)?\s?(\d{1,3}(?:[.,\s]\d{3})+(?:[.,]\d{1,2})?|\d+(?:[.,]\d+)?)\s?(mil\b|k\b)?\s?(reais|real|euros?|d[oó]lar(?:es)?|dollars?|bucks)?/gi;
 
@@ -106,15 +87,11 @@ export function moneyIn(text: string, fallback: Currency): Money[] {
   return out;
 }
 
-// ── Serviços pedidos ───────────────────────────────────────────────────────
-// Identificação aproximada pelo que a pessoa escreveu; o e-mail do lead avisa que é
-// automática. "Sistema de design" é parte da marca, não sistema interno.
 const REDO = "(redesign|refazer|reformular|renovar|atualizar|moderniz\\w*|repaginar|rebrand\\w*|refresh|rebuild|revamp|nova vers[ãa]o)";
 const WANT =
   "(criar|fazer|desenvolver|construir|montar|preciso|precisamos|quero|queremos|queria|quer[ií]amos|gostaria|nova|novo|need|want|would like|build|create|new)";
 const RE = {
   identity: new RegExp(`${REDO}[^.!?\\n]{0,30}\\b(marca|logo\\w*|identidade|brand)|\\b(marca|logo\\w*|identidade|brand)\\b[^.!?\\n]{0,30}${REDO}`, "i"),
-  // só conta quando a pessoa quer CRIAR a marca: "tem logo" ou "a marca das lojas" não contam
   brand: new RegExp(
     `${WANT}[^.!?\\n]{0,25}\\b(marca|logo(tipo|marca)?|identidade visual|brand( identity)?)\\b|\\b(branding|naming)\\b|\\b(marca|logo(tipo|marca)?|identidade visual)\\b[^.!?\\n]{0,20}\\b(nova|novo|do zero|from scratch)\\b`,
     "i",
@@ -122,7 +99,6 @@ const RE = {
   siteRedesign: new RegExp(`${REDO}[^.!?\\n]{0,30}\\b(site|website)\\b|\\b(site|website)\\b[^.!?\\n]{0,30}(${REDO.slice(1, -1)}|antigo|velho|desatualizado|outdated)`, "i"),
   landing: /landing|p[áa]gina de (venda|captura|capta[çc][ãa]o|lan[çc]amento)|sales page/i,
   site: /\b(site|website|loja virtual|e-?commerce|online store)\b/i,
-  // sistema interno pedido, não um sistema que a pessoa já usa ("o sistema que a recepção usa")
   system: new RegExp(
     `\\b(sistemas? (internos?|de gest[ãa]o|pr[óo]prios?|para (a equipe|gerenciar|controlar|organizar))|painel|dashboard|plataforma interna|interface de gest[ãa]o|internal (system|tool)s?|management (interface|system)|admin panel)\\b(?![^.!?\\n]{0,15}\\b(nada|nenhum|nothing|none)\\b)|${WANT}[^.!?\\n]{0,15}\\b(sistema|software|system)\\b`,
     "i",
@@ -141,19 +117,13 @@ export function servicesIn(text: string): ServiceKey[] {
   return Array.from(found);
 }
 
-// ── Qualificação (no chat) ─────────────────────────────────────────────────
-// Compara o último valor que a pessoa disse com o mínimo da opção Essencial dos
-// serviços pedidos (soma dos mínimos, nunca abaixo do piso). O modelo só recebe a
-// instrução, sem número.
 export type Qualification = {
   fit: Fit;
   services: ServiceKey[];
   budget: Money | null;
-  minSum: number | null; // mínimo dos serviços, na moeda do orçamento
+  minSum: number | null;
 };
 
-// `extracted`: tipos já extraídos da conversa pela IA (e-mail do lead). Quando vêm,
-// valem no lugar da identificação por palavras. `extraMin`: mínimo a somar (naming).
 export function qualify(
   visitorTexts: string[],
   locale: "pt" | "en",
@@ -164,7 +134,7 @@ export function qualify(
   const all = visitorTexts.join("\n");
   const services = extracted?.length ? extracted : servicesIn(all);
   const said = visitorTexts.flatMap((t) => moneyIn(t, fallback));
-  const budget = said.length ? said[said.length - 1] : null; // vale o último valor dito
+  const budget = said.length ? said[said.length - 1] : null;
   const base = loadBase();
 
   if (!budget) return { fit: "sem-info", services, budget, minSum: null };
@@ -188,7 +158,6 @@ export function fmt(m: Money): string {
   return `${symbol} ${Math.round(m.amount).toLocaleString("pt-BR")}`;
 }
 
-// Linha para o e-mail do lead (só o time lê).
 export function qualificationLine(q: Qualification): string {
   const parts = [FIT_LABEL[q.fit]];
   if (q.budget) parts.push(`investimento declarado: ${fmt(q.budget)}`);
@@ -197,7 +166,6 @@ export function qualificationLine(q: Qualification): string {
   return parts.join(" · ");
 }
 
-// ── Faixa de preço (só para o e-mail interno e a pré-proposta, sempre em R$) ──
 export type Modifiers = { siteAdvanced?: boolean; naming?: boolean };
 export type Band = { min: number; max: number | null; keys: PriceKey[]; floor: number };
 

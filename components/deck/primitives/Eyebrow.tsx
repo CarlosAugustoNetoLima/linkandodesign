@@ -13,8 +13,6 @@ type Props = {
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Micro-rótulo na cor de destaque do site. Com `index` mostra o número e um
-// traço de 28 px que se desenha ao entrar na tela.
 export default function Eyebrow({ index, children, className }: Props) {
   const reduced = useReduced();
 

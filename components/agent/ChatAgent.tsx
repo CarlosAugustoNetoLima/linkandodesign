@@ -5,12 +5,9 @@ import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-// Botão redondo do canto inferior direito: leva à página /diagnostico
-// (e some nela, onde a conversa já está na tela).
 export default function ChatAgent({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).chat;
   const pathname = usePathname();
-  // na home o campo do hero já abre o diagnóstico; na própria página o atalho sobra
   if (pathname === "/diagnostico" || pathname === "/") return null;
 
   return (

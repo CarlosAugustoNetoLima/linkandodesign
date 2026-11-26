@@ -3,9 +3,8 @@ const OUT='/private/tmp/claude-501/-Users-carloslima-linkando-design/7aa17e6a-f4
 const buf = fs.readFileSync('/Users/carloslima/Downloads/apple_macbook_pro.glb');
 const jsonLen = buf.readUInt32LE(12);
 const json = JSON.parse(buf.toString('utf8', 20, 20 + jsonLen));
-// binary chunk starts after json chunk: 12 header + 8 (len+type) + jsonLen, pad to 4
 const jsonPad = (jsonLen + 3) & ~3;
-const binStart = 12 + 8 + jsonPad + 8; // +8 for bin chunk header
+const binStart = 12 + 8 + jsonPad + 8;
 const roles = ['baseColor(0)','metalRough+AO(1)','emissive(2)','normal(3)'];
 json.images.forEach((im,i)=>{
   const bv = json.bufferViews[im.bufferView];
@@ -16,5 +15,4 @@ json.images.forEach((im,i)=>{
   fs.writeFileSync(f, data);
   console.log(`img[${i}] ${roles[i]} -> ${f} (${(bv.byteLength/1024|0)}KB)`);
 });
-// node0 matrix
 console.log('node0 matrix:', JSON.stringify(json.nodes[0].matrix));

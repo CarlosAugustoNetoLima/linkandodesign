@@ -8,7 +8,6 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 import OpenChatLink from "@/components/agent/OpenChatLink";
 
-// Header glass: translúcido com blur sobre o conteúdo que passa por baixo.
 export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -23,7 +22,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
   return (
     <header className="sticky top-0 z-50 bg-paper/70 backdrop-blur-xl">
-      <div className="flex h-16 items-center justify-between gap-6 px-4 sm:px-6 md:h-20">
+      <div className="flex h-16 items-center justify-between gap-6 px-6 sm:px-8 md:h-20">
         <Link href="/" aria-label="Linkando Design" onClick={() => setOpen(false)}>
           <Image
             src="/logo-ink.svg"
@@ -35,7 +34,7 @@ export default function Header({ locale }: { locale: Locale }) {
           />
         </Link>
 
-        {/* links centralizados no espaço entre o logo e o grupo globo + CTA */}
+        
         <nav className="hidden flex-1 items-center md:flex">
           <div className="flex flex-1 items-center justify-evenly">
             {links.map((l) => (
@@ -43,7 +42,6 @@ export default function Header({ locale }: { locale: Locale }) {
                 key={l.href}
                 href={l.href}
                 className={`label link-brut transition-opacity ${
-                  // "/" é prefixo de toda rota: o início só fica ativo na própria home
                   (l.href === "/" ? pathname === "/" : pathname.startsWith(l.href))
                     ? ""
                     : "opacity-60 hover:opacity-100"
@@ -70,7 +68,7 @@ export default function Header({ locale }: { locale: Locale }) {
           aria-label={open ? dict.nav.close : dict.nav.menu}
           aria-expanded={open}
         >
-          {/* ícone hambúrguer/X em CSS puro: sem lib de ícones só para isto */}
+          
           <span className="relative block h-4 w-5" aria-hidden="true">
             <span
               className={`absolute left-0 block h-0.5 w-5 bg-ink transition-transform ${
@@ -93,7 +91,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
       {open && (
         <nav className="border-t border-line bg-paper/95 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col px-6 py-4">
+          <div className="flex flex-col px-8 py-4">
             {links.map((l) => (
               <Link
                 key={l.href}

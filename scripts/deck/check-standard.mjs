@@ -1,8 +1,4 @@
 #!/usr/bin/env node
-// Verifica se um deck segue o padrão de portfólio da Linkando (skill add-portfolio-project).
-// Uso: node scripts/deck/check-standard.mjs <slug | --all> [--net]
-//   --net  também confere o link real (SSO da Vercel, erro HTTP) e os links extras.
-// Saída: ✔ ok · ⚠ aviso (não bloqueia) · ✖ falha (exit 1).
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -21,7 +17,6 @@ if (!target && !args.includes('--all')) {
   process.exit(2);
 }
 
-// ---------- carrega os dossiês (TS → objeto) ----------
 const NAO_DECK = new Set(['index', 'types', 'fonts', 'stage', 'showcase']);
 const decksDir = path.join(root, 'lib/decks');
 const indexSrc = readFileSync(path.join(decksDir, 'index.ts'), 'utf8');
@@ -48,7 +43,6 @@ if (!picked.length) {
   process.exit(2);
 }
 
-// ---------- utilitários ----------
 const pub = (src) => path.join(root, 'public', src);
 const MB = 1024 * 1024;
 const probeCache = new Map();
@@ -85,21 +79,18 @@ const LIBS = /\b(GSAP|ScrollTrigger|SplitText|Lenis|Three\.js|React|Next\.js|Tai
 const ARQUIVO = /[\w-]+\.(php|css|js|jsx|tsx|ts|json|mjs|md|html|py|woff2?|mp4|webp|jpg|png|yml)\b/i;
 const CODIGO = /`|<\/?[a-z]+>|=>|\{\s*\w+:|::|\(\)\s*\{|\bconst\b|\bfunction\b/;
 
-// ---------- checagens de um deck ----------
 async function check({ file, exportName, deck }) {
   const out = [];
   const ok = (m) => out.push(['ok', m]);
   const warn = (m) => out.push(['warn', m]);
   const fail = (m) => out.push(['fail', m]);
 
-  // dossiê
   if (!deck.flags?.length) fail('sem bandeira (`flags`): uma por país, 🌍 só se atende o mundo todo');
   else ok(`bandeiras: ${deck.flags.join(' ')}`);
   for (const k of ['name', 'client', 'sector', 'location', 'tagline', 'summary']) if (!deck[k]) fail(`campo vazio no dossiê: ${k}`);
   if (!/^https:\/\//.test(deck.liveUrl ?? '')) fail('liveUrl ausente ou sem https');
   if (!deck.seo?.title || !deck.seo?.description) fail('seo.title e seo.description são obrigatórios');
 
-  // registro
   const imp = indexSrc.match(new RegExp(`import \\{ (\\w+) \\} from "\\./${file}"`));
   const arr = (indexSrc.match(/decks: Deck\[\] = \[([^\]]*)\]/) || [])[1] ?? '';
   const nomes = arr.split(',').map((s) => s.trim()).filter(Boolean);
@@ -112,7 +103,6 @@ async function check({ file, exportName, deck }) {
   if (new RegExp(`"${deck.slug}"`).test(showcaseSrc)) ok('citado em serviceProofs (aparece em "onde isso foi feito")');
   else out.push(['info', 'fora de serviceProofs (a seção "onde isso foi feito" da home só usa 6 dos projetos; é escolha editorial)']);
 
-  // vitrine desktop = deck.cover
   const cover = deck.cover;
   const coverFile = cover?.src ? pub(cover.src) : null;
   if (!coverFile || !existsSync(coverFile)) fail(`capa do card sem arquivo: ${cover?.src}`);
@@ -132,7 +122,6 @@ async function check({ file, exportName, deck }) {
     if (!existsSync(pub(cover.poster))) fail(`pôster da capa sem arquivo: ${cover.poster}`);
   }
 
-  // vitrine mobile = hero-mobile (nome fixo, lido por getShowcase)
   if (cover?.src) {
     const dir = cover.src.slice(0, cover.src.lastIndexOf('/') + 1);
     const mob = pub(dir + 'hero-mobile.mp4');
@@ -149,7 +138,6 @@ async function check({ file, exportName, deck }) {
     }
   }
 
-  // capítulos e mídias
   const ch = deck.chapters ?? [];
   if (ch[0]?.type !== 'cover') fail('o primeiro capítulo deve ser `cover`');
   if (ch[ch.length - 1]?.type !== 'cta') fail('o último capítulo deve ser `cta`');
@@ -175,12 +163,11 @@ async function check({ file, exportName, deck }) {
   }
   if (!semArquivo && !dimErrada) ok('todas as mídias existem e batem com as dimensões');
 
-  // texto público: sem biblioteca, nome de arquivo ou código fora de Desenvolvimento/Qualidade/Animações
   let achados = 0;
   for (const c of ch) {
     if (/desenvolv|qualidade/.test(c.id)) continue;
     for (const s of strings({ ...c, media: undefined, backdrop: undefined, desktop: undefined, mobile: undefined })) {
-      if (/^\/decks\//.test(s) || /^https?:/.test(s) || /^</.test(s) || /^\.[a-z]/.test(s)) continue; // SVG e CSS dos ícones não são texto
+      if (/^\/decks\//.test(s) || /^https?:/.test(s) || /^</.test(s) || /^\.[a-z]/.test(s)) continue;
       if (LIBS.test(s) || ARQUIVO.test(s) || CODIGO.test(s)) {
         achados++;
         warn(`texto técnico fora de Desenvolvimento (${c.id}): ${s.slice(0, 80)}`);
@@ -189,7 +176,6 @@ async function check({ file, exportName, deck }) {
   }
   if (!achados) ok('texto público sem biblioteca, nome de arquivo ou código');
 
-  // links reais
   if (net) {
     const urls = [deck.liveUrl, ...(deck.extraLinks ?? []).map((l) => l.url)].filter(Boolean);
     for (const u of urls) {
@@ -207,7 +193,6 @@ async function check({ file, exportName, deck }) {
   return out;
 }
 
-// ---------- relatório ----------
 const ICONE = { ok: '✔', warn: '⚠', fail: '✖', info: '·' };
 let falhas = 0;
 for (const d of picked) {

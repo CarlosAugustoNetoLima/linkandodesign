@@ -1,9 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do Cinnamon Studio. Cada fato daqui foi conferido no código
-// de /Users/carloslima/cinnamon ou no site no ar. Nada de número estimado: o que
-// o site não sabe, o deck não diz. O texto é para o público: explicação simples,
-// sem nome de arquivo, sem metáfora e sem termo técnico além do nome das linguagens.
 const BASE = "/decks/cinnamon";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -51,7 +47,6 @@ export const cinnamon: Deck = {
     displayWeight: 300,
     displayTracking: "0.14em",
     displayUppercase: true,
-    // a marca proíbe cantos arredondados (só círculos): os elementos do palco ficam retos
     radius: "0px",
   },
   cover: desktop("vitrine-desktop", "O site do Cinnamon Studio em ação: a rolagem passa pelos ambientes, a planta, o tour 360° e a torre 3D, que abre um studio ao clique"),
@@ -72,7 +67,6 @@ export const cinnamon: Deck = {
       subtitle: "Site de lançamento imobiliário em que a rolagem da página controla as animações.",
       chips: ["HTML", "CSS", "JavaScript", "Python"],
       credit: "Linkando Design · 2026 · direção, design e desenvolvimento",
-      // imagens da própria animação de abertura (sem a interface do site) até a foto do banheiro, e de volta para fechar o loop
       backdrop: {
         src: `${BASE}/cover-flight.mp4`,
         poster: `${BASE}/cover-flight.jpg`,
@@ -285,8 +279,6 @@ export const cinnamon: Deck = {
       eyebrow: "Animação de abertura",
       title: "Animação controlada pela rolagem.",
       body: "Role para frente e para trás: a câmera sobe pela torre, entra no studio e chega ao banheiro.",
-      // a sequência ocupa os primeiros 76% da rolagem; depois a imagem fica no corredor
-      // e a foto do banheiro assume, com aproximação lenta até o fim
       frames: { dir: `${BASE}/seq`, prefix: "f_", pad: 3, ext: "webp", count: 102, width: 1280, height: 720, endAt: 0.76 },
       outro: {
         src: `${BASE}/banho-01.webp`,

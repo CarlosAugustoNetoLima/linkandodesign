@@ -1,6 +1,3 @@
-// Gera o mirror ESTÁTICO do site do YANNS em public/yanns/, servido em /yanns.
-// O PHP (localhost:8000) já renderiza os dados dinâmicos no HTML → ficam assados.
-// Reescreve os caminhos absolutos/relativos para o prefixo /yanns/.
 import { mkdir, writeFile, rm, cp } from "node:fs/promises";
 import { execSync } from "node:child_process";
 
@@ -25,24 +22,19 @@ console.log("assets + favicon copiados");
 
 function rewrite(html) {
   return html
-    // assets (absolutos e relativos) → /yanns/assets/
     .replaceAll('="/assets/', '="/yanns/assets/')
     .replaceAll('="assets/', '="/yanns/assets/')
     .replaceAll("url(/assets/", "url(/yanns/assets/")
     .replaceAll("url(assets/", "url(/yanns/assets/")
     .replaceAll("url('/assets/", "url('/yanns/assets/")
     .replaceAll('url("/assets/', 'url("/yanns/assets/')
-    // favicon
     .replaceAll('href="/favicon.ico"', 'href="/yanns/favicon.ico"')
-    // links de rota → arquivos estáticos do mirror
     .replaceAll('href="/"', 'href="/yanns/index.html"')
     .replaceAll('href="/musique"', 'href="/yanns/musique.html"')
     .replaceAll('href="/dates"', 'href="/yanns/dates.html"')
     .replaceAll('href="/collections"', 'href="/yanns/collections.html"')
     .replaceAll('href="/biographie"', 'href="/yanns/biographie.html"')
-    // todos os produtos → página estática única (id=12616)
     .replace(/href="\/produto\?id=\d+"/g, 'href="/yanns/produto.html"')
-    // seletor de idioma não funciona no estático (sem PHP) → neutraliza
     .replace(/href="[^"]*\?lang=[a-z]{2}"/g, 'href="#"');
 }
 

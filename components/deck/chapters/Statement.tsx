@@ -10,15 +10,11 @@ import type { Deck, StatementChapter } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Comparação de palavra: sem caixa e sem pontuação, como manda o campo emphasis.
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9À-ɏ]/g, "");
 
-// Resumo: uma frase de abertura grande e o resto do texto pequeno.
-// Nada depende da rolagem: tudo entra uma vez ao aparecer na tela.
 export default function Statement({ chapter, deck }: { chapter: StatementChapter; deck: Deck }) {
   const reduced = useReduced();
 
-  // Divide o texto em frases sem mudar nenhuma palavra; frase curta demais se junta à seguinte.
   const sentences = chapter.text.match(/[^.!?]+(?:[.!?]+["”]?|$)\s*/g)?.map((s) => s.trim()) ?? [chapter.text];
   const joined = sentences[0].length < 40 && sentences.length > 1;
   const lead = joined ? `${sentences[0]} ${sentences[1]}` : sentences[0];
@@ -44,7 +40,7 @@ export default function Statement({ chapter, deck }: { chapter: StatementChapter
         >
           {leadWords.map((w, i) => (
             <Fragment key={i}>
-              {/* inline-block: sem isso o y não se aplica a uma palavra em linha */}
+              
               <motion.span
                 className="inline-block"
                 style={{ color: marked.has(norm(w)) ? "var(--d-accent)" : undefined }}

@@ -11,10 +11,6 @@ type Props = {
   children: ReactNode;
 };
 
-// Chrome do site (progresso, header, footer, agente) em todas as páginas, exceto
-// nos decks em /apresentacoes/<slug>: lá o palco é tela cheia com moldura própria
-// e fica só o agente (o fim do deck abre o chat de diagnóstico).
-// O hub /apresentacoes (sem barra final) mantém o chrome.
 export default function SiteChrome({ progress, header, footer, agent, children }: Props) {
   const pathname = usePathname();
 

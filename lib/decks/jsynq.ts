@@ -1,13 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do site da JSYNQ (marca do grupo In The Level). Este case é só o SITE:
-// marca e sistema terão cases próprios. Cada fato foi conferido no código
-// (/Users/carloslima/Documents/GitHub/jsynq, branch feat/home-b-ab-test, revisto em 2026-11-21:
-// README, especificações e planos, componentes, histórico de commits) ou na cópia do portfólio
-// (https://jsynq-linkando.vercel.app, sem chaves: diagnóstico, formulários e medição
-// não funcionam nela). Não citar: preços ou planos, valores da calculadora, IDs de
-// medição, nomes de clientes dos logos. Texto público: simples, sem nome de arquivo,
-// sem metáfora e sem termo técnico além do nome das linguagens.
 const BASE = "/decks/jsynq";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -48,14 +40,12 @@ export const jsynq: Deck = {
   credits: [{ name: "Carlos Lima", role: "Direção criativa, design e desenvolvimento" }, { name: "Sandrele Carvalho", role: "Design" }],
   stack: ["TypeScript", "HTML", "CSS"],
   theme: {
-    // verde de texto da marca: o verde de preenchimento não tem contraste sobre o papel claro
     accent: "#1f6b48",
     accentInk: "#ffffff",
     fontKey: "inter",
     displayWeight: 800,
     displayTracking: "-0.035em",
     displayUppercase: false,
-    // botões e cartões do site usam 10 px
     radius: "10px",
     coverWeight: 800,
   },

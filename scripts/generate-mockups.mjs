@@ -29,7 +29,6 @@ const html = (p) => `<!DOCTYPE html>
     mask-image: radial-gradient(1200px 800px at 50% 45%, black, transparent 85%);
   }
 
-  /* frame de vidro — borda espessa translúcida com blur */
   .glass {
     position: absolute;
     background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05) 55%, rgba(255,255,255,0.12));
@@ -91,7 +90,7 @@ for (const p of projects) {
     viewport: { width: 1600, height: 1000 },
     deviceScaleFactor: 2,
   });
-  await page.goto(`file:///tmp/mock-${p.name}.html`);
+  await page.goto(`file:
   await page.waitForTimeout(600);
   await page.screenshot({ path: `${ROOT}/public/projects/${p.name}.png` });
   await page.close();

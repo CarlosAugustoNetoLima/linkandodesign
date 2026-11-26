@@ -1,13 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isLocale } from "@/lib/i18n";
 
-// O idioma não vive mais na URL: PT-BR é o padrão e o seletor PT·EN do header
-// grava a escolha no cookie NEXT_LOCALE. Aqui só tratamos URLs antigas com
-// prefixo (/pt, /en, /en/trabalhos…) para não quebrar links e SEO existentes:
-// gravamos o cookie e redirecionamos para o caminho plano.
-// Renomeamos as rotas: /trabalhos/x → /projeto/x, /contato → /#contato (o
-// contato agora vive no rodapé). O portfólio é a página de apresentações:
-// /portfolio e /trabalhos vão para /apresentacoes.
 function renameLegacyPath(pathname: string): string | null {
   if (pathname === "/trabalhos" || pathname === "/portfolio") return "/apresentacoes";
   const m = pathname.match(/^\/trabalhos\/(.+)$/);
@@ -20,8 +13,6 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const first = pathname.split("/")[1];
 
-  // URLs antigas com prefixo de idioma (/pt, /en/trabalhos…): grava o cookie
-  // e cai para o caminho plano, que segue a regra de renomeação abaixo.
   if (isLocale(first)) {
     const flat = pathname.replace(/^\/(pt|en)(?=\/|$)/, "") || "/";
     const url = req.nextUrl.clone();
@@ -34,7 +25,6 @@ export function middleware(req: NextRequest) {
     return res;
   }
 
-  // URLs antigas sem prefixo: preserva links e SEO existentes
   const renamed = renameLegacyPath(pathname);
   if (renamed) {
     const url = req.nextUrl.clone();
@@ -47,6 +37,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // ignora api, assets do next e arquivos estáticos (qualquer caminho com ".")
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };

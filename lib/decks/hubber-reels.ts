@@ -1,14 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do Hubber Reels, a página de conversão do segundo produto da Hubber.
-// Cada fato foi conferido em /Users/carloslima/hubber/hubber-site (página, estilos, scripts,
-// formulário da página, histórico) ou no site no ar. Coerente com o deck `hubber`, que tem um
-// capítulo curto sobre o Reels. Não citar: preço (em nenhum lugar, nem nas gravações: o CSS
-// das cenas tira o valor da tela), IDs de pixel e de CRM, nome de pessoas, Figma ou IA.
-// A fonte de display original ("946 Latin Wide 3") não é redistribuída: o deck usa a
-// Archivo Expandida no lugar, como o deck da Hubber.
-// Desde o commit 74e69c9 (2026-11-21) a página é a versão de portfólio: destaque só em cor,
-// formulário com envio simulado na própria página, sem rastreio e sem cookies.
 const BASE = "/decks/hubber-reels";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -49,8 +40,6 @@ export const hubberReels: Deck = {
   ],
   stack: ["HTML", "CSS", "JavaScript", "Python"],
   theme: {
-    // o âmbar do site (#EE9B00) não tem contraste sobre o papel: usa o tom que o próprio
-    // site aplica a textos de destaque na seção clara
     accent: "#9a6100",
     accentInk: "#ffffff",
     fontKey: "archivo",

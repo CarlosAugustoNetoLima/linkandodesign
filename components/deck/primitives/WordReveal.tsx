@@ -8,7 +8,6 @@ type Props = {
   text: string;
   as?: "h1" | "h2" | "h3" | "p" | "span" | "div";
   className?: string;
-  /** palavras (sem pontuação) que ganham a cor de destaque */
   emphasis?: string[];
   delay?: number;
   stagger?: number;
@@ -18,11 +17,8 @@ type Props = {
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Comparação de palavra: sem caixa e sem pontuação.
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9À-ɏ]/g, "");
 
-// Texto que sobe palavra a palavra de dentro de uma máscara. "\n" vira quebra de
-// linha. Com prefers-reduced-motion fica estático.
 export default function WordReveal({
   text,
   as = "p",
@@ -36,9 +32,6 @@ export default function WordReveal({
   const reduced = useReduced();
   const Tag = as as ElementType;
   const rootRef = useRef<HTMLElement>(null);
-  // O gatilho vive na raiz (sempre ocupa espaço), não nos spans: eles começam
-  // fora da máscara e o IntersectionObserver os trata como invisíveis, então
-  // um whileInView neles nunca dispararia.
   const inView = useInView(rootRef, { once: true, margin: "-10% 0px -10% 0px" });
   const shown = trigger === "mount" || inView;
   const marked = new Set(emphasis.map(norm));
@@ -57,8 +50,7 @@ export default function WordReveal({
               : undefined;
             return (
               <Fragment key={idx}>
-                {/* a máscara avança além da linha (padding) e o margin negativo devolve o espaço: sem isso o
-                    line-height curto do título corta a perna do g, p, y e os acentos */}
+                
                 <span
                   aria-hidden="true"
                   style={{

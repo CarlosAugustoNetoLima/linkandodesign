@@ -14,16 +14,13 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-// Foco visível do teclado, igual em todas as abas e botões do capítulo.
 const FOCUS =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:[outline-color:var(--d-accent)]";
 
-// Barrinhas que imitam o texto de cada seção no mapa; a faixa i usa o padrão i % 5 (larguras em %).
 const SKEL: number[][] = [[70, 40], [50, 80, 30], [85, 55], [40, 70], [60, 35, 50]];
 
 type TabProps = ComponentPropsWithRef<"button">;
 
-// Etiquetas de tecnologia: só contorno, sem fundo.
 function Chips({ chips, className }: { chips: string[]; className: string }) {
   return (
     <ul className={cx("flex flex-wrap gap-2", className)}>
@@ -39,7 +36,6 @@ function Chips({ chips, className }: { chips: string[]; className: string }) {
   );
 }
 
-// Linha do seletor padrão: número, título e seta. A linha de cima da ativa se desenha da esquerda.
 function RowTab({
   item,
   i,
@@ -107,7 +103,6 @@ function RowTab({
   );
 }
 
-// Faixa do mapa: uma seção da página esquematizada, com barrinhas no lugar do texto.
 function MapTab({
   item,
   i,
@@ -172,7 +167,6 @@ function MapTab({
   );
 }
 
-// Moldura do mapa: uma janela de navegador esquematizada, só decoração.
 function MapFrame({ children }: { children: ReactNode }) {
   return (
     <div className="rounded-[14px] p-3" style={{ border: "1px solid var(--d-line)" }}>
@@ -187,7 +181,6 @@ function MapFrame({ children }: { children: ReactNode }) {
   );
 }
 
-// Seletor do lg: lista de abas (ou o mapa), com setas, Home e End. Seleciona só por clique ou teclado.
 function Selector({
   chapter,
   active,
@@ -211,7 +204,6 @@ function Selector({
     else if (e.key === "Home") next = 0;
     else if (e.key === "End") next = N - 1;
     else return;
-    // o stopPropagation impede o DeckPlayer de trocar de capítulo com as setas (ele ouve em window)
     e.preventDefault();
     e.stopPropagation();
     onSelect(next);
@@ -261,14 +253,12 @@ function Selector({
   );
 }
 
-// O número gigante encolhe com o tamanho do valor, para algo como "1440 × 608" caber na coluna sem quebrar.
 function statSize(value: string, mobile = false) {
   const n = value.length;
   if (mobile) return n <= 4 ? "clamp(3rem, 16vw, 4.5rem)" : n <= 7 ? "clamp(2.5rem, 12vw, 3.5rem)" : "clamp(2rem, 8.5vw, 2.75rem)";
   return n <= 4 ? "clamp(4rem, 9.5vw, 9rem)" : n <= 7 ? "clamp(3.25rem, 7vw, 6.5rem)" : "clamp(2.5rem, 4.6vw, 4.75rem)";
 }
 
-// Detalhe de um item no lg: contador, número gigante (o stat, ou o índice), título, texto e etiquetas.
 function Detail({ item, i, N }: { item: TopicItem; i: number; N: number }) {
   return (
     <>
@@ -310,7 +300,6 @@ function Detail({ item, i, N }: { item: TopicItem; i: number; N: number }) {
   );
 }
 
-// Abaixo do lg: acordeão, um item aberto por vez; clicar no aberto fecha.
 function Accordion({
   chapter,
   open,
@@ -418,9 +407,6 @@ function Accordion({
   );
 }
 
-// Tópicos: título, texto opcional e um explorador. No lg, o seletor (lista ou mapa da página) fica à
-// esquerda e só o item escolhido aparece à direita; abaixo do lg, é um acordeão. A escolha é sempre
-// por clique ou teclado, nunca por hover nem sozinha.
 export default function Topics({ chapter, deck }: { chapter: TopicsChapter; deck: Deck }) {
   const reduced = useReduced();
   const [active, setActive] = useState(0);
@@ -454,7 +440,7 @@ export default function Topics({ chapter, deck }: { chapter: TopicsChapter; deck
         >
           <Selector chapter={chapter} active={active} onSelect={setActive} reduced={reduced} />
 
-          {/* itens empilhados na mesma célula: a altura é a do maior, e nada pula ao trocar */}
+          
           <div
             role="tabpanel"
             id={`${chapter.id}-panel`}

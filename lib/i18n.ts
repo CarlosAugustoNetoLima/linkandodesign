@@ -2,14 +2,11 @@ export const locales = ["pt", "en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "pt";
 
-// nomes exibidos no seletor de idioma
 export const localeNames: Record<Locale, string> = {
   pt: "Português",
   en: "English",
 };
 
-// Copy conforme o CLAUDE.md (posicionamento, serviços e processo) e o
-// .agents/product-marketing.md: conversa de negócios direta, sem jargão técnico de dev.
 export const dictionaries = {
   pt: {
     htmlLang: "pt-BR",
@@ -35,7 +32,7 @@ export const dictionaries = {
         secondary: "Ver projetos",
         title1: "Marcas, sites",
         title2: "e sistemas.",
-        text: "Estúdio de marca e desenvolvimento web. Criamos identidade visual, sites, landing pages e sistemas internos para empresas que querem vender mais.",
+        text: "Estúdio de marca e desenvolvimento web. Criamos identidade visual, sites, landing pages e sistemas internos para empresas que querem se destacar.",
         facts: ["9 anos", "5 países", "Diagnóstico gratuito"],
         cta: "Solicitar diagnóstico",
         starter: {
@@ -257,7 +254,7 @@ export const dictionaries = {
         secondary: "See projects",
         title1: "Brands, websites",
         title2: "and systems.",
-        text: "Brand and web development studio. We create visual identities, websites, landing pages and internal systems for companies that want to sell more.",
+        text: "Brand and web development studio. We create visual identities, websites, landing pages and internal systems for companies that want to stand out.",
         facts: ["9 years", "5 countries", "Free diagnosis"],
         cta: "Request a diagnosis",
         starter: {

@@ -5,47 +5,17 @@ import { getProjects } from "@/lib/projects";
 import { checklistText } from "@/lib/briefing-fields";
 import { moneyIn, qualify, servicesIn, type Currency, type Fit } from "@/lib/pricing-base";
 
-// Contexto do assistente do site, que CONDUZ O DIAGNÓSTICO do projeto: entende
-// tudo o que o time precisa (a lista oficial de perguntas está em
-// docs/playbook-diagnostico.md, convertido em lib/briefing-fields.ts), só no fim pede nome e
-// e-mail, resume, confirma e termina avisando que o time revisa e envia a
-// proposta por e-mail em até 24h. O prompt é MONTADO a partir das mesmas
-// fontes que renderizam o site (dicionários em lib/i18n.ts, projetos em
-// lib/projects.ts, decks em lib/decks), então copy e cases nunca ficam
-// defasados. Só o que não existe em outro lugar mora aqui: prazos típicos,
-// regras de conversa e exemplos.
-//
-// Pensado para modelo gratuito (Gemini flash-lite): o procedimento do
-// diagnóstico e as regras críticas vêm PRIMEIRO, o material de referência
-// depois, e as regras mais importantes se repetem no fim ("Lembrete final").
-//
-// MARCADOR DE FIM: a mensagem de fechamento termina com [[diagnostico-completo]].
-// O hook do chat (components/agent/useDiagnosisChat.ts) remove o marcador do texto,
-// e é ele que dispara o envio da conversa ao time (/api/chat/lead), onde o servidor
-// gera as respostas do briefing e o rascunho de proposta. A trava (validateReply)
-// só deixa o marcador passar depois de um resumo confirmado. Se mudar o marcador,
-// mude lá também.
-//
-// PREÇOS: nunca entram no prompt. Preço só existe na proposta enviada por e-mail
-// (regra do Carlos, 2026-11-17). Se o orçamento dito pela pessoa cabe no perfil
-// do estúdio, quem decide é o servidor (lib/pricing-base.ts, números fora do git),
-// e o resultado chega ao modelo só como instrução, sem número ("Estado desta conversa").
 
 const DEADLINES = {
   pt: "Landing page: 1–2 semanas. Site completo: 4–8 semanas. Branding completo: 3–6 semanas. Sistemas: depende do escopo, definido na proposta.",
   en: "Landing page: 1–2 weeks. Complete website: 4–8 weeks. Full branding: 3–6 weeks. Systems: depends on scope, defined in the proposal.",
 } as const;
 
-// DECISÃO DO CARLOS (2026-11-17): o diagnóstico é gratuito e é feito pela IA, nesta
-// conversa. Se um dia passar a ter preço, troque a frase; com null o assistente
-// não afirma nem nega cobrança.
 const DIAGNOSIS_COST: Record<"pt" | "en", string | null> = {
   pt: "O diagnóstico é gratuito. Ele é feito aqui, nesta conversa com a IA do estúdio; no fim, o time envia a proposta por e-mail.",
   en: "The diagnosis is free. It is done right here, in this conversation with the studio's AI; at the end, the team sends the proposal by email.",
 };
 
-// Exemplos curtos de tom e formato. Modelos menores seguem exemplo melhor do
-// que descrição abstrata de estilo.
 const EXAMPLES = {
   pt: `(A conversa já começou com a saudação do site, que pergunta o que a pessoa faz e o que está travando.)
 
@@ -174,9 +144,6 @@ function buildBasePrompt(locale: Locale): string {
     .join("\n");
   const steps = home.method.steps.map((s) => `${s.n}. ${s.title}: ${s.text}`).join("\n");
   const faq = home.faq.items.map((f) => `P: ${f.q}\nR: ${f.a}`).join("\n\n");
-  // Cases: os decks de 2026 (apresentações em /apresentacoes) + os projetos
-  // anteriores que não têm apresentação. Só o link do site da Linkando, nunca o
-  // endereço de demonstração dos decks.
   const deckCases = decks.map(
     (d) =>
       `- ${d.name} (${d.sector}; ${d.location}; ${d.year}) — ${d.tagline} ${d.summary} Apresentação animada no site: /apresentacoes/${d.slug}`,
@@ -481,32 +448,19 @@ ${EXAMPLES.pt}
 7. O marcador [[diagnostico-completo]] vai só na última linha da mensagem de fechamento ([[diagnostico-fora]] só no fechamento sem proposta).`;
 }
 
-// ── Estado da conversa ──────────────────────────────────────────────────────
-// O modelo gratuito erra contas simples ("já posso pedir o e-mail?"), então o
-// servidor conta por ele e cola o resultado no fim do prompt (onde o modelo
-// mais obedece). Não muda a conversa livre: só diz o que já aconteceu e o que
-// ainda é cedo ou tarde para fazer. Se todos os campos obrigatórios da lista
-// foram cobertos, quem confere é a rota (/api/chat), com a mesma extração do
-// e-mail do lead (lib/lead-proposal.ts), na hora em que a IA pede contato ou resume.
 
 export type ConversationState = {
   userTurns: number;
   hasContact: boolean;
-  fit: Fit; // orçamento dito pela pessoa contra a base interna (ver lib/pricing-base.ts)
-  visitorText: string; // tudo o que a pessoa escreveu: valores que ela disse podem ser repetidos
-  summaryPending: boolean; // a última mensagem da IA foi o resumo, esperando confirmação
+  fit: Fit;
+  visitorText: string;
+  summaryPending: boolean;
   lastUser: string;
-  // a IA já perguntou se há flexibilidade no investimento (ou se dá para começar menor)
-  // depois do último valor dito: a próxima decisão é seguir ou fechar como fora do perfil
   flexAsked: boolean;
 };
 
-// Nome e e-mail só no fim: nunca antes desta mensagem da pessoa, mesmo com quem
-// adianta tudo (o playbook tem de 12 a 17 itens obrigatórios por tipo).
 export const MIN_CONTACT_TURNS = 5;
-// Resumo: só com contato e nunca antes desta mensagem da pessoa.
 export const MIN_SUMMARY_TURNS = 6;
-// Conversa longa: a partir daqui o servidor para de segurar o contato e o resumo.
 export const LONG_TURNS = 18;
 
 const EMAIL_IN_TEXT = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/;
@@ -522,10 +476,7 @@ function hasContactInfo(text: string): boolean {
 
 const SUMMARY_RE = /(est[aá] corret[oa]|falta (alguma coisa|algo)|is (that|it) (right|correct)|anything (is )?missing)/i;
 const MARKER_RE = /\[\[\s*diagnostico-completo\s*\]\]/i;
-// Fim sem proposta: investimento abaixo do mínimo e sem flexibilidade. O hook manda a
-// conversa ao Carlos marcada "Fora do perfil" (status "out"), mesmo sem contato.
 const OUT_MARKER_RE = /\[\[\s*diagnostico-fora\s*\]\]/i;
-// A pergunta de flexibilidade que o estado pede quando o investimento fica abaixo
 const FLEX_RE = /(flexibilidade|parte menor|come[çc]ar (por|com) (uma|algo)|etapa menor|flexib(le|ility)|smaller (part|first step|scope)|start with (a )?smaller)/i;
 const ASK_CONTACT_RE = /(nome e e-?mail|seu e-?mail|seu nome e|name and email|your email|your name and)/i;
 const CONFIRM_RE =
@@ -544,11 +495,9 @@ export function conversationState(
   const lastAssistant = [...turns].reverse().find((t) => t.role === "assistant")?.content ?? "";
   const last = turns[turns.length - 1];
   const fallback: Currency = locale === "pt" ? "BRL" : "USD";
-  // índice do último valor dito pela pessoa e da última pergunta de flexibilidade depois dele
   const lastMoney = turns.reduce((acc, t, i) => (t.role === "user" && moneyIn(t.content, fallback).length ? i : acc), -1);
   const flexAt = turns.reduce((acc, t, i) => (i > lastMoney && t.role === "assistant" && FLEX_RE.test(t.content) ? i : acc), -1);
   const flexAsked = lastMoney >= 0 && flexAt > lastMoney;
-  // depois da pergunta de flexibilidade, vale o escopo que a pessoa escolheu ali (ex.: "só a landing")
   const after = flexAsked ? servicesIn(turns.slice(flexAt + 1).filter((t) => t.role === "user").map((t) => t.content).join("\n")) : [];
   return {
     userTurns: user.length,
@@ -560,13 +509,11 @@ export function conversationState(
     ).fit,
     flexAsked,
     visitorText: user.map((t) => t.content).join("\n"),
-    // só vale se a pessoa respondeu logo depois do resumo
     summaryPending: last?.role === "user" && SUMMARY_RE.test(lastAssistant),
     lastUser: last?.role === "user" ? last.content : "",
   };
 }
 
-// Instrução sobre o orçamento, sem nenhum número: o modelo nunca vê a base.
 function fitHint(pt: boolean, fit: Fit): string {
   return fit === "ok"
     ? pt
@@ -626,12 +573,6 @@ function stateHint(locale: Locale, s: ConversationState): string {
     : `\n\n## State of this conversation (computed by the site: follow it)\nMessages from the person so far: ${n}. Contact (email or phone) already received: ${s.hasContact ? "yes" : "no"}.\n${action}${fit}`;
 }
 
-// ── Trava de qualidade ──────────────────────────────────────────────────────
-// Confere a resposta já pronta contra o estado da conversa. Se reprovar, a rota
-// pede ao modelo para refazer com a razão anexada ao prompt. Cobre os erros que o
-// modelo gratuito repetiu nos testes mesmo com a regra escrita no prompt.
-// Perguntas de detalhe genéricas, boas para qualquer tipo de projeto. Usadas quando a
-// trava precisa forçar o modelo a perguntar em vez de resumir ou pedir e-mail cedo.
 const DETAIL_QUESTIONS = {
   pt: [
     "Tem algum site, marca ou página que você admira e gostaria de usar como referência?",
@@ -652,8 +593,6 @@ function detailQuestion(locale: Locale, state: ConversationState): string {
   return list[state.userTurns % list.length];
 }
 
-// Frases que o prompt já proíbe, mas o modelo gratuito repetiu nos testes: negar canal
-// de contato ou desconto, prometer "hoje", dizer que o prazo ou o orçamento "cabe".
 const BANNED = {
   pt: [
     /n[ãa]o (usamos|temos|fazemos|oferecemos|damos|aceitamos|conseguimos oferecer)[^.!?\n]{0,40}(whatsapp|liga[çc]\w*|telefone|desconto|parcel\w*|templates?)/i,
@@ -673,8 +612,6 @@ const BANNED = {
   ],
 } as const;
 
-// Valor em dinheiro na resposta que a pessoa não disse: preço vazado. Repetir o
-// investimento que ela informou (no resumo, por exemplo) continua permitido.
 function leakedAmount(text: string, locale: Locale, visitorText: string): string | null {
   const fallback: Currency = locale === "pt" ? "BRL" : "USD";
   const said = new Set(moneyIn(visitorText, fallback).map((m) => Math.round(m.amount)));
@@ -694,8 +631,8 @@ export type ReplyIssue = {
     | "banned-phrase"
     | "out-marker"
     | "flex-missing";
-  message: string; // vai para o prompt da nova tentativa
-  questions?: string[]; // missing-fields: perguntas da lista que faltam
+  message: string;
+  questions?: string[];
 };
 
 export function validateReply(
@@ -719,7 +656,6 @@ export function validateReply(
         : "You used the [[diagnostico-fora]] marker although the investment is not below the minimum after the flexibility question. Do not use that marker: continue the diagnosis.",
     };
   }
-  // investimento abaixo do mínimo: antes de qualquer outra coisa, a pergunta de flexibilidade
   if (state.fit === "abaixo" && !state.flexAsked && !FLEX_RE.test(text)) {
     return {
       code: "flex-missing",
@@ -737,7 +673,6 @@ export function validateReply(
         : "You used the end marker without having the person's email or phone. Ask for name and email before closing and do not use the marker.",
     };
   }
-  // fechamento só depois de um resumo que a pessoa confirmou na mensagem seguinte
   const confirmed =
     state.summaryPending && CONFIRM_RE.test(state.lastUser) && !CORRECTION_RE.test(state.lastUser);
   if (marker && !confirmed) {
@@ -806,8 +741,6 @@ export function validateReply(
   return null;
 }
 
-// A rota chama isto quando a IA quer pedir contato ou resumir, mas a extração da
-// conversa mostra itens obrigatórios da lista ainda sem resposta.
 export function missingFieldsIssue(questions: string[], locale: Locale, stage: "contact" | "summary"): ReplyIssue {
   const pt = locale === "pt";
   const list = questions.map((x) => `- ${x}`).join("\n");
@@ -820,21 +753,16 @@ export function missingFieldsIssue(questions: string[], locale: Locale, stage: "
   };
 }
 
-// Último recurso, quando o modelo reprovou em todas as tentativas: conserta a resposta
-// no servidor em vez de entregar o erro ao visitante.
-// "já tenho o que preciso": não pode sobrar quando o reparo troca o pedido de contato por uma pergunta
 const READY_RE = /(j[áa] tenho (o que|tudo)|tenho o que o time precisa|i have (what|everything) the team needs)/i;
 
 export function repairReply(text: string, issue: ReplyIssue, locale: Locale, state: ConversationState): string {
   const pt = locale === "pt";
-  // guarda as afirmações da resposta, sem perguntas e sem pedido de contato
   const statements = () =>
     text
       .split(/(?<=[.!?])\s+/)
       .filter((sentence) => !ASK_CONTACT_RE.test(sentence) && !READY_RE.test(sentence) && !sentence.includes("?"))
       .join(" ")
       .trim();
-  // guarda o que vem antes do resumo (em geral a resposta a uma pergunta direta)
   const beforeSummary = () => {
     const cut = text.search(/(resumo (do que|ajustado|atualizado)|segue o resumo|here is what i understood|summary of what)/i);
     return cut > 0 ? text.slice(0, cut).trim() : "";
@@ -856,7 +784,6 @@ export function repairReply(text: string, issue: ReplyIssue, locale: Locale, sta
         ? "Já tenho o que o time precisa para montar a proposta. Para enviar, qual é o seu nome e e-mail?"
         : "I have what the team needs to prepare the proposal. To send it, what is your name and email?";
     case "marker-unconfirmed":
-      // sem o marcador, o diagnóstico não fecha; se a pessoa sair, a conversa vai como incompleta
       return stripMarker(text);
     case "out-marker":
       return text.replace(/\n?\s*\[\[\s*diagnostico-fora\s*\]\]\s*/gi, "").trim();
@@ -888,8 +815,6 @@ export function repairReply(text: string, issue: ReplyIssue, locale: Locale, sta
   }
 }
 
-// "Obrigado"/"obrigada" marca o gênero do assistente, o que o prompt proíbe; o modelo
-// gratuito ainda escorrega, então o servidor troca por "agradeço" antes de enviar.
 export function fixGenderedThanks(text: string): string {
   return text
     .replace(/\b(muito|muitíssimo) obrigad[oa]s?\b/gi, (m) => (m[0] === m[0].toUpperCase() ? "Agradeço muito" : "agradeço muito"))

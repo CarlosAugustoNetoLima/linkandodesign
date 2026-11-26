@@ -1,8 +1,6 @@
 import { EMAIL } from "@/lib/contact";
 import type { Locale } from "@/lib/i18n";
 
-// Serviços que o cliente pode marcar no briefing. O `id` é o contrato entre o
-// formulário e a API; os rótulos em PT também vão no e-mail para o estúdio.
 export const SERVICE_IDS = ["brand", "site", "landing", "system", "redesign", "other"] as const;
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
@@ -176,8 +174,6 @@ export const briefingCopy: Record<Locale, BriefingCopy> = {
   },
 };
 
-// Rótulos para o e-mail do estúdio. Serviço e prazo saem sempre em PT; a faixa
-// de investimento sai no idioma preenchido (as moedas diferem entre PT e EN).
 const PT = briefingCopy.pt;
 export const serviceLabelPt = (id: string) =>
   PT.services.items.find((i) => i.id === id)?.label ?? id;

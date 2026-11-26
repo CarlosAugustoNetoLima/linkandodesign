@@ -1,7 +1,3 @@
-// Palco dos mockups: escala o palco de 1600×1000 para a janela, escolhe as cenas
-// (?s=a,b) e, com ?anim=1, move a câmera devagar e troca as cenas com fade.
-// A animação só começa quando o gravador injeta `:root{--run:running}` (ou com ?play=1),
-// para o vídeo começar sempre do mesmo quadro.
 (function () {
   const q = new URLSearchParams(location.search);
   const fit = document.getElementById("fit");
@@ -42,7 +38,6 @@
     }
     const t = ((now - t0) / 1000) % (N === 1 ? 16 : P);
     if (N === 1) {
-      // ida e volta: 8 s para cada lado
       const p = t < 8 ? t / 8 : 1 - (t - 8) / 8;
       cam(scenes[0], p);
     } else {

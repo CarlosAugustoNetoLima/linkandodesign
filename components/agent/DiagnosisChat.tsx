@@ -26,7 +26,6 @@ export default function DiagnosisChat({ locale }: { locale: Locale }) {
   const router = useRouter();
   const started = useRef(false);
 
-  // vem da home: a primeira mensagem já segue enviada (uma vez só, mesmo com StrictMode)
   useEffect(() => {
     if (started.current) return;
     started.current = true;
@@ -43,10 +42,8 @@ export default function DiagnosisChat({ locale }: { locale: Locale }) {
     }
     text = text.trim().slice(0, 2000);
     if (text) send(text);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // sabe se o visitante está perto do fim (a página inteira rola)
   useEffect(() => {
     const onScroll = () => {
       const el = document.documentElement;
@@ -57,7 +54,6 @@ export default function DiagnosisChat({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // o fim da conversa fica sempre acima da caixa: scroll-margin do alvo = altura da caixa
   useEffect(() => {
     const box = composerRef.current;
     const end = bottomRef.current;
@@ -75,14 +71,12 @@ export default function DiagnosisChat({ locale }: { locale: Locale }) {
   useEffect(() => {
     if (messages.length <= 1 && !typing) return;
     const last = messages[messages.length - 1];
-    // a própria mensagem do visitante sempre leva ao fim
     if (last?.from === "user") nearBottom.current = true;
     if (!nearBottom.current) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     bottomRef.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "end" });
   }, [messages, typing]);
 
-  // textarea cresce até ~6 linhas
   useEffect(() => {
     const el = areaRef.current;
     if (!el) return;

@@ -4,8 +4,6 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import { contactHref, hasWhatsapp, EMAIL } from "@/lib/contact";
 import OpenChatLink from "@/components/agent/OpenChatLink";
 
-// Bloco escuro de fechamento com topo arredondado: concentra a conversão.
-// É o alvo do CTA do header (#contato).
 export default function Footer({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = dict.footer;
@@ -31,7 +29,7 @@ export default function Footer({ locale }: { locale: Locale }) {
 
           <div className="flex flex-col items-start gap-3 md:shrink-0">
             <OpenChatLink className="btn-brut btn-brut--dark text-center">{dict.home.finalCta.cta} →</OpenChatLink>
-            {/* contato direto fica como alternativa; sem WhatsApp configurado, mostra o e-mail */}
+            
             <a href={contactHref(locale)} className="link-brut text-sm text-white/60 hover:text-lime">
               {hasWhatsapp ? t.cta : EMAIL}
             </a>

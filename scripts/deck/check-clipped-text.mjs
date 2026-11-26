@@ -1,7 +1,3 @@
-// Texto cortado nos decks: compara o retângulo de cada trecho de texto com o de qualquer ancestral
-// `overflow: hidden`, e acha reticências, line-clamp e texto fora da tela. Roda a 1440, 1280×720 e 375.
-// Uso: node scripts/deck/check-clipped-text.mjs [slug …]   (DECK_BASE muda o servidor; padrão :3010)
-// Sai com código 1 se achar algo. Sensível por construção: mede a caixa da fonte (com perna e acento), não só o traço.
 import { createRequire } from "module";
 const require = createRequire(new URL("../../package.json", import.meta.url));
 const { chromium } = require("playwright");
@@ -33,7 +29,7 @@ const detect = () => {
   for (const el of document.querySelectorAll("body *")) {
     const cs = getComputedStyle(el);
     if (cs.display === "none" || cs.visibility === "hidden") continue;
-    if (el.closest(".sr-only")) continue; // texto só para leitor de tela: escondido de propósito
+    if (el.closest(".sr-only")) continue;
     const rect = el.getBoundingClientRect();
     if (cs.textOverflow === "ellipsis" && el.scrollWidth > el.clientWidth + 1) push("reticencias", el, el.textContent.trim().slice(0, 50));
     if ((cs.webkitLineClamp && cs.webkitLineClamp !== "none") && el.scrollHeight > el.clientHeight + 1) push("line-clamp", el, el.textContent.trim().slice(0, 50));
@@ -42,7 +38,7 @@ const detect = () => {
       for (const { r, t } of textRects(el)) {
         const ix = Math.min(r.right, rect.right) - Math.max(r.left, rect.left);
         const iy = Math.min(r.bottom, rect.bottom) - Math.max(r.top, rect.top);
-        if (ix <= 0 || iy <= 0) continue; // fora por inteiro: escondido de propósito
+        if (ix <= 0 || iy <= 0) continue;
         const dTop = rect.top - r.top, dBot = r.bottom - rect.bottom, dL = rect.left - r.left, dR = r.right - rect.right;
         const clipY = hid(cs.overflowY) && (dTop > 1.5 || dBot > 1.5);
         const clipX = hid(cs.overflowX) && (dL > 1.5 || dR > 1.5);
@@ -50,7 +46,6 @@ const detect = () => {
       }
     }
   }
-  // texto que passa da borda da tela
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   let n;
   while ((n = walker.nextNode())) {

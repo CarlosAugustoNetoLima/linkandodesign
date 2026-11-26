@@ -11,8 +11,6 @@ import type { Deck, MotionChapter } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Linguagem de movimento: as curvas e durações reais do site, rodando em loop.
-// Com prefers-reduced-motion os quadrados ficam no fim da pista.
 export default function Motion({ chapter, deck }: { chapter: MotionChapter; deck: Deck }) {
   const reduced = useReduced();
 

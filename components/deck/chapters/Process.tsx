@@ -11,7 +11,6 @@ import type { Deck, ProcessChapter } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Colunas por largura. As classes ficam completas aqui: o Tailwind não gera classe montada por template.
 const LG_COLS: Record<number, string> = {
   1: "lg:grid-cols-1",
   2: "lg:grid-cols-2",
@@ -26,15 +25,12 @@ const XL_COLS: Record<number, string> = {
   5: "xl:grid-cols-5",
 };
 
-// 1 coluna no celular, 2 no sm e no md; no lg, N colunas até 4 (senão 3); no xl, N até 5, 6 em 3 e 7 ou mais em 4.
 function gridCols(n: number): string {
   const lg = LG_COLS[n <= 4 ? Math.max(n, 1) : 3];
   const xl = XL_COLS[n <= 5 ? Math.max(n, 1) : n === 6 ? 3 : 4];
   return cx("grid-cols-1 sm:grid-cols-2", lg, xl);
 }
 
-// Processo: todas as etapas à vista de uma vez, cada uma num cartão com número grande, nome, saída e nota.
-// Nada é clicável, nada fica preso à rolagem e nenhum texto é cortado.
 export default function Process({ chapter, deck }: { chapter: ProcessChapter; deck: Deck }) {
   const reduced = useReduced();
 
@@ -63,7 +59,7 @@ export default function Process({ chapter, deck }: { chapter: ProcessChapter; de
               viewport={{ once: true, margin: "0px 0px -10% 0px" }}
               transition={{ duration: 0.9, ease: EASE, delay: i * 0.08 }}
             >
-              {/* o movimento de entrada fica no <li>; o cartão tem o próprio hover, sem brigar com ele */}
+              
               <div
                 className={cx(
                   "flex h-full flex-col border p-6 [border-color:var(--d-line)]",

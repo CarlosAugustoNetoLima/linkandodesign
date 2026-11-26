@@ -7,14 +7,11 @@ import type { Dictionary } from "@/lib/i18n";
 type Props = {
   items: ShowcaseItem[];
   t: Dictionary["home"]["index"];
-  showMeta: boolean; // false no EN: setor/local/tagline só existem em português
+  showMeta: boolean;
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-// Lista da home com tudo aberto: cada projeto mostra texto e vídeo ao mesmo tempo.
-// O vídeo só é pedido perto da tela e toca só enquanto está visível (LoopVideo).
-// O ReducedProvider faz o LoopVideo respeitar prefers-reduced-motion.
 export default function ProjectList({ items, t, showMeta }: Props) {
   return (
     <ReducedProvider>

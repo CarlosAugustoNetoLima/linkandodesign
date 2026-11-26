@@ -9,7 +9,6 @@ import { getShowcase } from "@/lib/decks/showcase";
 import { getDictionary } from "@/lib/i18n";
 import { getLocale } from "@/lib/locale";
 
-// canonical só na home: no layout ele apontaria todas as páginas para cá
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
       <JsonLd />
       <HomeHero locale={locale} />
 
-      {/* Projetos com tudo aberto: texto e vídeo de cada um; setor e local só existem em português */}
+      
       <ProjectList items={getShowcase()} t={dict.home.index} showMeta={locale === "pt"} />
 
       <Services locale={locale} />

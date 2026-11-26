@@ -16,24 +16,16 @@ import type { Deck, FeatureChapter } from "@/lib/decks/types";
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const TILT_SPRING = { stiffness: 120, damping: 18 };
 
-// layout "full": a moldura sobe e aparece (o gatilho fica no pai, como em Phones)
 const FULL_MEDIA: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
 };
-// espaço entre o cabeçalho e a mídia no layout full (mt-10) e altura de reserva do cabeçalho no SSR
 const FULL_GAP = 40;
 const FULL_HEAD_FALLBACK_PX = 140;
 
-// Destaque: gravação em moldura de aparelho, com leve tilt pelo ponteiro. A tela abre só com
-// o título e o botão "Ver detalhes". O tour percorre body, cada spec e a decision, um passo por vez,
-// por clique: a rolagem da página fica livre.
-// Mídia e texto ficam centralizados no mesmo eixo. O lado vem do campo `side`.
-// Com reduced motion, nada se mexe.
 export default function Feature({ chapter, deck }: { chapter: FeatureChapter; deck: Deck }) {
   const reduced = useReduced();
 
-  // posição do ponteiro sobre a mídia, de -1 a 1 em cada eixo
   const px = useMotionValue(0);
   const py = useMotionValue(0);
   const rotateY = useSpring(useTransform(px, [-1, 1], [-3, 3]), TILT_SPRING);
@@ -56,12 +48,9 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
   const host = deck.frameHost ?? new URL(deck.liveUrl).host;
   const phone = chapter.mediaKind === "mobile";
   const full = chapter.layout === "full";
-  // telas maiores (deck.largeMedia): mídia ~70% da largura; a moldura nunca passa da altura da tela
   const large = !!deck.largeMedia && !phone && !full;
-  // altura da tela menos o cabeçalho do deck e o padding do capítulo (deck.css), menos a barra da moldura e a borda
   const frameMax = `calc((100svh - var(--deck-bar-h) - var(--sp-1) - ${deck.mediaFramed ? 2 : 36}px) * ${aspect.toFixed(4)})`;
 
-  // layout full: o cabeçalho é medido no cliente (com o valor de reserva do SSR) e a moldura cabe na altura que sobra
   const headRef = useRef<HTMLDivElement>(null);
   const [headPx, setHeadPx] = useState(FULL_HEAD_FALLBACK_PX);
   useEffect(() => {
@@ -80,7 +69,6 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
   ];
   const tour = useTour(steps);
 
-  // link para a página gravada (nova aba); só a classe de visibilidade muda entre desktop e celular
   const link = chapter.link && ((visibility: string) => (
     <a
       href={chapter.link!.url}
@@ -108,7 +96,7 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
       onPointerMove={tilt}
       onPointerLeave={untilt}
     >
-      {/* brilho da cor de destaque atrás da moldura */}
+      
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-[-12%]"
@@ -119,7 +107,6 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
         }}
       />
       {phone ? (
-        // no lg a largura acompanha a altura da janela, para o celular caber inteiro na tela
         <div
           className="mx-auto max-w-[300px] lg:max-w-[var(--phone-w)]"
           style={{ "--phone-w": `clamp(220px, calc((100svh - 190px) * ${aspect.toFixed(4)} + 20px), 300px)` } as CSSProperties}
@@ -136,12 +123,11 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
     </motion.div>
   );
 
-  // layout full: cabeçalho (rótulo, título e link à direita) e a moldura inteira na altura da tela; sem texto ao lado nem tour
   if (full) {
     return (
       <Chapter id={chapter.id} className="[overflow-anchor:none]">
         <div className="deck-container">
-          {/* cabeçalho e moldura na mesma largura: o título alinha com a borda esquerda da moldura e o link com a direita */}
+          
           <div className="mx-auto w-full min-w-0" style={{ maxWidth: fullMax }}>
           <div ref={headRef} className="lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-x-12">
             <div className="min-w-0">
@@ -167,7 +153,7 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
           </motion.div>
           </div>
 
-          {/* o texto não aparece na tela: fica para leitor de tela */}
+          
           <p className="sr-only">{chapter.body}</p>
         </div>
       </Chapter>
@@ -177,10 +163,9 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
   const side = chapter.side === "left";
 
   return (
-    // sem scroll anchoring: o texto se recentraliza ao abrir o tour e a página não deve andar junto
     <Chapter id={chapter.id} className="[overflow-anchor:none]">
       <div className="deck-container">
-        {/* a mídia fica sempre na coluna de 1.6fr (77fr com largeMedia): a template muda conforme o lado */}
+        
         <div
           className={cx(
             "grid grid-cols-[minmax(0,1fr)] items-center gap-x-16 gap-y-12",
@@ -217,8 +202,8 @@ export default function Feature({ chapter, deck }: { chapter: FeatureChapter; de
 
           <div className={cx("order-2 min-w-0", side ? "lg:order-1" : "lg:order-2")}>{mediaBox}</div>
 
-          {/* celular: o tour abre logo abaixo da tela, um passo por vez */}
-          {/* celular: o botão fica junto do texto (24 px) e ocupa a largura toda */}
+          
+          
           <div className="order-3 min-w-0 lg:hidden">
             <TourMobile tour={tour} />
             {link?.("flex w-full justify-center")}

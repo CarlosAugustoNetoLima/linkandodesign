@@ -1,11 +1,3 @@
-// Simula UM turno do visitante contra /api/chat (mesmo contrato do ChatAgent), para testar o
-// diagnóstico com personas (ver docs/chat-diagnostico.md).
-// Uso: node scripts/chat/chat-turn.mjs <id-da-sessao> "<mensagem>" [pt|en]
-//      node scripts/chat/chat-turn.mjs <id-da-sessao> --show     (imprime a conversa)
-// Precisa do servidor de pé (CHAT_URL, padrão http://localhost:3011/api/chat). Não chama
-// /api/chat/lead: nenhum e-mail sai. A conversa fica em CHAT_SIM_DIR (padrão: pasta
-// temporária do sistema) como <id>.json. A saudação do site NÃO é enviada (a rota descarta
-// mensagens iniciais do assistente), igual ao app real.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -46,7 +38,7 @@ for (let attempt = 0; attempt < 4 && !ok; attempt++) {
   } catch { s.fails++; await new Promise((r) => setTimeout(r, 4000)); }
 }
 if (!ok) {
-  s.messages.pop(); // não registra o turno que falhou: o visitante simulado pode reenviar
+  s.messages.pop();
   writeFileSync(file, JSON.stringify(s, null, 2));
   console.log("[API INDISPONÍVEL: o chat real mostraria o script offline. Reenvie a mesma mensagem em alguns segundos.]");
   process.exit(0);

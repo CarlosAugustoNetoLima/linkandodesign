@@ -15,7 +15,7 @@ type ProjectText = {
   result: string;
   tags: string[];
   stats: Stat[];
-  craft: CraftNote[]; // mesma ordem de craftMedia
+  craft: CraftNote[];
   palette: Swatch[];
   dna: string;
   quote: string;
@@ -25,10 +25,6 @@ type ProjectFonts = { display: string; body: string; google?: string };
 
 type CraftMedia = { desktop: string; mobile: string };
 
-// Gravação ao vivo do site (scripts/record-sites.mjs → scripts/make-webp.sh).
-// `base` é o prefixo dos arquivos em /public/projects/motion:
-//   <base>-desktop.webp / <base>-mobile.webp  → animação
-//   <base>-desktop-poster.webp / …            → primeiro frame, carregado de início
 type Motion = { base: string; label?: Record<Locale, string> };
 
 type ProjectBase = {
@@ -37,14 +33,13 @@ type ProjectBase = {
   url: string;
   filter: "site" | "branding" | "uiux";
   flag: string;
-  motion: Motion; // gravação principal, usada no card do portfólio
-  motionExtra?: Motion[]; // outras rotas gravadas, exibidas no case
+  motion: Motion;
+  motionExtra?: Motion[];
   image: string;
-  imageMobile?: string; // vídeo/imagem mobile do hero (quando existe, o hero vira par desktop+mobile)
-  liveLocal?: string; // mirror estático no próprio domínio (ex.: "/yanns"); usado no "ver site ao vivo"
-  // par desktop + mobile por nota de craft, na mesma ordem das notas
+  imageMobile?: string;
+  liveLocal?: string;
   craftMedia: CraftMedia[];
-  fonts: ProjectFonts; // fontes reais detectadas no site
+  fonts: ProjectFonts;
   year: string;
   t: Record<Locale, ProjectText>;
 };

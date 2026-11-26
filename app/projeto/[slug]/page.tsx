@@ -28,14 +28,13 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
 
   const next = nextProject(locale, p.slug);
   const domain = p.url.replace(/^https?:\/\//, "");
-  // craft e craftMedia andam pareados na mesma ordem; zip pelo menor
   const craftItems = p.craft
     .slice(0, p.craftMedia.length)
     .map((note, i) => ({ ...note, media: p.craftMedia[i] }));
 
   return (
     <>
-      {/* Cabeçalho do projeto */}
+      
       <section className="mx-auto max-w-7xl px-5 pb-12 pt-10 md:pt-16">
         <Link href="/apresentacoes" className="link-brut font-mono text-xs uppercase tracking-widest">
           ← {t.back}
@@ -46,7 +45,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{p.context}</p>
 
-        {/* Entregáveis */}
+        
         <ul className="mt-6 flex flex-wrap gap-2" aria-label={t.deliverables}>
           {p.deliverables.map((d) => (
             <li
@@ -58,7 +57,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
           ))}
         </ul>
 
-        {/* Ficha técnica */}
+        
         <dl className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             { k: t.typeLabel, v: p.type },
@@ -77,7 +76,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </dl>
       </section>
 
-      {/* A gravação ao vivo, desktop + mobile */}
+      
       <section className="mx-auto max-w-7xl px-5 pb-16">
         <div className="overflow-hidden rounded-3xl border border-line shadow-card-lg">
           <MotionPair base={p.motion.base} name={p.name} url={domain} dict={t} />
@@ -92,7 +91,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         ))}
       </section>
 
-      {/* Desafio → Solução → Resultado */}
+      
       <section className="mx-auto max-w-7xl px-5 py-4 md:py-8">
         <div className="grid gap-4 md:grid-cols-3">
           {[
@@ -108,7 +107,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* O processo */}
+      
       <section className="mx-auto max-w-7xl px-5 py-10 md:py-14">
         <p className="label">[{t.process}]</p>
         <ol className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -123,7 +122,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </ol>
       </section>
 
-      {/* Números reais do projeto — bloco escuro arredondado */}
+      
       {p.stats.length > 0 && (
         <section className="px-2 py-8 sm:px-3">
           <div className="rounded-2xl bg-charcoal p-8 text-white shadow-dark sm:p-12 md:rounded-3xl">
@@ -144,7 +143,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </section>
       )}
 
-      {/* Craft: cada decisão de design com a tela real, desktop + mobile */}
+      
       {craftItems.length > 0 && (
         <section className="mx-auto max-w-7xl px-5 py-14 md:py-20">
           <h2 className="font-display text-h2 font-extrabold uppercase">{t.gallery}</h2>
@@ -153,7 +152,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
             {craftItems.map((c, i) => (
               <Reveal key={c.title}>
                 <div className="grid items-start gap-6 md:grid-cols-[1fr_320px] md:gap-10">
-                  {/* telas reais */}
+                  
                   <div className="dotgrid flex items-start gap-3 rounded-3xl border border-line bg-paper p-4 shadow-card sm:gap-5 sm:p-6">
                     <img
                       src={c.media.desktop}
@@ -171,7 +170,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
                     />
                   </div>
 
-                  {/* a nota de design */}
+                  
                   <div className="md:sticky md:top-28">
                     <span className="num-hollow font-display text-4xl font-extrabold">
                       {String(i + 1).padStart(2, "0")}
@@ -186,7 +185,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </section>
       )}
 
-      {/* Paleta & tipografia */}
+      
       <section className="mx-auto max-w-7xl px-5 py-10 md:py-14">
         <div className="rounded-3xl border border-line bg-surface p-8 shadow-card md:p-12">
           <p className="label">[{t.palette}]</p>
@@ -229,7 +228,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* A frase do projeto — bloco lime */}
+      
       <section className="px-2 py-8 sm:px-3">
         <div className="rounded-2xl bg-charcoal p-8 shadow-dark sm:p-12 md:rounded-3xl md:p-16">
           <p className="max-w-4xl font-display text-h1 font-extrabold uppercase text-lime">
@@ -238,10 +237,10 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* CTA de fechamento */}
+      
       <section className="mx-auto max-w-7xl px-5 py-14 md:py-20">
         <div className="flex flex-wrap items-center gap-5">
-          {/* Link para ver o projeto ao vivo/real em nova guia */}
+          
           <a
             href={p.url}
             target="_blank"
@@ -261,7 +260,7 @@ export default function ProjetoPage({ params }: { params: { slug: string } }) {
         <p className="mt-4 max-w-xl text-muted">{t.ctaText}</p>
       </section>
 
-      {/* Próximo projeto */}
+      
       <section className="mx-auto max-w-7xl px-5 pb-16">
         <p className="label">[{t.next}]</p>
         <div className="mt-8">

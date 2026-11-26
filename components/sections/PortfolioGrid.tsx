@@ -8,10 +8,6 @@ import type { Project } from "@/lib/projects";
 
 type Filter = "all" | Project["filter"];
 
-// Grid do portfólio com filtro por categoria. Os filtros só aparecem quando há
-// mais de uma categoria ocupada: hoje todos os projetos no ar são sites, e uma
-// barra "Todos · Sites" seria decorativa. Ao entrar um projeto de marca ou de
-// sistema, os botões aparecem sozinhos.
 export default function PortfolioGrid({
   locale,
   projects,

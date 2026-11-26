@@ -9,8 +9,6 @@ import type { Deck } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Card do hub. Mostra o poster; com o mouse em cima ou foco no card, troca pelo
-// vídeo em loop. Em toque e com prefers-reduced-motion, fica o poster.
 function DeckCardInner({ deck }: { deck: Deck }) {
   const reduced = useReduced();
   const [live, setLive] = useState(false);
@@ -45,7 +43,7 @@ function DeckCardInner({ deck }: { deck: Deck }) {
             </div>
           )}
         </motion.div>
-        {/* o país já está dito no texto abaixo: a bandeira é só reforço visual */}
+        
         <span
           aria-hidden="true"
           className="absolute left-4 top-4 flex gap-2 rounded-lg bg-ink/90 px-3 py-2 text-3xl leading-none md:text-4xl"
@@ -72,7 +70,7 @@ function DeckCardInner({ deck }: { deck: Deck }) {
         </ul>
 
         <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-5 text-sm font-semibold text-lime">
-          {/* o espaço acima empurra o rodapé para a base: todos os cards da linha ficam do mesmo tamanho */}
+          
           <span>Ver apresentação</span>
           <span
             aria-hidden="true"

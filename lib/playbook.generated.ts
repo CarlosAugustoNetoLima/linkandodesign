@@ -1,18 +1,15 @@
-// GERADO por scripts/chat/build-playbook.mjs a partir de docs/playbook-diagnostico.md.
-// NÃO EDITE À MÃO: edite o playbook e rode `npm run playbook` (o build da Vercel roda sozinho).
-
 export type PlaybookType = "brand" | "identity" | "site" | "landing" | "siteRedesign" | "system";
 
 export type PlaybookField = {
   id: string;
   question: { pt: string; en: string };
-  types: PlaybookType[] | "all"; // onde a pergunta vale
-  required: PlaybookType[] | "all"; // onde é obrigatória antes do e-mail ([] = só "bom saber")
+  types: PlaybookType[] | "all";
+  required: PlaybookType[] | "all";
 };
 
 export type PlaybookAlert = {
   id: string;
-  text: { pt: string; en: string }; // quando o alerta acende
+  text: { pt: string; en: string };
   types: PlaybookType[] | "all";
 };
 

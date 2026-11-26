@@ -4,10 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { locales, localeNames, type Locale } from "@/lib/i18n";
 
-// Seletor de idioma: globo em SVG que gira (meridianos) enquanto o menu está
-// ativo. Abre no hover (desktop), no foco por teclado e no toque/clique
-// (mobile). Troca via cookie NEXT_LOCALE (sem mexer na URL) e revalida os
-// Server Components com router.refresh().
 export default function LanguageSwitcher({ locale }: { locale: Locale }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -20,7 +16,6 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
     router.refresh();
   };
 
-  // fecha com Esc e ao clicar/tocar fora (necessário no toque, sem mouseleave)
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -48,15 +43,14 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Idioma / Language"
-        className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-300 ${
-          open ? "border-charcoal bg-charcoal text-lime" : "border-ink/20 bg-transparent text-ink"
+        className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-300 hover:border-ink/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${
+          open ? "border-ink/40 bg-surface text-ink shadow-card" : "border-ink/20 bg-transparent text-ink"
         }`}
       >
         <Globe spinning={open} />
       </button>
 
-      {/* o wrapper com pt cobre o vão entre botão e painel: o hover não se
-          perde no caminho */}
+      
       <div
         className={`absolute left-0 top-full z-50 pt-2 md:left-1/2 md:-translate-x-1/2 ${
           open ? "pointer-events-auto" : "pointer-events-none"
@@ -65,7 +59,7 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
         <ul
           role="listbox"
           aria-label="Idioma / Language"
-          className={`flex w-48 origin-top flex-col gap-1.5 overflow-hidden rounded-2xl bg-charcoal p-2 shadow-dark transition-all duration-300 ease-out ${
+          className={`flex w-48 origin-top flex-col gap-1.5 overflow-hidden rounded-2xl border border-line bg-surface p-2 shadow-card transition-all duration-300 ease-out ${
             open ? "translate-y-0 scale-100 opacity-100" : "-translate-y-2 scale-95 opacity-0"
           }`}
         >
@@ -85,8 +79,8 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
                   type="button"
                   onClick={() => choose(l)}
                   tabIndex={open ? 0 : -1}
-                  className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors ${
-                    active ? "bg-white/10 text-lime" : "text-white/80 hover:bg-white/10 hover:text-white"
+                  className={`flex w-full items-center gap-3 rounded-[4px] px-3 py-2.5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${
+                    active ? "bg-ink/5 text-ink" : "text-ink/60 hover:bg-ink/5 hover:text-ink"
                   }`}
                 >
                   <span className="w-6 font-mono text-[11px] font-semibold uppercase tracking-widest">
@@ -109,8 +103,6 @@ export default function LanguageSwitcher({ locale }: { locale: Locale }) {
   );
 }
 
-// Globo: contorno + equador/paralelos fixos; dois meridianos elípticos
-// defasados em meia volta fazem a ilusão de rotação (scaleX 1 → 0 → 1).
 function Globe({ spinning }: { spinning: boolean }) {
   const meridian = (delay: string) => ({
     transformBox: "fill-box" as const,

@@ -15,7 +15,6 @@ import type { Deck, ResponsiveChapter } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Régua de largura: uma linha que se desenha ao entrar na tela, com tracinhos nas pontas.
 function Ruler({ label, reduced }: { label: string; reduced: boolean | null }) {
   return (
     <div className="mt-5">
@@ -39,19 +38,12 @@ function Ruler({ label, reduced }: { label: string; reduced: boolean | null }) {
   );
 }
 
-// Responsivo: a mesma página no desktop e no celular, em loop, lado a lado e sem
-// sobreposição a partir do sm; abaixo disso, empilhados.
-// A tela abre só com o título e o botão "Ver detalhes"; body e cada nota viram passos do tour, um por
-// clique: a rolagem da página fica livre.
 export default function Responsive({ chapter, deck }: { chapter: ResponsiveChapter; deck: Deck }) {
   const reduced = useReduced();
 
   const { desktop, mobile } = chapter;
   const host = deck.frameHost ?? new URL(deck.liveUrl).host;
-  // telas maiores (deck.largeMedia): as duas telas ~70% da largura, à esquerda, na mesma proporção
   const large = !!deck.largeMedia;
-  // altura da tela menos o cabeçalho do deck e o padding do capítulo (deck.css), menos a moldura do navegador
-  // (barra e borda, 36px) e a régua (~52px). A largura do conjunto sai da do navegador: celular = 0.31 do navegador, gap 32px
   const rowMax = `calc(((100svh - var(--deck-bar-h) - var(--sp-1) - 88px) * ${(desktop.width / desktop.height).toFixed(4)}) * 1.31 + 32px)`;
 
   const steps: TourStep[] = [
@@ -59,15 +51,12 @@ export default function Responsive({ chapter, deck }: { chapter: ResponsiveChapt
     ...chapter.notes.map((n) => ({ title: n.k, text: n.v, device: n.device })),
   ];
   const tour = useTour(steps);
-  // no tour, o aparelho que não é o do passo ativo fica esmaecido
   const target = tour.tour ? tour.step.device : undefined;
   const dim = (d: "desktop" | "mobile") => (target && target !== d ? 0.28 : 1);
 
-  // a mídia vai para a direita quando o DeckPlayer alterna os lados (side "right")
   const mediaRight = chapter.side === "right";
 
   return (
-    // sem scroll anchoring: o texto se recentraliza ao abrir o tour e a página não deve andar junto
     <Chapter id={chapter.id} className="[overflow-anchor:none]">
       <div className="deck-container">
         <div
@@ -107,8 +96,7 @@ export default function Responsive({ chapter, deck }: { chapter: ResponsiveChapt
             className={cx("order-2 min-w-0", mediaRight ? "lg:order-2" : "lg:order-1", large && "lg:mx-auto lg:max-w-[var(--row-max)]")}
             style={large ? ({ "--row-max": rowMax } as CSSProperties) : undefined}
           >
-            {/* lado a lado, sem sobreposição, com as bases alinhadas: a coluna do celular
-                (0.31fr) dá a ele quase a mesma altura do navegador. No celular, empilhados. */}
+            
             <div className="sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,0.31fr)] sm:items-end sm:gap-6 lg:gap-8">
               <motion.div
                 animate={{ opacity: dim("desktop") }}
@@ -133,7 +121,7 @@ export default function Responsive({ chapter, deck }: { chapter: ResponsiveChapt
             </div>
           </div>
 
-          {/* celular: o tour abre logo abaixo da tela, um passo por vez */}
+          
           <TourMobile tour={tour} className="order-3" />
         </div>
       </div>

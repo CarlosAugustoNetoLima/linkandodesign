@@ -18,7 +18,7 @@ type Values = {
   reference: string;
   deadline: string;
   budget: string;
-  website: string; // honeypot
+  website: string;
 };
 
 const empty: Values = {
@@ -65,7 +65,7 @@ export default function BriefingForm({ locale }: { locale: Locale }) {
   const firstRender = useRef(true);
 
   const [step, setStep] = useState(0);
-  const [dir, setDir] = useState(1); // 1 avança, -1 volta (direção da animação)
+  const [dir, setDir] = useState(1);
   const [services, setServices] = useState<ServiceId[]>([]);
   const [v, setV] = useState<Values>(empty);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -80,8 +80,6 @@ export default function BriefingForm({ locale }: { locale: Locale }) {
     if (errors.services) setErrors((cur) => ({ ...cur, services: "" }));
   };
 
-  // a cada troca de etapa, volta o foco ao topo do formulário (leitor de tela
-  // e teclado acompanham) — menos na primeira renderização
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
@@ -91,7 +89,6 @@ export default function BriefingForm({ locale }: { locale: Locale }) {
     top.current?.focus({ preventScroll: true });
   }, [step, reduced]);
 
-  // erros da etapa atual; só valida o que a etapa mostra
   function validate(s: number) {
     const next: Record<string, string> = {};
     if (s === 0 && !services.length) next.services = t.errors.services;
@@ -127,7 +124,6 @@ export default function BriefingForm({ locale }: { locale: Locale }) {
     }
   }
 
-  // Enter dentro de um campo também avança; só a última etapa envia
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (status === "sending" || !validate(step)) return;
@@ -164,7 +160,7 @@ export default function BriefingForm({ locale }: { locale: Locale }) {
 
   return (
     <form onSubmit={onSubmit} noValidate>
-      {/* progresso: segmentos clicáveis só para etapas já alcançadas */}
+      
       <div ref={top} tabIndex={-1} className="scroll-mt-24 outline-none">
         <div className="flex items-center gap-3">
           <ol className="flex flex-1 gap-2" aria-label="Progresso">
@@ -357,7 +353,7 @@ export default function BriefingForm({ locale }: { locale: Locale }) {
         </AnimatePresence>
       </div>
 
-      {/* honeypot: fora da tela e fora da ordem de tab; humano não preenche */}
+      
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label>
           Website

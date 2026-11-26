@@ -8,22 +8,14 @@ import { useReduced } from "@/components/deck/useReduced";
 import type { CoverChapter, Deck } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
-// A moldura se abre de baixo para cima. O fim passa da caixa de propósito: um inset(0) cortaria a sombra.
 const CLIP_HIDDEN = "inset(100% 0% 0% 0%)";
 const CLIP_SHOWN = "inset(-50% -50% -50% -50%)";
-// Tamanho máximo do título. A medição só reduz a partir daqui, nunca passa deste valor.
 const TITLE_SIZE = "clamp(2.2rem, 5.4vw, 5.6rem)";
-// Variável que o JS preenche quando a maior palavra não cabe. Sem ela, vale o clamp.
 const FIT_VAR = "--cover-fs";
-// useLayoutEffect mede antes do paint (sem piscar); no servidor vira useEffect, sem aviso.
 const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-// Capa: papel claro, título gigante entrando letra a letra e o loop do site numa moldura
-// em destaque. No scroll o texto recua e a moldura sobe. Com prefers-reduced-motion
-// fica estática e sem entrada.
 export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: Deck }) {
   const reduced = useReduced();
-  // o wrapper tem a altura da própria seção: é o alvo do parallax
   const ref = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -32,15 +24,11 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const textOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
 
-  // Nenhuma palavra quebra no meio: a maior precisa caber na largura útil da coluna.
-  // Mede o scrollWidth da palavra mais larga contra a largura do título; se passar,
-  // reduz a fonte na proporção e confere de novo (até 3 passadas, a largura é linear).
-  // Refaz ao redimensionar e quando as fontes carregam, pois a medida muda com a fonte.
   useIsoLayoutEffect(() => {
     const h1 = titleRef.current;
     if (!h1) return;
     const fit = () => {
-      h1.style.removeProperty(FIT_VAR); // volta ao clamp para medir o tamanho natural
+      h1.style.removeProperty(FIT_VAR);
       for (let pass = 0; pass < 3; pass++) {
         const avail = h1.clientWidth;
         let widest = 0;
@@ -66,12 +54,12 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
   }, [chapter.title]);
 
   const lines = chapter.title.split("\n");
-  let letter = 0; // índice global da letra, para o stagger atravessar as linhas
+  let letter = 0;
 
   return (
     <div ref={ref}>
       <Chapter id={chapter.id} className="deck-container deck-cover gap-10">
-        {/* miolo: texto e moldura do vídeo no mesmo eixo central */}
+        
         <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-y-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-x-16">
           <motion.div
             className="flex min-w-0 flex-col justify-center"
@@ -99,11 +87,11 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
               {lines.map((line, li) => (
                 <span key={li} className="block">
                   {line.split(" ").map((word, wi) => {
-                    if (wi > 0) letter++; // o espaço entre palavras conta no stagger, como antes
+                    if (wi > 0) letter++;
                     return (
                       <Fragment key={wi}>
                         {wi > 0 && " "}
-                        {/* a palavra é uma unidade: não quebra entre letras */}
+                        
                         <span data-word className="inline-block whitespace-nowrap">
                           {Array.from(word).map((ch) => {
                             const k = letter++;
@@ -158,7 +146,7 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
             </ul>
           </motion.div>
 
-          {/* moldura do vídeo: a gravação do site em destaque, sobe no scroll */}
+          
           <motion.div className="min-w-0" style={{ y: reduced ? 0 : frameY }}>
             <motion.div
               className="relative w-full overflow-hidden"
@@ -179,7 +167,7 @@ export default function Cover({ chapter, deck }: { chapter: CoverChapter; deck: 
           </motion.div>
         </div>
 
-        {/* rodapé da capa, logo abaixo do miolo: crédito à esquerda, indicador à direita do container */}
+        
         <div className="flex items-end justify-between gap-6">
           <p className="text-[11px]" style={{ color: "var(--d-fg-muted)" }}>
             {chapter.credit}

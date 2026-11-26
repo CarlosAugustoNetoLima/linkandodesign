@@ -1,6 +1,3 @@
-// Re-captura "Nouvelle Collection" do site local (localhost:8000), forçando a
-// aba LE MAILLOT (carrossel auto-rotativo, pausa no mouseenter / tab 0).
-// Atualiza showcase home (01) + collections (04) e o #boutique do craft detail 04.
 import puppeteer from "puppeteer-core";
 import path from "node:path";
 
@@ -11,8 +8,6 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function mkPage(b, vp) {
   const p = await b.newPage();
-  // rastreia apenas os setInterval da PÁGINA (para matar o autoplay sem tocar nos
-  // intervals internos do CDP/puppeteer)
   await p.evaluateOnNewDocument(() => {
     const real = window.setInterval;
     window.__iv = [];
@@ -28,16 +23,14 @@ async function autoScroll(p) {
   });
   await sleep(400);
 }
-// mata o autoplay do carrossel (todos os intervalos) e ativa a aba LE MAILLOT (índice 0)
 async function forceLeMaillot(p) {
   await p.evaluate(() => { document.querySelector("[data-boutique-carousel]")?.scrollIntoView({ block: "center" }); });
   await sleep(300);
   await p.evaluate(async () => {
-    (window.__iv || []).forEach((id) => clearInterval(id)); // mata o autoplay atual
-    window.setInterval = () => 0; // impede o startAutoplay() do clique de recriar o autoplay
-    document.querySelector('[data-boutique-tab="0"]')?.click(); // showCollection(0)
+    (window.__iv || []).forEach((id) => clearInterval(id));
+    window.setInterval = () => 0;
+    document.querySelector('[data-boutique-tab="0"]')?.click();
     await new Promise((r) => setTimeout(r, 300));
-    // espera só as imagens VISÍVEIS (as ocultas com loading=lazy nunca disparam load → hang)
     const vis = [...document.querySelectorAll("#boutique img")].filter((i) => !i.hidden && i.getClientRects().length);
     await Promise.race([
       Promise.all(vis.map((i) => (i.complete && i.naturalWidth) ? 1 : new Promise((res) => { i.addEventListener("load", res, { once: true }); i.addEventListener("error", res, { once: true }); }))),
@@ -55,7 +48,6 @@ const viewports = [
 ];
 
 for (const vp of viewports) {
-  // HOME (com LE MAILLOT forçado antes do fullPage)
   let p = await mkPage(b, vp);
   await p.goto(BASE + "/", { waitUntil: "networkidle2", timeout: 30000 });
   await sleep(600);
@@ -67,7 +59,6 @@ for (const vp of viewports) {
   console.log(`✓ ${vp.kind}/01-home.png (LE MAILLOT)`);
   await p.close();
 
-  // COLLECTIONS (MaillotBanner é estático)
   p = await mkPage(b, vp);
   await p.goto(BASE + "/collections", { waitUntil: "networkidle2", timeout: 30000 });
   await sleep(600);
@@ -77,7 +68,6 @@ for (const vp of viewports) {
   await p.close();
 }
 
-// #boutique isolado (craft detail 04) — full element com LE MAILLOT, para revisão
 for (const vp of [{ kind: "desktop", w: 1600, h: 1000, dsf: 2 }, { kind: "mobile", w: 390, h: 844, dsf: 3, mobile: true }]) {
   const p = await mkPage(b, vp);
   await p.goto(BASE + "/", { waitUntil: "networkidle2", timeout: 30000 });

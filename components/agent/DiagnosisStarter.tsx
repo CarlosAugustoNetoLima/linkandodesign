@@ -12,7 +12,6 @@ type Props = {
   note: string;
   quickAria: string;
   quick: readonly string[];
-  // "dark": sobre o painel escuro do hero da home
   tone?: "light" | "dark";
 };
 
@@ -23,7 +22,6 @@ export default function DiagnosisStarter({ placeholder, sendLabel, note, quickAr
   const areaRef = useRef<HTMLTextAreaElement>(null);
   const sent = useRef(false);
 
-  // textarea cresce até 3 linhas
   useEffect(() => {
     const el = areaRef.current;
     if (!el) return;

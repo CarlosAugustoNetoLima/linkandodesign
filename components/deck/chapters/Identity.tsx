@@ -20,9 +20,6 @@ type IconSet = NonNullable<IdentityChapter["icons"]>;
 type IconSpec = IconSet["items"][number];
 type SystemSpec = NonNullable<IdentityChapter["system"]>;
 
-// Animação de "caneta" dos ícones (mesmo tempo e curva do site da JSYNQ).
-// Ícone com `hover` no dado: em vez da caneta, repete em ciclo o efeito de hover do site,
-// na parte marcada com data-fx (scale, scale-left, rotate, nudge ou nudge-left).
 const ICON_CSS = `
 .ico-pen :is(path,circle,rect,line,polyline,polygon){stroke-dasharray:1 1;stroke-dashoffset:0;animation:ico-pen 3s cubic-bezier(0.45,0,0.25,1) infinite both;animation-delay:var(--d,0s)}
 .ico-pen > :nth-child(2){animation-delay:calc(var(--d,0s) + .25s)}
@@ -42,7 +39,6 @@ const ICON_CSS = `
 @keyframes ico-fx-rotate{0%,30%{transform:rotate(0)}52%,80%{transform:rotate(60deg)}100%{transform:rotate(0)}}
 `;
 
-// pathLength="1" normaliza o traço, para o stroke-dasharray 1 1 valer em qualquer forma.
 function penShapes(shapes: string): string {
   return shapes.replace(/<(path|circle|rect|line|polyline|polygon)\b/g, '<$1 pathLength="1"');
 }
@@ -54,7 +50,6 @@ const SIZES: Record<FontSpec["size"], string> = {
   sm: "0.75rem",
 };
 
-// Luminância relativa (WCAG) de um #rrggbb.
 function luminance(hex: string): number {
   const n = parseInt(hex.slice(1), 16);
   const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((c) => {
@@ -64,7 +59,6 @@ function luminance(hex: string): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-// Texto sobre a cor: #111 ou #fff, o que tiver mais contraste.
 function readableOn(hex: string): string {
   const l = luminance(hex);
   const withWhite = 1.05 / (l + 0.05);
@@ -72,9 +66,6 @@ function readableOn(hex: string): string {
   return withWhite >= withDark ? "#fff" : "#111";
 }
 
-// Amostra de cor: expande no hover (md+), copia o hex no clique e entra com scaleY.
-// O gatilho da entrada é a faixa (pai), não o próprio swatch: um elemento com scaleY 0 não tem
-// área, e o IntersectionObserver podia nunca disparar (a paleta ficava invisível).
 function Swatch({ swatch, index }: { swatch: SwatchData; index: number }) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);
@@ -82,7 +73,6 @@ function Swatch({ swatch, index }: { swatch: SwatchData; index: number }) {
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
   const ink = readableOn(swatch.hex);
-  // swatch claro (texto escuro) ganha borda: sobre o papel, branco e papel se confundem
   const light = ink === "#111";
 
   async function copy() {
@@ -92,7 +82,6 @@ function Swatch({ swatch, index }: { swatch: SwatchData; index: number }) {
       window.clearTimeout(timer.current);
       timer.current = window.setTimeout(() => setCopied(false), 1400);
     } catch {
-      // sem permissão de clipboard: o hex segue visível e nada muda
     }
   }
 
@@ -114,7 +103,7 @@ function Swatch({ swatch, index }: { swatch: SwatchData; index: number }) {
         show: { scaleY: 1, transition: { duration: 1.1, ease: EASE, delay: index * 0.08 } },
       }}
     >
-      {/* no celular o bloco entra no fluxo e a amostra cresce com o texto; no desktop fica ancorado embaixo */}
+      
       <span className="relative block p-3 leading-tight md:absolute md:inset-x-0 md:bottom-0 md:p-5">
         <span className="block text-[13px] font-medium">{swatch.name}</span>
         <span className="deck-mono block text-[12px]">{copied ? "Copiado ✓" : swatch.hex}</span>
@@ -126,7 +115,6 @@ function Swatch({ swatch, index }: { swatch: SwatchData; index: number }) {
   );
 }
 
-// Card de tipografia: a fonte real do site, revelada em máscara; no hover o tracking abre.
 function FontCard({ font, index, reduced }: { font: FontSpec; index: number; reduced: boolean | null }) {
   const lineHeight = font.size === "xl" || font.size === "lg" ? 1.05 : 1.5;
 
@@ -139,7 +127,7 @@ function FontCard({ font, index, reduced }: { font: FontSpec; index: number; red
         {font.name} — {font.role}
       </p>
 
-      {/* o gatilho é a máscara (parada), não o span que sai dela: assim o IntersectionObserver dispara */}
+      
       <motion.div
         className="mt-6 overflow-hidden"
         initial={reduced ? false : "hidden"}
@@ -177,8 +165,6 @@ function FontCard({ font, index, reduced }: { font: FontSpec; index: number; red
   );
 }
 
-// Cartão de ícone: traço fantasma sempre visível e a "caneta" desenhando por cima, defasada por cartão.
-// Com reduced motion, só o ícone completo em cor cheia.
 function IconCard({ item, index, reduced, stroke }: { item: IconSpec; index: number; reduced: boolean | null; stroke: number }) {
   const svgProps = {
     width: 44,
@@ -202,7 +188,6 @@ function IconCard({ item, index, reduced, stroke }: { item: IconSpec; index: num
       }}
     >
       {item.cls ? (
-        // ícone com a animação do próprio site: traço na cor do texto e a parte de destaque na cor do site
         <svg
           {...svgProps}
           className={item.cls}
@@ -230,13 +215,11 @@ function IconCard({ item, index, reduced, stroke }: { item: IconSpec; index: num
   );
 }
 
-// Entrada dos blocos do sistema: o gatilho é o próprio bloco (pai), que sobe e aparece.
 const REVEAL = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
 };
 
-// Rótulo em caixa alta e nota, no mesmo padrão do bloco de ícones.
 function SystemHead({ title, note }: { title: string; note: string }) {
   return (
     <>
@@ -250,7 +233,6 @@ function SystemHead({ title, note }: { title: string; note: string }) {
   );
 }
 
-// Escala tipográfica: nome e tamanho à esquerda, o exemplo na fonte do palco à direita.
 function TypeScale({ spec, reduced }: { spec: SystemSpec["type"]; reduced: boolean | null }) {
   return (
     <motion.div
@@ -263,7 +245,6 @@ function TypeScale({ spec, reduced }: { spec: SystemSpec["type"]; reduced: boole
       <SystemHead title={spec.title} note={spec.note} />
       <div className="mt-8 grid grid-cols-[minmax(0,1fr)]">
         {spec.steps.map((s, i) => {
-          // tamanhos grandes escalam com a tela (clamp); os pequenos mostram o tamanho real
           const size =
             s.max >= 24
               ? `clamp(${s.min * 0.5}px, ${((s.max * 0.62) / 14.4).toFixed(2)}vw, ${s.max * 0.62}px)`
@@ -306,7 +287,6 @@ function TypeScale({ spec, reduced }: { spec: SystemSpec["type"]; reduced: boole
   );
 }
 
-// Escala de espaçamentos: o número, uma barra na largura real do passo e o uso.
 function SpacingScale({ spec, reduced }: { spec: SystemSpec["spacing"]; reduced: boolean | null }) {
   return (
     <motion.div
@@ -326,7 +306,7 @@ function SpacingScale({ spec, reduced }: { spec: SystemSpec["spacing"]; reduced:
             >
               {s.px}
             </span>
-            {/* coluna da largura do maior passo: as barras ficam na escala real e os usos alinhados */}
+            
             <span className="flex-none" style={{ width: `${Math.max(...spec.steps.map((t) => t.px))}px` }}>
               <span
                 className="block h-[10px]"
@@ -343,7 +323,6 @@ function SpacingScale({ spec, reduced }: { spec: SystemSpec["spacing"]; reduced:
   );
 }
 
-// Grid: medidas em pares, divisões em colunas (frações) e o padrão de pontos do fundo.
 function GridScheme({ spec, reduced }: { spec: SystemSpec["grid"]; reduced: boolean | null }) {
   return (
     <motion.div
@@ -420,8 +399,6 @@ function GridScheme({ spec, reduced }: { spec: SystemSpec["grid"]; reduced: bool
   );
 }
 
-// Identidade: paleta que se expande e tipografia viva.
-// Com prefers-reduced-motion fica tudo estático e no estado final.
 export default function Identity({ chapter, deck }: { chapter: IdentityChapter; deck: Deck }) {
   const reduced = useReduced();
   const icons = chapter.icons;
@@ -493,7 +470,7 @@ export default function Identity({ chapter, deck }: { chapter: IdentityChapter; 
                   className="flex flex-col gap-4 p-5"
                   style={{ background: illustrations.background, borderRadius: "var(--d-radius)" }}
                 >
-                  {/* SVG do próprio site, com as animações em ciclo da folha de estilo copiada */}
+                  
                   <div className="aspect-[6/5] w-full" dangerouslySetInnerHTML={{ __html: item.svg }} />
                   <figcaption className="text-[13px] text-white/70">{item.label}</figcaption>
                 </figure>

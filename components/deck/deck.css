@@ -1,8 +1,3 @@
-/* Motor de decks: estilos globais. Importado só por app/apresentacoes/layout.tsx.
-   O palco (.deck) recebe cores e fonte do site apresentado pelas variáveis --d-*
-   definidas no DeckPlayer. A moldura usa a marca Linkando (Tailwind). */
-
-/* o deck controla o scroll (teclado e rail), então sem o smooth nativo */
 html:has(.deck) {
   scroll-behavior: auto;
 }
@@ -27,12 +22,6 @@ html:has(.deck) {
   margin-inline: auto;
   padding-inline: clamp(20px, 4vw, 64px);
 }
-
-/* Espaçamento padrão (Carlos, 2026-11-23), em três níveis: 160 px entre seções, 120 px entre
-   blocos de uma seção e 80 px do título ao conteúdo. No celular, no máximo 80 px: 80/60/40 px.
-   .deck-screen é a mesma régua para as telas pinadas (sticky, altura de 100svh).
-   Os seletores ficam em :where() (especificidade zero): assim as utilitárias do Tailwind
-   (hidden, lg:hidden, relative...) sempre vencem, sem depender da ordem do CSS. */
 .deck {
   --sp-1: 80px;
   --sp-2: 60px;
@@ -45,8 +34,6 @@ html:has(.deck) {
     --sp-3: 80px;
   }
 }
-
-/* metade do --sp-1 em cima e embaixo: duas seções seguidas ficam a 160 px uma da outra */
 :where(.deck-chapter, .deck-screen) {
   display: flex;
   flex-direction: column;
@@ -56,16 +43,11 @@ html:has(.deck) {
 
 :where(.deck-chapter) {
   position: relative;
-  /* o rail leva o capítulo para logo abaixo da barra fixa */
   scroll-margin-top: var(--deck-bar-h);
 }
-
-/* a capa abre a página: o padding de cima desconta a barra fixa */
 :where(.deck-chapter.deck-cover) {
   padding-block-start: calc(var(--deck-bar-h) + var(--sp-1) / 2);
 }
-
-/* filho direto de tela flex: o auto margin do .deck-container impede o esticamento */
 :where(.deck-chapter > .deck-container, .deck-screen > .deck-container) {
   width: 100%;
 }
@@ -90,8 +72,6 @@ html:has(.deck) {
 .deck-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-
-/* Indicador "Role" da capa: a barra desce e sobe em loop */
 @keyframes deck-role-slide {
   from {
     transform: translateY(-100%);

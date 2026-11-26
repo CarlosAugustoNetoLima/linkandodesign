@@ -14,7 +14,6 @@ import type { CompareChapter, Deck } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Cada coluna sobe e aparece; a segunda entra com um pequeno atraso (o `custom` é o índice).
 const COLUMN: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: (i: number) => ({
@@ -24,29 +23,15 @@ const COLUMN: Variants = {
   }),
 };
 
-// Abaixo de lg (<1024): as versões empilhadas, cada uma com a sua moldura e o seu link.
-// A moldura ocupa a coluna inteira (nunca passa de 100%).
 const FRAME_MAX_STACK = "min(100%, max(220px, calc((100svh - 565px) * 1.42)))";
 
-// lg+: uma moldura só, a maior que deixa o capítulo inteiro na tela. A conta: altura da janela
-// menos a barra do deck, o padding de cima e de baixo do capítulo, o bloco do título e do body
-// (medido no cliente com ResizeObserver; sem medida, vale o valor de reserva do SSR), a margem da
-// grade (--sp-3) e a barra da moldura (34 px). A gravação é 1280×800 (×1,6).
 const HEAD_FALLBACK_PX = 166;
 const frameMaxDesk = (headPx: number) =>
   `min(100%, max(320px, calc((100svh - var(--deck-bar-h) - var(--sp-1) - 34px - var(--sp-3) - ${headPx}px) * 1.6)))`;
 
-// lg+ com 2 versões lado a lado: a moldura ocupa a coluna e só o teto da altura a limita. A conta:
-// a mesma, com a barra da moldura (34 px), a margem entre cabeçalho e grade (--sp-3) e
-// ~110 px embaixo (linha de tag, nome e link de 44 px, mt-3 e o texto em até 2 linhas de 14 px).
 const frameMaxSide = (headPx: number) =>
   `min(100%, max(320px, calc((100svh - var(--deck-bar-h) - var(--sp-1) - 34px - ${headPx}px - var(--sp-3) - 52px) * 1.6)))`;
 
-// Comparação. Com 2 versões: abaixo de lg, empilhadas; a partir de lg, lado a lado (cada coluna
-// com a sua moldura, a tag, o nome, o texto e o link). Com 3 ou mais: abaixo de lg, empilhadas;
-// a partir de lg, abas verticais à esquerda e uma moldura grande à direita (as inativas são
-// compactas e só a ativa mostra o texto). Sem tour, sem "Ver detalhes" e sem hover na moldura.
-// Com reduced motion, tudo aparece pronto.
 export default function Compare({ chapter, deck }: { chapter: CompareChapter; deck: Deck }) {
   const reduced = useReduced();
   const host = deck.frameHost ?? new URL(deck.liveUrl).host;
@@ -64,7 +49,6 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
     "--frame-side": frameMaxSide(headPx),
   } as CSSProperties;
 
-  // altura real do bloco de cabeçalho (título de 1 ou 2 linhas): o teto da moldura acompanha
   useEffect(() => {
     const el = headRef.current;
     if (!el) return;
@@ -73,7 +57,6 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
     return () => ro.disconnect();
   }, []);
 
-  // a outra versão já fica com o poster carregado: a troca não mostra tela vazia
   useEffect(() => {
     variants.forEach((v, i) => {
       if (i === activeIdx) return;
@@ -87,7 +70,6 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
     tabRefs.current[i]?.focus();
   }
 
-  // ↑↓ e ←→ trocam de aba; Home e End vão para a primeira e a última
   function onTabKey(e: KeyboardEvent<HTMLButtonElement>, i: number) {
     const n = variants.length;
     let next: number | null = null;
@@ -103,7 +85,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
   return (
     <Chapter id={chapter.id}>
       <div className="deck-container">
-        {/* com 2 versões, no lg o título e o texto ficam lado a lado: o cabeçalho baixo deixa as molduras maiores */}
+        
         <div
           ref={headRef}
           className={cx(!compact && "lg:grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end lg:gap-x-12")}
@@ -128,7 +110,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
           </motion.p>
         </div>
 
-        {/* o gatilho fica no pai (sempre ocupa área); as colunas entram pelos variants */}
+        
         <motion.div
           className={"mt-[var(--sp-3)]"}
           style={frameVars}
@@ -136,7 +118,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
           whileInView={reduced ? undefined : "show"}
           viewport={{ once: true, margin: "0px 0px -10% 0px" }}
         >
-          {/* as versões empilhadas: abaixo de lg e, com 2 versões, também a partir de lg (lado a lado) */}
+          
           <div
             className={`grid grid-cols-[minmax(0,1fr)] gap-x-16 gap-y-12 ${compact ? "lg:hidden" : "lg:grid-cols-2 lg:gap-x-8"}`}
           >
@@ -148,7 +130,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
                   </DeviceFrame>
                 </div>
 
-                {/* lg+ com 2 versões: legenda de uma linha só (tag, nome e link), na largura da moldura; o texto fica no celular */}
+                
                 {!compact && (
                   <div className="hidden lg:flex lg:w-full lg:max-w-[var(--frame-side)] lg:flex-col">
                     <div className="flex min-h-[44px] items-center justify-between gap-4">
@@ -183,7 +165,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
                   </div>
                 )}
 
-                {/* abaixo de lg (e sempre com 3 ou mais): o texto ocupa o resto da coluna e o link vai para a base */}
+                
                 <div className="flex w-full flex-1 flex-col lg:hidden">
                   <div className="mt-5 flex items-baseline gap-4">
                     <p
@@ -227,7 +209,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
             ))}
           </div>
 
-          {/* 3 ou mais, a partir de lg: abas verticais à esquerda (30%) e uma moldura grande à direita (70%) */}
+          
           {compact && (
             <div className="hidden lg:grid lg:grid-cols-[minmax(0,3fr)_minmax(0,7fr)] lg:items-start lg:gap-x-16">
               <motion.div custom={0} variants={reduced ? undefined : COLUMN} className="flex min-w-0 flex-col">
@@ -279,7 +261,7 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
                   })}
                 </div>
 
-                {/* a versão ativa: texto e link */}
+                
                 <p className="mt-6 break-words text-[15px]" style={{ lineHeight: 1.6, color: "var(--d-fg-muted)" }}>
                   {cur.text}
                 </p>
@@ -307,7 +289,6 @@ export default function Compare({ chapter, deck }: { chapter: CompareChapter; de
                     {reduced ? (
                       <LoopVideo key={cur.tag} media={cur.media} />
                     ) : (
-                      // a troca é um crossfade: a versão nova entra por cima da que sai
                       <AnimatePresence initial={false}>
                         <motion.div
                           key={cur.tag}

@@ -1,7 +1,5 @@
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-// Metodologia em lista: uma linha por etapa, com número, título e texto. No celular o
-// texto fica embaixo do título; no desktop, ao lado.
 export default function Method({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).home.method;
 

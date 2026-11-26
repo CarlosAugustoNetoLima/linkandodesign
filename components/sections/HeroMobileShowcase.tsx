@@ -4,13 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getProject, getProjects } from "@/lib/projects";
 
-// Substituto mobile do card 3D do hero (ver HeroShowcase3D.tsx). Antes disso,
-// abaixo de 640px o WebGL inteiro rodava do mesmo jeito, só escondido atrás de
-// um véu a 80% de opacidade — pagando o custo de 4 luzes, sombra recalculada
-// todo frame e decode de vídeo sem nenhum ganho visual. Este componente é puro
-// HTML/CSS: um card de vidro achatado (mesma leitura visual do 3D, sem a
-// profundidade) com crossfade automático entre os 4 projetos. Sem gesto pra
-// aprender — só um lugar pra olhar enquanto lê o texto ao lado.
 const SLUGS = ["yanns", "festival-crato", "wauw", "jsynq"] as const;
 const VIDEOS: Record<(typeof SLUGS)[number], string> = {
   yanns: "/projects/yanns.mp4",
@@ -19,15 +12,10 @@ const VIDEOS: Record<(typeof SLUGS)[number], string> = {
   jsynq: "/projects/jsynq.mp4",
 };
 
-const HOLD = 7000; // tempo mostrando cada projeto
-const FADE = 700; // duração do crossfade (CSS transition)
-const PREROLL = 1100; // acorda o próximo vídeo um pouco antes da troca
+const HOLD = 7000;
+const FADE = 700;
+const PREROLL = 1100;
 
-// Gate por largura real, não só CSS: um `sm:hidden` sozinho escondia a
-// camada visualmente mas os 4 <video> continuavam montados e tocando em
-// desktop — display:none não pausa decode de vídeo. É o MESMO problema que
-// resolvemos no lado 3D (WebGL rodando atrás do véu), só que aqui. Por isso
-// o componente nem monta os <video> fora do breakpoint mobile.
 export default function HeroMobileShowcase({ locale }: { locale: Locale }) {
   const [show, setShow] = useState<boolean | null>(null);
 
@@ -56,7 +44,7 @@ function Cycler({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     videos.current[0]?.play().catch(() => {});
-    if (reduced) return; // reduced: fica parado no primeiro vídeo, sem ciclar
+    if (reduced) return;
 
     let holdTimer: number;
     let prerollTimer: number;

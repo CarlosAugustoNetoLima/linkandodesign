@@ -22,7 +22,7 @@ export default function SobrePage() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">{t.text}</p>
       </section>
 
-      {/* Números do estúdio */}
+      
       <section className="mx-auto max-w-7xl px-5">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {t.stats.map((s) => (

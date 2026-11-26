@@ -1,11 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck da marca In The Level (só a identidade visual, sem o site). Cada fato vem
-// do sistema de design da marca (três páginas: cores, tipografia e logos) e do site no ar
-// (o que a empresa faz e os três pilares). O logo foi recortado do sistema em alta resolução
-// e o símbolo veio do site em vetor. As gravações são páginas montadas com esses arquivos e
-// a fonte Inter (scripts/deck/brand/in-the-level), sem imagem gerada por IA nem foto de banco.
-// Texto público: simples, sem nome de arquivo, sem metáfora, sem preço.
 const BASE = "/decks/in-the-level";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -27,7 +21,6 @@ export const inTheLevel: Deck = {
   flags: ["🌍"],
   tagline: "Duas setas sobre uma base, um azul e um sistema inteiro em Inter.",
   liveUrl: "https://www.inthelevel.com",
-  // marca: as peças aparecem grandes, sem a barra do navegador
   mediaFramed: true,
   credits: [{ name: "Carlos Lima", role: "Direção criativa e identidade visual" }],
   stack: ["Identidade visual", "Sistema de design"],

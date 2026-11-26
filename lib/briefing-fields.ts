@@ -2,20 +2,6 @@ import type { Locale } from "@/lib/i18n";
 import { SERVICE_LABEL, type ServiceKey } from "@/lib/pricing-base";
 import { PLAYBOOK_ALERTS, PLAYBOOK_FIELDS } from "@/lib/playbook.generated";
 
-// Lista oficial das perguntas do diagnóstico. A FONTE é o playbook que o Carlos edita,
-// docs/playbook-diagnostico.md: scripts/chat/build-playbook.mjs o converte em
-// lib/playbook.generated.ts (no `prebuild` e com `npm run playbook`). Este módulo só
-// junta os dados gerados com os campos de contato e oferece as consultas.
-//
-// Quem usa:
-//   lib/chat-context.ts   → monta a lista de perguntas do roteiro da IA
-//   lib/lead-proposal.ts  → valida as respostas e os alertas extraídos da conversa (JSON)
-//   app/api/chat/route.ts → portão: não deixa pedir contato nem resumir com obrigatório faltando
-//
-// `types` = para quais tipos de projeto o campo vale ("all" = todos).
-// `required` = em quais tipos a IA precisa perguntar antes de pedir contato ("all" =
-// todos; [] = só "bom saber"). "Não sei" ou "prefiro conversar" contam como resposta.
-// `contact` = só no fim (nome e e-mail); fica no código porque o fluxo depende dele.
 
 export type ProjectType = ServiceKey | "unsure";
 
@@ -39,7 +25,7 @@ export type BriefingField = {
   question: Record<Locale, string>;
   types: ProjectType[] | "all";
   required: ProjectType[] | "all";
-  contact?: boolean; // pedido só no fim, depois de todas as outras perguntas
+  contact?: boolean;
 };
 
 export type BriefingAlert = {
@@ -75,8 +61,6 @@ const CONTACT_FIELDS: BriefingField[] = [
 export const BRIEFING_FIELDS: BriefingField[] = [...PLAYBOOK_FIELDS, ...CONTACT_FIELDS];
 export const BRIEFING_ALERTS: BriefingAlert[] = PLAYBOOK_ALERTS;
 
-// Alertas que o servidor calcula sozinho (a IA não avalia): o orçamento contra a base
-// interna de valores, que o modelo nunca vê.
 export const SERVER_ALERTS = new Set(["budget_low"]);
 
 export const FIELD_IDS = BRIEFING_FIELDS.map((f) => f.id);
@@ -84,7 +68,6 @@ export const FIELD_IDS = BRIEFING_FIELDS.map((f) => f.id);
 const hits = (list: ProjectType[] | "all", types: ProjectType[]) =>
   list === "all" || list.some((t) => types.includes(t));
 
-// Campos que valem para os tipos dados. Sem tipo definido ainda, só os comuns.
 export function fieldsFor(types: ProjectType[]): BriefingField[] {
   return BRIEFING_FIELDS.filter((f) => hits(f.types, types));
 }
@@ -105,8 +88,6 @@ export function isProjectType(v: unknown): v is ProjectType {
   return typeof v === "string" && (PROJECT_TYPES as string[]).includes(v);
 }
 
-// Texto da lista para o prompt: comuns + um bloco por tipo, marcando obrigatório e
-// "bom saber". Os campos de contato ficam fora (o prompt tem a regra própria do fim).
 export function checklistText(locale: Locale): string {
   const pt = locale === "pt";
   const req = pt ? "obrigatório" : "required";

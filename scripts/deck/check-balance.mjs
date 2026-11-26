@@ -1,6 +1,3 @@
-// Mede o equilíbrio das seções lado a lado: diferença entre o centro vertical da mídia
-// (primeiro <video>/<canvas> do capítulo) e o do bloco de texto (pai do primeiro título).
-// Uso: node scripts/deck/check-balance.mjs <url> [largura] [altura]   (limite: 40 px)
 import { createRequire } from 'module';
 const require = createRequire('/Users/carloslima/linkando-design/package.json');
 const { chromium } = require('playwright');
@@ -16,10 +13,8 @@ const rows = await page.evaluate(() => {
     const media = sec.querySelector('video, canvas');
     const h = sec.querySelector('h1, h2');
     if (!media || !h) return;
-    // coluna inteira de texto: sobe do div do título até o último que ainda não contém a mídia (título + botão/tour)
     let col = h.closest('div');
     while (col.parentElement && !col.parentElement.contains(media)) col = col.parentElement;
-    // mídia = todas as gravações da mesma coluna (a composição desktop + celular do responsivo conta como uma só)
     let mcol = media;
     while (mcol.parentElement && !mcol.parentElement.contains(h)) mcol = mcol.parentElement;
     const rects = (mcol.matches('video, canvas') ? [mcol] : [...mcol.querySelectorAll('video, canvas')]).map((e) => e.getBoundingClientRect());

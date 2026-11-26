@@ -12,14 +12,12 @@ import type { CtaChapter, Deck } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Anéis ao fundo, defasados: respiram sem competir com o texto.
 const RINGS = [
   { size: "40vmin", delay: 0 },
   { size: "62vmin", delay: 1.2 },
   { size: "84vmin", delay: 2.4 },
 ];
 
-// Bloco que entra com fade + subida ao aparecer na tela.
 function Fade({ delay, className, children }: { delay: number; className?: string; children: ReactNode }) {
   const reduced = useReduced();
   return (
@@ -35,8 +33,6 @@ function Fade({ delay, className, children }: { delay: number; className?: strin
   );
 }
 
-// Chamada final: título, botão magnético para o projeto real e navegação entre decks.
-// Com prefers-reduced-motion os anéis ficam parados e o conteúdo aparece sem transição.
 export default function Cta({
   chapter,
   deck,

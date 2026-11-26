@@ -1,17 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do JSYNQ Workspace, o SISTEMA da JSYNQ (marca do grupo In The Level).
-// O site da JSYNQ e a marca têm cases próprios. Fatos conferidos no código do sistema
-// (js_workspace_frontend, branch staging, só leitura): documentação do produto, design
-// system (biblioteca no Figma, tokens, plano do tema escuro, taxonomia dos arquivos de
-// módulo), especificações e planos, textos da interface nos três idiomas, testes e
-// histórico de commits.
-//
-// TELAS: capturas reais do sistema em teste (staging, 1440×732), com os dados de
-// clientes mascarados antes de chegar aqui (nomes fictícios, fotos desfocadas). O
-// movimento (zoom, deslocamento, fusões entre telas e entre claro e escuro) é montado a
-// partir das capturas por scripts/deck/workspace-motion.py. Não citar no texto: nomes de
-// contatos, pessoas ou projetos que aparecem nas telas, preços, planos, IDs do Figma.
 const BASE = "/decks/jsynq-workspace";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -47,7 +35,6 @@ export const jsynqWorkspace: Deck = {
   largeMedia: true,
   stack: ["TypeScript", "CSS", "Figma"],
   theme: {
-    // verde escuro do sistema: o verde de botão não tem contraste sobre o papel claro
     accent: "#29684C",
     accentInk: "#ffffff",
     fontKey: "inter",

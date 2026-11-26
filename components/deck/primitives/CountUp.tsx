@@ -10,15 +10,12 @@ type Props = {
   prefix?: string;
   suffix?: string;
   duration?: number;
-  /** se vier, controla o disparo; se não, dispara ao entrar na tela */
   start?: boolean;
   className?: string;
 };
 
-// power2.out do GSAP (easeOutQuad) como cubic-bezier.
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
-// Número que conta de 0 até o valor, em pt-BR. Com prefers-reduced-motion mostra o final.
 export default function CountUp({ value, prefix = "", suffix = "", duration = 1.6, start, className }: Props) {
   const reduced = useReduced();
   const ref = useRef<HTMLSpanElement>(null);

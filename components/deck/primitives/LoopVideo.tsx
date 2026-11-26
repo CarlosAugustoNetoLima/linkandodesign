@@ -10,20 +10,15 @@ type Props = {
   className?: string;
   eager?: boolean;
   fit?: "cover" | "contain";
-  /** tour: pausa a gravação e mostra o poster por cima. Só quem passa a prop monta o poster */
   still?: boolean;
-  /** quadro mostrado no lugar do poster enquanto `still` (ex.: o primeiro quadro da gravação); sem ele, vale o poster */
   stillSrc?: string;
 };
 
-// Vídeo em loop do site apresentado. O arquivo só é pedido perto da tela, toca
-// só enquanto está visível e nunca toca com prefers-reduced-motion (fica o poster).
 export default function LoopVideo({ media, className, eager = false, fit = "cover", still, stillSrc }: Props) {
   const reduced = useReduced();
   const ref = useRef<HTMLVideoElement>(null);
   const [near, setNear] = useState(eager);
 
-  // Atribui o src quando o elemento chega a 300 px da viewport.
   useEffect(() => {
     const el = ref.current;
     if (eager || near || !el) return;
@@ -40,7 +35,6 @@ export default function LoopVideo({ media, className, eager = false, fit = "cove
     return () => io.disconnect();
   }, [eager, near]);
 
-  // Toca quando pelo menos 25% aparece e pausa ao sair. Com `still` (tour), só pausa.
   useEffect(() => {
     const el = ref.current;
     if (!el || reduced || !near) return;
@@ -75,14 +69,13 @@ export default function LoopVideo({ media, className, eager = false, fit = "cove
         preload="none"
         aria-label={media.alt}
       />
-      {/* tour: o poster cobre a gravação parada. Fica montado para já estar carregado */}
+      
       {still !== undefined && (
         <img
           src={stillSrc ?? media.poster}
           alt=""
           aria-hidden="true"
           draggable={false}
-          // sem o arquivo do quadro de partida, cai no poster
           onError={(e) => {
             if (e.currentTarget.getAttribute("src") !== media.poster) e.currentTarget.src = media.poster;
           }}

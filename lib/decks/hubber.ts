@@ -1,13 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do Hubber. Cada fato foi conferido em /Users/carloslima/hubber/hubber-site
-// ou no site no ar. Nada de número estimado. O texto é para o público: simples, sem nome de
-// arquivo, sem metáfora e sem termo técnico além do nome das linguagens. Não citar: IDs de
-// pixel e de CRM, pasta de revisão, valores de preço, pendências de licença de fonte.
-// A fonte de display original ("946 Latin Wide 3") não é redistribuída: o deck usa a
-// Archivo Expandida no lugar e diz que ela faz o papel da original.
-// Desde o commit 74e69c9 (2026-11-21) o site é a versão de portfólio: destaques só em cor,
-// formulários que simulam o envio na própria página, sem rastreio, sem cookies e sem envio real.
 const BASE = "/decks/hubber";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -55,7 +47,6 @@ export const hubber: Deck = {
     displayWeight: 400,
     displayTracking: "0.01em",
     displayUppercase: true,
-    // o site principal tem cantos retos (só a mídia leva 4 px)
     radius: "0px",
     displayStretch: 125,
     coverWeight: 400,

@@ -1,6 +1,3 @@
-// Renderiza o carrossel do Instagram (9 slides 1080×1350, 4:5) em PNG e monta a folha de conferência.
-// Uso: node scripts/carrossel/render.mjs <slug>   (ex.: cinnamon-studio)
-// Lê scripts/carrossel/projects/<slug>.json; as imagens vêm de data.frames (relativo à raiz do repo).
 import { chromium } from "playwright";
 import { execFileSync } from "node:child_process";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
@@ -20,7 +17,6 @@ const framesDir = join(root, data.frames);
 const logo = readFileSync(join(root, "public/logo-ink.svg"), "utf8");
 const IMG = /\.(jpe?g|png|webp)$/i;
 
-// troca todo nome de imagem do JSON por file:// absoluto dentro da pasta de frames
 function absolutize(v) {
   if (Array.isArray(v)) return v.map(absolutize);
   if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, absolutize(x)]));
@@ -36,7 +32,6 @@ page.on("pageerror", (e) => console.error(slug, "pageerror", e.message));
 await page.goto(pathToFileURL(join(here, "carrossel.html")).href, { waitUntil: "load", timeout: 120000 });
 const n = await page.evaluate(([d, l]) => window.build(d, l), [absolutize(data), logo]);
 
-// a janela sem interface limita a altura visível: força a tela de 1080×1350 e recorta exato (como no reels)
 const cdp = await page.context().newCDPSession(page);
 await cdp.send("Emulation.setDeviceMetricsOverride", { width: 1080, height: 1350, deviceScaleFactor: 1, mobile: false });
 const clip = { x: 0, y: 0, width: 1080, height: 1350, scale: 1 };

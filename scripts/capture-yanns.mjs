@@ -1,7 +1,3 @@
-// Varredura de capturas do site YANNS (servido em 127.0.0.1:8010) para o portfólio.
-// Full-page, desktop + mobile, idioma FR. Usa o Chrome do sistema via puppeteer-core.
-//
-// Uso: node scripts/capture-yanns.mjs [rota]   (sem arg = todas)
 import puppeteer from "puppeteer-core";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -68,7 +64,6 @@ async function run() {
       isMobile: vp.mobile,
       hasTouch: vp.mobile,
     });
-    // idioma FR via cookie antes de navegar
     await page.setCookie({
       name: "yanns_lang",
       value: "fr",

@@ -1,9 +1,6 @@
 import type { ReactNode } from "react";
 
-// Molduras de aparelho das gravações. Só aparência: tamanho e posição vêm do
-// chamador via className (concatenada no fim).
 
-// Janela de navegador: barra com bolinhas + pílula de URL, conteúdo abaixo.
 export function BrowserFrame({
   url,
   className,
@@ -32,7 +29,6 @@ export function BrowserFrame({
   );
 }
 
-// Telemóvel: borda escura arredondada, conteúdo dentro.
 export function PhoneFrame({
   className,
   children,

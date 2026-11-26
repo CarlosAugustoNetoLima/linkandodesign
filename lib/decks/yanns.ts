@@ -1,16 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do YANNS. Cada fato foi conferido em /Users/carloslima/yanns (README, componentes,
-// estilos, scripts, textos e histórico de commits) ou no site no ar. Figma entra porque há prova: o
-// README e os comentários dos estilos citam o desenho, as medidas e o quadro de cada componente (os
-// identificadores dos quadros não são citados). O texto é para o público:
-// simples, sem nome de arquivo, sem metáfora e sem termo técnico além do nome das linguagens (nomes de
-// serviços só onde explicam a decisão). Não citar: números de carreira do artista (são texto do cliente
-// na página de biografia), chaves, banco de dados, pacotes de publicação por FTP, id do evento na
-// LeBillet e os defeitos do site no ar (links legais do rodapé sem página, datas já passadas na lista).
-// As gravações saíram todas do site na Vercel; na página do produto só foram escolhidos tamanho e
-// quantidade, sem adicionar ao carrinho. Atenção: na Vercel a chave do YouTube não está definida, e a
-// seção de vídeos mostra a lista de reserva do código (números e "il y a 11 jours" fixos); o deck diz isso.
 const BASE = "/decks/yanns";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -65,7 +54,6 @@ export const yanns: Deck = {
   ],
   stack: ["PHP", "HTML", "CSS", "JavaScript"],
   theme: {
-    // o vinho do site (#930C2E) tem bom contraste sobre o papel claro do palco
     accent: "#930c2e",
     accentInk: "#ffffff",
     fontKey: "inter",

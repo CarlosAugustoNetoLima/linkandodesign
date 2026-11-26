@@ -1,11 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck da marca JSYNQ (identidade visual, não o site). Cada fato vem do manual
-// da marca (Brand Guidelines, 20 páginas), da pasta de logos (5 versões em 4 cores) e dos
-// posts entregues (9 para Instagram e 9 para LinkedIn). Marca não tem site para gravar:
-// as gravações são páginas montadas com os arquivos reais da marca e a fonte Inter
-// (scripts/deck/brand/jsynq-marca), sem imagem gerada por IA nem foto de banco.
-// Texto público: simples, sem nome de arquivo, sem metáfora, sem preço.
 const BASE = "/decks/jsynq-marca";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -35,7 +29,6 @@ export const jsynqMarca: Deck = {
   flags: ["🌍"],
   tagline: "Um símbolo que une o J e o S, um verde e um preto.",
   liveUrl: "https://jsynq-linkando.vercel.app",
-  // marca: as peças aparecem grandes, sem a barra do navegador
   mediaFramed: true,
   credits: [{ name: "Carlos Lima", role: "Direção criativa e identidade visual" }],
   stack: ["Identidade visual", "Manual de marca", "Redes sociais"],

@@ -1,13 +1,5 @@
 import type { Deck, Media } from "./types";
 
-// Dossiê do deck do AZ Car Rental. O link principal é a página do guia; o cotizador, a frota
-// e a busca vêm da home e do cotizador do mesmo projeto. Cada fato foi conferido em
-// /Users/carloslima/azcarental ou no site no ar. Figma entra porque há prova: a lista de
-// páginas do guia guarda os ids de nós do Figma (31 páginas, PT e ES). O texto é para o
-// público: simples, sem nome de arquivo, sem metáfora e sem termo técnico além do nome das
-// linguagens. Não citar: valores de tabela, imposto, taxa e pedágio, mecânica de promoção,
-// WhatsApp, IDs de medição, nomes de pessoas da prova social, e-mail e repositório do dono.
-// Não chamar de "reais" as fotos do PDF (parecem geradas por IA).
 const BASE = "/decks/az";
 
 const desktop = (name: string, alt: string): Media => ({
@@ -18,7 +10,6 @@ const desktop = (name: string, alt: string): Media => ({
   alt,
 });
 
-// gravada numa tela de 1920 px (mesma proporção 16:10, codificada em 1600 px)
 const wide = (name: string, alt: string): Media => ({
   src: `${BASE}/${name}.mp4`,
   poster: `${BASE}/${name}.jpg`,
@@ -58,7 +49,6 @@ export const az: Deck = {
   credits: [{ name: "Carlos Lima", role: "Direção criativa, design e desenvolvimento" }],
   stack: ["HTML", "CSS", "JavaScript", "Python"],
   theme: {
-    // o vermelho escuro do site, que tem contraste sobre o papel
     accent: "#c01840",
     accentInk: "#ffffff",
     fontKey: "interTight",

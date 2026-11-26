@@ -15,24 +15,19 @@ import type { AnatomyChapter, Deck } from "@/lib/decks/types";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// Anatomia: a tela abre só com o título e o botão "Ver detalhes". Cada pin vira um passo do tour, um por
-// clique, com a gravação parada e o item marcado: a rolagem da página fica livre.
 export default function Anatomy({ chapter, deck }: { chapter: AnatomyChapter; deck: Deck }) {
   const reduced = useReduced();
 
   const { pins, media } = chapter;
   const aspect = media.width / media.height;
   const host = deck.frameHost ?? new URL(deck.liveUrl).host;
-  // telas maiores (deck.largeMedia): mídia ~70% da largura, à esquerda; a moldura nunca passa da altura da tela
   const large = !!deck.largeMedia;
-  // altura da tela menos o cabeçalho do deck e o padding do capítulo (deck.css), menos a barra da moldura e a borda
   const frameMax = `calc((100svh - var(--deck-bar-h) - var(--sp-1) - ${deck.mediaFramed ? 2 : 36}px) * ${aspect.toFixed(4)})`;
 
   const steps: TourStep[] = pins.map((p) => ({ title: p.title, text: p.why, at: { x: p.x, y: p.y, r: p.r } }));
   const tour = useTour(steps);
 
   return (
-    // sem scroll anchoring: o texto se recentraliza ao abrir o tour e a página não deve andar junto
     <Chapter id={chapter.id} className="[overflow-anchor:none]">
       <div className="deck-container">
         <div
@@ -67,12 +62,12 @@ export default function Anatomy({ chapter, deck }: { chapter: AnatomyChapter; de
             style={large ? ({ "--media-max": frameMax } as CSSProperties) : undefined}
           >
             <DeviceFrame kind="browser" url={host} aspect={aspect} bare={deck.mediaFramed}>
-              {/* os pins foram medidos no começo da página: o tour para no primeiro quadro da gravação, não no poster */}
+              
               <LoopVideo media={media} eager still={tour.still} stillSrc={media.src.replace(/\.mp4$/, "-start.jpg")} />
             </DeviceFrame>
           </div>
 
-          {/* celular: o tour abre logo abaixo da tela, um passo por vez */}
+          
           <TourMobile tour={tour} className="order-3" />
         </div>
       </div>

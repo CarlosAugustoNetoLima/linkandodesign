@@ -16,7 +16,6 @@ json.nodes.forEach((n,i)=>{
 console.log('\n=== MESH PRIMITIVE ATTRS ===');
 const prim = json.meshes[0].primitives[0];
 console.log('attributes:', JSON.stringify(prim.attributes), 'indices:', prim.indices, 'mode:', prim.mode??4);
-// bounding box from POSITION accessor
 const posAcc = json.accessors[prim.attributes.POSITION];
 console.log('POSITION count:', posAcc.count, 'min:', JSON.stringify(posAcc.min), 'max:', JSON.stringify(posAcc.max));
 const dims = posAcc.max.map((v,i)=>+(v-posAcc.min[i]).toFixed(3));

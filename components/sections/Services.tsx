@@ -1,8 +1,6 @@
 import StartDiagnosisButton from "@/components/agent/StartDiagnosisButton";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-// Serviços em lista: uma linha por serviço. No desktop, número, nome e tagline à esquerda
-// e o texto com o botão do diagnóstico à direita; no celular, tudo empilhado.
 export default function Services({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).home.services;
 

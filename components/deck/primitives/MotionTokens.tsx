@@ -8,22 +8,17 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 type Token = MotionChapter["tokens"][number];
 
-// Card de um token: um quadrado percorre a pista com a curva e a duração reais, em loop.
-// Só anima enquanto está na tela. Com reduced motion, fica no fim da pista.
 function TokenCard({ token, index, reduced }: { token: Token; index: number; reduced: boolean | null }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const inView = useInView(cardRef, { margin: "-10%" });
-  // t: progresso do tempo, 0 → 1 em loop. A posição do quadrado é a curva aplicada a t.
   const t = useMotionValue(0);
   const easeFn = cubicBezier(...token.ease);
 
-  // quadrado da pista: avança com o easing e nunca sai da trilha (22 px)
   const demoLeft = useTransform(t, (v) => {
     const e = easeFn(v);
     return `calc(${e * 100}% - ${e * 22}px)`;
   });
 
-  // Anima só com o card na tela; ao sair, para. Com reduced motion, fica no fim.
   useEffect(() => {
     if (reduced) {
       t.set(1);
@@ -55,7 +50,7 @@ function TokenCard({ token, index, reduced }: { token: Token; index: number; red
       >
         <p className="text-[17px] font-medium">{token.name}</p>
 
-        {/* pista: o mesmo movimento, com a curva real */}
+        
         <div className="relative mt-6 h-[44px]" aria-hidden="true">
           <span className="absolute inset-x-0 top-1/2 h-px" style={{ background: "var(--d-line)" }} />
           <motion.span
@@ -77,9 +72,6 @@ function TokenCard({ token, index, reduced }: { token: Token; index: number; red
   );
 }
 
-// Cartões de movimento (curva e duração reais, em loop) e as notas de uso.
-// Usado no capítulo de movimento e no bloco "Animações" do style guide.
-// Com prefers-reduced-motion os quadrados ficam no fim da pista.
 export default function MotionTokens({
   tokens,
   notes,

@@ -16,24 +16,11 @@ import { extractBriefing, missingRequired } from "@/lib/lead-proposal";
 import { llmAttempts, type Turn } from "@/lib/llm";
 
 export const runtime = "nodejs";
-// o diagnóstico pode precisar de até 3 tentativas (ver POST): mais que os 10s padrão
 export const maxDuration = 40;
 
-// Assistente do site (conduz o diagnóstico). A resposta é gerada INTEIRA antes de
-// ser enviada: se o modelo gratuito cortar no meio (MAX_TOKENS, timeout, sem
-// STOP), tenta de novo em vez de mostrar uma frase pela metade. Isso importa na
-// mensagem de fechamento, onde está o marcador que dispara o envio ao time.
-// Provedores e ordem de fallback: lib/llm.ts (Gemini grátis primeiro, Claude
-// opcional). Nada configurado/disponível → 503, e o chat usa o script offline.
-//
-// Lista do briefing: quando a IA quer pedir nome e e-mail ou resumir, a rota extrai
-// as respostas da conversa (mesma extração do e-mail do lead) e, se faltar item
-// obrigatório de lib/briefing-fields.ts, manda refazer perguntando o que falta.
 
 type IncomingMessage = { role: "user" | "assistant"; content: string };
 
-// anti-abuso simples, por instância: 30 mensagens por 10 min por IP.
-// Protege a cota gratuita (que é por projeto, não por visitante).
 const hits = new Map<string, number[]>();
 function tooMany(ip: string) {
   const now = Date.now();
@@ -65,11 +52,8 @@ export async function POST(req: Request) {
         m.content.trim().length > 0,
     )
     .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
-  // o modelo vê só as últimas 40 mensagens (a lista do briefing deixa a conversa
-  // mais longa), mas o estado da conversa conta todas
   const history = cleaned.slice(-40);
 
-  // A conversa precisa começar com uma mensagem do visitante
   while (history.length > 0 && history[0].role !== "user") history.shift();
   if (history.length === 0) {
     return new Response("Nenhuma mensagem do usuário", { status: 400 });
@@ -84,21 +68,13 @@ export async function POST(req: Request) {
   const attempts = llmAttempts(history);
   const pt = locale === "pt";
 
-  // Portão da lista do briefing: só quando a resposta pede contato (sem contato
-  // ainda) ou traz o resumo. A extração roda no máximo uma vez por mensagem; se a
-  // nova tentativa insistir, a mesma lista de pendências vale. Se a extração falhar,
-  // não segura.
-  let gate: { questions: string[] } | null | undefined; // undefined = ainda não extraiu
+  let gate: { questions: string[] } | null | undefined;
   async function missingGate(out: string): Promise<ReplyIssue | null> {
     if (state.userTurns >= LONG_TURNS || state.summaryPending) return null;
     const stage = !state.hasContact && asksContact(out) ? "contact" : isSummary(out) ? "summary" : null;
     if (!stage) return null;
     if (gate === undefined) {
       const b = await extractBriefing(cleaned, { deadlineMs: 10_000 }).catch(() => null);
-      // no resumo, nome e e-mail também precisam estar lá (a pessoa pode ter
-      // adiantado só o e-mail)
-      // com a conversa: item de acesso "parcial" ainda não aprofundado e decisão de
-      // contratação sem decisor claro também seguram o pedido de contato
       const ids = b ? missingRequired(b, { contact: stage === "summary", turns: cleaned }) : [];
       if (ids.length) console.warn(`[chat] lista do briefing incompleta (${stage}): ${ids.join(", ")}`);
       gate = ids.length
@@ -112,10 +88,9 @@ export async function POST(req: Request) {
     return gate ? missingFieldsIssue(gate.questions, locale, stage) : null;
   }
 
-  // limite de tempo total: o visitante não espera para sempre (maxDuration = 40s)
   const deadline = Date.now() + 32_000;
   let text = "";
-  let rejected: { text: string; issue: ReplyIssue } | null = null; // última resposta reprovada pela trava
+  let rejected: { text: string; issue: ReplyIssue } | null = null;
   let correction = "";
   for (const attempt of attempts) {
     if (Date.now() > deadline) break;
@@ -125,7 +100,6 @@ export async function POST(req: Request) {
         console.warn(`[chat] ${attempt.name} devolveu resposta vazia`);
         continue;
       }
-      // trava de qualidade: reprovou, o próximo candidato refaz com a razão no prompt
       const problem = validateReply(out, locale, state, visitorText) ?? (await missingGate(out));
       if (!problem) {
         text = out;
@@ -138,12 +112,9 @@ export async function POST(req: Request) {
       console.warn(`[chat] ${attempt.name} falhou:`, err instanceof Error ? err.message : err);
     }
   }
-  // reprovada em todas as tentativas: o servidor conserta a resposta (ver repairReply)
   if (!text && rejected) text = repairReply(rejected.text, rejected.issue, locale, state);
 
-  // tudo falhou: 503, e o hook do chat responde com o script offline
   if (!text) return new Response("Agente IA indisponível", { status: 503 });
-  // o assistente não marca gênero: "obrigado/obrigada" vira "agradeço" (o modelo escorrega)
   if (pt) text = fixGenderedThanks(text);
 
   return new Response(text, {

@@ -4,22 +4,16 @@ import { cx } from "@/components/deck/cx";
 type Props = {
   kind: "browser" | "phone";
   url?: string;
-  /** largura / altura do CONTEÚDO (a moldura não entra na conta) */
   aspect: number;
   className?: string;
-  /** só no navegador: a mídia já traz a própria janela, então a barra não é desenhada */
   bare?: boolean;
   children: ReactNode;
 };
 
 const SHADOW = "0 28px 60px -28px rgba(23,23,26,.45)";
 
-// Moldura de aparelho para as gravações: navegador ou celular.
-// O pai define a largura; a altura vem do aspect do conteúdo.
 export default function DeviceFrame({ kind, url, aspect, className, bare, children }: Props) {
   if (kind === "phone") {
-    // borda e cantos medidos pela largura do próprio aparelho (cqw), na proporção de um
-    // celular real; nada por cima da tela
     return (
       <div className={cx("w-full [container-type:inline-size]", className)}>
         <div
@@ -38,7 +32,6 @@ export default function DeviceFrame({ kind, url, aspect, className, bare, childr
     );
   }
 
-  // a gravação já traz a janela desenhada: só o recorte, sem barra por cima
   if (bare) {
     return (
       <div

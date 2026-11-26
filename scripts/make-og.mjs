@@ -1,5 +1,3 @@
-// Gera public/og-image.jpg (1200x630), a imagem de compartilhamento do site.
-// Uso: node scripts/make-og.mjs  (usa o Chrome do sistema via Playwright e precisa de internet para as fontes)
 import { chromium } from "playwright";
 import fs from "node:fs";
 import path from "node:path";
@@ -48,7 +46,6 @@ try {
     await document.fonts.load("600 24px Inter");
     await document.fonts.ready;
   });
-  // Sem essa checagem, uma falha de rede deixaria o fallback do sistema sem aviso.
   const loaded = await page.evaluate(() =>
     [...document.fonts].filter((f) => f.status === "loaded").map((f) => `${f.family} ${f.weight}`)
   );

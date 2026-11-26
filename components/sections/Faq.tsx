@@ -1,13 +1,9 @@
 import OpenChatLink from "@/components/agent/OpenChatLink";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-// Acordeão em <details>/<summary>: acessível por teclado e leitor de tela sem
-// JS. Caixas arredondadas soltas; o "+" gira para fechar e o item aberto fica
-// marcado em preto (traço lime).
 export default function Faq({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).home.faq;
 
-  // Pergunta fora da lista: abre o chat. Mesmo bloco em dois lugares, um por breakpoint.
   const ask = (
     <>
       <p className="text-sm text-muted">{t.more}</p>

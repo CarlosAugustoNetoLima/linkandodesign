@@ -1,12 +1,3 @@
-// Grava as cenas de um site para os decks de portfólio (ver scripts/deck/README.md).
-//
-//   node scripts/deck/record-scenes.mjs <site> [cena ...] [--sw]
-//
-// Lê scripts/deck/scenes/<site>.json e grava cada cena com o Chrome do sistema
-// (channel 'chrome'). A captura é por CDP (Page.startScreencast), não por
-// recordVideo: o recordVideo baixa qualidade e descarta frames em site pesado.
-// --sw força SwiftShader. Sem a flag, a cena tenta a GPU e só recai para
-// SwiftShader se sair com fps < 8 ou preta.
 
 import { chromium } from 'playwright';
 import { execFile } from 'node:child_process';
@@ -22,32 +13,19 @@ const TMP = path.join(process.env.DECK_TMP || path.join(os.tmpdir(), 'deck-frame
 const SW_ARGS = ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'];
 const IPHONE_UA =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
-// frame = tamanho máximo do screencast. O Chrome só entrega o frame inteiro
-// quando --window-size bate com o viewport (senão corta a base ou reduz), e a
-// janela é por instância: por isso um browser por dispositivo.
-// O mobile sai 1x (390 de largura): o screencast não entrega device pixels.
 const DEVICES = {
   desktop: { viewport: { width: 1280, height: 800 }, dpr: 1, frame: [1280, 800], encodeW: 1280, maxBytes: 4 * 1024 * 1024 },
-  // mesma proporção (16:10) do desktop, para efeitos que só aparecem em telas maiores
   'desktop-hd': { viewport: { width: 1440, height: 900 }, dpr: 1, frame: [1440, 900], encodeW: 1440, maxBytes: 4 * 1024 * 1024 },
-  // 16:10 em tela larga (1920), para ver menus e layouts que só cabem em monitores grandes
   'desktop-fhd': { viewport: { width: 1920, height: 1200 }, dpr: 1, frame: [1920, 1200], encodeW: 1600, maxBytes: 4 * 1024 * 1024 },
-  // 1440×900 em dpr 2 de verdade: o screencast só entrega device pixels (2880×1800) com o dpr do próprio
-  // browser (--force-device-scale-factor + viewport null). deviceScaleFactor no contexto sairia 1440×900.
-  // A janela leva 87 px de UI a mais (window-size 1440×987 → innerHeight 900).
   'desktop-hd2': {
     viewport: { width: 1440, height: 900 }, dpr: 2, frame: [2880, 1800], encodeW: 960, maxBytes: 4 * 1024 * 1024,
     native: true, windowH: 987, quality: 75,
   },
-  // 4:3 em 2x real (1200×900): detalhe que mostra a tela inteira, de uma lateral à outra (crop w 1200)
   'desktop-43': {
     viewport: { width: 1200, height: 900 }, dpr: 2, frame: [2400, 1800], encodeW: 960, maxBytes: 4 * 1024 * 1024,
     native: true, windowH: 987, quality: 75,
   },
-  // 1440 de largura em 4:3 (1440×1080): o mesmo layout do desktop-hd, com a tela inteira de lado a lado
-  // num detalhe 960×720 (crop x 0, w 1440)
   'desktop-43w': { viewport: { width: 1440, height: 1080 }, dpr: 1, frame: [1440, 1080], encodeW: 960, maxBytes: 4 * 1024 * 1024 },
-  // largura de tablet com 2x real: para peças que só existem até ~900 px (ex.: barra fixa do Hubber)
   'tablet-hd2': {
     viewport: { width: 820, height: 900 }, dpr: 2, frame: [1640, 1800], encodeW: 960, maxBytes: 4 * 1024 * 1024,
     native: true, windowH: 987, quality: 75,
@@ -68,17 +46,11 @@ const POINTER_OPS = new Set(['move', 'hover', 'click', 'drag', 'orbit', 'seekHit
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const pace = (t) => sleep(Math.max(0, t - Date.now()));
 const easeInOut = (t) => (1 - Math.cos(Math.PI * t)) / 2;
-// arrasto: acelera nos primeiros 20% e solta em velocidade constante, para o
-// pointerup chegar com velocidade (é o que dá inércia no tour e na fachada)
 const dragEase = (t) => (t < 0.2 ? (t * t) / 0.4 : 0.1 + (t - 0.2)) / 0.9;
 const lerp = (a, b, k) => a + (b - a) * k;
 const r2 = (n) => Math.round(n * 100) / 100;
 
-// ---------- funções executadas dentro da página (sem closures) ----------
 
-// alvo do scroll: número (px) ou { selector, at, offsetVh, offsetPx }.
-// offsets positivos descem a vista. Elemento pinado (GSAP) vive dentro de
-// .pin-spacer: a extensão real do trecho é a do spacer, não a do elemento.
 function scrollTargetFn(spec) {
   if (typeof spec === 'number') return spec;
   const el = document.querySelector(spec.selector);
@@ -92,9 +64,6 @@ function scrollTargetFn(spec) {
   return Math.round(Math.min(max, Math.max(0, y)));
 }
 
-// timeline de scroll por rAF. Padrão: easeInOutSine. `ease: "soft"`: velocidade quase
-// constante, com entrada e saída suaves (6% do tempo em cada ponta). Guarda de tempo:
-// se o rAF parar, a promessa resolve mesmo assim.
 function scrollAnimFn({ from, to, ms, ease }) {
   return new Promise((resolve) => {
     const go = (y) => window.scrollTo({ top: y, behavior: 'instant' });
@@ -120,10 +89,7 @@ function hitFn({ selector, cls }) {
   return !!document.querySelector(selector)?.classList.contains(cls);
 }
 
-// ---------- captura ----------
 
-// Captura por CDP. Um frame só chega quando algo muda na tela, então a duração
-// de cada frame vai do próprio timestamp até o próximo (ver timeline()).
 class Recorder {
   constructor(cdp, dir, [maxWidth, maxHeight], quality = 90) {
     this.quality = quality;
@@ -153,8 +119,6 @@ class Recorder {
     await this.restart();
   }
 
-  // reinicia a captura e descarta o que já tinha. Necessário no commit de uma
-  // navegação: o screencast não sobrevive à troca de documento.
   async restart() {
     this.frames = [];
     this.t0 = Date.now() / 1000;
@@ -171,7 +135,6 @@ class Recorder {
   }
 }
 
-// ---------- ops ----------
 
 function skipped(op, env, motivo) {
   env.warnings.push(`${op.op} pulado (${motivo}): ${JSON.stringify(op).slice(0, 120)}`);
@@ -185,7 +148,6 @@ async function boxOf(page, selector, nth = 0) {
   return box;
 }
 
-// alvo: { selector, nth? } | { x, y } | { var } (ponto guardado por seekHit)
 async function resolve(t, env) {
   if (t.var !== undefined) return env.vars[t.var] ?? null;
   if (typeof t.x === 'number') return { x: t.x, y: t.y };
@@ -194,9 +156,6 @@ async function resolve(t, env) {
   return { x: b.x + b.width / 2, y: b.y + b.height / 2 };
 }
 
-// eventos de entrada não esperam o próprio roundtrip: em página pesada ele
-// chega a 20–150 ms e o passo de 16 ms atrasaria o relógio. O pacing é o
-// relógio; no máximo 3 eventos em voo (o Playwright mantém a ordem).
 async function fire(env, promise) {
   env.inflight.push(promise);
   if (env.inflight.length > 3) await env.inflight.shift();
@@ -205,16 +164,12 @@ async function flush(env) {
   await Promise.all(env.inflight.splice(0));
 }
 
-// passo agendado pelo relógio. Se o roundtrip atrasou o passo (página pesada),
-// descarta o intermediário: o último sempre sai, então a duração gravada bate
-// com `ms` em vez de acumular atraso.
 async function step(env, at, last, send) {
   await pace(at);
   if (!last && Date.now() - at > 16) return;
   await fire(env, send());
 }
 
-// move o mouse em trajetória suave (easeInOutSine, passos de ~16ms)
 async function moveMouse(env, to, ms) {
   const from = env.mouse ?? to;
   const n = Math.max(1, Math.round(ms / 16));
@@ -235,7 +190,6 @@ const OPS = {
       await env.page.goto(url, { waitUntil: 'load', timeout: 60000 });
       return;
     }
-    // gravando: reinicia o screencast no commit e descarta o about:blank anterior
     await env.page.goto(url, { waitUntil: 'commit', timeout: 60000 });
     await env.rec.restart();
     await env.page.waitForLoadState('load', { timeout: 60000 });
@@ -252,7 +206,6 @@ const OPS = {
   async scroll(op, env) {
     const to = await env.page.evaluate(scrollTargetFn, op.to);
     const from = await env.page.evaluate(() => window.scrollY);
-    // speed (px/s): a duração vem da distância (igual ao modo congelado)
     const ms = op.speed ? (Math.abs(to - from) / op.speed) * 1000 : op.ms ?? 0;
     await env.page.evaluate(scrollAnimFn, { from, to, ms, ease: op.ease });
   },
@@ -279,7 +232,6 @@ const OPS = {
     await env.page.mouse.up();
   },
 
-  // arrasto: sem `from`, continua de onde o mouse está (encadear dois arrastos)
   async drag(op, env) {
     const { page, cdp } = env;
     let from = env.mouse;
@@ -321,19 +273,14 @@ const OPS = {
     await env.page.keyboard.press(op.key);
   },
 
-  // digita no elemento com foco (clique no campo antes). delay em ms por tecla.
   async type(op, env) {
     await env.page.keyboard.type(op.text, { delay: op.delay ?? 70 });
   },
 
-  // injeta uma <style> na página (esconde partes da interface numa cena). Vale em
-  // setup e em record; some no próximo goto, que troca o documento.
   async css(op, env) {
     await env.page.addStyleTag({ content: op.text });
   },
 
-  // mouse circulando em volta de um elemento (CTA magnético). Elipse que passa
-  // `pad` px além das bordas do elemento.
   async orbit(op, env) {
     const b = await boxOf(env.page, op.selector, op.nth);
     const cx = b.x + b.width / 2;
@@ -355,9 +302,6 @@ const OPS = {
     env.mouse = at(a0 + 2 * Math.PI * (op.turns ?? 1));
   },
 
-  // procura um ponto de hover que acerte: move (sem clicar) pelos offsets até o
-  // canvas ganhar a classe hitClass (o site marca is-hit quando há unidade sob
-  // o ponteiro). Guarda o ponto em vars[as] para um click { var }.
   async seekHit(op, env) {
     const b = await boxOf(env.page, op.selector);
     const cx = b.x + b.width / 2;
@@ -366,7 +310,6 @@ const OPS = {
     for (let i = 0; i < offsets.length; i++) {
       const p = { x: cx + offsets[i][0], y: cy + offsets[i][1] };
       await moveMouse(env, p, op.moveMs ?? 220);
-      // o site só recalcula o hover a cada 90ms: espera e toca de novo no ponto
       await sleep(120);
       await env.page.mouse.move(p.x, p.y);
       if (await env.page.evaluate(hitFn, { selector: op.selector, cls: op.hitClass })) {
@@ -389,14 +332,7 @@ async function runOps(list, env) {
   }
 }
 
-// ---------- modo congelado (`"stepped": true`) ----------
 
-// captura determinística em tempo real (sem relógio virtual e sem screencast). Cada quadro i
-// do fps de saída: aplica o scroll exato do instante t = i/fps, espera dois rAF, captura por
-// Page.captureScreenshot e grava. A saída tem duração fixa por quadro, então o scroll é exato
-// independente de quanto cada captura demora. Animações CSS são aceleradas/freadas por
-// Animation.setPlaybackRate para andar ~em tempo real em relação à saída (medido nos primeiros
-// 30 quadros). Animações de JS/rAF andam no tempo de parede: ficam mais lentas, o que é aceito.
 const SOFT_A = 0.06;
 const softEase = (t) => (t <= SOFT_A ? (t * t) / (2 * SOFT_A) / (1 - SOFT_A)
   : t <= 1 - SOFT_A ? (SOFT_A / 2 + (t - SOFT_A)) / (1 - SOFT_A)
@@ -405,12 +341,9 @@ const sineEase = (t) => (1 - Math.cos(Math.PI * t)) / 2;
 const CALIB_FRAMES = 30;
 
 
-// estado do chat de diagnóstico (ver CHAT_STATE). Usa os seletores do site: textarea[name="diag-reply"],
-// button.muse-diag__send e .muse-diag__choices > button. Nunca clica em opção que envie contato.
 const CHAT_STATE = () => {
   const input = document.querySelector('textarea[name="diag-reply"]');
   const send = document.querySelector('button.muse-diag__send');
-  // última bolha da IA (a do usuário tem outra classe); o texto dela é o que muda no streaming
   const ai = [...document.querySelectorAll('.muse-bubble--ai')];
   const last = ai.at(-1);
   const choices = [...document.querySelectorAll('.muse-diag__choices > button')].map((b, i) => ({
@@ -449,7 +382,6 @@ async function runChat(op, env, frame, fps) {
       env.log(`chat: pediu o diagnóstico após ${turn} turnos`);
       break;
     }
-    // sem campo liberado: a IA só ofereceu opções. Escolhe a primeira segura.
     if (!s.inputEnabled) {
       const safe = s.choices.find((c) => !c.forbidden);
       if (!safe) throw new Error('chat: sem campo e sem opção segura');
@@ -460,13 +392,12 @@ async function runChat(op, env, frame, fps) {
       await page.focus(input);
       for (const ch of text) {
         await page.keyboard.type(ch);
-        await frame(); // ~35 ms de digitação no vídeo: 2 quadros por caractere
+        await frame();
         await frame();
       }
       await page.evaluate((sel) => document.querySelector(sel)?.click(), sendSel);
       env.log(`chat: turno ${turn + 1} enviado (${text.length} caracteres)`);
     }
-    // espera a resposta sem gravar; quando o texto começa a mudar, grava até parar
     const before = (await state()).lastText;
     const t0 = Date.now();
     for (;;) {
@@ -482,15 +413,12 @@ async function runChat(op, env, frame, fps) {
       await frame();
       const cur = await state();
       if (cur.lastText !== last) { last = cur.lastText; changed = Date.now(); }
-      // a resposta acabou quando o campo volta e o texto para de mudar (o botão de enviar fica
-      // desabilitado com o campo vazio, então não serve de sinal)
       if ((cur.inputEnabled || cur.finish) && Date.now() - changed > 800) break;
     }
     for (let i = 0; i < Math.round(((op.holdMs ?? 800) * fps) / 1000); i++) await frame();
     const done = await state();
     env.log(`chat: IA (${done.lastText.length} car.): ${done.lastText.slice(-160).replace(/\s+/g, ' ')} | opções: ${done.choices.map((c) => c.text).join(' / ') || '-'}`);
   }
-  // espera o mapa da solução (sem gravar o tempo de espera)
   const t1 = Date.now();
   while (!(await state()).solution) {
     if (Date.now() - t1 > (op.solutionTimeoutMs ?? 240000)) throw new Error('chat: o mapa da solução não apareceu');
@@ -506,7 +434,6 @@ async function runStepped(list, env, fps, dev) {
   const calib = [];
   const st = { ms: 0, rate: 1 };
   await cdp.send('Animation.enable').catch(() => {});
-  // scroll suave do site (html scroll-behavior: smooth) não pode competir com o scroll por quadro
   await page.addStyleTag({ content: 'html{scroll-behavior:auto!important}' });
   const frame = async (pre) => {
     const t0 = Date.now();
@@ -531,8 +458,6 @@ async function runStepped(list, env, fps, dev) {
       if (op.op === 'wait') {
         for (let i = 0; i < framesFor(op.ms); i++) await frame();
       } else if (op.op === 'scroll') {
-        // container: rola um elemento interno (ex.: a conversa do chat), não a janela.
-        // to: {selector, offsetPx} relativo ao topo do container.
         let from, to;
         if (op.container) {
           const r = await page.evaluate(([c, sel, off]) => {
@@ -549,12 +474,10 @@ async function runStepped(list, env, fps, dev) {
           to = await page.evaluate(scrollTargetFn, op.to);
           from = await page.evaluate(() => window.scrollY);
         }
-        // speed (px/s) dá a duração pela distância; sem ele, vale ms
         const n = op.speed ? framesFor((Math.abs(to - from) / op.speed) * 1000) : framesFor(op.ms ?? 0);
         const k = op.ease === 'soft' ? softEase : sineEase;
         for (let i = 1; i <= n; i++) {
           const y = Math.round(from + (to - from) * k(i / n));
-          // evaluate que devolve undefined é descartado pelo Playwright; devolve 1 por garantia
           if (op.container) {
             await frame(() => page.evaluate(([c, v]) => { document.querySelector(c).scrollTop = v; return 1; }, [op.container, y]));
           } else {
@@ -562,7 +485,6 @@ async function runStepped(list, env, fps, dev) {
           }
         }
       } else if (op.op === 'carousel') {
-        // clica no botão "próximo" item a item, com quadros o tempo todo; para se o botão desabilitar
         const exists = await page.evaluate((sel) => !!document.querySelector(sel), op.next);
         if (!exists) throw new Error(`carousel: botão não encontrado: ${op.next}`);
         const per = framesFor(op.perItemMs ?? 1200);
@@ -593,8 +515,6 @@ async function runStepped(list, env, fps, dev) {
           await frame(() => page.mouse.up());
         }
       } else if (op.op === 'chat') {
-        // conversa com o diagnóstico (LLM): digita a cada resposta, envia, e grava só o que se move:
-        // espera a resposta sem gravar (o tempo de LLM não entra no vídeo) e grava o streaming.
         await runChat(op, env, frame, fps);
       } else if (op.op === 'press') {
         await frame(() => page.keyboard.press(op.key));
@@ -613,12 +533,7 @@ async function runStepped(list, env, fps, dev) {
   return frames;
 }
 
-// ---------- ffmpeg ----------
 
-// duração de cada frame: do próprio timestamp até o próximo. O primeiro começa
-// em t0 (início da gravação); o último vai até t1 (fim da gravação). Os
-// timestamps vêm do compositor e nem sempre chegam em ordem: ordena e prende
-// em [t0, t1], senão a soma das durações infla (o tour saiu 30% mais longo).
 function timeline(frames, t0, t1) {
   if (!frames.length) throw new Error('nenhum frame capturado');
   const sorted = [...frames].sort((a, b) => a.ts - b.ts);
@@ -631,12 +546,7 @@ function timeline(frames, t0, t1) {
   });
 }
 
-// -t corta na duração gravada: o concat estende a última entrada (repetida sem
-// duration, ver a instrução do concat) em ~0,2–0,5s a mais.
-// opts: fps (taxa de saída, padrão FPS) e endFade (ms de crossfade do último quadro ao primeiro, para laço sem emenda)
 async function encode(list, dev, out, crf, dir, seconds, crop, { fps = FPS, endFade = 0, seq = false } = {}) {
-  // seq: quadros de duração fixa (modo stepped). Entram como sequência de imagens, não pelo concat:
-  // o concat com duration arredondada duplica quadros em padrão alternado (medido: 27% de passos com mudança).
   let input;
   if (seq) {
     const seqDir = path.join(dir, `seq-${crf}`);
@@ -646,14 +556,13 @@ async function encode(list, dev, out, crf, dir, seconds, crop, { fps = FPS, endF
   } else {
     const lines = [];
     for (const it of list) lines.push(`file '${it.file}'`, `duration ${it.dur.toFixed(4)}`);
-    lines.push(`file '${list[list.length - 1].file}'`); // repetição do último file (bug do concat)
+    lines.push(`file '${list[list.length - 1].file}'`);
     const listFile = path.join(dir, 'list.txt');
     await writeFile(listFile, lines.join('\n') + '\n');
     input = ['-f', 'concat', '-safe', '0', '-i', listFile];
   }
   let vf = `fps=${fps},scale=${dev.encodeW}:-2:flags=lanczos,format=yuv420p`;
   if (crop) {
-    // crop em CSS px × escala real do frame (device pixels), antes do scale; saída 960×720
     const { stdout } = await run('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width', '-of', 'csv=p=0', list[0].file]);
     const k = Number(stdout.trim()) / dev.viewport.width;
     const cw = Math.round(crop.w * k), ch = Math.round(crop.h * k);
@@ -671,9 +580,6 @@ async function encode(list, dev, out, crf, dir, seconds, crop, { fps = FPS, endF
   if (endFade) await fadeToStart(body, out, endFade, fps, crf, dir);
 }
 
-// crossfade do fim para o primeiro quadro: o último trecho de `endFade` ms do vídeo funde
-// para o quadro inicial, que fica parado no final. Duração total igual à do corpo, então o
-// último quadro do arquivo é igual ao primeiro e o laço do navegador não tem emenda.
 async function fadeToStart(body, out, endFade, fps, crf, dir) {
   const { seconds: d } = await probe(body);
   const f = endFade / 1000;
@@ -698,7 +604,6 @@ async function probe(file) {
   return { width: j.streams[0].width, height: j.streams[0].height, seconds: r2(Number(j.format.duration)) };
 }
 
-// luma média (YAVG, 0–255) de até 6 frames espaçados. Frame preto fica abaixo de ~10.
 async function meanLuma(files) {
   const step = Math.max(1, Math.floor(files.length / 6));
   const sample = files.filter((_, i) => i % step === 0).slice(0, 6);
@@ -714,11 +619,7 @@ async function meanLuma(files) {
   return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
 }
 
-// ---------- cena ----------
 
-// Ponto do cursor para gravações (ver `cursor` na cena). É um popover manual para
-// ficar acima de <dialog> abertos (camada superior): a cada clique ele é reaberto,
-// o que o põe por último na pilha.
 const CURSOR_SCRIPT = `(() => {
   const montar = () => {
     if (document.getElementById('__deck-cursor')) return;
@@ -752,13 +653,8 @@ async function capture(cfg, scene, dev, dir, browser) {
     locale: 'pt-BR',
     ...(dev.ua ? { userAgent: dev.ua } : {}),
   });
-  // cookies opcionais do site (ex.: aceite essencial do banner de consentimento)
-  // (a cena com "noCookies": true começa sem eles, para mostrar o banner de verdade)
   if (cfg.cookies?.length && !scene.noCookies) await context.addCookies(cfg.cookies);
-  // cursor desenhado (opcional): o screencast não mostra o ponteiro do sistema.
-  // `"cursor": true` na cena (ou no JSON do site) desenha um ponto que segue o mouse.
   if (!dev.mobile && (scene.cursor ?? cfg.cursor)) await context.addInitScript(CURSOR_SCRIPT);
-  // script opcional da cena, antes do site carregar (ex.: deslocar o relógio do sistema para o tique cair dentro da gravação)
   if (scene.initScript) await context.addInitScript(scene.initScript);
   const page = await context.newPage();
   const pageErrors = [];
@@ -777,7 +673,6 @@ async function capture(cfg, scene, dev, dir, browser) {
     }
     if (scene.recordFromStart) await rec.start();
     await runOps(scene.setup, env);
-    // recorte: com selector, x/y são relativos ao canto do elemento no início do record (medido antes de ligar a captura)
     let crop = null;
     if (scene.crop) {
       const c = scene.crop;
@@ -785,7 +680,6 @@ async function capture(cfg, scene, dev, dir, browser) {
       crop = { x: b.x + (c.x ?? 0), y: b.y + (c.y ?? 0), w: c.w, h: c.w * 3 / 4 };
     }
     if (scene.stepped) {
-      // modo congelado: o setup roda em tempo real; o record avança quadro a quadro (ver runStepped)
       const sfps = scene.fps ?? FPS;
       const frames = await runStepped(scene.record, env, sfps, dev);
       return { frames, crop, t0: 0, t1: frames.length / sfps, warnings: env.warnings, pageErrors: pageErrors.length };
@@ -818,7 +712,7 @@ async function captureWithRetry(cfg, scene, dev, dir, browser) {
 async function updateManifest(outDir, cfg, entry) {
   const file = path.join(outDir, 'manifest.json');
   let m = { site: cfg.site, files: [] };
-  try { m = JSON.parse(await readFile(file, 'utf8')); } catch { /* primeiro run */ }
+  try { m = JSON.parse(await readFile(file, 'utf8')); } catch 
   m.files = m.files.filter((f) => f.name !== entry.name);
   m.files.push(entry);
   const order = (n) => cfg.scenes.findIndex((s) => s.name === n);
@@ -826,8 +720,6 @@ async function updateManifest(outDir, cfg, entry) {
   await writeFile(file, JSON.stringify(m, null, 2) + '\n');
 }
 
-// o documento novo pode pintar branco antes do CSS (commit da navegação): corta
-// os primeiros frames brancos e começa a contar no primeiro frame escuro
 async function trimLeadingWhite(cap) {
   cap.frames.sort((a, b) => a.ts - b.ts);
   let k = 0;
@@ -888,7 +780,6 @@ async function recordScene(cfg, scene, outDir, browsers) {
     if (Math.abs(info.seconds - gravado) > 0.25) {
       console.log(`   aviso: mp4 com ${info.seconds}s, gravação com ${gravado.toFixed(2)}s`);
     }
-    // poster: 35% do vídeo; com endFade, o primeiro quadro (é o que aparece antes do laço)
     const posterAt = scene.endFade ? 0 : info.seconds * 0.35;
     await run('ffmpeg', [
       '-y', '-v', 'error', '-ss', String(posterAt.toFixed(2)), '-i', out,
@@ -906,7 +797,6 @@ async function recordScene(cfg, scene, outDir, browsers) {
   }
 }
 
-// ---------- main ----------
 
 const [site, ...rest] = process.argv.slice(2);
 if (!site) {
