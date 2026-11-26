@@ -12,9 +12,12 @@ type Props = {
   note: string;
   quickAria: string;
   quick: readonly string[];
+  // "dark": sobre o painel escuro do hero da home
+  tone?: "light" | "dark";
 };
 
-export default function DiagnosisStarter({ placeholder, sendLabel, note, quickAria, quick }: Props) {
+export default function DiagnosisStarter({ placeholder, sendLabel, note, quickAria, quick, tone = "light" }: Props) {
+  const dark = tone === "dark";
   const router = useRouter();
   const [input, setInput] = useState("");
   const areaRef = useRef<HTMLTextAreaElement>(null);
@@ -44,14 +47,14 @@ export default function DiagnosisStarter({ placeholder, sendLabel, note, quickAr
 
   return (
     <div className="w-full max-w-[640px]">
-      <p className="font-mono text-[11px] uppercase tracking-widest text-ink/60">{note}</p>
+      <p className={`font-mono text-[11px] uppercase tracking-widest ${dark ? "text-white/60" : "text-ink/60"}`}>{note}</p>
       <ul className="-mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" aria-label={quickAria}>
         {quick.map((q) => (
           <li key={q} className="shrink-0">
             <button
               type="button"
               onClick={() => go(q)}
-              className="min-h-[44px] rounded-full border border-ink/25 px-4 py-2 text-sm text-ink/80 transition-colors hover:border-ink hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink motion-reduce:transition-none"
+              className={`min-h-[44px] rounded-full border px-4 py-2 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transition-none ${dark ? "border-white/25 text-white/80 hover:border-white hover:text-white focus-visible:outline-lime" : "border-ink/25 text-ink/80 hover:border-ink hover:text-ink focus-visible:outline-ink"}`}
             >
               {q}
             </button>
@@ -59,7 +62,7 @@ export default function DiagnosisStarter({ placeholder, sendLabel, note, quickAr
         ))}
       </ul>
       <form
-        className="mt-3 flex items-end gap-2 rounded-[24px] border border-ink/30 bg-white/60 py-2 pl-5 pr-2 transition-colors focus-within:border-ink focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink motion-reduce:transition-none"
+        className={`mt-3 flex items-end gap-2 rounded-[24px] border py-2 pl-5 pr-2 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 motion-reduce:transition-none ${dark ? "border-white/25 bg-white/[0.06] focus-within:border-white focus-within:outline-lime" : "border-ink/30 bg-white/60 focus-within:border-ink focus-within:outline-ink"}`}
         onSubmit={(e) => {
           e.preventDefault();
           go(input);
@@ -78,7 +81,7 @@ export default function DiagnosisStarter({ placeholder, sendLabel, note, quickAr
           }}
           placeholder={placeholder}
           aria-label={placeholder}
-          className="max-h-24 min-h-[64px] sm:min-h-[44px] flex-1 resize-none bg-transparent py-[10px] text-base leading-6 text-ink placeholder:text-ink/55 focus:outline-none"
+          className={`max-h-24 min-h-[64px] sm:min-h-[44px] flex-1 resize-none bg-transparent py-[10px] text-base leading-6 focus:outline-none ${dark ? "text-white placeholder:text-white/50" : "text-ink placeholder:text-ink/55"}`}
         />
         <button
           type="submit"

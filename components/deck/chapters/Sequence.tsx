@@ -146,8 +146,8 @@ function Dim({ from, to, progress }: DimProps) {
 }
 
 // Sequência: um canvas desenha o frame do vídeo que corresponde ao scroll.
-// O bloco fica preso (sticky) enquanto a área de scroll passa. Com reduced
-// motion vira um frame fixo, sem pin, em fluxo normal.
+// No desktop nada fica preso: a animação corre enquanto a imagem passa pela tela.
+// Com reduced motion vira um frame fixo.
 export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; deck: Deck }) {
   const reduced = useReduced();
   const frames = chapter.frames;
@@ -157,8 +157,6 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
   const needed = reduced ? 1 : count;
   const ratio = width / height;
 
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   // celular: só a imagem fica presa, no meio da tela, com o texto acima e a seção seguinte subindo abaixo.
   // O trilho tem a altura da imagem + LEAD_SVH: curto o bastante para a seção seguinte aparecer enquanto ela está presa.
   // A animação começa quando a imagem chega perto do meio da tela e termina quando ela se solta.
@@ -190,10 +188,19 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
     mq.addEventListener("change", sync);
     return () => mq.removeEventListener("change", sync);
   }, []);
-  const pinned = !reduced && wide;
+  // desktop: nada fica preso; a animação corre enquanto a imagem atravessa a tela e a página rola livre
+  const { scrollYProgress: passProgress } = useScroll({ target: mediaRef, offset: ["start 0.9", "end 0.1"] });
   const staticProgress = useMotionValue(STATIC_PROGRESS);
   const railPinned = !reduced && !wide && mediaH > 0;
-  const drive = reduced ? staticProgress : wide ? scrollYProgress : railProgress;
+  // um único valor que segue a fonte certa: o useSpring fica preso à fonte do primeiro render,
+  // então trocar de motion value quando `wide` muda não funcionaria
+  const mode = useRef<"static" | "pass" | "rail">("rail");
+  mode.current = reduced ? "static" : wide ? "pass" : "rail";
+  const drive = useTransform(() => {
+    // lê as três sempre, para o valor ficar inscrito em todas
+    const v = { static: staticProgress.get(), pass: passProgress.get(), rail: railProgress.get() };
+    return v[mode.current];
+  });
   const smooth = useSpring(drive, SPRING);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -282,14 +289,12 @@ export default function Sequence({ chapter, deck }: { chapter: SequenceChapter; 
   });
 
   return (
-    <Chapter id={chapter.id} style={pinned ? { padding: 0 } : undefined}>
-      <div ref={ref} style={pinned ? { height: `${chapter.scrollLength}vh` } : undefined}>
-        <div className={pinned ? "sticky top-[var(--deck-bar-h)] deck-screen h-[calc(100svh-var(--deck-bar-h))]" : undefined}>
+    <Chapter id={chapter.id}>
+      <div>
+        <div>
           <div
             className={cx(
               "deck-container grid content-start items-center gap-10 lg:content-center lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.9fr)] lg:gap-12",
-              // a tela presa (só no lg) começa abaixo da barra, com texto e imagem centralizados
-              pinned && "h-full",
             )}
           >
             <div className="min-w-0">
