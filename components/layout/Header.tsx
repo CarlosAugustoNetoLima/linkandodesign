@@ -37,7 +37,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
         {/* links centralizados no espaço entre o logo e o grupo globo + CTA */}
         <nav className="hidden flex-1 items-center md:flex">
-          <div className="flex flex-1 items-center justify-center gap-12 lg:gap-16">
+          <div className="flex flex-1 items-center justify-evenly">
             {links.map((l) => (
               <Link
                 key={l.href}
