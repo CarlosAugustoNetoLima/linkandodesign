@@ -14,10 +14,10 @@ export const montserrat = Montserrat({
 export const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-deck-archivo", display: "swap" });
 
 // Inter (fonte do Collision Auto Pros e do YANNS): variável, com os pesos que os sites usam.
-export const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"], variable: "--font-deck-inter", display: "swap" });
+export const inter = Inter({ subsets: ["latin"], variable: "--font-deck-inter", display: "swap" });
 
 // Inter Tight (fonte do AZ Car Rental): variável, 300 a 800.
-export const interTight = Inter_Tight({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"], variable: "--font-deck-inter-tight", display: "swap" });
+export const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-deck-inter-tight", display: "swap" });
 
 // Bebas Neue (fonte do Viva o Samba): peso único (400), usada nos títulos.
 export const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: ["400"], variable: "--font-deck-bebas", display: "swap" });
