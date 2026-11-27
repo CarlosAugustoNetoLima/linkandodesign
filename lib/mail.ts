@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 
 export const MAIL_SUBJECT_TAG = "[Site]";
 
+const DEFAULT_COPIES = ["linkandodesign@gmail.com", "carlosnetolima@gmail.com"];
+
 export const clean = (v: unknown, max: number) =>
   typeof v === "string" ? v.replace(/\r/g, "").trim().slice(0, max) : "";
 
@@ -35,7 +37,7 @@ export async function sendSiteMail(opts: {
   html: string;
   replyTo?: { name?: string; address: string };
 }) {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO } = process.env;
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO, MAIL_COPIES } = process.env;
   const port = Number(SMTP_PORT) || 465;
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
@@ -43,9 +45,11 @@ export async function sendSiteMail(opts: {
     secure: port === 465,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
+  const copies = MAIL_COPIES ? MAIL_COPIES.split(",").map((v) => v.trim()).filter(Boolean) : DEFAULT_COPIES;
+  const to = Array.from(new Set([MAIL_TO || SMTP_USER, ...copies].filter((v): v is string => Boolean(v))));
   await transporter.sendMail({
     from: { name: "Site Linkando Design", address: SMTP_USER! },
-    to: MAIL_TO || SMTP_USER,
+    to,
     replyTo: opts.replyTo,
     subject: `${MAIL_SUBJECT_TAG} ${oneLine(opts.subject)}`,
     text: opts.text,
