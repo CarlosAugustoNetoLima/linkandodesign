@@ -8,6 +8,7 @@ import {
 } from "@/lib/briefing";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { clean, esc, isEmail, makeLimiter, oneLine, sendSiteMail, smtpConfigured } from "@/lib/mail";
+import { allowedOrigin, oversized } from "@/lib/request-guard";
 
 export const runtime = "nodejs";
 
@@ -16,6 +17,8 @@ const MAX = { name: 120, email: 160, short: 160, long: 4000 };
 const tooMany = makeLimiter(5, 60 * 60 * 1000);
 
 export async function POST(req: Request) {
+  if (!allowedOrigin(req)) return Response.json({ error: "origin" }, { status: 403 });
+  if (oversized(req, 32_000)) return Response.json({ error: "large" }, { status: 413 });
   let body: Record<string, unknown>;
   try {
     body = await req.json();

@@ -7,6 +7,7 @@
     "playbook": "node scripts/chat/build-playbook.mjs",
     "prebuild": "node scripts/chat/build-playbook.mjs",
     "build": "next build",
+    "postbuild": "node scripts/check-client-secrets.mjs",
     "start": "next start",
     "lint": "next lint"
   },

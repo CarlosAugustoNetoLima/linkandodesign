@@ -186,31 +186,46 @@ export function missingRequired(b: BriefingAnswers, opts: { contact?: boolean; t
     .map((f) => f.id);
 }
 
-const DEFAULT_PRICE_FLOOR = 5000;
-const DEFAULT_VALIDITY_DAYS = 15;
-export const HOURLY_MIN = 180;
-export const URGENCY_PCT = { min: 20, max: 30, default: 25 };
+const numberEnv = (name: string) => {
+  const n = Number(process.env[name]);
+  return Number.isFinite(n) && n > 0 ? n : 0;
+};
+
+const listEnv = (name: string) => {
+  const values = (process.env[name] ?? "")
+    .split(",")
+    .map((v) => Number(v.trim()))
+    .filter((n) => Number.isFinite(n) && n > 0);
+  return values.length ? values : [100];
+};
+
+export const HOURLY_MIN = numberEnv("HOURLY_MIN");
+const HOURLY_MAX = numberEnv("HOURLY_MAX");
+export const URGENCY_PCT = {
+  min: numberEnv("URGENCY_MIN"),
+  max: numberEnv("URGENCY_MAX"),
+  default: numberEnv("URGENCY_DEFAULT"),
+};
 export const PAYMENT = {
-  smallUpTo: 5000,
-  small: [50, 50],
-  large: [30, 40, 30],
-  pixDiscountPct: 5,
-  cardNoInterest: 3,
-  cardWithInterest: 6,
-} as const;
+  smallUpTo: numberEnv("PAYMENT_SMALL_UPTO"),
+  small: listEnv("PAYMENT_SMALL"),
+  large: listEnv("PAYMENT_LARGE"),
+  pixDiscountPct: numberEnv("PIX_DISCOUNT_PCT"),
+  cardNoInterest: numberEnv("CARD_NO_INTEREST"),
+  cardWithInterest: numberEnv("CARD_WITH_INTEREST"),
+};
+const REVISION_ROUNDS = numberEnv("REVISION_ROUNDS");
 
 const brl = (n: number) => fmt({ amount: n, currency: "BRL" });
 const round100 = (n: number) => Math.round(n / 100) * 100;
 const ceil100 = (n: number) => Math.ceil(n / 100) * 100;
 
 export function priceFloor(): number {
-  const env = Number(process.env.PRICE_FLOOR);
-  return ceil100(Number.isFinite(env) && env > 0 ? env : DEFAULT_PRICE_FLOOR);
+  return ceil100(numberEnv("PRICE_FLOOR"));
 }
 
 function validityDays(): number {
-  const n = Number(process.env.PROPOSAL_VALIDITY_DAYS);
-  return Number.isInteger(n) && n > 0 ? n : DEFAULT_VALIDITY_DAYS;
+  return Math.floor(numberEnv("PROPOSAL_VALIDITY_DAYS"));
 }
 
 export const OPTION_NAMES = ["Essencial", "Recomendado", "Completo"] as const;
@@ -287,7 +302,7 @@ export function checkPaymentPlan(price: number, plan: Installment[]): string | n
   if (plan[0].pct < minEntry) return `entrada abaixo de ${minEntry}%`;
   if (plan.reduce((s, p) => s + p.amount, 0) !== price) return "as parcelas não somam o total";
   if (plan.some((p) => p.amount <= 0)) return "parcela sem valor";
-  if (PAYMENT.cardNoInterest > 3 || PAYMENT.cardWithInterest > 6) return "parcelamento acima do permitido";
+  if (!PAYMENT.cardNoInterest || !PAYMENT.cardWithInterest) return "limites de parcelamento não configurados";
   return null;
 }
 
@@ -365,7 +380,7 @@ ${DEADLINES_PT}
 Valores (campo "price" de cada opção): um valor FECHADO em reais, número inteiro, SEM a taxa de urgência (o código acrescenta).
 ${bandLine(band)} Piso absoluto: ${brl(lower)}. Cada opção fica dentro da faixa: Essencial perto do mínimo, Completo perto do teto.
 Estime pelo mercado brasileiro de estúdios de design e desenvolvimento e pela complexidade (número de páginas, integrações, idiomas, produção de conteúdo, número de usuários e perfis, migração de dados, naming e sistema de design).
-Conferência por horas: estime as horas de cada opção ("hours") e confira com R$ 180 a R$ 250 por hora. Se horas × R$ 180 passar do valor, suba o valor (dentro da faixa).
+Conferência por horas: estime as horas de cada opção ("hours") e confira com R$ ${HOURLY_MIN} a R$ ${HOURLY_MAX} por hora. Se horas × R$ ${HOURLY_MIN} passar do valor, suba o valor (dentro da faixa).
 Estime pelo escopo, como se não soubesse o investimento declarado: não copie nem arredonde para o número que o cliente disse. Qualificação do investimento declarado: ${fit}
 ${urgent ? `O prazo pedido é menor que a faixa típica: informe em "urgencyPct" a taxa de urgência, entre ${URGENCY_PCT.min} e ${URGENCY_PCT.max} (por cento), conforme o aperto.` : 'O prazo não pede urgência: "urgencyPct": 0.'}
 
@@ -520,7 +535,7 @@ function buildClientProposal(
           digital
             ? "O prazo depende da entrega de conteúdo e acessos da sua parte."
             : "O prazo depende da entrega de informações e das aprovações da sua parte.",
-          "Cada etapa tem 2 rodadas de ajuste. O que passar disso ou sair do escopo é orçado à parte.",
+          `Cada etapa tem ${REVISION_ROUNDS} rodadas de ajuste. O que passar disso ou sair do escopo é orçado à parte.`,
           `Esta proposta é válida por ${days} dias a partir da data de envio.`,
         ],
         next: "Para seguir, é só responder este e-mail dizendo qual opção prefere, que enviamos o contrato.",
@@ -552,7 +567,7 @@ function buildClientProposal(
           digital
             ? "The timeline depends on you delivering content and access."
             : "The timeline depends on you providing information and approvals.",
-          "Each stage includes 2 rounds of revisions. Anything beyond that or outside the scope is quoted separately.",
+          `Each stage includes ${REVISION_ROUNDS} rounds of revisions. Anything beyond that or outside the scope is quoted separately.`,
           `This proposal is valid for ${days} days from the date it is sent.`,
         ],
         next: "To move forward, just reply to this email with the option you prefer and we will send you the contract.",
@@ -761,7 +776,7 @@ function internalNotes(extras: LeadExtras): string[] {
   if (p) {
     lines.push(`Limites aplicados: ${brl(p.lower)} a ${p.upper ? brl(p.upper) : "sem teto"}${p.urgencyPct ? `, mais ${p.urgencyPct}% de urgência por cima` : ""}.`);
     for (const o of p.options)
-      lines.push(`${o.name}: ${brl(o.price)} (IA sugeriu ${o.suggested ? brl(o.suggested) : "nada"}${o.hours ? `, ${o.hours}h ≈ ${brl(o.hours * HOURLY_MIN)} a ${brl(o.hours * 250)}` : ""}).`);
+      lines.push(`${o.name}: ${brl(o.price)} (IA sugeriu ${o.suggested ? brl(o.suggested) : "nada"}${o.hours ? `, ${o.hours}h ≈ ${brl(o.hours * HOURLY_MIN)} a ${brl(o.hours * HOURLY_MAX)}` : ""}).`);
     lines.push(...p.notes);
     if (p.removed) lines.push(`${p.removed} frase(s) da IA com valor, percentual ou condição de pagamento saíram da pré-proposta (essas partes são fixas no código).`);
   }

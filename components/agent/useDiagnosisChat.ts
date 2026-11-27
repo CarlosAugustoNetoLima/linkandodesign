@@ -100,6 +100,7 @@ function leadBody(locale: Locale, contact: string, status: LeadStatus, msgs: Mes
     locale,
     contact,
     status,
+    website: "",
     messages: msgs.map((m) => ({ role: m.from === "user" ? "user" : "assistant", content: m.text })),
   });
 }
@@ -206,6 +207,7 @@ export function useDiagnosisChat(locale: Locale) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           locale,
+          website: "",
           messages: nextMessages.map((m) => ({
             role: m.from === "user" ? "user" : "assistant",
             content: m.text,

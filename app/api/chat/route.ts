@@ -3,7 +3,9 @@ import {
   asksContact,
   buildSystemPrompt,
   conversationState,
+  extractionReply,
   fixGenderedThanks,
+  isExtractionAttempt,
   isSummary,
   missingFieldsIssue,
   repairReply,
@@ -14,6 +16,7 @@ import { BRIEFING_FIELDS } from "@/lib/briefing-fields";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { extractBriefing, missingRequired } from "@/lib/lead-proposal";
 import { llmAttempts, type Turn } from "@/lib/llm";
+import { allowedOrigin, oversized } from "@/lib/request-guard";
 
 export const runtime = "nodejs";
 export const maxDuration = 40;
@@ -22,6 +25,7 @@ export const maxDuration = 40;
 type IncomingMessage = { role: "user" | "assistant"; content: string };
 
 const hits = new Map<string, number[]>();
+const lastTurn = new Map<string, number>();
 function tooMany(ip: string) {
   const now = Date.now();
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60 * 1000);
@@ -29,19 +33,34 @@ function tooMany(ip: string) {
   hits.set(ip, recent);
   return recent.length > 30;
 }
+function tooFast(ip: string) {
+  const now = Date.now();
+  if (now - (lastTurn.get(ip) ?? 0) < 800) return true;
+  lastTurn.set(ip, now);
+  return false;
+}
 
 export async function POST(req: Request) {
-  let body: { messages?: IncomingMessage[]; locale?: string };
+  if (!allowedOrigin(req)) return new Response("Origem não permitida", { status: 403 });
+  if (oversized(req)) return new Response("Corpo muito grande", { status: 413 });
+  let body: { messages?: IncomingMessage[]; locale?: string; website?: string };
   try {
     body = await req.json();
   } catch {
     return new Response("JSON inválido", { status: 400 });
   }
+  if (typeof body.website === "string" && body.website.trim()) return new Response("ok");
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
-  if (tooMany(ip)) return new Response("Muitas mensagens", { status: 429 });
+  if (tooMany(ip) || tooFast(ip)) return new Response("Muitas mensagens", { status: 429 });
 
   const locale: Locale = typeof body.locale === "string" && isLocale(body.locale) ? body.locale : "pt";
+  const lastUserText = body.messages?.filter((m) => m?.role === "user").at(-1)?.content ?? "";
+  if (isExtractionAttempt(lastUserText)) {
+    return new Response(extractionReply(locale), {
+      headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },
+    });
+  }
 
   const cleaned: Turn[] = (Array.isArray(body.messages) ? body.messages : [])
     .filter(

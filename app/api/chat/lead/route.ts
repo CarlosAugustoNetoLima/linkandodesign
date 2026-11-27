@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { clean, isEmail, makeLimiter, sendSiteMail, smtpConfigured } from "@/lib/mail";
 import { buildLeadEmail, prepareLeadExtras, type LeadInput } from "@/lib/lead-proposal";
 import { qualify } from "@/lib/pricing-base";
+import { allowedOrigin, oversized } from "@/lib/request-guard";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -14,12 +15,15 @@ type Turn = { role: "user" | "assistant"; content: string };
 const tooMany = makeLimiter(5, 60 * 60 * 1000);
 
 export async function POST(req: Request) {
-  let body: { contact?: string; locale?: string; status?: string; messages?: Turn[] };
+  if (!allowedOrigin(req)) return Response.json({ error: "origin" }, { status: 403 });
+  if (oversized(req, 200_000)) return Response.json({ error: "large" }, { status: 413 });
+  let body: { contact?: string; locale?: string; status?: string; messages?: Turn[]; website?: string };
   try {
     body = await req.json();
   } catch {
     return Response.json({ error: "invalid" }, { status: 400 });
   }
+  if (typeof body.website === "string" && body.website.trim()) return Response.json({ ok: true });
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (tooMany(ip)) return Response.json({ error: "rate" }, { status: 429 });
